@@ -87,12 +87,16 @@ function typeInto(element, value) {
 
 async function testIndex() {
   console.log("\nindex.html");
+  const library = JSON.parse(await readFile(join(root, "data", "games.json"), "utf8"));
   const dom = await loadPage("index.html", "index.js");
   const doc = dom.window.document;
 
   await waitFor(() => doc.querySelectorAll("#game-grid .game-card").length === 12, "first page of games");
   assert(doc.querySelectorAll("#featured-grid .game-card").length === 3, "three featured games render");
-  assert(doc.querySelector("#results-count").textContent.includes("50"), "result count shows 50 games");
+  assert(
+    doc.querySelector("#results-count").textContent.includes(String(library.length)),
+    `result count shows the library total (${library.length})`,
+  );
   assert(doc.querySelectorAll("#quick-chips [data-chip]").length === 6, "six quick filter chips render");
   assert(doc.querySelectorAll("#filter-theme option").length > 5, "theme filter is populated");
 

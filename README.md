@@ -2,7 +2,7 @@
 
 A growing toolbox of free, practical tools for Beaver, Cub and Scout leaders, published as a static site on GitHub Pages.
 
-**Currently in the box:** the [Games Finder](games/) — a searchable library of 50 games with full rules, safety notes and leader tips.
+**Currently in the box:** the [Games Finder](games/) — a searchable library of 50+ games with full rules, safety notes and leader tips.
 
 > This is an independent, volunteer-made resource. It is not an official Scouts publication and is not endorsed by The Scout Association. Scouts and the Scouts fleur-de-lis are trademarks of The Scout Association.
 
