@@ -6,11 +6,11 @@
   <title>About — Scouts Games Library</title>
   <meta name="description" content="How the Scouts Games Library works, how variants differ from themed twists, and how to add a game or run your own copy.">
   <meta name="theme-color" content="#590fa9">
-  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;1,6..12,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="assets/css/misc.css">
   <script type="module" src="assets/js/about.js"></script>
 </head>
@@ -19,10 +19,11 @@
 
   <header class="site-header">
     <div class="container site-header__inner">
-      <a class="brand" href="index.html" aria-label="Scouts Games Library home">
-        <img src="assets/img/scouts-black.svg" alt="Scouts" width="176" height="50">
+      <a class="brand" href="../index.html" aria-label="Scout Tools home">
+        <img src="../assets/img/scouts-black.svg" alt="Scouts" width="176" height="50">
       </a>
       <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a class="site-nav__link" href="../index.html">All tools</a>
         <a class="site-nav__link" href="index.html">Find a game</a>
         <a class="site-nav__link" href="index.html?saved=1">Saved games</a>
         <a class="site-nav__link" href="add.html">Add a game</a>
@@ -122,7 +123,7 @@
 
         <h2 id="hosting">Run your own copy</h2>
         <p>This is a static site. There is no database or server to maintain: the games live in <code>data/games.json</code>, and the pages are plain HTML, CSS and JavaScript. Fork the repository, edit the JSON or use the form, then publish it with GitHub Pages. The included GitHub Actions check the data and can import game submissions from issues.</p>
-        <p>Full setup notes, the data schema and the command-line tools are in the repository’s <code>README.md</code>.</p>
+        <p>Full setup notes, the data schema and the command-line tools are in <code>games/README.md</code>, with the toolbox overview in the top-level <code>README.md</code>.</p>
 
         <h2 id="credits">Credits and disclaimer</h2>
         <p>The visual style is inspired by the Scouts activity finder and uses supplied Scouts brand assets for a consistent look. Scouts and the Scouts fleur-de-lis are trademarks of The Scout Association.</p>
@@ -160,7 +161,7 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <img src="assets/img/scouts-stack-white.svg" alt="Scouts" width="110" height="80">
+          <img src="../assets/img/scouts-stack-white.svg" alt="Scouts" width="110" height="80">
           <p>A practical games library for Beaver, Cub and Scout leaders. Made for busy meeting nights.</p>
         </div>
         <div>

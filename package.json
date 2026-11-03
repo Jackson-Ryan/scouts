@@ -1,14 +1,15 @@
 {
-  "name": "scouts-games-library",
-  "version": "1.0.0",
+  "name": "scout-tools",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
-  "description": "A static, searchable games library for Beaver, Cub and Scout leaders.",
+  "description": "A toolbox of practical, free tools for Beaver, Cub and Scout leaders.",
   "scripts": {
     "serve": "node scripts/dev-server.mjs",
-    "validate": "node scripts/validate-games.mjs",
-    "smoke": "node scripts/smoke-test.mjs",
-    "add": "node scripts/add-game.mjs"
+    "check": "node scripts/check-assets.mjs",
+    "validate": "node games/scripts/validate-games.mjs",
+    "smoke": "node games/scripts/smoke-test.mjs",
+    "add": "node games/scripts/add-game.mjs"
   },
   "engines": {
     "node": ">=20"

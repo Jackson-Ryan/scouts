@@ -3,15 +3,15 @@ name: Validate games
 on:
   push:
     paths:
-      - "data/games.json"
-      - "scripts/**"
-      - "assets/js/**"
+      - "games/data/games.json"
+      - "games/scripts/**"
+      - "games/assets/js/**"
       - ".github/workflows/validate-games.yml"
   pull_request:
     paths:
-      - "data/games.json"
-      - "scripts/**"
-      - "assets/js/**"
+      - "games/data/games.json"
+      - "games/scripts/**"
+      - "games/assets/js/**"
       - ".github/workflows/validate-games.yml"
   workflow_dispatch:
 
@@ -27,5 +27,5 @@ jobs:
         with:
           node-version: 20
 
-      - name: Validate data/games.json
-        run: node scripts/validate-games.mjs
+      - name: Validate games/data/games.json
+        run: node games/scripts/validate-games.mjs

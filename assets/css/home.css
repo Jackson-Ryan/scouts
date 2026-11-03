@@ -1,0 +1,411 @@
+/* ==========================================================================
+   Scout Tools hub — home page and tool cards
+   Uses the shared design system in base.css.
+   ========================================================================== */
+
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 22px;
+}
+
+.section-head h2 {
+  margin-bottom: 0;
+  font-size: clamp(1.45rem, 2.4vw, 1.8rem);
+  font-weight: 900;
+}
+
+.section-head .eyebrow {
+  margin-bottom: 6px;
+}
+
+/* Tools ------------------------------------------------------------------- */
+
+.tools {
+  padding-block: 46px 0;
+}
+
+.tools__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.tool-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  color: inherit;
+  text-decoration: none;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+a.tool-card:hover {
+  transform: translateY(-4px);
+  border-color: #c9c9c9;
+  box-shadow: var(--shadow-lg);
+  text-decoration: none;
+}
+
+.tool-card__cover {
+  --tool-bg: var(--purple);
+  --tool-fg: var(--white);
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 7;
+  overflow: hidden;
+  background: var(--tool-bg);
+  color: var(--tool-fg);
+  isolation: isolate;
+}
+
+.tool-card__cover::before {
+  content: "";
+  position: absolute;
+  right: -10%;
+  bottom: -55%;
+  width: 62%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  z-index: 0;
+}
+
+.tool-card__cover::after {
+  content: "";
+  position: absolute;
+  top: 12%;
+  right: 9%;
+  width: 16%;
+  aspect-ratio: 1;
+  border: 2px dashed rgba(255, 255, 255, 0.32);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.tool-card__icon {
+  position: relative;
+  z-index: 2;
+  width: 26%;
+  max-width: 110px;
+  height: auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.35;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.16));
+}
+
+.tool-card__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--ink);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: var(--shadow-sm);
+}
+
+.tool-card__badge--ready {
+  background: var(--green);
+  color: var(--white);
+}
+
+.tool-card__badge--beta {
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+.tool-card__badge--planned {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.tool-card__kicker {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 3;
+  padding: 4px 9px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
+  font-size: 0.66rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.tool-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  padding: 20px 20px 16px;
+}
+
+.tool-card__title {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.tool-card__tagline {
+  margin: 0;
+  color: var(--grey-900);
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.tool-card__desc {
+  margin: 0;
+  color: var(--grey-700);
+  font-size: 0.89rem;
+  line-height: 1.55;
+}
+
+.tool-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 8px;
+  list-style: none;
+}
+
+.tool-card__tags li {
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--purple-light);
+  color: var(--purple-dark);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.tool-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 13px 20px;
+  border-top: 1px solid var(--grey-100);
+  color: var(--purple);
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.tool-card__footer .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.tool-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+/* Planned / placeholder card ------------------------------------------------- */
+
+.tool-card--planned {
+  border: 2px dashed #d1bce7;
+  background: #fbf8ff;
+}
+
+.tool-card--planned .tool-card__cover {
+  aspect-ratio: auto;
+  min-height: 130px;
+  background: transparent;
+  color: var(--purple);
+}
+
+.tool-card--planned .tool-card__cover::before,
+.tool-card--planned .tool-card__cover::after {
+  display: none;
+}
+
+.tool-card--planned .tool-card__icon {
+  width: 44px;
+  max-width: 44px;
+  filter: none;
+}
+
+.tool-card--planned .tool-card__footer {
+  border-top-color: #eadcf9;
+  color: var(--grey-600);
+}
+
+/* Cover colour tiles (match the games covers) --------------------------------- */
+
+.cover-tile--purple { --tool-bg: #590fa9; --tool-fg: #fff; }
+.cover-tile--teal { --tool-bg: #088486; --tool-fg: #fff; }
+.cover-tile--blue { --tool-bg: #006ddf; --tool-fg: #fff; }
+.cover-tile--green { --tool-bg: #008a1c; --tool-fg: #fff; }
+.cover-tile--orange { --tool-bg: #e9730c; --tool-fg: #2b1400; }
+.cover-tile--orange::before { background: rgba(43, 20, 0, 0.12); }
+.cover-tile--pink { --tool-bg: #ffb4e5; --tool-fg: #400b7a; }
+.cover-tile--pink::before { background: rgba(64, 11, 122, 0.1); }
+.cover-tile--navy { --tool-bg: #003982; --tool-fg: #fff; }
+.cover-tile--yellow { --tool-bg: #ffe627; --tool-fg: #2b2500; }
+.cover-tile--yellow::before { background: rgba(43, 37, 0, 0.1); }
+.cover-tile--red { --tool-bg: #ed3f23; --tool-fg: #fff; }
+.cover-tile--mint { --tool-bg: #0e8f3a; --tool-fg: #fff; }
+
+/* Note under the grid --------------------------------------------------------- */
+
+.home-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: 760px;
+  margin: 22px 0 0;
+  color: var(--grey-600);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.home-note .icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--purple);
+}
+
+/* Loading and error states ---------------------------------------------------- */
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 160px;
+  color: var(--grey-600);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--grey-200);
+  border-top-color: var(--purple);
+  border-radius: 50%;
+  animation: home-spin 700ms linear infinite;
+}
+
+@keyframes home-spin {
+  to { transform: rotate(360deg); }
+}
+
+.hub-error {
+  display: grid;
+  gap: 8px;
+  padding: 24px;
+  border: 1px solid #f3c2bd;
+  border-radius: var(--radius);
+  background: #fdecea;
+  color: #8f1d14;
+  font-size: 0.9rem;
+}
+
+.hub-error strong {
+  font-size: 1rem;
+}
+
+/* 404 panel ------------------------------------------------------------------- */
+
+.hub-404 {
+  display: grid;
+  place-items: center;
+  gap: 12px;
+  margin-top: 28px;
+  padding: 56px 24px;
+  border: 2px dashed #d1bce7;
+  border-radius: var(--radius-lg);
+  background: #fbf8ff;
+  text-align: center;
+}
+
+.hub-404__icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--purple-light);
+  color: var(--purple);
+}
+
+.hub-404__icon .icon {
+  width: 30px;
+  height: 30px;
+}
+
+.hub-404 h2 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.hub-404 p {
+  max-width: 480px;
+  margin: 0;
+  color: var(--grey-600);
+}
+
+.hub-404__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+/* Responsive ------------------------------------------------------------------ */
+
+@media (max-width: 980px) {
+  .tools__grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .tools__grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .section-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .tool-card__body {
+    padding: 18px 16px 14px;
+  }
+
+  .tool-card__footer {
+    padding-inline: 16px;
+  }
+}

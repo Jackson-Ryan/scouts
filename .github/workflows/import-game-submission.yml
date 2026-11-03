@@ -32,7 +32,7 @@ jobs:
         continue-on-error: true
         env:
           ISSUE_BODY: ${{ github.event.issue.body }}
-        run: node scripts/import-issue.mjs
+        run: node games/scripts/import-issue.mjs
 
       - name: Commit the new game
         if: steps.import.outputs.status == 'added'
@@ -41,7 +41,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/games.json
+          git add games/data/games.json
           git commit -m "Add game: $GAME_TITLE"
           git push
 
