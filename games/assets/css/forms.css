@@ -496,6 +496,12 @@
     grid-template-columns: 1fr;
   }
 
+  .repeat-row .select,
+  .repeat-row .input,
+  .repeat-row .textarea {
+    font-size: 16px;
+  }
+
   .repeat-row .repeat-remove {
     grid-column: auto;
     justify-self: start;

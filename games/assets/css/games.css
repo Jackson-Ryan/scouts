@@ -24,10 +24,12 @@
 .field--search .icon {
   position: absolute;
   left: 14px;
-  top: 50%;
+  /* Centre on the input (flush with the bottom of the field), not the label + input group. */
+  top: auto;
+  bottom: 24px;
   width: 19px;
   height: 19px;
-  transform: translateY(-50%);
+  transform: translateY(50%);
   color: var(--grey-600);
   pointer-events: none;
 }
@@ -794,5 +796,30 @@
 
   .sort-control .select {
     flex: 1;
+  }
+}
+
+/* Keep form controls at 16px on small screens so iOS does not zoom on focus. */
+@media (max-width: 640px) {
+  .sort-control .select {
+    font-size: 16px;
+  }
+}
+
+/* Compact pagination on very narrow phones where five page numbers plus
+   previous/next would otherwise overflow. */
+@media (max-width: 400px) {
+  .pagination {
+    gap: 4px;
+  }
+
+  .pagination button {
+    min-width: 36px;
+    height: 36px;
+    padding-inline: 6px;
+  }
+
+  .pagination__ellipsis {
+    width: 18px;
   }
 }

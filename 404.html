@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Page not found — Scout Tools</title>
   <meta name="description" content="That page could not be found. Head back to the toolbox or open the Games Finder.">
+  <meta name="robots" content="noindex">
   <meta name="theme-color" content="#590fa9">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23590fa9'/%3E%3Cpath d='M8 25 18 6M24 25 14 6M19 25l-3-8-3 8M7 25h18' fill='none' stroke='%23ffe627' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
   <script>
-    // GitHub Pages serves this 404 page for any missing path under the site, so a
-    // relative asset path would break on deeper URLs. Work out the site root and
-    // give every asset and link a stable base to work from.
+    // GitHub Pages serves this 404 page for any missing path, and the page has no
+    // external local assets, so it always renders. Work out the site root so the
+    // links still point at the toolbox from deep URLs too.
     (function () {
       var segments = window.location.pathname.split("/").filter(Boolean);
       var isProjectSite = window.location.hostname.endsWith(".github.io") && segments.length > 0 && segments[0].indexOf(".") === -1;
@@ -17,13 +19,271 @@
       document.write('<base href="' + base + '">');
     })();
   </script>
-  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;1,6..12,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/base.css">
-  <link rel="stylesheet" href="assets/css/home.css">
-  <script type="module" src="assets/js/home.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --purple: #590fa9;
+      --purple-dark: #400b7a;
+      --purple-light: #f3edfb;
+      --yellow: #ffe627;
+      --ink: #1a1a1a;
+      --grey-700: #5f5f5f;
+      --grey-600: #6e6e6e;
+      --border: #dedede;
+      --radius: 8px;
+      --radius-lg: 14px;
+      --radius-pill: 999px;
+      --font: "Nunito Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink);
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--purple); }
+
+    .container {
+      width: min(100% - 32px, 1240px);
+      margin-inline: auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      padding: 10px 18px;
+      border-radius: var(--radius-pill);
+      background: var(--ink);
+      color: #fff;
+      font-weight: 800;
+      transform: translateY(-160%);
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    .site-header { border-bottom: 1px solid #e6e6e6; }
+
+    .site-header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 68px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--purple);
+      font-size: 1.3rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .brand svg {
+      width: 26px;
+      height: 26px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .header-link {
+      color: var(--ink);
+      font-size: 0.88rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .header-link:hover { color: var(--purple); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: var(--purple);
+      color: #fff;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      top: -160px;
+      width: 360px;
+      height: 360px;
+      border: 2px dashed rgba(255, 255, 255, 0.18);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero__inner {
+      position: relative;
+      z-index: 1;
+      padding-block: 42px 46px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin: 0 0 12px;
+      padding: 6px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: var(--radius-pill);
+      color: var(--yellow);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2.15rem, 10vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    .lead {
+      max-width: 620px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 1rem;
+    }
+
+    main { flex: 1; }
+
+    .not-found {
+      display: grid;
+      place-items: center;
+      gap: 12px;
+      margin-block: 28px 48px;
+      padding: 40px 24px;
+      border: 2px dashed #d1bce7;
+      border-radius: var(--radius-lg);
+      background: #fbf8ff;
+      text-align: center;
+    }
+
+    .not-found__icon {
+      display: grid;
+      place-items: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--purple-light);
+      color: var(--purple);
+    }
+
+    .not-found__icon svg {
+      width: 30px;
+      height: 30px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .not-found h2 {
+      margin: 0;
+      font-size: 1.3rem;
+      font-weight: 900;
+      line-height: 1.25;
+    }
+
+    .not-found p {
+      max-width: 460px;
+      margin: 0;
+      color: var(--grey-600);
+      font-size: 0.95rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      margin-top: 4px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 10px 22px;
+      border: 2px solid transparent;
+      border-radius: var(--radius-pill);
+      font-size: 0.95rem;
+      font-weight: 800;
+      line-height: 1.2;
+      text-decoration: none;
+      transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+    }
+
+    .btn--primary {
+      background: var(--purple);
+      border-color: var(--purple);
+      color: #fff;
+    }
+
+    .btn--primary:hover {
+      background: var(--purple-dark);
+      border-color: var(--purple-dark);
+    }
+
+    .btn--ghost {
+      background: #fff;
+      border-color: var(--purple);
+      color: var(--purple);
+    }
+
+    .btn--ghost:hover { background: var(--purple-light); }
+
+    .site-footer {
+      border-top: 1px solid #e6e6e6;
+      padding-block: 18px;
+      color: var(--grey-600);
+      font-size: 0.74rem;
+    }
+
+    .site-footer p {
+      max-width: 900px;
+      margin: 0;
+    }
+
+    .site-footer a { color: var(--grey-700); }
+
+    @media (min-width: 700px) {
+      .hero__inner { padding-block: 56px 60px; }
+      .not-found { margin-block: 40px 64px; padding: 52px 24px; }
+      .not-found h2 { font-size: 1.5rem; }
+      .lead { font-size: 1.1rem; }
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--yellow);
+      outline-offset: 3px;
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -31,40 +291,30 @@
   <header class="site-header">
     <div class="container site-header__inner">
       <a class="brand" href="index.html" aria-label="Scout Tools home">
-        <img src="assets/img/scouts-black.svg" alt="Scouts" width="176" height="50">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.5 21 14 3M20.5 21 10 3M15.5 21 12 15l-3.5 6M2 21h20"/></svg>
+        Scout Tools
       </a>
-      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
-        <a class="site-nav__link" href="index.html">Tools</a>
-        <a class="site-nav__link" href="games/">Games finder</a>
-        <a class="site-nav__link" href="games/add.html">Add a game</a>
-        <a class="site-nav__link" href="games/about.html">About the games finder</a>
-      </nav>
-      <div class="header-actions">
-        <a class="btn btn--primary btn--small header-cta" href="games/">Open games finder</a>
-        <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
-          <svg class="icon icon--lg" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#menu"></use></svg>
-        </button>
-      </div>
+      <a class="header-link" href="games/">Games finder</a>
     </div>
   </header>
 
   <main id="main">
-    <section class="hero hero--compact">
+    <section class="hero">
       <div class="container hero__inner">
-        <p class="hero__eyebrow">404</p>
+        <p class="eyebrow">404</p>
         <h1>That page has wandered off</h1>
-        <p class="hero__lead">The link may be out of date, or the page may have moved. The toolbox is still right here.</p>
+        <p class="lead">The link may be out of date, or the page may have moved. The toolbox is still right here.</p>
       </div>
     </section>
 
     <div class="container">
-      <div class="hub-404">
-        <div class="hub-404__icon">
-          <svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#compass"></use></svg>
+      <div class="not-found">
+        <div class="not-found__icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
         </div>
         <h2>Let’s get you back on track</h2>
         <p>Head back to the toolbox, or jump straight into the Games Finder for your next meeting.</p>
-        <div class="hub-404__actions">
+        <div class="actions">
           <a class="btn btn--primary" href="index.html">Go to the toolbox</a>
           <a class="btn btn--ghost" href="games/">Open the Games Finder</a>
         </div>
@@ -74,49 +324,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <img src="assets/img/scouts-stack-white.svg" alt="Scouts" width="110" height="80">
-          <p>A growing toolbox of practical, free tools for Beaver, Cub and Scout leaders. Made for busy meeting nights.</p>
-        </div>
-        <div>
-          <h2>Toolbox</h2>
-          <ul class="footer-links">
-            <li><a href="index.html">All tools</a></li>
-            <li><a href="games/">Games finder</a></li>
-            <li><a href="games/add.html">Add a game</a></li>
-          </ul>
-        </div>
-        <div>
-          <h2>Games finder</h2>
-          <ul class="footer-links">
-            <li><a href="games/?section=beavers">Beavers</a></li>
-            <li><a href="games/?section=cubs">Cubs</a></li>
-            <li><a href="games/?section=scouts">Scouts</a></li>
-            <li><a href="games/">All games</a></li>
-          </ul>
-        </div>
-        <div>
-          <h2>About the games</h2>
-          <ul class="footer-links">
-            <li><a href="games/about.html#how-it-works">How it works</a></li>
-            <li><a href="games/about.html#variants">Variants explained</a></li>
-            <li><a href="games/about.html#safety">Safety notes</a></li>
-          </ul>
-        </div>
-        <div>
-          <h2>Development</h2>
-          <ul class="footer-links">
-            <li><a href="https://github.com/Jackson-Ryan/scouts" target="_blank" rel="noopener">GitHub repository</a></li>
-            <li><a href="https://github.com/Jackson-Ryan/scouts#readme" target="_blank" rel="noopener">README</a></li>
-            <li><a href="https://github.com/Jackson-Ryan/scouts/issues/new" target="_blank" rel="noopener">Report an issue</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-legal">
-        <p>An independent, volunteer-made toolbox for Scout leaders. Not an official Scouts publication, and not endorsed by The Scout Association. Always follow your own risk assessment and safeguarding procedures. Scouts and the Scouts fleur-de-lis are trademarks of The Scout Association.</p>
-        <span class="footer-badge">Independent resource</span>
-      </div>
+      <p>An independent, volunteer-made toolbox for Scout leaders. Not an official Scouts publication, and not endorsed by The Scout Association. Scouts and the Scouts fleur-de-lis are trademarks of The Scout Association. <a href="https://github.com/Jackson-Ryan/scouts" target="_blank" rel="noopener">GitHub</a></p>
     </div>
   </footer>
 </body>
