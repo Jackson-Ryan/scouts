@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Find a game — Scouts Games Library</title>
+  <meta name="description" content="A free, searchable library of games for Beaver, Cub and Scout meetings. Filter by section, time, theme and setting, then print or share your favourites.">
+  <meta name="theme-color" content="#590fa9">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;1,6..12,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/games.css">
+  <link rel="stylesheet" href="assets/css/misc.css">
+  <meta property="og:title" content="Scouts Games Library">
+  <meta property="og:description" content="Find your next Beaver, Cub or Scout game in seconds.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/img/scouts-black.svg">
+  <script type="module" src="assets/js/index.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="Scouts Games Library home">
+        <img src="assets/img/scouts-black.svg" alt="Scouts" width="176" height="50">
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a class="site-nav__link is-active" href="index.html" aria-current="page">Find a game</a>
+        <a class="site-nav__link" href="index.html?saved=1">Saved games</a>
+        <a class="site-nav__link" href="add.html">Add a game</a>
+        <a class="site-nav__link" href="about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <a class="header-saved" href="index.html?saved=1" aria-label="View saved games">
+          <svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#bookmark"></use></svg>
+          <span class="header-saved__count" data-saved-count>0</span>
+        </a>
+        <a class="btn btn--primary btn--small header-cta" href="add.html">Add a game</a>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+          <svg class="icon icon--lg" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#menu"></use></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container hero__inner">
+        <p class="hero__eyebrow">For Beaver, Cub and Scout leaders</p>
+        <h1>Find the perfect game for your meeting</h1>
+        <p class="hero__lead">Search tried-and-tested games by section, time, theme and setting. Every game comes with clear rules, equipment, safety notes and leader tips.</p>
+        <div class="hero__stats" aria-label="Library statistics">
+          <span><strong data-game-count>50</strong> games</span>
+          <span><strong>3</strong> sections</span>
+          <span><strong>Free</strong> to use and share</span>
+        </div>
+      </div>
+    </section>
+
+    <form class="filters" id="filters" role="search" aria-label="Filter games">
+      <div class="container">
+        <div class="filters__panel">
+          <div class="field field--search">
+            <label for="filter-search">Search games</label>
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#search"></use></svg>
+            <input class="input" id="filter-search" name="q" type="search" placeholder="Try “dodgeball” or “parachute”" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="filter-section">Section</label>
+            <select class="select" id="filter-section" name="section">
+              <option value="">All sections</option>
+              <option value="beavers">Beavers</option>
+              <option value="cubs">Cubs</option>
+              <option value="scouts">Scouts</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="filter-time">How long?</label>
+            <select class="select" id="filter-time" name="time">
+              <option value="">Any length</option>
+              <option value="quick">Quick (5–10 mins)</option>
+              <option value="normal">Normal (10–20 mins)</option>
+              <option value="long">Long (20+ mins)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="filter-theme">Theme</label>
+            <select class="select" id="filter-theme" name="theme">
+              <option value="">Any theme</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="filter-setting">Setting</label>
+            <select class="select" id="filter-setting" name="setting">
+              <option value="">Indoors or outdoors</option>
+              <option value="indoors">Indoors</option>
+              <option value="outdoors">Outdoors</option>
+            </select>
+          </div>
+          <button class="btn btn--primary btn--random" id="random-game" type="button">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#shuffle"></use></svg>
+            Surprise me
+          </button>
+        </div>
+        <div class="quick-chips" id="quick-chips" aria-label="Quick filters">
+          <span class="quick-chips__label">Quick picks</span>
+        </div>
+      </div>
+    </form>
+
+    <noscript>
+      <div class="container mt-6">
+        <div class="error-panel">
+          <strong>JavaScript is needed to load the games library.</strong>
+          <span>Please enable JavaScript, or browse the raw data in <a href="data/games.json">data/games.json</a>.</span>
+        </div>
+      </div>
+    </noscript>
+
+    <section class="featured" id="featured-section" aria-labelledby="featured-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Leader favourites</p>
+            <h2 id="featured-title">Three to start with</h2>
+          </div>
+          <a class="btn btn--ghost btn--small" href="index.html#results-title">Browse all games</a>
+        </div>
+        <div class="featured__grid" id="featured-grid"></div>
+      </div>
+    </section>
+
+    <section class="results" id="results" aria-labelledby="results-title">
+      <div class="container">
+        <div class="results__head">
+          <div>
+            <p class="eyebrow">Games library</p>
+            <h2 id="results-title">All games</h2>
+            <p class="results__count" id="results-count" role="status" aria-live="polite">Loading games…</p>
+          </div>
+          <div class="results__tools">
+            <button class="chip" id="clear-filters" type="button" hidden>
+              <svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#x"></use></svg>
+              Clear filters
+            </button>
+            <label class="sort-control" for="sort-games">
+              Sort by
+              <select class="select" id="sort-games">
+                <option value="featured">Featured first</option>
+                <option value="shortest">Shortest first</option>
+                <option value="az">A to Z</option>
+                <option value="newest">Newest first</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="loading" id="games-loading">
+          <span class="spinner" aria-hidden="true"></span>
+          Loading games…
+        </div>
+
+        <div class="game-grid" id="game-grid" hidden></div>
+
+        <div class="empty" id="empty-state" hidden>
+          <div class="empty__icon">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#search"></use></svg>
+          </div>
+          <h2>No games match those filters</h2>
+          <p>Try a different section, a longer game, or clear the search box. There are plenty more games waiting.</p>
+          <div class="empty__actions">
+            <button class="btn btn--primary" id="empty-reset" type="button">Clear all filters</button>
+            <button class="btn btn--ghost" id="empty-random" type="button">Pick a random game</button>
+          </div>
+        </div>
+
+        <nav class="pagination" id="pagination" aria-label="Games pages"></nav>
+      </div>
+    </section>
+
+    <section class="callout">
+      <div class="container">
+        <div class="callout__inner">
+          <div>
+            <h2>Got a game your section loves?</h2>
+            <p>Add it to the library in a few minutes. The form gives you ready-to-share JSON and a one-click GitHub submission, so leaders everywhere can use it.</p>
+          </div>
+          <a class="btn btn--light" href="add.html">Add your game</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="assets/img/scouts-stack-white.svg" alt="Scouts" width="110" height="80">
+          <p>A practical games library for Beaver, Cub and Scout leaders. Made for busy meeting nights.</p>
+        </div>
+        <div>
+          <h2>Explore</h2>
+          <ul class="footer-links">
+            <li><a href="index.html">All games</a></li>
+            <li><a href="index.html?time=quick">Quick games</a></li>
+            <li><a href="index.html?time=long">Long games</a></li>
+            <li><a href="index.html?saved=1">Saved games</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Sections</h2>
+          <ul class="footer-links">
+            <li><a href="index.html?section=beavers">Beavers</a></li>
+            <li><a href="index.html?section=cubs">Cubs</a></li>
+            <li><a href="index.html?section=scouts">Scouts</a></li>
+            <li><a href="index.html?section=">All sections</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>For leaders</h2>
+          <ul class="footer-links">
+            <li><a href="add.html">Add a game</a></li>
+            <li><a href="about.html#how-it-works">How it works</a></li>
+            <li><a href="about.html#safety">Safety notes</a></li>
+            <li><a href="index.html">Print a game sheet</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>About</h2>
+          <ul class="footer-links">
+            <li><a href="about.html">About this site</a></li>
+            <li><a href="about.html#variants">Variants explained</a></li>
+            <li><a href="about.html#themes">Themed twists</a></li>
+            <li><a href="about.html#credits">Credits</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-legal">
+        <p>An independent, volunteer-made games library for Scout leaders. Not an official Scouts publication, and not endorsed by The Scout Association. Always follow your own risk assessment and safeguarding procedures. Scouts and the Scouts fleur-de-lis are trademarks of The Scout Association.</p>
+        <span class="footer-badge">Independent resource</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

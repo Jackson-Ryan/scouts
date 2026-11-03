@@ -1,0 +1,31 @@
+name: Game submission
+description: Share a new game using the JSON from the Add a game form.
+title: "[Game] "
+labels: ["game-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for sharing a game!
+
+        The easiest way is to use the **Add a game** form on the site. It produces the JSON for you and fills in this issue automatically. If you are creating the issue by hand, paste the JSON between the markers below — keep the markers exactly as they are.
+  - type: textarea
+    id: json
+    attributes:
+      label: Game JSON
+      description: Paste the game JSON from the form, keeping the submission markers.
+      value: |
+        <!-- GAME_SUBMISSION_START -->
+        ```json
+        Paste the game JSON here.
+        ```
+        <!-- GAME_SUBMISSION_END -->
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else?
+      description: Where did the game come from, and is there anything a reviewer should know?
+    validations:
+      required: false

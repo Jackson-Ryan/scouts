@@ -1,0 +1,4371 @@
+[
+  {
+    "id": "french-v-english",
+    "title": "French v English",
+    "summary": "A high-energy team dodgeball game with a rope divide, foam balls and a rescue mission.",
+    "sections": [
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "normal",
+    "duration": "15–20 mins",
+    "minutes": 20,
+    "setting": "indoors",
+    "players": "Two teams",
+    "gameType": "Active",
+    "energy": "high",
+    "noise": "loud",
+    "mess": "none",
+    "themes": [],
+    "equipment": [
+      "Long rope",
+      "6–10 foam balls",
+      "2 chairs",
+      "Bibs or team colours"
+    ],
+    "setup": [
+      "Lay the rope across the middle of the hall.",
+      "Put one chair at the back of each team’s area.",
+      "Split the section into two even teams and share out the foam balls."
+    ],
+    "steps": [
+      "Teams start in their own half. Nobody may cross the rope.",
+      "Players throw foam balls at the other team. A ball only counts if it hits below the shoulders.",
+      "If a player is hit, they cross to the other team’s back area and stand on the chair.",
+      "To free a teammate, a player still in the game must throw them a ball and they must catch it without stepping off the chair.",
+      "A caught ball frees the player, who returns to their own half. If the catch is dropped, they stay on the chair.",
+      "Play until one team has no players left in their half, or until time is called."
+    ],
+    "winning": "The team with the most players still in their own half when time is called wins. You can also play until one team is completely captured.",
+    "safety": "Use soft foam balls only and aim below the shoulders. Keep the area around the chairs clear, and make sure players step down carefully. Balls that roll across the rope can be collected by the team on that side.",
+    "tips": [
+      {
+        "title": "Keep the game moving",
+        "text": "Have a leader return stray balls so nobody is left waiting for a turn."
+      },
+      {
+        "title": "Make the rescue clear",
+        "text": "Mark a small jail area around each chair so players know exactly where to stand."
+      },
+      {
+        "title": "Team talk",
+        "text": "Pause halfway for a 30-second huddle so teams can plan who will rescue who."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Let players sit on a bench instead of standing on a chair, and use a larger, softer ball."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Players must throw with their non-dominant hand, or only one-handed catches count."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Give every player a rescue partner and allow a walking-only version. Players who prefer not to throw can be official ball collectors or chair spotters."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "halloween",
+        "title": "Pumpkin Dodge",
+        "text": "Use orange balls and play spooky music. Players do a silly pumpkin pose when they are caught."
+      },
+      {
+        "theme": "space",
+        "title": "Meteor Rescue",
+        "text": "Call the balls meteors and the chairs moon bases. Players float back to their half with slow-motion moon steps."
+      }
+    ],
+    "variantOf": null,
+    "featured": true,
+    "art": {
+      "icon": "dodgeball",
+      "color": "purple"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "crab-football",
+    "title": "Crab Football",
+    "summary": "Football with a twist: everyone plays on their hands and feet with their chest facing the sky.",
+    "sections": [
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "normal",
+    "duration": "15–20 mins",
+    "minutes": 20,
+    "setting": "both",
+    "players": "Two teams",
+    "gameType": "Active",
+    "energy": "high",
+    "noise": "loud",
+    "mess": "low",
+    "themes": [],
+    "equipment": [
+      "Football",
+      "Bibs",
+      "Cones for goals",
+      "Indoor option: soft football"
+    ],
+    "setup": [
+      "Mark a pitch with cones and a goal at each end.",
+      "Split into two teams and give out bibs.",
+      "Show everyone the crab position: hands and feet on the floor, tummy facing up."
+    ],
+    "steps": [
+      "Everyone starts in the crab position. Players move on their hands and feet, keeping their chest facing the sky.",
+      "Pass and shoot using feet only. No standing up and no using hands on the ball.",
+      "A goal is scored when the ball crosses between the cones.",
+      "After a goal, both teams return to their own half and restart from the centre.",
+      "Rotate goalkeepers every few minutes so everyone gets a turn in a different role."
+    ],
+    "winning": "The team with the most goals at the end of the match wins. For a shorter game, play first to three goals.",
+    "safety": "Warm up wrists and shoulders first. Check the floor for slippery patches and use a soft ball indoors. No sliding tackles, and keep the pitch clear of bags and chairs.",
+    "tips": [
+      {
+        "title": "Short bursts",
+        "text": "Play in three-minute bursts with a quick rest between them. Crab football is hard work on the arms."
+      },
+      {
+        "title": "Referee together",
+        "text": "Use two young leaders as referees so more of the section stays involved."
+      },
+      {
+        "title": "Celebrate the falls",
+        "text": "A silly crab dance after every goal keeps the mood light and stops players worrying about falling over."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Play seated crab football, or use a larger goal and a lighter ball."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Players must keep one hand off the floor at all times, or goals only count if scored from their own half."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Have rolling substitutions and let players choose to be a crab goalkeeper, referee or commentator."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "halloween",
+        "title": "Spider Football",
+        "text": "The rules stay exactly the same. Teams are spiders, the goals are webs and every pass is a web-sling."
+      },
+      {
+        "theme": "christmas",
+        "title": "Reindeer Football",
+        "text": "Same crab football rules, but players wear antlers and the ball has a red nose."
+      },
+      {
+        "theme": "space",
+        "title": "Moon Crab Football",
+        "text": "Same rules, with slow-motion moon moves and a countdown before every restart."
+      }
+    ],
+    "variantOf": null,
+    "featured": true,
+    "art": {
+      "icon": "football",
+      "color": "teal"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "dodgeball",
+    "title": "Dodgeball",
+    "summary": "The classic team game: dodge, catch and throw your way to the last player standing.",
+    "sections": [
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "normal",
+    "duration": "10–15 mins",
+    "minutes": 15,
+    "setting": "indoors",
+    "players": "Two teams",
+    "gameType": "Active",
+    "energy": "high",
+    "noise": "loud",
+    "mess": "none",
+    "themes": [],
+    "equipment": [
+      "6–10 soft foam balls",
+      "Centre line or cones",
+      "Bibs"
+    ],
+    "setup": [
+      "Mark a centre line and a back line for each team.",
+      "Place the balls along the centre line.",
+      "Split into two teams and stand them behind their back lines."
+    ],
+    "steps": [
+      "On the count of three, teams run to collect the balls from the centre line.",
+      "Players throw from behind their own back line. Balls must hit below the shoulders to count.",
+      "A player who is hit sits out at the side. A player who catches a ball on the full earns a life and can bring one teammate back in.",
+      "Balls that stop in a team’s half belong to that team. Do not cross the centre line to collect them.",
+      "Play until one team has no players left, or until time is called."
+    ],
+    "winning": "The last team with players still in the game wins. If time runs out, the team with more players left wins.",
+    "safety": "Use soft foam balls only. No headshots, no throwing at players who are sitting out, and no running with a ball above shoulder height. Keep the side lines clear.",
+    "tips": [
+      {
+        "title": "Equal teams",
+        "text": "Mix ages and abilities across both teams rather than letting friendship groups choose."
+      },
+      {
+        "title": "Quick restarts",
+        "text": "Keep spare balls at the side so the game does not stop every time a ball rolls away."
+      },
+      {
+        "title": "Change the rules",
+        "text": "Try a ‘no running’ round or a ‘non-dominant hand’ round to keep things fresh."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use a larger, slower ball and allow players to deflect with their hands."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Shrink the court, add a ‘no blocking’ rule, or make catches worth two lives."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Use rolling balls instead of throws, or give every player a ‘shield’ card that blocks one hit."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "space",
+        "title": "Meteor Dodgeball",
+        "text": "Same rules, but the balls are meteors and players must freeze like astronauts when a meteor passes."
+      },
+      {
+        "theme": "halloween",
+        "title": "Ghost Dodgeball",
+        "text": "Same rules, with spooky music and a ghostly ‘boo’ every time a player is out."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "dodgeball",
+      "color": "blue"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "capture-the-flag",
+    "title": "Capture the Flag",
+    "summary": "A wide game of sneaking, sprinting and jailbreaks that gets the whole section moving.",
+    "sections": [
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "long",
+    "duration": "30–40 mins",
+    "minutes": 35,
+    "setting": "outdoors",
+    "players": "Two teams",
+    "gameType": "Wide game",
+    "energy": "high",
+    "noise": "loud",
+    "mess": "low",
+    "themes": [],
+    "equipment": [
+      "2 flags or brightly coloured cloths",
+      "Bibs",
+      "Cones for boundaries",
+      "Hi-vis vests for marshals"
+    ],
+    "setup": [
+      "Set clear boundaries and walk them with everyone before the game.",
+      "Mark a base and a jail for each team, with the flag visible in the base.",
+      "Split into two teams and place one adult marshal at each jail."
+    ],
+    "steps": [
+      "Each team defends its own flag while trying to steal the other team’s flag.",
+      "A player can only be tagged while they are in the other team’s half.",
+      "Tagged players go to the opposition jail. They can be freed when a teammate tags them.",
+      "If a player is tagged while carrying the flag, they must drop it and it returns to its base.",
+      "The first team to carry the opposition flag back to its own base wins.",
+      "If nobody has won after the time limit, the team that got closest to the flag wins."
+    ],
+    "winning": "Capture the other team’s flag and bring it back to your base, or be the team closest to a capture when time is called.",
+    "safety": "Walk the boundaries together and keep them away from roads, water and steep ground. No tackling or grabbing. Keep a headcount at the start, middle and end, and have an adult marshal at each jail.",
+    "tips": [
+      {
+        "title": "Use clear flags",
+        "text": "Bright cloths tied to a pole are easier to see than a flag lying on the ground."
+      },
+      {
+        "title": "Rotate roles",
+        "text": "Ask each team to choose two defenders and two attackers for the first five minutes, then swap."
+      },
+      {
+        "title": "Make the jail obvious",
+        "text": "Mark the jail with cones and a marshal so freed players know where to go."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use a smaller area, shorten the jail time to 30 seconds, or let freed players rejoin without a tag."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add two flags per team, or make players walk instead of run while carrying the flag."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Create a ‘safe zone’ near each base. Players who prefer not to run can be flag guards, jail marshals or code-makers."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "pirates",
+        "title": "Pirate Treasure",
+        "text": "The flags become treasure chests. Same rules, with pirate names for the bases and jail."
+      },
+      {
+        "theme": "jungle",
+        "title": "Jungle Flag",
+        "text": "Same rules, but players must move like a jungle animal of their choice between bases."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "flag",
+      "color": "green"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "bench-ball",
+    "title": "Bench Ball",
+    "summary": "A team passing game where the goal is to get the ball into the hands of your player on the bench.",
+    "sections": [
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "normal",
+    "duration": "15–20 mins",
+    "minutes": 20,
+    "setting": "indoors",
+    "players": "Two teams",
+    "gameType": "Active",
+    "energy": "high",
+    "noise": "loud",
+    "mess": "none",
+    "themes": [],
+    "equipment": [
+      "2 low benches",
+      "Soft ball",
+      "Bibs",
+      "Cones"
+    ],
+    "setup": [
+      "Put one bench at each end of the hall.",
+      "Mark a no-go zone around each bench.",
+      "Split into two teams and choose one player to stand on each bench."
+    ],
+    "steps": [
+      "Teams pass the ball to each other and try to get it to their player on the bench.",
+      "Players cannot run with the ball. They can take two steps before passing or shooting.",
+      "A point is scored when the bench player catches the ball without stepping off the bench.",
+      "After a point, the bench player swaps with a teammate and the game restarts from the centre.",
+      "Defenders must stay at least one metre away from the bench player."
+    ],
+    "winning": "The team with the most catches by bench players at the end of the game wins.",
+    "safety": "Use a soft ball and keep the benches stable. No jumping onto or off the bench, and no pushing near the no-go zone. Check that the bench can take the weight of a player.",
+    "tips": [
+      {
+        "title": "Spread out",
+        "text": "Encourage teams to use the whole width of the hall rather than crowding around the bench."
+      },
+      {
+        "title": "Rotate often",
+        "text": "Swap bench players every two points so everyone gets a turn."
+      },
+      {
+        "title": "Count together",
+        "text": "Ask a young leader to keep the score on a whiteboard so everyone can see it."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Allow bench players to step down and catch, or use a larger ball."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Bench players must catch with one hand, or the ball must be passed three times before a shot."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Use a rolling ball instead of a thrown ball, and let players choose to be a bench player, defender or referee."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "space",
+        "title": "Space Station Catch",
+        "text": "Same rules, but the benches are space stations and every pass is a ‘docking manoeuvre’."
+      },
+      {
+        "theme": "christmas",
+        "title": "Santa’s Sleigh",
+        "text": "Same rules, with a sleigh bell on the bench and Christmas music between points."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "target",
+      "color": "orange"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "stuck-in-the-mud",
+    "title": "Stuck in the Mud",
+    "summary": "A simple, brilliant tag game that works with any size of group and needs almost no equipment.",
+    "sections": [
+      "beavers",
+      "cubs"
+    ],
+    "timeBand": "quick",
+    "duration": "5–10 mins",
+    "minutes": 10,
+    "setting": "both",
+    "players": "Whole section",
+    "gameType": "Active",
+    "energy": "high",
+    "noise": "loud",
+    "mess": "none",
+    "themes": [],
+    "equipment": [
+      "Bibs for taggers",
+      "Cones for boundaries"
+    ],
+    "setup": [
+      "Mark a clear playing area with cones.",
+      "Choose two or three taggers and give them bibs.",
+      "Walk through the freeze and rescue rules before you start."
+    ],
+    "steps": [
+      "Taggers count to five while everyone else spreads out.",
+      "If a tagger touches you, you freeze on the spot with your feet apart.",
+      "A free player can rescue you by high-fiving your hand or ducking under your arm.",
+      "Once rescued, you are back in the game and can rescue others.",
+      "Change taggers every few minutes so everyone gets a turn."
+    ],
+    "winning": "There is no winner: the aim is to keep everyone moving. If you want a challenge, the last player to be frozen becomes the next tagger.",
+    "safety": "Walk or jog rather than sprint. Tag below the shoulders and keep the area clear. If players duck under arms, show them how to do it gently and only on a soft surface.",
+    "tips": [
+      {
+        "title": "Freeze poses",
+        "text": "Let players choose a silly frozen pose. It makes the game funnier and easier to spot who is out."
+      },
+      {
+        "title": "Smaller area",
+        "text": "For Beavers, shrink the area so rescues happen quickly and nobody is stuck for long."
+      },
+      {
+        "title": "Team rescue",
+        "text": "Try a rule where two players must high-five a frozen player together."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use walking taggers, or give every player three ‘lives’ before they have to freeze."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add a second set of taggers after two minutes, or make rescued players do five star jumps before rejoining."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer a ‘rescue station’ where players can free themselves once, and let players who prefer not to run be taggers or cone marshals."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "winter",
+        "title": "Frozen in the Mud",
+        "text": "Same rules, but frozen players strike a snowman pose and rescuers give them a warm-up high-five."
+      },
+      {
+        "theme": "jungle",
+        "title": "Jungle Mud",
+        "text": "Same rules, with animal noises for each rescue and a ‘swamp’ area marked with cones."
+      },
+      {
+        "theme": "halloween",
+        "title": "Zombie Mud",
+        "text": "Same rules, but frozen players groan like zombies until they are rescued."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "footprints",
+      "color": "mint"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "sharks-and-minnows",
+    "title": "Sharks and Minnows",
+    "summary": "A running and dodging game where the minnows try to cross the pool without being caught.",
+    "sections": [
+      "beavers",
+      "cubs"
+    ],
+    "timeBand": "quick",
+    "duration": "5–10 mins",
+    "minutes": 10,
+    "setting": "indoors",
+    "players": "Whole section",
+    "gameType": "Active",
+    "energy": "high",
+    "noise": "loud",
+    "mess": "none",
+    "themes": [],
+    "equipment": [
+      "Cones",
+      "Bibs for sharks"
+    ],
+    "setup": [
+      "Mark two safe lines at opposite ends of the hall.",
+      "Choose one or two sharks to stand in the middle.",
+      "Line the minnows up behind one safe line."
+    ],
+    "steps": [
+      "The sharks call ‘minnows, swim!’ and the minnows try to run to the other safe line.",
+      "If a shark tags a minnow, that minnow becomes seaweed and stands still in the middle.",
+      "Seaweed can tag minnows as they run past, but must keep one foot on their spot.",
+      "The last minnow becomes the next shark.",
+      "Start again with a new round and new sharks."
+    ],
+    "winning": "The last minnow left is the winner and gets to be the next shark.",
+    "safety": "Use walking or fast walking for Beavers. Keep the running lanes clear and make sure seaweed players stand still with their arms out gently, not grabbing.",
+    "tips": [
+      {
+        "title": "More sharks",
+        "text": "Start with two sharks so the first round does not take too long."
+      },
+      {
+        "title": "Clear lanes",
+        "text": "Put cones down the sides to mark the running area and stop players cutting corners."
+      },
+      {
+        "title": "Seaweed freeze",
+        "text": "Seaweed must keep both feet still and tag with a gentle touch, not a grab."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use a shorter crossing distance and walking sharks."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add a ‘no stopping’ rule, or make the sharks choose a new move for each round."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Let players who prefer not to run be seaweed straight away, or give every minnow a ‘safe pass’ card."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "summer",
+        "title": "Jellyfish Tag",
+        "text": "Same rules, but seaweed players wobble their arms like jellyfish and everyone makes a sea sound when tagged."
+      },
+      {
+        "theme": "space",
+        "title": "Space Invaders",
+        "text": "Same rules, with asteroids for seaweed and a countdown before each crossing."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "fish",
+      "color": "blue"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "grandmas-footsteps",
+    "title": "Grandma’s Footsteps",
+    "summary": "A classic quiet-to-loud game of sneaking up on Grandma without being spotted.",
+    "sections": [
+      "beavers",
+      "cubs"
+    ],
+    "timeBand": "quick",
+    "duration": "5–10 mins",
+    "minutes": 10,
+    "setting": "indoors",
+    "players": "Whole section",
+    "gameType": "Active",
+    "energy": "medium",
+    "noise": "quiet",
+    "mess": "none",
+    "themes": [],
+    "equipment": [
+      "None"
+    ],
+    "setup": [
+      "Choose one player to be Grandma and stand them at one end of the hall facing away from the group.",
+      "Line everyone else up at the other end.",
+      "Explain that players must freeze whenever Grandma turns around."
+    ],
+    "steps": [
+      "Grandma stands with their back to the group and counts to five.",
+      "Everyone creeps forward while Grandma is facing away.",
+      "Grandma can turn around at any time. Anyone still moving must return to the start line.",
+      "The first player to reach Grandma and tap them gently on the shoulder becomes the next Grandma.",
+      "If nobody reaches Grandma after a few minutes, choose a new Grandma and start again."
+    ],
+    "winning": "The first player to reach Grandma and tap their shoulder wins and takes the next turn.",
+    "safety": "Walking only, no running. Keep the start line clear and make sure players do not bump into each other when they freeze.",
+    "tips": [
+      {
+        "title": "Silly turns",
+        "text": "Let Grandma strike a funny pose when they turn around to make the game harder to resist."
+      },
+      {
+        "title": "Count slowly",
+        "text": "Grandma should count at different speeds so players cannot predict when they will turn."
+      },
+      {
+        "title": "No elimination",
+        "text": "Sending players back to the start is enough. Nobody sits out."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Grandma counts to ten and only turns around after a loud clap."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Players must move in a silly walk, or Grandma can turn around twice in a row."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Allow players to take three big steps from the start line, and let anyone who prefers not to move be the caller."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "pirates",
+        "title": "Sleeping Pirates",
+        "text": "Grandma becomes the sleeping pirate. Same rules, but players must creep like they are on a ship."
+      },
+      {
+        "theme": "christmas",
+        "title": "Santa’s Footsteps",
+        "text": "Same rules, with Santa’s hat on the caller and a jingle bell that rings when they turn."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "footprints",
+      "color": "pink"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "captains-coming",
+    "title": "Captain’s Coming",
+    "summary": "A fast reaction game where the leader calls out ship commands and everyone races to follow.",
+    "sections": [
+      "beavers",
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "quick",
+    "duration": "5–10 mins",
+    "minutes": 10,
+    "setting": "indoors",
+    "players": "Whole section",
+    "gameType": "Active",
+    "energy": "high",
+    "noise": "loud",
+    "mess": "none",
+    "themes": [],
+    "equipment": [
+      "Cones to mark ship areas",
+      "Optional music"
+    ],
+    "setup": [
+      "Mark one side of the hall as the bow and the other as the stern.",
+      "Mark port and starboard with cones.",
+      "Practise each command once before starting."
+    ],
+    "steps": [
+      "The leader calls out a command and everyone performs the action as quickly as possible.",
+      "Bow: run to the front. Stern: run to the back. Port: run to the left. Starboard: run to the right.",
+      "Other commands can include ‘scrub the deck’, ‘climb the rigging’, ‘man overboard’ and ‘captain’s coming’ (salute and stand still).",
+      "The last person to react does a silly forfeit, then rejoins the game.",
+      "Speed up the calls and add new commands as the group gets confident."
+    ],
+    "winning": "There is no single winner: the aim is to keep everyone moving and laughing. For a competition, give points to the first three players to react correctly.",
+    "safety": "Use walking or jogging only and keep the floor clear. Make sure port and starboard are obvious from every part of the hall. Demonstrate each move before calling it.",
+    "tips": [
+      {
+        "title": "Start slow",
+        "text": "Teach four commands first, then add two more once the group knows them."
+      },
+      {
+        "title": "Silly forfeits",
+        "text": "Forfeits should be quick and kind: a salute, a pirate laugh or five star jumps."
+      },
+      {
+        "title": "Young leaders",
+        "text": "Let a young leader be the captain for a round while an adult watches the edges."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use only four commands and point to the correct side while calling."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Call commands faster, add a ‘opposite’ rule, or remove the cones."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer a seated version with arm actions, and let players choose to be the caller or the judge."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "space",
+        "title": "Astronaut’s Orders",
+        "text": "Same rules, with commands like ‘boosters’, ‘gravity off’ and ‘alien spotted’. Everyone floats between moves."
+      },
+      {
+        "theme": "christmas",
+        "title": "Santa’s Coming",
+        "text": "Same rules, with commands like ‘load the sleigh’, ‘check the list’ and ‘ho ho ho’."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "megaphone",
+      "color": "navy"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "zip-zap-boing",
+    "title": "Zip Zap Boing",
+    "summary": "A quick-fire name game that builds concentration and gets a lot of laughs.",
+    "sections": [
+      "beavers",
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "quick",
+    "duration": "5–10 mins",
+    "minutes": 10,
+    "setting": "indoors",
+    "players": "Whole section",
+    "gameType": "Name game",
+    "energy": "medium",
+    "noise": "medium",
+    "mess": "none",
+    "themes": [],
+    "equipment": [
+      "None"
+    ],
+    "setup": [
+      "Stand everyone in a circle with enough space to move an arm.",
+      "Practise saying each other’s names before starting.",
+      "Explain the three moves: zip, zap and boing."
+    ],
+    "steps": [
+      "‘Zip’ passes to the person on your left or right. Say their name and make a zip gesture.",
+      "‘Zap’ passes across the circle to anyone. Point at them and say their name.",
+      "‘Boing’ bounces the move back to the person who sent it. Hold up both hands like a spring.",
+      "If someone hesitates, says the wrong name or makes the wrong gesture, they do a quick forfeit and the game carries on.",
+      "Add a second ball or a ‘reverse’ command once the group is confident."
+    ],
+    "winning": "There is no winner: the aim is to keep the rally going. For a challenge, count how many passes the group can make without a mistake.",
+    "safety": "No throwing or physical contact. Keep the circle wide enough that players can gesture without hitting each other.",
+    "tips": [
+      {
+        "title": "Names first",
+        "text": "Use name badges for the first few rounds so new members are not put on the spot."
+      },
+      {
+        "title": "One rule at a time",
+        "text": "Play with zip and zap only, then add boing once the group has the hang of it."
+      },
+      {
+        "title": "Fast forfeits",
+        "text": "A forfeit should take five seconds: a bow, a silly face or a victory dance."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Allow players to say their own name as they pass, or point instead of speaking."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add ‘reverse’, ‘double zip’ or a second ball."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Use gestures and signs alongside names, and let players sit in the circle if standing is difficult."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "christmas",
+        "title": "Santa Zap",
+        "text": "Same rules, but players pass a pretend present and say ‘ho ho ho’ instead of boing."
+      },
+      {
+        "theme": "space",
+        "title": "Alien Zap",
+        "text": "Same rules, with alien noises and a ‘warp speed’ round where everything speeds up."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "zap",
+      "color": "yellow"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "splat",
+    "title": "Splat",
+    "summary": "A high-speed circle game that helps everyone learn names and react quickly.",
+    "sections": [
+      "beavers",
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "quick",
+    "duration": "5–10 mins",
+    "minutes": 10,
+    "setting": "indoors",
+    "players": "Whole section",
+    "gameType": "Name game",
+    "energy": "medium",
+    "noise": "medium",
+    "mess": "none",
+    "themes": [],
+    "equipment": [
+      "None"
+    ],
+    "setup": [
+      "Stand in a circle with one player in the middle.",
+      "Practise the names of the two players on either side of each person.",
+      "Explain that ‘splat’ is a silly word, not a physical action."
+    ],
+    "steps": [
+      "The player in the middle points at someone and says ‘splat!’",
+      "That player ducks down. The two players on either side of them point at each other and say ‘splat’ as fast as they can.",
+      "The slower of the two goes into the middle. If the pointed-at player forgets to duck, they go into the middle instead.",
+      "Keep the game moving quickly and encourage everyone to say names as they play.",
+      "After a few rounds, swap the word for a themed sound or action."
+    ],
+    "winning": "There is no winner: the aim is to keep the circle moving and learn names. For a competition, count how many rounds each player survives.",
+    "safety": "No physical splatting. Ducking should be gentle and controlled, with enough space between players. Stop if anyone feels dizzy from ducking.",
+    "tips": [
+      {
+        "title": "Names, not just splat",
+        "text": "Ask players to say the other person’s name before splat to help everyone learn names."
+      },
+      {
+        "title": "Smaller circles",
+        "text": "Use two circles for a large section so everyone can hear and see."
+      },
+      {
+        "title": "Silly sounds",
+        "text": "Swap ‘splat’ for a squeak, a roar or a festive ‘ho ho ho’."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use a slower pace and let players point rather than speak."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add a second person in the middle, or require players to say the other person’s name as well as splat."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer a seated version and let players use a gesture instead of ducking."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "halloween",
+        "title": "Pumpkin Splat",
+        "text": "Same rules, with a pumpkin gesture and a spooky ‘boo’ instead of splat."
+      },
+      {
+        "theme": "winter",
+        "title": "Snowball Splat",
+        "text": "Same rules, with a pretend snowball throw and a ‘whoosh’ sound."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "splat",
+      "color": "red"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "fruit-salad",
+    "title": "Fruit Salad",
+    "summary": "A chair-swapping game that gets everyone moving and listening for their fruit.",
+    "sections": [
+      "beavers",
+      "cubs"
+    ],
+    "timeBand": "quick",
+    "duration": "5–10 mins",
+    "minutes": 10,
+    "setting": "indoors",
+    "players": "Whole section",
+    "gameType": "Active",
+    "energy": "medium",
+    "noise": "medium",
+    "mess": "none",
+    "themes": [],
+    "equipment": [
+      "One chair per player, minus one"
+    ],
+    "setup": [
+      "Arrange the chairs in a circle facing inwards.",
+      "Give each player a fruit name: apple, banana, orange or strawberry.",
+      "Choose one player to stand in the middle without a chair."
+    ],
+    "steps": [
+      "The player in the middle calls out a fruit. Everyone with that fruit must swap chairs.",
+      "The caller tries to sit in a free chair while the others swap.",
+      "If the caller says ‘fruit salad’, everyone must swap chairs.",
+      "Whoever is left without a chair becomes the next caller.",
+      "Play several rounds and change the fruit names to keep it fresh."
+    ],
+    "winning": "There is no winner: the player left without a chair becomes the caller. For a competition, count how many times each player avoids being the caller.",
+    "safety": "Walk, do not run. Chairs must stay in the circle and nobody should dive for a chair. Use chairs without arms for easy movement.",
+    "tips": [
+      {
+        "title": "Fewer fruits",
+        "text": "Start with two fruit names so the game is easy to follow."
+      },
+      {
+        "title": "Big actions",
+        "text": "Give each fruit a silly action to do as they swap."
+      },
+      {
+        "title": "Mix the group",
+        "text": "Change the fruit names each round so players sit next to different people."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use two fruits and let the caller stand in the middle without trying to steal a chair for the first round."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add more fruits or call two fruits at once."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Use cushions on the floor or a seated circle with one spare spot, and let players swap places without chairs."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "christmas",
+        "title": "Christmas Dinner",
+        "text": "Same rules, with sprouts, carrots, potatoes and pudding. ‘Christmas dinner’ means everyone swaps."
+      },
+      {
+        "theme": "jungle",
+        "title": "Jungle Salad",
+        "text": "Same rules, with animal names and animal noises as players swap."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "apple",
+      "color": "green"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "four-corners",
+    "title": "Four Corners",
+    "summary": "A simple guessing game where players choose a corner and hope the caller does not pick it.",
+    "sections": [
+      "beavers",
+      "cubs"
+    ],
+    "timeBand": "quick",
+    "duration": "5–10 mins",
+    "minutes": 10,
+    "setting": "indoors",
+    "players": "Whole section",
+    "gameType": "Active",
+    "energy": "medium",
+    "noise": "medium",
+    "mess": "none",
+    "themes": [],
+    "equipment": [
+      "4 cones or signs numbered 1–4"
+    ],
+    "setup": [
+      "Put a numbered cone in each corner of the hall.",
+      "Choose one caller to stand in the middle with their eyes closed.",
+      "Explain that players must move quietly to a corner before the caller finishes counting."
+    ],
+    "steps": [
+      "The caller closes their eyes and counts slowly to ten.",
+      "Everyone else quietly chooses a corner and stands in it.",
+      "On ten, the caller calls out a corner number without looking.",
+      "Everyone in that corner is out and sits to the side. The rest choose a new corner.",
+      "The last player left becomes the next caller."
+    ],
+    "winning": "The last player remaining wins and becomes the next caller.",
+    "safety": "Walking only, and keep the corners clear of furniture. Make sure players do not crowd or push into a corner.",
+    "tips": [
+      {
+        "title": "Number signs",
+        "text": "Use large numbered signs so everyone can see which corner is which."
+      },
+      {
+        "title": "Sneaky caller",
+        "text": "The caller can pause before saying a number to build suspense."
+      },
+      {
+        "title": "No peeking",
+        "text": "Have a leader stand near the caller to make sure they keep their eyes closed."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Count to five and let players choose their corner before the count starts."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Call two corners at once, or ask players to move in a silly walk."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Let players sit in a corner of their choice, and offer a ‘safe corner’ card that can be used once."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "halloween",
+        "title": "Haunted Houses",
+        "text": "Same rules, with four haunted house signs and a spooky sound for each corner."
+      },
+      {
+        "theme": "space",
+        "title": "Space Stations",
+        "text": "Same rules, with four space station names and a countdown from ten."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "grid",
+      "color": "orange"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "wink-murder",
+    "title": "Wink Murder",
+    "summary": "A quiet detective game of winks, dramatic exits and careful observation.",
+    "sections": [
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "normal",
+    "duration": "10–15 mins",
+    "minutes": 15,
+    "setting": "indoors",
+    "players": "Whole section",
+    "gameType": "Calm",
+    "energy": "low",
+    "noise": "quiet",
+    "mess": "none",
+    "themes": [],
+    "equipment": [
+      "Slips of paper or cards",
+      "Optional chairs"
+    ],
+    "setup": [
+      "Sit everyone in a circle where they can see each other.",
+      "Prepare one ‘detective’ card, one ‘murderer’ card and enough ‘villager’ cards for everyone else.",
+      "Explain that players who are winked at must sit down quietly, not fall over."
+    ],
+    "steps": [
+      "Everyone closes their eyes and picks a card. The detective reveals themselves, then closes their eyes again.",
+      "The murderer then reveals themselves to the detective, and everyone opens their eyes.",
+      "The murderer winks at villagers one at a time. A winked-at villager counts to three and sits down.",
+      "The detective watches for the wink and has three guesses to identify the murderer.",
+      "If the detective guesses correctly, the villagers win. If not, the murderer wins."
+    ],
+    "winning": "The villagers win if the detective finds the murderer within three guesses. The murderer wins if they eliminate enough villagers first.",
+    "safety": "No dramatic falling: players sit down gently. Make sure everyone can see the murderer’s face and that no one is left out of the circle.",
+    "tips": [
+      {
+        "title": "Quiet winks",
+        "text": "Ask the murderer to wink clearly but not obviously, and to avoid winking at the same person twice."
+      },
+      {
+        "title": "Detective hints",
+        "text": "Let the detective ask one yes/no question before each guess."
+      },
+      {
+        "title": "Short rounds",
+        "text": "Play three short rounds with different murderers rather than one long round."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use fewer players and let the detective have five guesses."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add a ‘doctor’ who can revive one villager, or let the murderer wink twice per round."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Use a small torch or a hand signal instead of a wink, and offer a seated circle with no movement needed."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "halloween",
+        "title": "Ghost in the Circle",
+        "text": "Same rules, but the murderer is a ghost and winked-at villagers float down to the floor."
+      },
+      {
+        "theme": "christmas",
+        "title": "Santa’s Spy",
+        "text": "Same rules, with a naughty-or-nice list and a jingle bell for each guess."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "eye",
+      "color": "navy"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "human-knot",
+    "title": "Human Knot",
+    "summary": "A team challenge where the group must untangle themselves without letting go of each other’s hands.",
+    "sections": [
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "normal",
+    "duration": "10–15 mins",
+    "minutes": 15,
+    "setting": "both",
+    "players": "Small groups",
+    "gameType": "Teamwork",
+    "energy": "medium",
+    "noise": "medium",
+    "mess": "none",
+    "themes": [],
+    "equipment": [
+      "None"
+    ],
+    "setup": [
+      "Split into groups of six to eight.",
+      "Ask each group to stand in a circle.",
+      "Explain that they must not let go of hands unless a leader says so."
+    ],
+    "steps": [
+      "Each player puts their right hand into the middle and takes the hand of someone across the circle.",
+      "Then each player takes a different person’s hand with their left hand.",
+      "The group must now untangle themselves into a circle without letting go.",
+      "If the group is completely stuck, a leader can allow one pair to let go, turn around and rejoin.",
+      "Celebrate when the group makes a circle, or when they have made the best shape they can."
+    ],
+    "winning": "The group wins when they are standing in a circle with everyone’s hands still linked. There is no race unless you choose to make it one.",
+    "safety": "No pulling, twisting or lifting. Stop immediately if anyone feels uncomfortable. Make sure players can step over linked hands safely and keep the floor clear.",
+    "tips": [
+      {
+        "title": "Small groups",
+        "text": "Six to eight is the sweet spot. Bigger groups get tangled and frustrated."
+      },
+      {
+        "title": "One step at a time",
+        "text": "Ask the group to plan their next move before they start pulling."
+      },
+      {
+        "title": "Talk it out",
+        "text": "Encourage quieter players to give directions so everyone has a role."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use groups of four or five, or allow one pair to let go every two minutes."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Ask the group to untangle without talking, or to finish in a specific shape."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer a seated version using a rope loop, and let players choose to be the coach who guides the group."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "halloween",
+        "title": "Spaghetti Monster",
+        "text": "Same rules, with a spaghetti-monster story and silly slurping noises when the group gets stuck."
+      },
+      {
+        "theme": "space",
+        "title": "Space Tangle",
+        "text": "Same rules, with astronauts linked by a ‘gravity rope’ and a countdown to untangle."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "knot",
+      "color": "teal"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "helium-stick",
+    "title": "Helium Stick",
+    "summary": "A deceptively simple teamwork challenge: lower a light stick to the ground without anyone losing contact.",
+    "sections": [
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "quick",
+    "duration": "5–10 mins",
+    "minutes": 10,
+    "setting": "indoors",
+    "players": "Small groups",
+    "gameType": "Teamwork",
+    "energy": "low",
+    "noise": "quiet",
+    "mess": "none",
+    "themes": [],
+    "equipment": [
+      "One light pole or broom handle per group"
+    ],
+    "setup": [
+      "Split into groups of five to eight.",
+      "Ask each group to stand in two lines facing each other.",
+      "Give each group a light pole and ask them to hold it with both index fingers underneath."
+    ],
+    "steps": [
+      "The group must lower the pole to the floor as a team.",
+      "Everyone must keep both index fingers touching the pole at all times.",
+      "If anyone loses contact, the group stops and starts again from waist height.",
+      "The group can talk and plan, but nobody may grip the pole.",
+      "Once the group reaches the floor, try it again with a shorter time limit."
+    ],
+    "winning": "The group wins when the pole touches the floor with every player still touching it. For a challenge, time each attempt and try to beat it.",
+    "safety": "Use a light pole and keep feet clear. Do not drop the pole on anyone’s toes, and do not let players push down on each other’s fingers.",
+    "tips": [
+      {
+        "title": "Finger contact",
+        "text": "Ask players to use the sides of their index fingers, not the tips, so the pole does not roll away."
+      },
+      {
+        "title": "One voice",
+        "text": "Encourage one person to count or give instructions so the group moves together."
+      },
+      {
+        "title": "Reset quickly",
+        "text": "Make restarts fast and light-hearted so the group does not get discouraged."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use a longer pole, fewer players, or allow one person to guide without touching."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Ask the group to lower the pole without talking, or to do it while standing on one leg."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Use a shorter pole for smaller hands, and let players support the pole with flat palms instead of fingers."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "halloween",
+        "title": "Magic Wand",
+        "text": "Same rules, but the pole is a wizard’s wand that must be lowered into a cauldron."
+      },
+      {
+        "theme": "space",
+        "title": "Laser Beam",
+        "text": "Same rules, with a ‘laser beam’ that must be lowered into the docking bay without breaking contact."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "minus",
+      "color": "purple"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "all-aboard",
+    "title": "All Aboard",
+    "summary": "A shrinking-island team challenge that asks the group to fit into less and less space.",
+    "sections": [
+      "beavers",
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "quick",
+    "duration": "5–10 mins",
+    "minutes": 10,
+    "setting": "indoors",
+    "players": "Small groups",
+    "gameType": "Teamwork",
+    "energy": "medium",
+    "noise": "medium",
+    "mess": "none",
+    "themes": [],
+    "equipment": [
+      "One tarpaulin, sheet or newspaper sheet per group"
+    ],
+    "setup": [
+      "Split into groups of four to six.",
+      "Give each group a tarp or a large sheet of newspaper.",
+      "Mark a clear space for each group on the floor."
+    ],
+    "steps": [
+      "The whole group must stand on their island with nobody touching the floor.",
+      "Count to ten together while everyone stays on board.",
+      "Fold the island in half and try again.",
+      "Keep folding until the group can no longer fit.",
+      "The group that can fit on the smallest island wins."
+    ],
+    "winning": "The group that keeps everyone on the smallest folded island wins.",
+    "safety": "No jumping, stacking or carrying players. Keep the floor dry and clear, and let players step off carefully when the island gets too small.",
+    "tips": [
+      {
+        "title": "Team shapes",
+        "text": "Encourage the group to plan their shape before they step on the island."
+      },
+      {
+        "title": "Hold hands",
+        "text": "Linking hands can help balance, but nobody should pull anyone off balance."
+      },
+      {
+        "title": "Small steps",
+        "text": "Fold the island in smaller stages so groups have more chances to succeed."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Start with a bigger island and fold it more slowly."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Ask the group to stay silent, or to keep one player’s feet off the island entirely."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Allow players to sit on the edge with their feet on the island, and let anyone who prefers not to balance be the counter or coach."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "space",
+        "title": "Space Station Evacuation",
+        "text": "Same rules, but the island is a space station and each fold is a meteor strike."
+      },
+      {
+        "theme": "pirates",
+        "title": "Pirate Raft",
+        "text": "Same rules, with a sinking raft and a pirate countdown before each fold."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "layers",
+      "color": "mint"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "river-crossing",
+    "title": "River Crossing",
+    "summary": "A classic team challenge: cross the crocodile-infested river using only a few floating mats.",
+    "sections": [
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "normal",
+    "duration": "15–20 mins",
+    "minutes": 20,
+    "setting": "both",
+    "players": "Small groups",
+    "gameType": "Teamwork",
+    "energy": "medium",
+    "noise": "medium",
+    "mess": "none",
+    "themes": [],
+    "equipment": [
+      "2–3 mats or large pieces of cardboard per group",
+      "Cones",
+      "Beanbags for crocodiles"
+    ],
+    "setup": [
+      "Mark a river area about five to eight metres wide.",
+      "Give each group two or three mats.",
+      "Scatter beanbags in the river as crocodiles."
+    ],
+    "steps": [
+      "The group must get everyone from one bank to the other without touching the floor.",
+      "Players can only stand on the mats. Mats can be moved, but nobody may step into the river.",
+      "If a player touches the floor or a crocodile, the whole group returns to the start.",
+      "The group must work together to move the mats forward and bring everyone across.",
+      "For a bigger challenge, add a rule that one player must always be in contact with each mat."
+    ],
+    "winning": "The first group to get every player across safely wins. If it is not a race, the group wins by completing the crossing together.",
+    "safety": "Use non-slip mats and keep the floor dry. No dragging or carrying players, and no jumping between mats. Make sure there is space for groups to cross without colliding.",
+    "tips": [
+      {
+        "title": "Plan first",
+        "text": "Give each group one minute to plan before they start moving."
+      },
+      {
+        "title": "Crocodile spots",
+        "text": "Place crocodiles so groups have to change their route, not just walk straight across."
+      },
+      {
+        "title": "Talk it through",
+        "text": "After the game, ask each group what worked and what they would change next time."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use a shorter river, more mats, or allow one player to stand on the bank and guide."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Remove a mat, add a time limit, or require the whole group to stay silent."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Let players cross on a scooter board or with a buddy, and allow anyone who prefers not to balance to be the route planner."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "space",
+        "title": "Mars Crossing",
+        "text": "Same rules, but the river is a crater field and the mats are moon boots."
+      },
+      {
+        "theme": "jungle",
+        "title": "Swamp Crossing",
+        "text": "Same rules, with crocodiles, vines and a jungle soundtrack."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "bridge",
+      "color": "blue"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "toxic-waste",
+    "title": "Toxic Waste",
+    "summary": "A team challenge that needs steady hands and good communication to move a bucket of ‘toxic waste’.",
+    "sections": [
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "normal",
+    "duration": "15–20 mins",
+    "minutes": 20,
+    "setting": "both",
+    "players": "Small groups",
+    "gameType": "Teamwork",
+    "energy": "medium",
+    "noise": "medium",
+    "mess": "none",
+    "themes": [],
+    "equipment": [
+      "Bucket with a handle",
+      "4–6 ropes",
+      "Tennis balls or beanbags",
+      "Cones",
+      "A tarp or marked circle"
+    ],
+    "setup": [
+      "Fill a bucket with balls and place it inside a marked circle.",
+      "Mark a safe zone a few metres away.",
+      "Tie ropes to the bucket handle and lay them outside the circle."
+    ],
+    "steps": [
+      "The group must move the bucket from the toxic zone to the safe zone without entering the circle.",
+      "Players stand outside the circle and use the ropes to lift and guide the bucket.",
+      "If any balls spill, the group must stop and put them back before carrying on.",
+      "Nobody may touch the bucket with their hands or step inside the toxic zone.",
+      "For an extra challenge, add a second bucket that must be moved at the same time."
+    ],
+    "winning": "The group wins when the bucket and all its contents are safely inside the target zone.",
+    "safety": "Do not wrap ropes around hands or wrists. Pull gently and keep fingers away from the bucket handle. Use a light bucket and soft balls, and keep the area clear.",
+    "tips": [
+      {
+        "title": "One voice",
+        "text": "Ask the group to choose a caller who counts the lifts and gives directions."
+      },
+      {
+        "title": "Small movements",
+        "text": "Encourage tiny adjustments rather than big pulls."
+      },
+      {
+        "title": "Spotters",
+        "text": "Have two players act as spotters who watch the bucket and warn the group."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use a shorter distance, more ropes, or a bucket with a wider handle."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add obstacles between the zones, or require the group to stay silent."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Let players hold a rope with a buddy, and allow anyone who prefers not to pull to be the caller or spotter."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "space",
+        "title": "Alien Slime",
+        "text": "Same rules, but the bucket is a container of alien slime that must be returned to the mothership."
+      },
+      {
+        "theme": "halloween",
+        "title": "Witch’s Brew",
+        "text": "Same rules, with a cauldron, glowing balls and a spell to recite before each lift."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "hazard",
+      "color": "orange"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "human-tic-tac-toe",
+    "title": "Human Tic Tac Toe",
+    "summary": "A relay race version of noughts and crosses that gets teams thinking and sprinting.",
+    "sections": [
+      "beavers",
+      "cubs"
+    ],
+    "timeBand": "normal",
+    "duration": "10–15 mins",
+    "minutes": 15,
+    "setting": "indoors",
+    "players": "Two teams",
+    "gameType": "Relay",
+    "energy": "high",
+    "noise": "loud",
+    "mess": "none",
+    "themes": [],
+    "equipment": [
+      "9 hoops or cones",
+      "6 beanbags or bibs (3 of each colour)",
+      "A start line"
+    ],
+    "setup": [
+      "Lay out nine hoops in a 3x3 grid.",
+      "Put a start line a few metres away.",
+      "Give each team three beanbags of the same colour."
+    ],
+    "steps": [
+      "Teams line up behind the start line with their three beanbags.",
+      "One player from each team runs to the grid and places a beanbag in a hoop.",
+      "They run back and tag the next player, who places the next beanbag.",
+      "The first team to get three of their beanbags in a row wins the round.",
+      "If all six beanbags are placed and nobody has won, players take turns moving one of their own beanbags to a new hoop."
+    ],
+    "winning": "The first team to make a row of three wins the round. Play the best of three rounds.",
+    "safety": "Walk or jog, and make sure players run around the grid rather than through it. Keep the start line clear and use soft beanbags.",
+    "tips": [
+      {
+        "title": "Team huddles",
+        "text": "Let teams plan their first three moves before the race starts."
+      },
+      {
+        "title": "Two grids",
+        "text": "Use two grids side by side so both teams can play at once without colliding."
+      },
+      {
+        "title": "Change the grid",
+        "text": "Make the grid bigger for younger groups so there is more space to run."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use a 2x2 grid, or let players place their beanbag without running back to tag."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add a ‘move one piece per turn’ rule from the start, or require players to hop between hoops."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Let players place their beanbag from the start line, and allow anyone who prefers not to run to be the team tactician."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "superheroes",
+        "title": "Superhero Showdown",
+        "text": "Same rules, with superhero names for each team and a power pose before every move."
+      },
+      {
+        "theme": "halloween",
+        "title": "Pumpkin Patch",
+        "text": "Same rules, with orange and black beanbags and a spooky cackle for every winning row."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "grid",
+      "color": "pink"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "parachute-popcorn",
+    "title": "Parachute Popcorn",
+    "summary": "A joyful parachute game that turns soft balls into popping popcorn.",
+    "sections": [
+      "beavers",
+      "cubs"
+    ],
+    "timeBand": "quick",
+    "duration": "5–10 mins",
+    "minutes": 10,
+    "setting": "indoors",
+    "players": "Whole section",
+    "gameType": "Parachute",
+    "energy": "medium",
+    "noise": "medium",
+    "mess": "none",
+    "themes": [],
+    "equipment": [
+      "Parachute",
+      "10–20 soft balls or beanbags"
+    ],
+    "setup": [
+      "Spread the parachute on the floor and ask everyone to hold an edge.",
+      "Put the soft balls in the middle.",
+      "Practise a gentle lift and shake together."
+    ],
+    "steps": [
+      "Everyone lifts the parachute and shakes it gently to make the balls pop.",
+      "Try to keep all the popcorn on the parachute.",
+      "Count how many balls fall off in one minute.",
+      "Try a second round with a rule: no balls may touch the floor.",
+      "Finish with a calm round where everyone lowers the parachute slowly to the floor."
+    ],
+    "winning": "There is no winner: the aim is to keep the popcorn popping. For a challenge, count how many balls stay on the parachute for a full minute.",
+    "safety": "Keep the parachute low and do not let anyone go underneath without a signal. No pulling or running with the parachute, and use soft balls only.",
+    "tips": [
+      {
+        "title": "Small shakes",
+        "text": "Gentle, fast shakes work better than big lifts."
+      },
+      {
+        "title": "Count together",
+        "text": "Count the popcorn aloud as a group to keep everyone involved."
+      },
+      {
+        "title": "Calm finish",
+        "text": "End with a slow ‘popcorn settling’ round to bring the energy down."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use fewer balls and a smaller parachute, or let players hold the edge with two hands."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add a rule that players must swap places after every pop, or use lighter balls."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer a seated version with the parachute on laps, and let players choose to be the counter or ball collector."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "halloween",
+        "title": "Popping Pumpkins",
+        "text": "Same rules, with orange balls and a witch’s cackle every time a pumpkin pops off."
+      },
+      {
+        "theme": "winter",
+        "title": "Snowstorm",
+        "text": "Same rules, with white balls and a gentle ‘brrr’ as the snow falls."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "parachute",
+      "color": "pink"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "tug-of-war",
+    "title": "Tug of War",
+    "summary": "The ultimate team pull: two teams, one rope and a lot of noise.",
+    "sections": [
+      "beavers",
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "normal",
+    "duration": "10–15 mins",
+    "minutes": 15,
+    "setting": "outdoors",
+    "players": "Two teams",
+    "gameType": "Active",
+    "energy": "high",
+    "noise": "loud",
+    "mess": "low",
+    "themes": [],
+    "equipment": [
+      "Strong tug-of-war rope",
+      "Marker cones",
+      "Tape or ribbon for the centre mark"
+    ],
+    "setup": [
+      "Mark a centre line and a pulling line on each side.",
+      "Lay the rope along the centre line with the middle marker over the centre line.",
+      "Split into two even teams and line them up on opposite sides."
+    ],
+    "steps": [
+      "Each team picks up the rope and stands behind their pulling line.",
+      "On the count of three, both teams pull backwards.",
+      "The team that pulls the centre marker past their own pulling line wins the round.",
+      "Best of three rounds wins the match.",
+      "Swap one or two players between teams between rounds to keep teams balanced."
+    ],
+    "winning": "The team that pulls the centre marker past their line wins the round. The team that wins two rounds wins the match.",
+    "safety": "Never wrap the rope around hands or wrists. Wear suitable footwear, keep fingers clear of the rope end, and stop immediately if anyone slips. Do not let go suddenly at the end of a round.",
+    "tips": [
+      {
+        "title": "Even teams",
+        "text": "Balance teams by size and strength, not just numbers."
+      },
+      {
+        "title": "One rhythm",
+        "text": "Ask a leader to call ‘pull, pull, pull’ so the team pulls together."
+      },
+      {
+        "title": "Short rounds",
+        "text": "Keep each pull short and give teams a rest between rounds."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use a shorter rope, fewer players, or a ‘sit-down pull’ for younger groups."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add a rule that the whole team must stay silent, or pull with one hand."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer a seated rope pull for players who prefer not to stand, and let others be the count caller or line judges."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "christmas",
+        "title": "Grinch’s Tug",
+        "text": "Same rules, with a ‘stolen Christmas’ story and a festive countdown."
+      },
+      {
+        "theme": "pirates",
+        "title": "Pirate Tug",
+        "text": "Same rules, with pirate names for each team and a treasure chest marker."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "rope",
+      "color": "red"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "balloon-volleyball",
+    "title": "Balloon Volleyball",
+    "summary": "A gentle, funny volleyball game that keeps everyone moving without a hard ball.",
+    "sections": [
+      "beavers",
+      "cubs"
+    ],
+    "timeBand": "normal",
+    "duration": "10–15 mins",
+    "minutes": 15,
+    "setting": "indoors",
+    "players": "Two teams",
+    "gameType": "Active",
+    "energy": "medium",
+    "noise": "medium",
+    "mess": "none",
+    "themes": [],
+    "equipment": [
+      "Balloon",
+      "Rope or net",
+      "Cones"
+    ],
+    "setup": [
+      "Stretch a rope or net across the middle of the hall at about waist height.",
+      "Mark a court on each side with cones.",
+      "Split into two teams."
+    ],
+    "steps": [
+      "One team serves the balloon over the rope.",
+      "Teams can use any part of their body to keep the balloon in the air, but cannot catch or hold it.",
+      "A team gets a point when the balloon lands on the other team’s floor.",
+      "Players can take up to three touches before sending the balloon back over.",
+      "First team to ten points wins, then swap sides."
+    ],
+    "winning": "The first team to reach ten points wins. Play the best of three games.",
+    "safety": "Use a balloon rather than a ball, and keep the floor clear. No diving or sliding, and do not stomp on fallen balloons. Check for latex allergies and have a foil balloon alternative.",
+    "tips": [
+      {
+        "title": "Keep it slow",
+        "text": "Balloon volleyball works best when teams work together rather than smashing it over."
+      },
+      {
+        "title": "Count aloud",
+        "text": "Count the touches together so everyone knows when the ball must go over."
+      },
+      {
+        "title": "Rotate",
+        "text": "Swap positions every few points so everyone gets a turn at the front."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use a larger balloon, lower the rope, or allow players to catch and throw."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Allow only two touches, or require every player to touch the balloon before it goes over."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer a seated version with a lower net, and let players choose to be a scorer or line judge."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "halloween",
+        "title": "Ghost Balloons",
+        "text": "Same rules, with white balloons decorated as ghosts and spooky music between points."
+      },
+      {
+        "theme": "space",
+        "title": "Space Balloon",
+        "text": "Same rules, with a countdown before each serve and slow-motion moon moves."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "balloon",
+      "color": "yellow"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "indoor-hockey",
+    "title": "Indoor Hockey",
+    "summary": "A fast, safe version of hockey for the hall, using light sticks and a soft ball.",
+    "sections": [
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "normal",
+    "duration": "15–20 mins",
+    "minutes": 20,
+    "setting": "indoors",
+    "players": "Two teams",
+    "gameType": "Active",
+    "energy": "high",
+    "noise": "loud",
+    "mess": "none",
+    "themes": [],
+    "equipment": [
+      "Unihoc sticks",
+      "Soft indoor hockey ball",
+      "2 goals",
+      "Bibs",
+      "Cones"
+    ],
+    "setup": [
+      "Mark a pitch with cones and a goal at each end.",
+      "Split into two teams and give out bibs and sticks.",
+      "Demonstrate keeping the stick below waist height."
+    ],
+    "steps": [
+      "Teams pass and dribble the ball with their sticks and try to score in the opposition goal.",
+      "Sticks must stay below waist height at all times.",
+      "No hitting, pushing or lifting the stick. Use a push pass rather than a swing.",
+      "A goal is scored when the ball crosses the goal line.",
+      "Rotate goalkeepers every few minutes and restart from the centre after each goal."
+    ],
+    "winning": "The team with the most goals at the end of the match wins.",
+    "safety": "Use soft balls and plastic sticks. Keep sticks below waist height, keep a stick’s length away from other players, and stop play if anyone is swinging their stick. Check sticks for cracks before the game.",
+    "tips": [
+      {
+        "title": "Small teams",
+        "text": "Four or five a side keeps the game open and reduces stick clashes."
+      },
+      {
+        "title": "Push pass",
+        "text": "Practise push passes before the game so players do not swing at the ball."
+      },
+      {
+        "title": "Rotate",
+        "text": "Swap positions every few minutes so everyone gets a turn on the ball."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use a larger goal, a lighter ball, or play with no goalkeepers."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add a ‘three touches maximum’ rule, or require a pass before every goal."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer a walking-only version and let players choose to be a goalkeeper, referee or scorer."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "halloween",
+        "title": "Wizards’ Hockey",
+        "text": "Same rules, with broomsticks for sticks and a ‘flying’ celebration after each goal."
+      },
+      {
+        "theme": "christmas",
+        "title": "Reindeer Hockey",
+        "text": "Same rules, with antlers and a red ball for Rudolph’s nose."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "hockey",
+      "color": "teal"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "rounders",
+    "title": "Rounders",
+    "summary": "A summer favourite: bat, run the bases and score rounders before the fielding team gets you out.",
+    "sections": [
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "long",
+    "duration": "30–40 mins",
+    "minutes": 35,
+    "setting": "outdoors",
+    "players": "Two teams",
+    "gameType": "Active",
+    "energy": "high",
+    "noise": "loud",
+    "mess": "low",
+    "themes": [
+      "summer"
+    ],
+    "equipment": [
+      "Rounders bat",
+      "Soft rounders ball",
+      "4 posts or cones",
+      "Bibs",
+      "Boundary cones"
+    ],
+    "setup": [
+      "Set out the four bases in a diamond and mark the boundary.",
+      "Split into two teams: batting and fielding.",
+      "Walk through the bases and the no-go area around the batter."
+    ],
+    "steps": [
+      "The batter stands at the batting square and hits the ball when it is bowled.",
+      "After a hit, the batter runs around the bases and tries to reach the fourth post.",
+      "Fielders can get the batter out by catching a hit on the full, stumping the base they are running to, or hitting the base before the runner arrives.",
+      "A rounder is scored when a batter completes the full circuit and touches the fourth post.",
+      "After three outs, the teams swap roles."
+    ],
+    "winning": "The team with the most rounders after an agreed number of innings wins.",
+    "safety": "Use a soft ball and keep bats away from the waiting area. No throwing at runners, and keep spectators behind the boundary. Check the ground for holes and glass before playing.",
+    "tips": [
+      {
+        "title": "Small-sided",
+        "text": "Play with six to eight fielders so everyone gets more turns."
+      },
+      {
+        "title": "Rotate positions",
+        "text": "Change fielding positions every innings so nobody is stuck in the deep field."
+      },
+      {
+        "title": "Simplify",
+        "text": "For younger groups, remove the bowling and let batters hit from a tee."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use a larger bat, a tee, and only three bases."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add a rule that batters must run on every hit, or fielders must throw to first base before runners can move."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Use a soft ball and allow a buddy runner. Players who prefer not to bat can be umpires, scorers or fielding coaches."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "pirates",
+        "title": "Pirate Rounders",
+        "text": "Same rules, with treasure chest bases and a ‘walk the plank’ celebration for every rounder."
+      },
+      {
+        "theme": "space",
+        "title": "Space Rounders",
+        "text": "Same rules, with planet bases and a countdown before each hit."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "bat",
+      "color": "green"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "manhunt",
+    "title": "Manhunt",
+    "summary": "A thrilling wide game of hiding, seeking and jailbreaks for longer evenings and camps.",
+    "sections": [
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "long",
+    "duration": "30–45 mins",
+    "minutes": 40,
+    "setting": "outdoors",
+    "players": "Whole section",
+    "gameType": "Wide game",
+    "energy": "high",
+    "noise": "medium",
+    "mess": "low",
+    "themes": [
+      "camp"
+    ],
+    "equipment": [
+      "Hi-vis vests for seekers and marshals",
+      "Torches",
+      "Whistle",
+      "Boundary cones",
+      "Radios if available"
+    ],
+    "setup": [
+      "Set clear boundaries and walk them with the group.",
+      "Choose two or three seekers and give them hi-vis vests.",
+      "Place adult marshals at key points and agree a meeting point."
+    ],
+    "steps": [
+      "The seekers count to 30 while everyone else hides within the boundary.",
+      "The seekers then search for the hiders and tag them.",
+      "Tagged hiders go to the jail area and wait to be rescued by a teammate.",
+      "A hider can free a teammate by reaching the jail and tagging them, but they must not be seen by a seeker.",
+      "The round ends when all hiders are caught or when time is called."
+    ],
+    "winning": "The seekers win if they catch everyone. The hiders win if at least one player is still free when time is called.",
+    "safety": "Keep boundaries away from roads, water and steep ground. No running in the dark without a torch, no hiding in unsafe places, and keep a headcount before, during and after. Use adult marshals and a whistle signal to end the game.",
+    "tips": [
+      {
+        "title": "Safe hiding spots",
+        "text": "Walk the boundary and point out areas that are out of bounds before the game starts."
+      },
+      {
+        "title": "Shorter rounds",
+        "text": "Ten-minute rounds work better than one long game, especially for younger groups."
+      },
+      {
+        "title": "Buddy system",
+        "text": "Ask everyone to play in pairs and stay with their buddy."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use a smaller area, more seekers, or a shorter hiding time."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add a ‘no talking’ rule for hiders, or make the jail harder to reach."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Let players who prefer not to run be marshals, jail guards or radio callers. Offer a base game with a shorter boundary."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "halloween",
+        "title": "Ghost Hunt",
+        "text": "Same rules, with ghostly hiders and torches covered with red film for a spooky glow."
+      },
+      {
+        "theme": "christmas",
+        "title": "Santa’s Elves",
+        "text": "Same rules, with elves hiding presents and seekers trying to find them before midnight."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "moon",
+      "color": "navy"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "sardines",
+    "title": "Sardines",
+    "summary": "A reverse hide-and-seek game where everyone ends up squashed into the same hiding place.",
+    "sections": [
+      "beavers",
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "normal",
+    "duration": "15–20 mins",
+    "minutes": 20,
+    "setting": "both",
+    "players": "Whole section",
+    "gameType": "Wide game",
+    "energy": "medium",
+    "noise": "quiet",
+    "mess": "none",
+    "themes": [
+      "camp"
+    ],
+    "equipment": [
+      "None",
+      "Optional torches for evening games"
+    ],
+    "setup": [
+      "Choose one player to hide first.",
+      "Agree clear boundaries and a meeting point.",
+      "Send everyone else to a base to count to 30."
+    ],
+    "steps": [
+      "One player hides while everyone else counts.",
+      "The seekers split up and search for the hidden player.",
+      "When a seeker finds the hider, they quietly join them in the hiding place.",
+      "Everyone keeps squeezing in until the last seeker finds the group.",
+      "The last person to find the group becomes the next hider."
+    ],
+    "winning": "The last person to find the group wins and gets to hide next.",
+    "safety": "Set boundaries and keep them away from roads, water and dark or unsafe areas. Make sure hiding places are safe and not too cramped. Tell a leader where the group is, and do a headcount at the end.",
+    "tips": [
+      {
+        "title": "Quiet entry",
+        "text": "Ask players to join the hiding place silently so the game lasts longer."
+      },
+      {
+        "title": "Safe spaces",
+        "text": "Point out the best hiding spots before the game starts."
+      },
+      {
+        "title": "Buddy up",
+        "text": "For younger groups, let players search in pairs."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use a smaller area and give hints after five minutes."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add a rule that hiders must move to a new hiding place every few minutes."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Let players who prefer not to hide be the timekeeper or the person who checks the group is safe."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "halloween",
+        "title": "Ghost Sardines",
+        "text": "Same rules, with ghostly whispers and a torch under a sheet at the hiding place."
+      },
+      {
+        "theme": "christmas",
+        "title": "Elf Sardines",
+        "text": "Same rules, with a jingle bell at the hiding place and elf hats for the seekers."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "users",
+      "color": "teal"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "pirate-treasure-hunt",
+    "title": "Pirate Treasure Hunt",
+    "summary": "A clue-following adventure with a map, checkpoints and a treasure at the end.",
+    "sections": [
+      "beavers",
+      "cubs"
+    ],
+    "timeBand": "long",
+    "duration": "20–30 mins",
+    "minutes": 25,
+    "setting": "outdoors",
+    "players": "Small groups",
+    "gameType": "Wide game",
+    "energy": "medium",
+    "noise": "medium",
+    "mess": "none",
+    "themes": [
+      "pirates",
+      "summer"
+    ],
+    "equipment": [
+      "Clue cards",
+      "A simple map",
+      "Treasure (stickers or small treats)",
+      "Bags",
+      "Cones"
+    ],
+    "setup": [
+      "Hide clue cards around the outdoor area.",
+      "Draw a simple map with the checkpoints marked.",
+      "Split into small groups and give each group a bag and a map."
+    ],
+    "steps": [
+      "Each group follows the map to the first checkpoint and solves the clue.",
+      "The clue sends them to the next checkpoint.",
+      "At each checkpoint, an adult marshal stamps or initials their card.",
+      "The final clue leads to the treasure.",
+      "Groups return to the meeting point and share what they found."
+    ],
+    "winning": "Every group wins when they find the treasure. If you want a race, the first group back with all their stamps wins.",
+    "safety": "Keep checkpoints within clear boundaries and away from roads and water. Put an adult at each checkpoint or keep the area small. Check food allergies before giving out any treats.",
+    "tips": [
+      {
+        "title": "Picture clues",
+        "text": "Use picture clues for Beavers and simple riddles for Cubs."
+      },
+      {
+        "title": "Team roles",
+        "text": "Give each group a map reader, a clue collector and a timekeeper."
+      },
+      {
+        "title": "Spare treasure",
+        "text": "Have enough treasure for every group so nobody goes home empty-handed."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use a small area, picture clues and an adult with each group."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add a puzzle to solve at each checkpoint, or make the map less detailed."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer a shorter route and let players choose roles that suit them. Use allergy-friendly treasure."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "space",
+        "title": "Space Treasure",
+        "text": "Same rules, with planet checkpoints and ‘moon rock’ treasure."
+      },
+      {
+        "theme": "christmas",
+        "title": "Santa’s Stocking Hunt",
+        "text": "Same rules, with Christmas clues and a stocking at the end."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "anchor",
+      "color": "navy"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "nature-scavenger-hunt",
+    "title": "Nature Scavenger Hunt",
+    "summary": "A calm outdoor challenge that encourages close looking, teamwork and respect for nature.",
+    "sections": [
+      "beavers",
+      "cubs"
+    ],
+    "timeBand": "normal",
+    "duration": "15–25 mins",
+    "minutes": 20,
+    "setting": "outdoors",
+    "players": "Small groups",
+    "gameType": "Calm",
+    "energy": "low",
+    "noise": "quiet",
+    "mess": "low",
+    "themes": [
+      "summer",
+      "camp"
+    ],
+    "equipment": [
+      "Printed scavenger lists",
+      "Clipboards",
+      "Pencils",
+      "Bags or pots for collecting"
+    ],
+    "setup": [
+      "Choose an outdoor area with a mix of trees, grass and paths.",
+      "Give each group a list and a clipboard.",
+      "Explain the ‘look, don’t pick’ rule."
+    ],
+    "steps": [
+      "Groups explore the area and tick off items from their list.",
+      "They can draw or photograph items they cannot collect.",
+      "Only fallen leaves, twigs and stones may be collected. Nothing living should be picked.",
+      "Groups meet back at the base and share their favourite find.",
+      "For a challenge, give points for teamwork and careful observation as well as finds."
+    ],
+    "winning": "Every group wins by completing their list. If you want a competition, award points for the most items found and the best team drawing.",
+    "safety": "Keep within boundaries and supervise closely. Do not taste anything, wash hands afterwards, and leave wildlife and flowers where they are. Check for allergies before handling natural materials.",
+    "tips": [
+      {
+        "title": "Different lists",
+        "text": "Give each group a slightly different list so they explore different areas."
+      },
+      {
+        "title": "Draw it",
+        "text": "Encourage drawing as well as ticking so the hunt works even without collecting."
+      },
+      {
+        "title": "Leave no trace",
+        "text": "Finish by checking the area and taking everything home."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use a short list with pictures and a small area."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add a time limit, or ask groups to find something for every letter of the alphabet."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer a sensory list with textures and sounds, and let players choose to be the recorder or photographer."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "around-the-world",
+        "title": "World Safari",
+        "text": "Same rules, with continents to match to the natural items you find."
+      },
+      {
+        "theme": "jungle",
+        "title": "Jungle Explorer",
+        "text": "Same rules, with explorer names and a jungle sound hunt."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "tree",
+      "color": "green"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "photo-orienteering",
+    "title": "Photo Orienteering",
+    "summary": "A team navigation challenge where players use photos instead of maps to find checkpoints.",
+    "sections": [
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "long",
+    "duration": "30–40 mins",
+    "minutes": 35,
+    "setting": "outdoors",
+    "players": "Small groups",
+    "gameType": "Wide game",
+    "energy": "medium",
+    "noise": "medium",
+    "mess": "low",
+    "themes": [
+      "camp",
+      "around-the-world"
+    ],
+    "equipment": [
+      "Printed photos of checkpoints",
+      "Clipboards",
+      "Pencils",
+      "Cones",
+      "A camera or tablet per group"
+    ],
+    "setup": [
+      "Take close-up photos of six to eight landmarks around the site.",
+      "Place a numbered marker at each landmark.",
+      "Split into groups and give each group the photo set and a map."
+    ],
+    "steps": [
+      "Groups use the photos to work out where each checkpoint is.",
+      "At each checkpoint, they write down the number on the marker.",
+      "Groups take a team photo at each checkpoint as proof.",
+      "The first group to find all the checkpoints and return wins.",
+      "Review the photos together at the end and share the best team shot."
+    ],
+    "winning": "The first group to find every checkpoint and return with the correct numbers wins.",
+    "safety": "Set clear boundaries, keep checkpoints away from roads and water, and put an adult at any tricky point. Make sure players carry a whistle and know the meeting point.",
+    "tips": [
+      {
+        "title": "Close-ups",
+        "text": "Use close-up photos so groups have to look carefully rather than just run to obvious places."
+      },
+      {
+        "title": "Team roles",
+        "text": "Give each group a photographer, a map reader and a timekeeper."
+      },
+      {
+        "title": "Check the route",
+        "text": "Walk the route yourself before the game to check it is safe and achievable."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use fewer checkpoints, wider photos and a small area."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Use close-up photos with no map, or add a puzzle at each checkpoint."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer a shorter route and let players choose to be the photographer or the note-taker."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "space",
+        "title": "Space Mission Photos",
+        "text": "Same rules, with planet names for checkpoints and a mission log to complete."
+      },
+      {
+        "theme": "pirates",
+        "title": "Pirate Map",
+        "text": "Same rules, with a treasure map and a gold coin at each checkpoint."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "camera",
+      "color": "orange"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "charades",
+    "title": "Charades",
+    "summary": "A classic guessing game that works with any theme and any size of group.",
+    "sections": [
+      "beavers",
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "normal",
+    "duration": "10–20 mins",
+    "minutes": 15,
+    "setting": "indoors",
+    "players": "Small groups",
+    "gameType": "Calm",
+    "energy": "medium",
+    "noise": "medium",
+    "mess": "none",
+    "themes": [],
+    "equipment": [
+      "Prompt cards or a list",
+      "Timer",
+      "Optional whiteboard for scores"
+    ],
+    "setup": [
+      "Split into two or more teams.",
+      "Prepare a list of prompts suitable for the group.",
+      "Agree on the rules: no talking, no mouthing words, no pointing at objects in the room."
+    ],
+    "steps": [
+      "One player from a team comes to the front and picks a prompt.",
+      "They act it out without speaking while their team guesses.",
+      "The team gets one point if they guess correctly within the time limit.",
+      "Teams take turns, and the team with the most points after five rounds wins.",
+      "Let players suggest prompts for the final round."
+    ],
+    "winning": "The team with the most points after an agreed number of rounds wins.",
+    "safety": "Keep the acting area clear and ask players not to climb on furniture. Make sure prompts are age-appropriate and that nobody is forced to perform.",
+    "tips": [
+      {
+        "title": "Act in pairs",
+        "text": "Let shy players act in pairs so they are not alone at the front."
+      },
+      {
+        "title": "Category clues",
+        "text": "Write the category on the card so teams know where to start guessing."
+      },
+      {
+        "title": "Silly prompts",
+        "text": "Use prompts the group will find funny, not just film titles."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Allow sound effects and use picture prompts."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Ban hand gestures, or give teams only 30 seconds."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer a drawing version or a ‘describe it without saying the word’ version. Let players choose their role."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "jungle",
+        "title": "Jungle Charades",
+        "text": "Same rules, with jungle animals, explorers and jungle sounds."
+      },
+      {
+        "theme": "space",
+        "title": "Space Charades",
+        "text": "Same rules, with planets, aliens and astronaut jobs."
+      },
+      {
+        "theme": "around-the-world",
+        "title": "Around the World Charades",
+        "text": "Same rules, with countries, landmarks and travel actions."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "theatre",
+      "color": "pink"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "simon-says",
+    "title": "Simon Says",
+    "summary": "The simple listening game that proves how hard it is to do two things at once.",
+    "sections": [
+      "beavers"
+    ],
+    "timeBand": "quick",
+    "duration": "5–10 mins",
+    "minutes": 10,
+    "setting": "indoors",
+    "players": "Whole section",
+    "gameType": "Calm",
+    "energy": "low",
+    "noise": "medium",
+    "mess": "none",
+    "themes": [],
+    "equipment": [
+      "None"
+    ],
+    "setup": [
+      "Stand everyone in a clear space where they can see the leader.",
+      "Practise three simple actions together.",
+      "Explain that players only copy a command if it starts with ‘Simon says’."
+    ],
+    "steps": [
+      "The leader calls out an action, sometimes starting with ‘Simon says’ and sometimes not.",
+      "Players only do the action if they hear ‘Simon says’. Anyone who moves without it does a quick forfeit and rejoins.",
+      "Speed up the commands and mix in silly actions.",
+      "Let a confident player take a turn as Simon.",
+      "Finish with a slow round to calm the group down."
+    ],
+    "winning": "There is no winner: players who make a mistake do a forfeit and rejoin. For a competition, the last player still following the rules correctly wins.",
+    "safety": "Use simple movements and keep the space clear. Avoid actions that involve jumping into other people or touching the floor with heads.",
+    "tips": [
+      {
+        "title": "Demonstrate",
+        "text": "Do the action yourself so players can copy, but keep the ‘Simon says’ trick clear."
+      },
+      {
+        "title": "Silly actions",
+        "text": "Use actions the group finds funny: roar like a lion, make a pizza, do a robot dance."
+      },
+      {
+        "title": "Young leaders",
+        "text": "Let a Beaver be Simon for a round while an adult helps with the commands."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use only three actions and always say ‘Simon says’ for the first few rounds."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add a ‘do the opposite’ round, or give commands faster."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer a seated version with arm actions, and let players choose to be the caller."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "christmas",
+        "title": "Santa Says",
+        "text": "Same rules, with festive actions like wrapping a present or loading a sleigh."
+      },
+      {
+        "theme": "space",
+        "title": "Astronaut Says",
+        "text": "Same rules, with floating, moonwalking and alien greetings."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "hand",
+      "color": "mint"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "egg-and-spoon",
+    "title": "Egg and Spoon Race",
+    "summary": "A classic balancing relay that is much harder than it looks.",
+    "sections": [
+      "beavers",
+      "cubs"
+    ],
+    "timeBand": "normal",
+    "duration": "10–15 mins",
+    "minutes": 15,
+    "setting": "outdoors",
+    "players": "Teams",
+    "gameType": "Relay",
+    "energy": "medium",
+    "noise": "loud",
+    "mess": "low",
+    "themes": [
+      "easter",
+      "summer"
+    ],
+    "equipment": [
+      "One spoon per team",
+      "Plastic or hard-boiled eggs",
+      "Cones",
+      "Bibs"
+    ],
+    "setup": [
+      "Mark a start line and a turning cone for each team.",
+      "Give each team a spoon and an egg.",
+      "Split into teams of four to six."
+    ],
+    "steps": [
+      "The first player balances the egg on the spoon and walks to the turning cone.",
+      "They walk around the cone and back to their team.",
+      "They pass the spoon and egg to the next player without using their hands.",
+      "If the egg falls, the player picks it up, puts it back on the spoon and carries on from where they stopped.",
+      "The first team to finish every player wins."
+    ],
+    "winning": "The first team to complete the relay with every player wins.",
+    "safety": "Use plastic or hard-boiled eggs, not raw eggs. Walk, do not run, and keep the relay lanes clear. Check for egg allergies and wash hands after handling.",
+    "tips": [
+      {
+        "title": "Big spoons",
+        "text": "Use larger spoons for younger groups to make balancing easier."
+      },
+      {
+        "title": "Two lanes",
+        "text": "Set up separate lanes so teams do not collide."
+      },
+      {
+        "title": "Silly walk",
+        "text": "Add a silly walk for the return leg to keep it light-hearted."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use a bigger spoon and a shorter course, or let players hold the egg with one finger."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add obstacles, or require players to balance the egg on the back of their hand."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer a two-person carry option and let players choose to be the timekeeper or cone marshal."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "halloween",
+        "title": "Pumpkin and Spoon",
+        "text": "Same rules, with small orange balls as pumpkins."
+      },
+      {
+        "theme": "christmas",
+        "title": "Bauble and Spoon",
+        "text": "Same rules, with unbreakable baubles and a Christmas song at the finish line."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "egg",
+      "color": "yellow"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "santa-relay",
+    "title": "Santa Relay",
+    "summary": "A festive team relay where players race to turn a teammate into Santa.",
+    "sections": [
+      "beavers",
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "normal",
+    "duration": "10–15 mins",
+    "minutes": 15,
+    "setting": "indoors",
+    "players": "Teams",
+    "gameType": "Relay",
+    "energy": "high",
+    "noise": "loud",
+    "mess": "none",
+    "themes": [
+      "christmas",
+      "winter"
+    ],
+    "equipment": [
+      "Santa hats",
+      "Red bibs or shirts",
+      "Cushions for bellies",
+      "Belts or scarves",
+      "Cones"
+    ],
+    "setup": [
+      "Put a pile of Santa kit at the far end of the hall for each team.",
+      "Mark a start line and a turning point.",
+      "Split into teams of four to six."
+    ],
+    "steps": [
+      "One player from each team is the Santa and stands at the far end of the hall.",
+      "The first runner takes one item from the kit, runs to their Santa and helps them put it on, then runs back.",
+      "The next runner takes another item and adds it to the same Santa.",
+      "Continue until each team’s Santa is fully dressed.",
+      "The finished Santa must shout ‘ho ho ho’ to complete the round. The first team to finish wins."
+    ],
+    "winning": "The first team to dress their Santa and complete a ‘ho ho ho’ wins.",
+    "safety": "Do not cover faces or restrict breathing. Use loose clothing and help younger players dress. Keep the running lanes clear and avoid long costumes that could trip players.",
+    "tips": [
+      {
+        "title": "Team Santa",
+        "text": "Let the team choose one player to be Santa before the race starts."
+      },
+      {
+        "title": "Easy kit",
+        "text": "Use items that are quick to put on: a hat, a bib, a scarf and a cushion."
+      },
+      {
+        "title": "Photo finish",
+        "text": "Take a team photo of each finished Santa."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use fewer items and a shorter course."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add a wrapped present that must be carried without dropping."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Let players choose to be the Santa, the dresser or the runner, and offer a seated dressing version."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "winter",
+        "title": "Snowman Relay",
+        "text": "Same rules, with scarves, hats and paper snowballs to build a snowman."
+      },
+      {
+        "theme": "christmas",
+        "title": "Elf Relay",
+        "text": "Same rules, with pointy hats and a present to deliver at the finish."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "gift",
+      "color": "red"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "pumpkin-relay",
+    "title": "Pumpkin Relay",
+    "summary": "A Halloween relay that turns a simple carry-and-weave race into a pumpkin challenge.",
+    "sections": [
+      "beavers",
+      "cubs"
+    ],
+    "timeBand": "normal",
+    "duration": "10–15 mins",
+    "minutes": 15,
+    "setting": "indoors",
+    "players": "Teams",
+    "gameType": "Relay",
+    "energy": "high",
+    "noise": "loud",
+    "mess": "none",
+    "themes": [
+      "halloween"
+    ],
+    "equipment": [
+      "Small orange balls or soft pumpkins",
+      "Spoons or small buckets",
+      "Cones",
+      "Buckets for the finish"
+    ],
+    "setup": [
+      "Set up a slalom of cones for each team.",
+      "Put a bucket at the end of each slalom.",
+      "Give each team a pumpkin and a spoon."
+    ],
+    "steps": [
+      "The first player balances the pumpkin on the spoon and weaves through the cones.",
+      "They drop the pumpkin into the bucket at the end and run back.",
+      "The next player runs to the bucket, collects the pumpkin and weaves back.",
+      "The relay continues until every player has had a turn.",
+      "The first team to finish wins."
+    ],
+    "winning": "The first team to complete the relay with every player wins.",
+    "safety": "Walk rather than run, and use soft pumpkins or balls. Keep the slalom lanes wide enough for players to pass, and make sure the buckets are stable.",
+    "tips": [
+      {
+        "title": "Wide gates",
+        "text": "Set the cones wide apart for younger groups."
+      },
+      {
+        "title": "Two hands",
+        "text": "Let Beavers use two hands on the spoon for extra balance."
+      },
+      {
+        "title": "Spooky music",
+        "text": "Play Halloween music and restart the music every time a pumpkin drops."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use a shorter slalom and a bigger spoon, or carry the pumpkin in a bucket."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add a second pumpkin, or require players to carry the spoon on the back of their hand."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer a two-person carry option and let players choose to be the timekeeper or cone marshal."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "halloween",
+        "title": "Witch’s Hat Relay",
+        "text": "Same rules, but players wear a witch’s hat while they weave."
+      },
+      {
+        "theme": "summer",
+        "title": "Watermelon Relay",
+        "text": "Same rules, with a green ball as a watermelon and a summer picnic at the finish."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "pumpkin",
+      "color": "orange"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "easter-egg-hunt",
+    "title": "Easter Egg Hunt",
+    "summary": "A classic hunt with clues, teams and a count-at-the-end twist.",
+    "sections": [
+      "beavers",
+      "cubs"
+    ],
+    "timeBand": "normal",
+    "duration": "15–25 mins",
+    "minutes": 20,
+    "setting": "outdoors",
+    "players": "Small groups",
+    "gameType": "Wide game",
+    "energy": "medium",
+    "noise": "medium",
+    "mess": "none",
+    "themes": [
+      "easter",
+      "summer"
+    ],
+    "equipment": [
+      "Plastic eggs or wrapped treats",
+      "Bags",
+      "Clue cards",
+      "Boundary cones"
+    ],
+    "setup": [
+      "Hide the eggs around a clear outdoor area.",
+      "Set boundaries and walk them with the group.",
+      "Split into small groups and give each group a bag and a clue card."
+    ],
+    "steps": [
+      "Groups follow the clues to find the eggs.",
+      "Each group collects only the eggs in their colour or with their group’s sticker.",
+      "When the time is up, groups return to the meeting point and count their eggs.",
+      "Award prizes for the most eggs, the best teamwork and the best clue-solving.",
+      "Check that every group found at least one egg."
+    ],
+    "winning": "There is no single winner: every group wins by finding their eggs. For a competition, the group with the most eggs wins.",
+    "safety": "Keep the hunt within clear boundaries and away from roads and water. Check food allergies before giving out treats, and make sure younger groups are accompanied by an adult.",
+    "tips": [
+      {
+        "title": "Colour-coded",
+        "text": "Give each group a colour so they only collect their own eggs."
+      },
+      {
+        "title": "Picture clues",
+        "text": "Use picture clues for Beavers and riddles for Cubs."
+      },
+      {
+        "title": "Spare eggs",
+        "text": "Hide a few extra eggs so every group can find something."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use a small area, large eggs and picture clues."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add a puzzle to solve before each clue, or hide the eggs in trickier places."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer a shorter route and allergy-friendly prizes. Let players choose to be the clue reader or the counter."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "space",
+        "title": "Space Egg Hunt",
+        "text": "Same rules, with planet-shaped eggs and a countdown to blast-off."
+      },
+      {
+        "theme": "pirates",
+        "title": "Pirate Egg Hunt",
+        "text": "Same rules, with a treasure map and golden eggs."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "egg",
+      "color": "pink"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "jungle-animal-relay",
+    "title": "Jungle Animal Relay",
+    "summary": "A noisy, silly relay where teams move like different jungle animals.",
+    "sections": [
+      "beavers",
+      "cubs"
+    ],
+    "timeBand": "normal",
+    "duration": "10–15 mins",
+    "minutes": 15,
+    "setting": "indoors",
+    "players": "Teams",
+    "gameType": "Relay",
+    "energy": "high",
+    "noise": "loud",
+    "mess": "none",
+    "themes": [
+      "jungle",
+      "summer"
+    ],
+    "equipment": [
+      "Animal cards",
+      "Cones",
+      "Bibs"
+    ],
+    "setup": [
+      "Mark a start line and a turning cone for each team.",
+      "Prepare animal cards with a different animal for each leg.",
+      "Split into teams of four to six."
+    ],
+    "steps": [
+      "The first player picks an animal card and moves to the cone and back like that animal.",
+      "They tag the next player, who picks a new animal card.",
+      "Continue until every player has had a turn.",
+      "For the final leg, the whole team moves together like the same animal.",
+      "The first team to finish wins."
+    ],
+    "winning": "The first team to complete every animal leg wins.",
+    "safety": "Demonstrate each animal move and keep the lanes clear. Avoid moves that involve crawling into other players or jumping onto furniture. Walking versions work just as well.",
+    "tips": [
+      {
+        "title": "Silly sounds",
+        "text": "Ask players to make the animal noise as they move."
+      },
+      {
+        "title": "Choose together",
+        "text": "Let each team choose their final animal."
+      },
+      {
+        "title": "Wide lanes",
+        "text": "Set the cones wide apart so animals do not crash into each other."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use simple moves like stomping, flapping or hopping."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add a ‘move backwards’ animal or a ‘carry an egg’ animal."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer seated animal actions and let players choose to be the animal caller or judge."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "around-the-world",
+        "title": "Safari Relay",
+        "text": "Same rules, with animals from different continents."
+      },
+      {
+        "theme": "winter",
+        "title": "Polar Animal Relay",
+        "text": "Same rules, with penguins, polar bears and seals."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "paw",
+      "color": "green"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "superhero-training",
+    "title": "Superhero Training",
+    "summary": "An obstacle-course challenge where recruits earn their superhero stripes.",
+    "sections": [
+      "beavers",
+      "cubs"
+    ],
+    "timeBand": "normal",
+    "duration": "15–20 mins",
+    "minutes": 20,
+    "setting": "both",
+    "players": "Small groups",
+    "gameType": "Active",
+    "energy": "high",
+    "noise": "loud",
+    "mess": "none",
+    "themes": [
+      "superheroes"
+    ],
+    "equipment": [
+      "Cones",
+      "Hoops",
+      "Beanbags",
+      "Mats",
+      "Stopwatch",
+      "Bibs for capes"
+    ],
+    "setup": [
+      "Set up a circuit of four or five stations: jumping, balancing, throwing and crawling.",
+      "Put mats under any jumping or crawling stations.",
+      "Split into small groups and give each group a scorecard."
+    ],
+    "steps": [
+      "Each group visits every station and completes the challenge.",
+      "A leader marks their scorecard when the whole group completes the station.",
+      "Stations can include: hoop hop, beanbag target throw, balance beam, tunnel crawl and a superhero pose.",
+      "Groups rotate every three minutes.",
+      "The group with the most completed stations wins, or everyone earns a superhero certificate."
+    ],
+    "winning": "Every group wins by completing the circuit. For a competition, the group with the most station points wins.",
+    "safety": "Use mats for jumps and crawls, and check the equipment before starting. No jumping from height, and keep the stations spaced out so groups do not collide.",
+    "tips": [
+      {
+        "title": "Demonstrate",
+        "text": "Show each station before the groups start, and let a young leader demonstrate."
+      },
+      {
+        "title": "Teamwork points",
+        "text": "Award extra points for helping each other and cheering."
+      },
+      {
+        "title": "Certificates",
+        "text": "Finish with a superhero certificate for every recruit."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use fewer stations, lower jumps and bigger targets."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add a time limit per station or a ‘no talking’ challenge."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer seated station options and let players choose to be the timekeeper, scorekeeper or station coach."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "space",
+        "title": "Space Cadet Training",
+        "text": "Same rules, with astronaut training stations and a mission patch for each recruit."
+      },
+      {
+        "theme": "pirates",
+        "title": "Pirate Training",
+        "text": "Same rules, with ship-board challenges and a pirate oath at the end."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "shield",
+      "color": "blue"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "around-the-world-relay",
+    "title": "Around the World Relay",
+    "summary": "A relay that takes teams across the continents without leaving the hall.",
+    "sections": [
+      "beavers",
+      "cubs"
+    ],
+    "timeBand": "normal",
+    "duration": "15–20 mins",
+    "minutes": 20,
+    "setting": "both",
+    "players": "Teams",
+    "gameType": "Relay",
+    "energy": "high",
+    "noise": "loud",
+    "mess": "none",
+    "themes": [
+      "around-the-world",
+      "summer"
+    ],
+    "equipment": [
+      "Continent cards",
+      "Cones",
+      "Beanbags",
+      "Hoops",
+      "Passport sheets"
+    ],
+    "setup": [
+      "Set up a station for each continent around the hall.",
+      "Put a different movement challenge at each station.",
+      "Give each team a passport sheet."
+    ],
+    "steps": [
+      "Teams start at the first continent and complete the movement challenge.",
+      "A leader stamps their passport and they move to the next continent.",
+      "Challenges can include hopping across Australia, balancing through Africa and crawling through Asia.",
+      "The first team to collect all the stamps and return to the start wins.",
+      "Finish by sharing one fact about each continent."
+    ],
+    "winning": "The first team to complete their passport and return to the start wins.",
+    "safety": "Keep the stations spaced out and demonstrate each movement. Use mats for crawling and keep the floor clear.",
+    "tips": [
+      {
+        "title": "Passport stamps",
+        "text": "Use simple stickers or drawings for the passport stamps."
+      },
+      {
+        "title": "Music",
+        "text": "Play music from around the world between stations."
+      },
+      {
+        "title": "Facts",
+        "text": "Put a fun fact at each station so players learn something too."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use three continents and simple movements."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add a puzzle at each continent before the team can move on."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer seated challenges and let players choose to be the passport stamper or station coach."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "space",
+        "title": "Space Race",
+        "text": "Same rules, with planets instead of continents."
+      },
+      {
+        "theme": "christmas",
+        "title": "Santa’s Journey",
+        "text": "Same rules, with countries Santa visits on Christmas Eve."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "globe",
+      "color": "teal"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "human-foosball",
+    "title": "Human Foosball",
+    "summary": "A team game that turns the classic table football formation into a full-body challenge.",
+    "sections": [
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "normal",
+    "duration": "15–20 mins",
+    "minutes": 20,
+    "setting": "indoors",
+    "players": "Two teams",
+    "gameType": "Active",
+    "energy": "high",
+    "noise": "loud",
+    "mess": "none",
+    "themes": [],
+    "equipment": [
+      "Soft football",
+      "2 goals",
+      "Cones",
+      "Bibs"
+    ],
+    "setup": [
+      "Mark a pitch with goals at each end.",
+      "Arrange each team in three rows of two or three players.",
+      "Explain that players must hold hands within their row and can only move side to side."
+    ],
+    "steps": [
+      "Teams stand in rows facing the opposition goal and hold hands with their row.",
+      "Players can only move sideways along their row. They cannot move forward or backward.",
+      "The ball is kicked along the floor. No hands allowed, except the goalkeeper.",
+      "A goal is scored when the ball crosses the opposition goal line.",
+      "After a goal, both teams reset to their starting rows."
+    ],
+    "winning": "The team with the most goals at the end of the match wins.",
+    "safety": "Use a soft ball and keep the rows spaced out. No pulling hands or dragging teammates, and no sliding tackles. Keep the goals stable.",
+    "tips": [
+      {
+        "title": "Row roles",
+        "text": "Give each row a name so teams can plan who moves where."
+      },
+      {
+        "title": "Rotate",
+        "text": "Swap rows every few minutes so everyone gets a turn at the front."
+      },
+      {
+        "title": "Small teams",
+        "text": "Three rows of two is easier to manage than three rows of four."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use a larger ball, wider goals and fewer rows."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Allow only one-touch passes, or require every row to touch the ball before a goal."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer a walking-only version and let players choose to be a goalkeeper, referee or row coach."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "halloween",
+        "title": "Wizard Foosball",
+        "text": "Same rules, with broomstick moves and a spell before every goal."
+      },
+      {
+        "theme": "christmas",
+        "title": "Reindeer Foosball",
+        "text": "Same rules, with antlers and a sleigh-bell ball."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "goal",
+      "color": "mint"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "silent-line-up",
+    "title": "Silent Line Up",
+    "summary": "A communication challenge where the group must line up in order without speaking.",
+    "sections": [
+      "beavers",
+      "cubs"
+    ],
+    "timeBand": "quick",
+    "duration": "5–10 mins",
+    "minutes": 10,
+    "setting": "indoors",
+    "players": "Whole section",
+    "gameType": "Teamwork",
+    "energy": "low",
+    "noise": "quiet",
+    "mess": "none",
+    "themes": [],
+    "equipment": [
+      "None",
+      "Optional blindfolds"
+    ],
+    "setup": [
+      "Clear a space where the whole group can stand in a line.",
+      "Explain that the challenge must be completed without speaking.",
+      "Agree on a signal for ‘I need help’."
+    ],
+    "steps": [
+      "The group must line up in order of birthday, height or shoe size without talking.",
+      "Players can use gestures, eye contact or written notes.",
+      "Once they think they are in order, they raise their hands.",
+      "Check the order together and celebrate the result.",
+      "Try a harder version with eyes closed or with a time limit."
+    ],
+    "winning": "The group wins when everyone is in the correct order and nobody has spoken.",
+    "safety": "If using blindfolds, make sure players are supervised and have a buddy. Keep the floor clear and allow players to opt out of blindfolded versions.",
+    "tips": [
+      {
+        "title": "Start easy",
+        "text": "Begin with height, which is easy to see, before trying birthday order."
+      },
+      {
+        "title": "Non-verbal signals",
+        "text": "Agree on a few gestures before starting, such as pointing to a month."
+      },
+      {
+        "title": "Debrief",
+        "text": "Ask the group what was hard about communicating without words."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Allow whispering, or use a small group of six to eight."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add a time limit, or ask the group to line up by birthday including the year."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer written notes or a picture board, and let players choose to be the organiser or the checker."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "christmas",
+        "title": "Elf Line Up",
+        "text": "Same rules, with elf names and a Christmas list to organise."
+      },
+      {
+        "theme": "space",
+        "title": "Space Crew",
+        "text": "Same rules, with astronauts lining up by mission number."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "speaker-off",
+      "color": "purple"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "electric-fence",
+    "title": "Electric Fence",
+    "summary": "A team challenge that asks the group to get everyone over an imaginary electric fence.",
+    "sections": [
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "normal",
+    "duration": "15–20 mins",
+    "minutes": 20,
+    "setting": "both",
+    "players": "Small groups",
+    "gameType": "Teamwork",
+    "energy": "medium",
+    "noise": "medium",
+    "mess": "none",
+    "themes": [
+      "camp"
+    ],
+    "equipment": [
+      "Rope or elastic fence",
+      "2 poles",
+      "Mats",
+      "Cones"
+    ],
+    "setup": [
+      "Set up a rope between two poles at about waist height.",
+      "Put mats on both sides of the fence.",
+      "Mark a safe zone on each side."
+    ],
+    "steps": [
+      "The group must get every player from one side of the fence to the other without touching the rope.",
+      "Players can help each other over, but nobody may go under the fence.",
+      "If anyone touches the rope, the whole group starts again.",
+      "Use mats and spotters for safety.",
+      "For a harder version, add a ‘no talking’ rule or a time limit."
+    ],
+    "winning": "The group wins when everyone is safely on the other side without touching the fence.",
+    "safety": "Use a soft rope and mats on both sides. No diving or dropping players, and always use spotters. Do not let players climb on each other’s shoulders, and check the ground for hazards.",
+    "tips": [
+      {
+        "title": "Plan first",
+        "text": "Give the group a minute to plan who will go first and who will spot."
+      },
+      {
+        "title": "Spotters",
+        "text": "Assign two spotters who are not lifting anyone."
+      },
+      {
+        "title": "Talk it through",
+        "text": "Ask the group what they would do differently next time."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Lower the rope, use a wider gap, or allow one player to cross at a time with help."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add a time limit, or make the whole group cross without talking."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer a ground-level version where players step over a line, and let anyone who prefers not to be lifted be a spotter or planner."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "space",
+        "title": "Laser Grid",
+        "text": "Same rules, with a laser grid to cross and a countdown to safety."
+      },
+      {
+        "theme": "jungle",
+        "title": "Dragon’s Lair",
+        "text": "Same rules, with a sleeping dragon and a treasure to reach."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "fence",
+      "color": "orange"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "marshmallow-tower",
+    "title": "Marshmallow Tower",
+    "summary": "A calm team challenge to build the tallest freestanding tower from spaghetti and marshmallows.",
+    "sections": [
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "normal",
+    "duration": "15–20 mins",
+    "minutes": 20,
+    "setting": "indoors",
+    "players": "Small groups",
+    "gameType": "STEM",
+    "energy": "low",
+    "noise": "medium",
+    "mess": "low",
+    "themes": [
+      "camp"
+    ],
+    "equipment": [
+      "Marshmallows",
+      "Dry spaghetti",
+      "Tape",
+      "String",
+      "Tape measure",
+      "Paper plates"
+    ],
+    "setup": [
+      "Give each group a plate with 20 marshmallows, 20 spaghetti strands, 30cm of tape and 30cm of string.",
+      "Clear a flat area for each group.",
+      "Explain that the tower must stand on its own for 10 seconds."
+    ],
+    "steps": [
+      "Groups have 15 minutes to build the tallest freestanding tower they can.",
+      "They can break the spaghetti but cannot use extra materials.",
+      "At the end of the time, each group measures their tower.",
+      "The tower must stand for 10 seconds without support.",
+      "Measure from the table to the highest point of the tower."
+    ],
+    "winning": "The group with the tallest freestanding tower wins.",
+    "safety": "Check for food allergies before using marshmallows. Do not eat the building materials, and be careful with broken spaghetti ends. Supervise younger groups closely.",
+    "tips": [
+      {
+        "title": "Plan first",
+        "text": "Give groups two minutes to plan before they start building."
+      },
+      {
+        "title": "Strong base",
+        "text": "Encourage groups to build a wide base before adding height."
+      },
+      {
+        "title": "Test early",
+        "text": "Ask groups to test their tower halfway through the time."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use fewer materials and a shorter time, or allow a cardboard base."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Remove the tape and string, or require the tower to hold a small object on top."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Let groups assign roles: designer, builder, measurer and presenter. Offer a no-food alternative using straws and clay."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "space",
+        "title": "Space Tower",
+        "text": "Same rules, with a mission to build a tower on Mars and a countdown to launch."
+      },
+      {
+        "theme": "christmas",
+        "title": "Gingerbread Tower",
+        "text": "Same rules, with a festive story and a star on top of the winning tower."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "cube",
+      "color": "yellow"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "paper-aeroplane",
+    "title": "Paper Aeroplane Championship",
+    "summary": "A design-and-fly challenge that turns a sheet of paper into a competition.",
+    "sections": [
+      "beavers",
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "normal",
+    "duration": "15–20 mins",
+    "minutes": 20,
+    "setting": "indoors",
+    "players": "Individuals",
+    "gameType": "STEM",
+    "energy": "low",
+    "noise": "medium",
+    "mess": "none",
+    "themes": [],
+    "equipment": [
+      "A4 paper",
+      "Tape",
+      "Markers",
+      "Tape measure",
+      "Hula hoop or target"
+    ],
+    "setup": [
+      "Give everyone a sheet of paper and a marker.",
+      "Mark a throwing line and a runway.",
+      "Explain the two events: distance and accuracy."
+    ],
+    "steps": [
+      "Everyone folds a paper aeroplane and decorates it.",
+      "For the distance event, players throw from the line and measure how far their plane lands.",
+      "For the accuracy event, players try to land their plane inside a hula hoop or target.",
+      "Each player gets three throws per event and keeps their best score.",
+      "Award prizes for distance, accuracy and best design."
+    ],
+    "winning": "The player with the longest flight wins the distance event. The player closest to the target wins the accuracy event.",
+    "safety": "Throw away from other players and keep the runway clear. No throwing at people, and use paper only, not card or sharp materials.",
+    "tips": [
+      {
+        "title": "Test and improve",
+        "text": "Give players time to test and adjust their design between throws."
+      },
+      {
+        "title": "Two events",
+        "text": "Distance and accuracy give different designs a chance to win."
+      },
+      {
+        "title": "Design prize",
+        "text": "Award a prize for the most creative plane, not just the best flyer."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Provide a simple pre-folded design and a short throwing distance."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add a ‘must fly through a hoop’ challenge, or limit the number of folds."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer a seated throwing line and let players choose to be the designer, thrower or measurer."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "space",
+        "title": "Rocket Launch",
+        "text": "Same rules, with rocket designs and a countdown before each throw."
+      },
+      {
+        "theme": "christmas",
+        "title": "Santa’s Sleigh",
+        "text": "Same rules, with sleigh designs and a ‘deliver the present’ target."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "plane",
+      "color": "blue"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "cup-stack-relay",
+    "title": "Cup Stack Relay",
+    "summary": "A speedy relay where teams race to build and knock down a pyramid of cups.",
+    "sections": [
+      "beavers",
+      "cubs"
+    ],
+    "timeBand": "quick",
+    "duration": "5–10 mins",
+    "minutes": 10,
+    "setting": "indoors",
+    "players": "Teams",
+    "gameType": "Relay",
+    "energy": "medium",
+    "noise": "loud",
+    "mess": "none",
+    "themes": [],
+    "equipment": [
+      "Plastic cups",
+      "Table or mat",
+      "Cones"
+    ],
+    "setup": [
+      "Put a stack of cups on a table at the far end of the hall for each team.",
+      "Mark a start line and a turning point.",
+      "Split into teams of four to six."
+    ],
+    "steps": [
+      "The first player runs to the table and builds a pyramid with the cups.",
+      "They run back and tag the next player.",
+      "The next player runs to the table and knocks the pyramid down.",
+      "The relay continues: build, knock down, build, knock down.",
+      "The first team to finish wins."
+    ],
+    "winning": "The first team to complete the relay wins.",
+    "safety": "Use plastic cups only and keep the table stable. Walk rather than run near the table, and keep the floor clear of fallen cups.",
+    "tips": [
+      {
+        "title": "Team order",
+        "text": "Let teams decide who builds and who knocks down."
+      },
+      {
+        "title": "Big pyramid",
+        "text": "Use six cups for a simple pyramid or ten for a bigger challenge."
+      },
+      {
+        "title": "Silly rules",
+        "text": "Add a ‘no hands’ round for extra laughs."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use fewer cups and a shorter distance."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Require players to build with one hand, or add a ‘stack and balance a ball on top’ challenge."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer a seated table version and let players choose to be the builder, knocker or timekeeper."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "halloween",
+        "title": "Pumpkin Stack",
+        "text": "Same rules, with orange cups and a pumpkin on top of the winning pyramid."
+      },
+      {
+        "theme": "winter",
+        "title": "Snowman Stack",
+        "text": "Same rules, with white cups and a snowman face on the top cup."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "cup",
+      "color": "pink"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "sleeping-lions",
+    "title": "Sleeping Lions",
+    "summary": "A calm-down game where the last lion to move wins.",
+    "sections": [
+      "beavers"
+    ],
+    "timeBand": "quick",
+    "duration": "5–10 mins",
+    "minutes": 10,
+    "setting": "indoors",
+    "players": "Whole section",
+    "gameType": "Calm",
+    "energy": "low",
+    "noise": "quiet",
+    "mess": "none",
+    "themes": [
+      "camp"
+    ],
+    "equipment": [
+      "Mats or a clean floor",
+      "Optional calm music"
+    ],
+    "setup": [
+      "Ask everyone to lie down on the floor like sleeping lions.",
+      "Explain that lions must stay still and quiet.",
+      "Choose one or two leaders to be the ‘zookeepers’."
+    ],
+    "steps": [
+      "The lions lie still with their eyes closed.",
+      "The zookeepers walk around trying to make them move or laugh without touching them.",
+      "A lion who moves becomes a zookeeper.",
+      "The last lion still lying still wins.",
+      "Finish with a slow stretch and a calm return to the circle."
+    ],
+    "winning": "The last lion still lying still wins.",
+    "safety": "No tickling or touching. Make sure the floor is clean and warm, and let players sit or use a mat if lying down is uncomfortable.",
+    "tips": [
+      {
+        "title": "Calm music",
+        "text": "Play quiet music to help everyone settle."
+      },
+      {
+        "title": "Silly faces",
+        "text": "Zookeepers can pull funny faces, but no touching."
+      },
+      {
+        "title": "Short rounds",
+        "text": "Two or three minutes is long enough for Beavers."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Allow small movements and keep rounds short."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Ask lions to keep a straight face while zookeepers tell jokes."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer a seated version and let players choose to be a zookeeper or a judge."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "christmas",
+        "title": "Sleeping Reindeer",
+        "text": "Same rules, with reindeer antlers and a quiet Christmas story."
+      },
+      {
+        "theme": "halloween",
+        "title": "Sleeping Bats",
+        "text": "Same rules, with bats hanging upside down (or sitting still) until sunrise."
+      }
+    ],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "icon": "moon",
+      "color": "navy"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "snowball-siege",
+    "title": "Snowball Siege",
+    "summary": "A winter variant of French v English where teams throw beanbag snowballs and count up at the end.",
+    "sections": [
+      "beavers",
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "quick",
+    "duration": "5–10 mins",
+    "minutes": 10,
+    "setting": "indoors",
+    "players": "Two teams",
+    "gameType": "Active",
+    "energy": "high",
+    "noise": "loud",
+    "mess": "none",
+    "themes": [
+      "winter",
+      "christmas"
+    ],
+    "equipment": [
+      "20–30 beanbags or paper snowballs",
+      "Long rope",
+      "2 buckets or baskets"
+    ],
+    "setup": [
+      "Lay the rope across the middle of the hall.",
+      "Split the snowballs equally between the two teams.",
+      "Put a bucket at the back of each team’s area."
+    ],
+    "steps": [
+      "Teams start in their own half and may not cross the rope.",
+      "On ‘go’, players throw snowballs into the other team’s half.",
+      "Players can throw or roll the snowballs, but cannot carry them across the rope.",
+      "After two minutes, call ‘freeze!’ and count the snowballs in each half.",
+      "The team with the fewest snowballs in their half wins the round."
+    ],
+    "winning": "The team with the fewest snowballs in their own half when time is called wins. Play three rounds and add up the scores.",
+    "safety": "Use soft beanbags or paper snowballs only. No throwing at heads, and keep the area behind the buckets clear. Stop the game before players get too hot or tired.",
+    "tips": [
+      {
+        "title": "Count together",
+        "text": "Count the snowballs aloud with both teams so the result is clear."
+      },
+      {
+        "title": "Clear buckets",
+        "text": "Use buckets at the back so snowballs do not roll under chairs."
+      },
+      {
+        "title": "Quick rounds",
+        "text": "Two-minute rounds keep the energy high and the counting quick."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use a shorter hall, fewer snowballs and a one-minute round."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add a rule that players must throw with their non-dominant hand, or use one bucket as a target."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer a rolling-only version and let players choose to be the counter or the snowball collector."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "winter",
+        "title": "New Year Countdown",
+        "text": "Same rules, with a countdown from ten and a ‘midnight’ celebration at the end of each round."
+      }
+    ],
+    "variantOf": "french-v-english",
+    "featured": true,
+    "art": {
+      "icon": "snowflake",
+      "color": "blue"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "zombie-dodgeball",
+    "title": "Zombie Dodgeball",
+    "summary": "A Halloween variant of dodgeball where hit players rise again as zombies.",
+    "sections": [
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "normal",
+    "duration": "10–15 mins",
+    "minutes": 15,
+    "setting": "indoors",
+    "players": "Two teams",
+    "gameType": "Active",
+    "energy": "high",
+    "noise": "loud",
+    "mess": "none",
+    "themes": [
+      "halloween"
+    ],
+    "equipment": [
+      "6–10 soft foam balls",
+      "Bibs",
+      "Cones"
+    ],
+    "setup": [
+      "Mark a centre line and two back lines.",
+      "Place the balls along the centre line.",
+      "Split into two teams."
+    ],
+    "steps": [
+      "Play dodgeball as normal, but a player who is hit does not sit out.",
+      "Instead, they become a zombie and walk slowly around their own half with their arms out.",
+      "Zombies can tag active players who come within arm’s reach. A tagged player also becomes a zombie.",
+      "The last human standing wins for their team, or the team with the most humans when time is called.",
+      "Reset after each round and swap the starting zombie."
+    ],
+    "winning": "The team with the most humans left when time is called wins. If one team has no humans left, the other team wins.",
+    "safety": "Use soft foam balls and no headshots. Zombies must walk, not run, and tag gently. Keep the floor clear and make sure zombies do not corner players.",
+    "tips": [
+      {
+        "title": "Slow zombies",
+        "text": "Zombies must keep one arm out and walk slowly. It gives humans a chance."
+      },
+      {
+        "title": "Clear zones",
+        "text": "Mark a ‘safe zone’ where humans can catch their breath for five seconds."
+      },
+      {
+        "title": "Sound effects",
+        "text": "Encourage zombie groans and spooky music to set the scene."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use fewer balls, slower zombies and a larger safe zone."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add a ‘zombie respawn’ rule where zombies can return to their human form if they catch a ball."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer a rolling-only version and let players choose to be a zombie from the start."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "halloween",
+        "title": "Mummy Dodgeball",
+        "text": "Same rules, with toilet-paper mummies and a slower zombie walk."
+      }
+    ],
+    "variantOf": "dodgeball",
+    "featured": false,
+    "art": {
+      "icon": "ghost",
+      "color": "purple"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "present-dash",
+    "title": "Present Dash",
+    "summary": "A Christmas variant of Capture the Flag where teams race to fill their sack with presents.",
+    "sections": [
+      "beavers",
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "normal",
+    "duration": "15–25 mins",
+    "minutes": 20,
+    "setting": "both",
+    "players": "Two teams",
+    "gameType": "Wide game",
+    "energy": "high",
+    "noise": "loud",
+    "mess": "low",
+    "themes": [
+      "christmas",
+      "winter"
+    ],
+    "equipment": [
+      "10–15 beanbags or soft presents",
+      "2 sacks or buckets",
+      "Bibs",
+      "Cones"
+    ],
+    "setup": [
+      "Mark a central present pile and a sack for each team at opposite ends.",
+      "Set clear boundaries.",
+      "Split into two teams and place an adult marshal at each sack."
+    ],
+    "steps": [
+      "On ‘go’, teams run to the central pile and take one present at a time back to their sack.",
+      "Players can only carry one present at a time.",
+      "Players can tag opponents in their own half. Tagged players go to the other team’s jail and can be freed by a teammate.",
+      "The first team to collect five presents in their sack wins.",
+      "If time runs out, the team with the most presents wins."
+    ],
+    "winning": "The first team to collect five presents, or the team with the most presents when time is called, wins.",
+    "safety": "Use soft presents and no tackling. Keep the central pile clear of feet, and walk the boundaries before starting. Put an adult at each jail.",
+    "tips": [
+      {
+        "title": "One at a time",
+        "text": "The one-present rule keeps the game fair and stops players hoarding."
+      },
+      {
+        "title": "Team roles",
+        "text": "Ask teams to choose runners, defenders and rescuers."
+      },
+      {
+        "title": "Count aloud",
+        "text": "Count the presents in each sack at the end so everyone can see the result."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Use a smaller area, fewer presents and no jail."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Add a ‘no running with a present’ rule, or hide presents around the area."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer a walking-only version and let players choose to be a runner, guard or jail marshal."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "christmas",
+        "title": "Santa’s Sack",
+        "text": "Same rules, with a Santa hat for the sack guard and a jingle bell on each present."
+      }
+    ],
+    "variantOf": "capture-the-flag",
+    "featured": false,
+    "art": {
+      "icon": "gift",
+      "color": "red"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  },
+  {
+    "id": "crab-handball",
+    "title": "Crab Handball",
+    "summary": "A crab-football variant that swaps kicking for throwing and catching.",
+    "sections": [
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "normal",
+    "duration": "15–20 mins",
+    "minutes": 20,
+    "setting": "indoors",
+    "players": "Two teams",
+    "gameType": "Active",
+    "energy": "high",
+    "noise": "loud",
+    "mess": "none",
+    "themes": [],
+    "equipment": [
+      "Soft handball",
+      "2 goals",
+      "Bibs",
+      "Cones"
+    ],
+    "setup": [
+      "Mark a pitch with a goal at each end.",
+      "Split into two teams and give out bibs.",
+      "Demonstrate the crab position and a two-handed catch."
+    ],
+    "steps": [
+      "Everyone plays in the crab position, moving on hands and feet with their chest facing the sky.",
+      "Players can throw, catch and roll the ball, but cannot stand up.",
+      "A goal is scored by throwing the ball between the opposition cones.",
+      "Players cannot snatch the ball from each other. Defenders must stay an arm’s length away.",
+      "Restart from the centre after each goal."
+    ],
+    "winning": "The team with the most goals at the end of the match wins.",
+    "safety": "Warm up wrists and shoulders. Use a soft ball and keep the floor clear. No tackling or grabbing, and take breaks if arms get tired.",
+    "tips": [
+      {
+        "title": "Short matches",
+        "text": "Play three-minute thirds with rests in between."
+      },
+      {
+        "title": "Catch first",
+        "text": "Encourage a catch before every shot to slow the game down."
+      },
+      {
+        "title": "Rotate",
+        "text": "Swap goalkeepers every few minutes."
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Allow players to sit rather than hold the crab position, and use a larger goal."
+      },
+      {
+        "title": "Make it harder",
+        "text": "Require three passes before a shot, or use a smaller ball."
+      },
+      {
+        "title": "Include everyone",
+        "text": "Offer a seated version and let players choose to be a goalkeeper, referee or scorer."
+      }
+    ],
+    "themedTwists": [
+      {
+        "theme": "halloween",
+        "title": "Spider Handball",
+        "text": "Same rules, with spider names and a web-shaped goal."
+      },
+      {
+        "theme": "space",
+        "title": "Moon Crab Handball",
+        "text": "Same rules, with slow-motion moon moves and a countdown before each restart."
+      }
+    ],
+    "variantOf": "crab-football",
+    "featured": false,
+    "art": {
+      "icon": "hand",
+      "color": "teal"
+    },
+    "added": "2026-11-02",
+    "author": "Games library team"
+  }
+]

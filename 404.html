@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found — Scouts Games Library</title>
+  <meta name="description" content="That page could not be found. Browse the Scouts Games Library instead.">
+  <meta name="theme-color" content="#590fa9">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;1,6..12,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/misc.css">
+  <script type="module" src="assets/js/about.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="Scouts Games Library home">
+        <img src="assets/img/scouts-black.svg" alt="Scouts" width="176" height="50">
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a class="site-nav__link" href="index.html">Find a game</a>
+        <a class="site-nav__link" href="index.html?saved=1">Saved games</a>
+        <a class="site-nav__link" href="add.html">Add a game</a>
+        <a class="site-nav__link" href="about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <a class="header-saved" href="index.html?saved=1" aria-label="View saved games">
+          <svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#bookmark"></use></svg>
+          <span class="header-saved__count" data-saved-count>0</span>
+        </a>
+        <a class="btn btn--primary btn--small header-cta" href="index.html">Browse games</a>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+          <svg class="icon icon--lg" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#menu"></use></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero hero--compact">
+      <div class="container hero__inner">
+        <p class="hero__eyebrow">404</p>
+        <h1>That page has wandered off</h1>
+        <p class="hero__lead">The link may be out of date, or the page may have moved. The games library is still right here.</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="empty mt-6">
+        <div class="empty__icon">
+          <svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#compass"></use></svg>
+        </div>
+        <h2>Let’s get you back to the games</h2>
+        <p>Search by section, time or theme, or add a game for the next meeting.</p>
+        <div class="empty__actions">
+          <a class="btn btn--primary" href="index.html">Browse all games</a>
+          <a class="btn btn--ghost" href="add.html">Add a game</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="assets/img/scouts-stack-white.svg" alt="Scouts" width="110" height="80">
+          <p>A practical games library for Beaver, Cub and Scout leaders. Made for busy meeting nights.</p>
+        </div>
+        <div>
+          <h2>Explore</h2>
+          <ul class="footer-links">
+            <li><a href="index.html">All games</a></li>
+            <li><a href="index.html?time=quick">Quick games</a></li>
+            <li><a href="index.html?time=long">Long games</a></li>
+            <li><a href="index.html?saved=1">Saved games</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Sections</h2>
+          <ul class="footer-links">
+            <li><a href="index.html?section=beavers">Beavers</a></li>
+            <li><a href="index.html?section=cubs">Cubs</a></li>
+            <li><a href="index.html?section=scouts">Scouts</a></li>
+            <li><a href="index.html?section=">All sections</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>For leaders</h2>
+          <ul class="footer-links">
+            <li><a href="add.html">Add a game</a></li>
+            <li><a href="about.html#how-it-works">How it works</a></li>
+            <li><a href="about.html#safety">Safety notes</a></li>
+            <li><a href="index.html">Print a game sheet</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>About</h2>
+          <ul class="footer-links">
+            <li><a href="about.html">About this site</a></li>
+            <li><a href="about.html#variants">Variants explained</a></li>
+            <li><a href="about.html#themes">Themed twists</a></li>
+            <li><a href="about.html#credits">Credits</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-legal">
+        <p>An independent, volunteer-made games library for Scout leaders. Not an official Scouts publication, and not endorsed by The Scout Association. Always follow your own risk assessment and safeguarding procedures. Scouts and the Scouts fleur-de-lis are trademarks of The Scout Association.</p>
+        <span class="footer-badge">Independent resource</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
