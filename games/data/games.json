@@ -4367,5 +4367,68 @@
     },
     "added": "2026-11-02",
     "author": "Games library team"
+  },
+  {
+    "title": "Teat Game",
+    "summary": "Testkv. K ksvkb",
+    "sections": [
+      "beavers",
+      "cubs",
+      "scouts"
+    ],
+    "timeBand": "normal",
+    "duration": "10–20 mins",
+    "minutes": 20,
+    "setting": "indoors",
+    "players": "Whole section",
+    "gameType": "Calm",
+    "energy": "medium",
+    "noise": "medium",
+    "mess": "none",
+    "themes": [
+      "halloween",
+      "pirates"
+    ],
+    "equipment": [
+      "Teat"
+    ],
+    "setup": [
+      "Exmaple"
+    ],
+    "steps": [
+      "Example"
+    ],
+    "winning": "Example ms lbs ksbkbs skbskbskbksbkbsj",
+    "safety": "Testjvskvsk skbksbksbksbb",
+    "tips": [
+      {
+        "title": "Leader tip 1",
+        "text": "Test"
+      }
+    ],
+    "adaptations": [
+      {
+        "title": "Make it easier",
+        "text": "Test"
+      },
+      {
+        "title": "Make it harder",
+        "text": "Test"
+      },
+      {
+        "title": "Include everyone",
+        "text": "Test"
+      }
+    ],
+    "themedTwists": [],
+    "variantOf": null,
+    "featured": false,
+    "art": {
+      "color": "purple",
+      "icon": "dodgeball"
+    },
+    "added": "2026-11-03",
+    "author": "Test Maker",
+    "id": "teat-game"
   }
 ]
