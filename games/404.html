@@ -6,6 +6,7 @@
   <title>Page not found — Scouts Games Library</title>
   <meta name="description" content="That page could not be found. Browse the Scouts Games Library instead.">
   <meta name="theme-color" content="#590fa9">
+  <meta name="theme-color" content="#00132b" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +24,10 @@
         <svg class="icon icon--lg" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#menu"></use></svg>
       </button>
       <a class="brand" href="../index.html" aria-label="Scout Tools home">
-        <img src="../assets/img/scouts-black.svg" alt="Scouts" width="176" height="50">
+        <picture>
+          <source srcset="../assets/img/scouts-white.svg" media="(prefers-color-scheme: dark)">
+          <img src="../assets/img/scouts-black.svg" alt="Scouts" width="176" height="50">
+        </picture>
       </a>
       <nav class="site-nav" id="site-nav" aria-label="Main navigation">
         <a class="site-nav__link" href="../index.html">All tools</a>
