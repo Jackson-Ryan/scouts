@@ -6,7 +6,7 @@
 
 .filters {
   padding-block: 26px 22px;
-  background: var(--grey-100);
+  background: var(--surface-muted);
   border-bottom: 1px solid var(--grey-200);
 }
 
@@ -69,9 +69,9 @@
   gap: 6px;
   min-height: 34px;
   padding: 5px 13px;
-  border: 1px solid #cfcfcf;
+  border: 1px solid var(--border-strong);
   border-radius: var(--radius-pill);
-  background: var(--white);
+  background: var(--surface);
   color: var(--ink);
   font-size: 0.8rem;
   font-weight: 700;
@@ -79,15 +79,15 @@
 }
 
 .chip:hover {
-  border-color: var(--purple);
-  color: var(--purple);
+  border-color: var(--accent);
+  color: var(--accent-text);
   transform: translateY(-1px);
 }
 
 .chip.is-active {
-  border-color: var(--purple);
-  background: var(--purple);
-  color: var(--white);
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 .chip__count {
@@ -103,8 +103,8 @@
 }
 
 .chip:not(.is-active) .chip__count {
-  background: var(--purple-light);
-  color: var(--purple);
+  background: var(--accent-soft);
+  color: var(--accent-text);
 }
 
 /* Featured / results ------------------------------------------------------ */
@@ -201,8 +201,8 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
-  background: var(--white);
-  border: 1px solid var(--border);
+  background: var(--surface);
+  border: 1px solid var(--border-default);
   border-radius: var(--radius);
   overflow: hidden;
   transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
@@ -210,7 +210,7 @@
 
 .game-card:hover {
   transform: translateY(-4px);
-  border-color: #c9c9c9;
+  border-color: var(--border-hover);
   box-shadow: var(--shadow-lg);
 }
 
@@ -270,7 +270,7 @@
 }
 
 .game-card__meta-link:hover {
-  color: var(--purple);
+  color: var(--accent-text);
   text-decoration: none;
 }
 
@@ -286,7 +286,7 @@
 .meta-item .icon {
   width: 15px;
   height: 15px;
-  color: var(--purple);
+  color: var(--accent-text);
 }
 
 .save-btn {
@@ -303,8 +303,8 @@
 }
 
 .save-btn:hover {
-  background: var(--purple-light);
-  color: var(--purple);
+  background: var(--accent-soft);
+  color: var(--accent-text);
 }
 
 .save-btn .icon {
@@ -313,7 +313,7 @@
 }
 
 .save-btn.is-saved {
-  color: var(--purple);
+  color: var(--accent-text);
 }
 
 .save-btn.is-saved .icon {
@@ -321,7 +321,7 @@
 }
 
 .game-card--featured {
-  border-color: #d1bce7;
+  border-color: var(--border-accent-soft);
 }
 
 /* Cover art --------------------------------------------------------------- */
@@ -402,7 +402,7 @@
   padding: 5px 10px;
   border-radius: var(--radius-pill);
   background: rgba(255, 255, 255, 0.94);
-  color: var(--ink);
+  color: var(--on-light);
   font-size: 0.68rem;
   font-weight: 900;
   letter-spacing: 0.06em;
@@ -412,11 +412,11 @@
 
 .game-cover__badge--featured {
   background: var(--yellow);
-  color: var(--ink);
+  color: var(--on-light);
 }
 
 .game-cover__badge--theme {
-  background: var(--ink);
+  background: var(--badge-strong-bg);
   color: var(--white);
 }
 
@@ -428,7 +428,7 @@
   padding: 4px 9px;
   border-radius: var(--radius-pill);
   background: rgba(255, 255, 255, 0.92);
-  color: var(--ink);
+  color: var(--on-light);
   font-size: 0.66rem;
   font-weight: 900;
   letter-spacing: 0.06em;
@@ -519,9 +519,9 @@
   place-items: center;
   gap: 12px;
   padding: 56px 24px;
-  border: 2px dashed #d1bce7;
+  border: 2px dashed var(--border-accent-soft);
   border-radius: var(--radius-lg);
-  background: #fbf8ff;
+  background: var(--surface-accent-soft);
   text-align: center;
 }
 
@@ -531,8 +531,8 @@
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: var(--purple-light);
-  color: var(--purple);
+  background: var(--surface);
+  color: var(--accent-text);
 }
 
 .empty__icon .icon {
@@ -575,9 +575,9 @@
   min-width: 40px;
   height: 40px;
   padding-inline: 10px;
-  border: 1px solid #cfcfcf;
+  border: 1px solid var(--border-strong);
   border-radius: var(--radius-sm);
-  background: var(--white);
+  background: var(--surface);
   color: var(--ink);
   font-size: 0.85rem;
   font-weight: 800;
@@ -585,14 +585,14 @@
 }
 
 .pagination button:hover:not(:disabled) {
-  border-color: var(--purple);
-  color: var(--purple);
+  border-color: var(--accent);
+  color: var(--accent-text);
 }
 
 .pagination button.is-active {
-  border-color: var(--purple);
-  background: var(--purple);
-  color: var(--white);
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 .pagination button:disabled {
@@ -628,7 +628,7 @@
   overflow: hidden;
   padding: 34px 38px;
   border-radius: var(--radius-lg);
-  background: var(--purple);
+  background: var(--accent-panel);
   color: var(--white);
 }
 
