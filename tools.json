@@ -12,6 +12,18 @@
       "tagline": "Find the perfect game for your meeting.",
       "description": "Search 50+ tried-and-tested games by section, length, theme and setting. Every game comes with clear rules, equipment, safety notes and leader tips — plus variants and themed twists.",
       "tags": ["Beavers", "Cubs", "Scouts", "50+ games", "Print-friendly"]
+    },
+    {
+      "id": "kit-list",
+      "title": "Kit List Generator",
+      "href": "kit-list/",
+      "status": "ready",
+      "icon": "backpack",
+      "color": "teal",
+      "kicker": "Planning",
+      "tagline": "Build a tailored kit list for your next adventure.",
+      "description": "Answer a few questions about your trip, weather and activities. Get a branded PDF to send home and a CSV checklist you can paste into Online Scout Manager — with quantities that change with the number of nights.",
+      "tags": ["Beavers", "Cubs", "Scouts", "PDF + CSV", "OSM checklist"]
     }
   ]
 }

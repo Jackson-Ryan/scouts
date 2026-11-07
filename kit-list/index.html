@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kit List Generator — Scout Tools</title>
+  <meta name="description" content="Build a tailored kit list for your Beaver, Cub or Scout adventure. Answer a few questions, then download a printable PDF and an OSM-ready CSV.">
+  <meta name="theme-color" content="#590fa9">
+  <meta name="theme-color" content="#00132b" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;1,6..12,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/kit-list.css">
+  <meta property="og:title" content="Kit List Generator — Scout Tools">
+  <meta property="og:description" content="A tailored kit list for your next Beaver, Cub or Scout adventure — as a PDF and an OSM-ready CSV.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../assets/img/scouts-black.svg">
+  <script src="assets/js/vendor/jspdf.umd.min.js" defer></script>
+  <script type="module" src="assets/js/kit-list.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <svg class="icon icon--lg" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#menu"></use></svg>
+      </button>
+      <a class="brand" href="../index.html" aria-label="Scout Tools home">
+        <picture>
+          <source srcset="../assets/img/scouts-white.svg" media="(prefers-color-scheme: dark)">
+          <img src="../assets/img/scouts-black.svg" alt="Scouts" width="176" height="50">
+        </picture>
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a class="site-nav__link" href="../index.html">All tools</a>
+        <a class="site-nav__link" href="../games/">Games finder</a>
+        <a class="site-nav__link is-active" href="index.html" aria-current="page">Kit list generator</a>
+        <a class="site-nav__link" href="#how-it-works">How it works</a>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn--primary btn--small header-cta" href="#builder">Start a kit list</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero hero--compact kit-hero">
+      <div class="container hero__inner">
+        <p class="hero__eyebrow">For Beaver, Cub and Scout leaders</p>
+        <h1>Build a kit list in minutes</h1>
+        <p class="hero__lead">Tell us about your adventure and we will turn it into a tailored, printable kit list — plus a CSV ready for your checklist in Online Scout Manager.</p>
+        <div class="hero__actions">
+          <a class="btn btn--light btn--large" href="#builder">Start building</a>
+          <a class="btn btn--ghost-light btn--large" href="#how-it-works">How it works</a>
+        </div>
+        <div class="hero__stats" aria-label="Kit list generator features">
+          <span><strong>3</strong> sections</span>
+          <span><strong>18</strong> activities</span>
+          <span><strong>PDF + CSV</strong> downloads</span>
+        </div>
+      </div>
+    </section>
+
+    <noscript>
+      <div class="container mt-6">
+        <div class="hub-error">
+          <strong>JavaScript is needed to build a kit list.</strong>
+          <span>Please enable JavaScript to use the interactive form and generate your PDF.</span>
+        </div>
+      </div>
+    </noscript>
+
+    <section class="kit-builder" id="builder" aria-labelledby="builder-title">
+      <div class="container kit-layout">
+        <form class="wizard" id="kit-form" novalidate>
+          <div class="wizard__head">
+            <p class="eyebrow">Your kit list</p>
+            <h2 id="builder-title">Tell us about the adventure</h2>
+            <p class="wizard__intro">Five short steps. You can change any answer before you generate the list.</p>
+
+            <nav class="wizard-progress" aria-label="Kit list steps">
+              <div class="wizard-progress__track" aria-hidden="true"><span id="wizard-bar"></span></div>
+              <ol class="wizard-progress__steps" id="wizard-steps">
+                <li><button type="button" data-step-target="1" aria-current="step"><span>1</span> Your trip</button></li>
+                <li><button type="button" data-step-target="2"><span>2</span> Sleeping &amp; weather</button></li>
+                <li><button type="button" data-step-target="3"><span>3</span> Activities</button></li>
+                <li><button type="button" data-step-target="4"><span>4</span> Food &amp; extras</button></li>
+                <li><button type="button" data-step-target="5"><span>5</span> Review</button></li>
+              </ol>
+            </nav>
+          </div>
+
+          <div class="wizard__body">
+            <section class="step" data-step="1" aria-labelledby="step-1-title">
+              <div class="step__head">
+                <p class="step__kicker">Step 1 of 5</p>
+                <h3 id="step-1-title" tabindex="-1">Your trip</h3>
+                <p>Start with the section and the shape of the adventure. We will use this to set sensible defaults.</p>
+              </div>
+
+              <fieldset class="field-set">
+                <legend>Which section is going?</legend>
+                <div class="option-grid option-grid--3" id="section-options"></div>
+              </fieldset>
+
+              <fieldset class="field-set">
+                <legend>What kind of trip is it?</legend>
+                <div class="option-grid option-grid--3" id="trip-options"></div>
+                <p class="field__hint field__hint--tight">Beavers usually camp for one night, Saturday to Sunday. Cubs and Scouts usually camp for two nights, Friday to Sunday.</p>
+              </fieldset>
+
+              <div class="field-grid">
+                <div class="field">
+                  <label for="trip-name">Trip name <span class="field__optional">optional</span></label>
+                  <input class="input" id="trip-name" name="tripName" type="text" placeholder="e.g. Summer water camp" autocomplete="off">
+                </div>
+                <div class="field">
+                  <label for="group-name">Group or district <span class="field__optional">optional</span></label>
+                  <input class="input" id="group-name" name="groupName" type="text" placeholder="e.g. 1st Boxford" autocomplete="organization">
+                </div>
+                <div class="field field--full">
+                  <label for="venue">Venue <span class="field__optional">optional</span></label>
+                  <input class="input" id="venue" name="venue" type="text" placeholder="e.g. Bradwell Waterside" autocomplete="off">
+                </div>
+                <div class="field">
+                  <label for="start-date">Start date <span class="field__optional">optional</span></label>
+                  <input class="input" id="start-date" name="startDate" type="date">
+                </div>
+                <div class="field">
+                  <label for="end-date">End date <span class="field__optional">optional</span></label>
+                  <input class="input" id="end-date" name="endDate" type="date">
+                </div>
+                <div class="field">
+                  <label for="nights">Nights</label>
+                  <select class="select" id="nights" name="nights"></select>
+                  <p class="field__hint" id="nights-hint">Dates will update this automatically.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="step" data-step="2" aria-labelledby="step-2-title" hidden>
+              <div class="step__head">
+                <p class="step__kicker">Step 2 of 5</p>
+                <h3 id="step-2-title" tabindex="-1">Sleeping &amp; weather</h3>
+                <p>Where will everyone sleep, and what is the forecast likely to throw at you?</p>
+              </div>
+
+              <fieldset class="field-set" id="accommodation-fieldset">
+                <legend>Where will you sleep?</legend>
+                <div class="option-grid option-grid--3" id="accommodation-options"></div>
+              </fieldset>
+
+              <div class="field-grid">
+                <fieldset class="field field--full" id="own-tents-fieldset">
+                  <legend>Will young people bring their own tents?</legend>
+                  <div class="chip-choices">
+                    <label class="chip-choice"><input type="radio" name="ownTents" value="yes"><span>Yes, everyone brings one</span></label>
+                    <label class="chip-choice"><input type="radio" name="ownTents" value="some"><span>Some do</span></label>
+                    <label class="chip-choice"><input type="radio" name="ownTents" value="no"><span>No, tents are provided</span></label>
+                  </div>
+                </fieldset>
+
+                <div class="field">
+                  <label for="season">Season</label>
+                  <select class="select" id="season" name="season"></select>
+                </div>
+
+                <fieldset class="field">
+                  <legend>Will there be showers?</legend>
+                  <div class="chip-choices">
+                    <label class="chip-choice"><input type="radio" name="showers" value="yes"><span>Yes</span></label>
+                    <label class="chip-choice"><input type="radio" name="showers" value="unknown"><span>Not sure</span></label>
+                    <label class="chip-choice"><input type="radio" name="showers" value="no"><span>No</span></label>
+                  </div>
+                </fieldset>
+
+                <fieldset class="field">
+                  <legend>Is there laundry on site?</legend>
+                  <div class="chip-choices">
+                    <label class="chip-choice"><input type="radio" name="laundry" value="yes"><span>Yes</span></label>
+                    <label class="chip-choice"><input type="radio" name="laundry" value="no"><span>No</span></label>
+                  </div>
+                </fieldset>
+
+                <fieldset class="field field--full">
+                  <legend>What weather should we pack for?</legend>
+                  <p class="field__hint">Choose everything that might apply. We will add the right layers and protection.</p>
+                  <div class="chip-choices chip-choices--wrap" id="weather-options"></div>
+                </fieldset>
+              </div>
+
+              <div class="info-panel" id="trip-note" hidden>
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#info"></use></svg>
+                <p id="trip-note-text">This is a day trip, so sleeping kit will not be added. Weather and activity choices still shape the list.</p>
+              </div>
+            </section>
+
+            <section class="step" data-step="3" aria-labelledby="step-3-title" hidden>
+              <div class="step__head">
+                <p class="step__kicker">Step 3 of 5</p>
+                <h3 id="step-3-title" tabindex="-1">What will you be doing?</h3>
+                <p>Pick every activity on the programme. Each one adds the specialist kit that leaders always end up borrowing.</p>
+              </div>
+
+              <div class="activity-toolbar">
+                <p class="activity-toolbar__count" id="activity-count" role="status" aria-live="polite">No activities selected yet</p>
+                <button class="text-button" type="button" id="clear-activities">Clear activities</button>
+              </div>
+
+              <fieldset class="field-set">
+                <legend class="sr-only">Activities</legend>
+                <div class="activity-grid" id="activity-grid"></div>
+              </fieldset>
+
+              <div id="activity-options" class="activity-options" aria-live="polite"></div>
+            </section>
+
+            <section class="step" data-step="4" aria-labelledby="step-4-title" hidden>
+              <div class="step__head">
+                <p class="step__kicker">Step 4 of 5</p>
+                <h3 id="step-4-title" tabindex="-1">Food, uniform &amp; extras</h3>
+                <p>The details that turn a generic list into one that actually matches your weekend.</p>
+              </div>
+
+              <fieldset class="field-set">
+                <legend>How will meals work?</legend>
+                <div class="option-grid option-grid--4" id="meal-options"></div>
+              </fieldset>
+
+              <fieldset class="field-set">
+                <legend>Will uniform be needed?</legend>
+                <div class="chip-choices chip-choices--wrap" id="uniform-options"></div>
+              </fieldset>
+
+              <fieldset class="field-set">
+                <legend>Does anyone need anything extra?</legend>
+                <p class="field__hint">This does not ask for names or medical details — it simply adds the right reminders to the list.</p>
+                <div class="chip-choices chip-choices--wrap" id="personal-options"></div>
+              </fieldset>
+
+              <fieldset class="field-set">
+                <legend>Optional extras</legend>
+                <div class="chip-choices chip-choices--wrap" id="extra-options"></div>
+              </fieldset>
+
+              <div class="field-grid field-grid--stack">
+                <div class="field field--full">
+                  <label class="check-line" for="include-leader-kit">
+                    <input type="checkbox" id="include-leader-kit" name="includeLeaderKit">
+                    <span>
+                      <strong>Include a leader &amp; group kit section</strong>
+                      <small>First aid, consent forms, fire kit, water and other group kit worth checking.</small>
+                    </span>
+                  </label>
+                </div>
+                <div class="field field--full">
+                  <label for="custom-items">Anything else to add? <span class="field__optional">optional</span></label>
+                  <textarea class="textarea" id="custom-items" name="customItems" rows="3" placeholder="One item per line, e.g.&#10;Spare boot laces&#10;Section flag"></textarea>
+                  <p class="field__hint">Each line becomes an item in the Extras section of your list.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="step" data-step="5" aria-labelledby="step-5-title" hidden>
+              <div class="step__head">
+                <p class="step__kicker">Step 5 of 5</p>
+                <h3 id="step-5-title" tabindex="-1">Check it over</h3>
+                <p>One last look before we build the PDF and CSV. You can jump back to any step.</p>
+              </div>
+
+              <div class="review" id="review-summary"></div>
+
+              <div class="info-panel info-panel--purple">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#lightbulb"></use></svg>
+                <p><strong>A starting point, not a substitute.</strong> Always check your event kit list, risk assessment and safeguarding procedures. Add anything specific to your venue or activity.</p>
+              </div>
+            </section>
+          </div>
+
+          <div class="wizard__actions">
+            <button class="btn btn--ghost" type="button" id="back-btn" hidden>
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#arrow-left"></use></svg>
+              Back
+            </button>
+            <p class="wizard__hint" id="wizard-hint">Step 1 of 5</p>
+            <button class="btn btn--primary" type="button" id="next-btn">
+              Continue
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#arrow-right"></use></svg>
+            </button>
+            <button class="btn btn--primary btn--large" type="button" id="generate-btn" hidden>
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#list-checks"></use></svg>
+              Generate kit list
+            </button>
+          </div>
+
+          <p class="form-error" id="form-error" role="alert" hidden></p>
+        </form>
+
+        <aside class="kit-sidebar" aria-label="Your kit list summary">
+          <div class="sidebar-card">
+            <p class="eyebrow">Your kit list</p>
+            <h2 id="sidebar-title">Cubs weekend camp</h2>
+            <p class="sidebar-meta" id="sidebar-meta">2 nights • Tent • Summer</p>
+            <dl class="sidebar-stats">
+              <div>
+                <dt>Activities</dt>
+                <dd id="sidebar-activities">0 selected</dd>
+              </div>
+              <div>
+                <dt>Estimated items</dt>
+                <dd id="sidebar-items">—</dd>
+              </div>
+            </dl>
+            <ul class="sidebar-tags" id="sidebar-activity-list"></ul>
+            <button class="text-button" type="button" id="start-again">Start again</button>
+          </div>
+          <div class="sidebar-note">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#shield"></use></svg>
+            <p>Your answers stay on this device. Nothing is uploaded, and no young people's details are collected.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="kit-results" id="results" aria-labelledby="results-title" hidden>
+      <div class="container">
+        <div class="results-banner">
+          <div class="results-banner__icon" aria-hidden="true">
+            <svg class="icon" focusable="false"><use href="../assets/img/icons.svg#check"></use></svg>
+          </div>
+          <div class="results-banner__copy">
+            <p class="eyebrow">Ready to pack</p>
+            <h2 id="results-title" tabindex="-1">Your kit list is ready</h2>
+            <p id="results-subtitle">Download it as a PDF, import the CSV into your checklist, or print a copy for the kit table.</p>
+          </div>
+          <div class="results-banner__actions">
+            <button class="btn btn--primary" type="button" id="download-pdf">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#download"></use></svg>
+              Download PDF
+            </button>
+            <button class="btn btn--ghost" type="button" id="download-csv">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#table"></use></svg>
+              Download CSV
+            </button>
+            <button class="btn btn--ghost" type="button" id="print-list">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#printer"></use></svg>
+              Print
+            </button>
+            <button class="btn btn--ghost" type="button" id="copy-list">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#copy"></use></svg>
+              Copy
+            </button>
+          </div>
+        </div>
+
+        <p class="result-status" id="result-status" role="status" aria-live="polite"></p>
+
+        <div class="kit-doc" id="kit-doc"></div>
+
+        <div class="results-foot">
+          <button class="btn btn--ghost btn--small" type="button" id="edit-answers">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#arrow-left"></use></svg>
+            Edit answers
+          </button>
+          <button class="btn btn--ghost btn--small" type="button" id="start-again-results">Start a new kit list</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="how-it-works" id="how-it-works" aria-labelledby="how-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">How it works</p>
+            <h2 id="how-title">Less time packing, more time adventuring</h2>
+          </div>
+        </div>
+        <div class="how-grid">
+          <article class="how-card">
+            <div class="how-card__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#list-checks"></use></svg></div>
+            <h3>Answer the questions</h3>
+            <p>Section, trip type, weather, accommodation and activities. Conditional questions appear only when they matter.</p>
+          </article>
+          <article class="how-card">
+            <div class="how-card__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#file-text"></use></svg></div>
+            <h3>Get a tailored list</h3>
+            <p>Quantities change with the number of nights, the season and the activities. Beavers get a simpler list than Scouts.</p>
+          </article>
+          <article class="how-card">
+            <div class="how-card__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#table"></use></svg></div>
+            <h3>Download and share</h3>
+            <p>A print-ready PDF for families, plus a CSV with category, item, quantity and notes for your OSM checklist.</p>
+          </article>
+        </div>
+        <div class="info-panel info-panel--plain">
+          <svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#info"></use></svg>
+          <p><strong>About the CSV:</strong> Online Scout Manager's public checklist tools do not include a documented bulk-import file, so the CSV is laid out to open in a spreadsheet and copy straight into OSM's checklist screen — or into any checklist tool that accepts a CSV. The columns are <em>Item, Category, Quantity, Notes</em>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="../assets/img/scouts-stack-white.svg" alt="Scouts" width="110" height="80">
+          <p>A growing toolbox of practical, free tools for Beaver, Cub and Scout leaders. Made for busy meeting nights.</p>
+        </div>
+        <div>
+          <h2>Toolbox</h2>
+          <ul class="footer-links">
+            <li><a href="../index.html">All tools</a></li>
+            <li><a href="../games/">Games finder</a></li>
+            <li><a href="index.html">Kit list generator</a></li>
+            <li><a href="https://github.com/Jackson-Ryan/scouts/issues/new?title=%5BTool%20idea%5D%20" target="_blank" rel="noopener">Suggest a tool</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Sections</h2>
+          <ul class="footer-links">
+            <li><a href="index.html?section=beavers">Beavers</a></li>
+            <li><a href="index.html?section=cubs">Cubs</a></li>
+            <li><a href="index.html?section=scouts">Scouts</a></li>
+            <li><a href="#builder">Build a list</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Help</h2>
+          <ul class="footer-links">
+            <li><a href="#how-it-works">How it works</a></li>
+            <li><a href="#how-it-works">About the CSV</a></li>
+            <li><a href="#builder">Build a kit list</a></li>
+            <li><a href="https://github.com/Jackson-Ryan/scouts/issues/new" target="_blank" rel="noopener">Report an issue</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Development</h2>
+          <ul class="footer-links">
+            <li><a href="https://github.com/Jackson-Ryan/scouts" target="_blank" rel="noopener">GitHub repository</a></li>
+            <li><a href="https://github.com/Jackson-Ryan/scouts#readme" target="_blank" rel="noopener">README</a></li>
+            <li><a href="https://github.com/Jackson-Ryan/scouts/releases" target="_blank" rel="noopener">Releases</a></li>
+            <li><a href="https://github.com/Jackson-Ryan/scouts/issues/new" target="_blank" rel="noopener">Report an issue</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-legal">
+        <p>An independent, volunteer-made toolbox for Scout leaders. Not an official Scouts publication, and not endorsed by The Scout Association. Always follow your own risk assessment and safeguarding procedures. Scouts and the Scouts fleur-de-lis are trademarks of The Scout Association.</p>
+        <span class="footer-badge">Independent resource</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

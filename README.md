@@ -2,7 +2,10 @@
 
 A growing toolbox of free, practical tools for Beaver, Cub and Scout leaders, published as a static site on GitHub Pages.
 
-**Currently in the box:** the [Games Finder](games/) — a searchable library of 50+ games with full rules, safety notes and leader tips.
+**Currently in the box:**
+
+- [Games Finder](games/) — a searchable library of 50+ games with full rules, safety notes and leader tips.
+- [Kit List Generator](kit-list/) — an interactive packing list builder with a branded PDF and an OSM checklist CSV.
 
 > This is an independent, volunteer-made resource. It is not an official Scouts publication and is not endorsed by The Scout Association. Scouts and the Scouts fleur-de-lis are trademarks of The Scout Association.
 
@@ -18,6 +21,7 @@ assets/                Shared theme and brand kit
   js/home.js           Home page behaviour (renders tools.json)
   img/                 Scouts logos, favicon, icon sprite, fleur
 games/                 The Games Finder tool (see games/README.md)
+kit-list/              The Kit List Generator (see kit-list/README.md)
 scripts/               Shared dev tooling
   dev-server.mjs       Zero-dependency preview server (npm run serve)
   check-assets.mjs     Verifies every local link (npm run check)
@@ -41,6 +45,7 @@ npm run serve   # then open http://localhost:8080
 | `npm run check` | Checks every local link and asset reference in the repo |
 | `npm run validate` | Validates `games/data/games.json` against the shared schema |
 | `npm run smoke` | Runs the Games Finder smoke test in jsdom |
+| `npm run smoke:kit` | Runs the Kit List Generator smoke test (data, CSV and PDF) |
 | `npm run add -- my-game.json` | Adds a game from the command line |
 
 ## Adding a new tool
@@ -109,6 +114,10 @@ If the tool has repeating dates or events, consider a small JSON data file next 
 ## The Games Finder
 
 The Games Finder lives in [`games/`](games/) and has its own documentation: the data schema, validation rules, the add-a-game form, the command-line tools and the GitHub issue import workflow are all in [`games/README.md`](games/README.md).
+
+## The Kit List Generator
+
+The Kit List Generator lives in [`kit-list/`](kit-list/) and has its own documentation in [`kit-list/README.md`](kit-list/README.md). It is a self-contained wizard that writes a tailored packing list as a branded PDF and a CSV. The PDF is generated in the browser with a vendored copy of [jsPDF](https://github.com/parallax/jsPDF) (MIT) and the Scouts brand font, Nunito Sans. No data leaves the device.
 
 ## Deploying
 

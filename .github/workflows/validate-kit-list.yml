@@ -1,0 +1,27 @@
+name: Validate kit list generator
+
+on:
+  push:
+    paths:
+      - "kit-list/**"
+      - ".github/workflows/validate-kit-list.yml"
+  pull_request:
+    paths:
+      - "kit-list/**"
+      - ".github/workflows/validate-kit-list.yml"
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run the kit list smoke test
+        run: node kit-list/scripts/smoke-test.mjs

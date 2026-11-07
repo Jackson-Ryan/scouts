@@ -9,6 +9,7 @@
     "check": "node scripts/check-assets.mjs",
     "validate": "node games/scripts/validate-games.mjs",
     "smoke": "node games/scripts/smoke-test.mjs",
+    "smoke:kit": "node kit-list/scripts/smoke-test.mjs",
     "add": "node games/scripts/add-game.mjs"
   },
   "engines": {
