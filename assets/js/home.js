@@ -34,9 +34,10 @@ function iconMarkup(name, className = "icon") {
 function toolCardMarkup(tool) {
   const status = STATUS_LABELS[tool.status] ? tool.status : "ready";
   const tags = Array.isArray(tool.tags) ? tool.tags : [];
+  const badgeMarkup = status === "beta" ? `<span class="tool-card__badge tool-card__badge--beta">${escapeHTML(STATUS_LABELS[status])}</span>` : "";
   const cover = `
     <div class="tool-card__cover cover-tile--${safeColor(tool.color)}" aria-hidden="true">
-      <span class="tool-card__badge tool-card__badge--${status}">${escapeHTML(STATUS_LABELS[status])}</span>
+      ${badgeMarkup}
       <svg class="tool-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#${String(tool.icon || "cube").replace(/[^a-z0-9-]/g, "")}"></use></svg>
       ${tool.kicker ? `<span class="tool-card__kicker">${escapeHTML(tool.kicker)}</span>` : ""}
     </div>
@@ -82,12 +83,11 @@ function plannedCardMarkup() {
   return `
     <div class="tool-card tool-card--planned">
       <div class="tool-card__cover" aria-hidden="true">
-        <span class="tool-card__badge tool-card__badge--planned">Planned</span>
         <svg class="tool-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#sparkles"></use></svg>
       </div>
       <div class="tool-card__body">
         <h3 class="tool-card__title">More tools are on the way</h3>
-        <p class="tool-card__desc">The toolbox is built to grow — badge helpers, meeting planners and more can all live here alongside the games finder.</p>
+        <p class="tool-card__desc">The toolbox is built to grow — badge helpers, meeting planners and more can all live here.</p>
       </div>
       <div class="tool-card__footer">
         <span class="tool-card__cta">Suggest a tool ${iconMarkup("external-link", "icon")}</span>

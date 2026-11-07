@@ -322,7 +322,7 @@ function pickRandomGame() {
   const pool = filteredGames.length > 0 ? filteredGames : allGames;
   if (pool.length === 0) return;
   const game = pool[Math.floor(Math.random() * pool.length)];
-  window.location.href = `game.html?id=${encodeURIComponent(game.id)}`;
+  window.location.href = `game?id=${encodeURIComponent(game.id)}`;
 }
 
 function updateSaveButtons() {

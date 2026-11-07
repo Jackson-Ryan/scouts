@@ -54,8 +54,27 @@ createServer(async (request, response) => {
       const info = await stat(target);
       if (info.isDirectory()) target = join(target, "index.html");
     } catch {
-      await send(response, 404, await readFile(join(root, "404.html"), "utf8"), types[".html"]);
-      return;
+      // Support extensionless URLs like GitHub Pages (e.g. /games/about → games/about.html)
+      const candidates = [];
+      if (!extname(target)) candidates.push(`${target}.html`);
+      candidates.push(join(target, "index.html"));
+      let found = false;
+      for (const candidate of candidates) {
+        try {
+          const info = await stat(candidate);
+          if (info.isFile()) {
+            target = candidate;
+            found = true;
+            break;
+          }
+        } catch {
+          // try next candidate
+        }
+      }
+      if (!found) {
+        await send(response, 404, await readFile(join(root, "404.html"), "utf8"), types[".html"]);
+        return;
+      }
     }
 
     const body = await readFile(target);

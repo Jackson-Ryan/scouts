@@ -253,8 +253,8 @@ function renderSidebar(game) {
     <div class="sidebar-cta">
       <h2>Make it yours</h2>
       <p>Change the rules? Add a variant. Keeping the rules and changing the story? Add a themed twist instead.</p>
-      <a class="btn btn--light" href="add.html?variantOf=${encodeURIComponent(game.id)}">Add a variant</a>
-      <a class="btn btn--ghost-light mt-2" href="add.html">Suggest an edit</a>
+      <a class="btn btn--light" href="add?variantOf=${encodeURIComponent(game.id)}">Add a variant</a>
+      <a class="btn btn--ghost-light mt-2" href="add">Suggest an edit</a>
     </div>
   `;
 }
@@ -305,7 +305,7 @@ function renderVariants(game, games) {
     elements.variantFamily.innerHTML = `
       ${iconMarkup("layers", "icon")}
       <span class="variant-family__label">Part of the ${escapeHTML(family.base.title)} family.</span>
-      <span>This version changes the rules. <a href="game.html?id=${encodeURIComponent(family.base.id)}">View the original game</a>.</span>
+      <span>This version changes the rules. <a href="game?id=${encodeURIComponent(family.base.id)}">View the original game</a>.</span>
     `;
   } else {
     elements.variantsTitle.textContent = "Variants of this game";

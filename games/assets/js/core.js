@@ -288,7 +288,7 @@ function cardMetaMarkup(game) {
 }
 
 export function gameCardMarkup(game, options = {}) {
-  const href = `game.html?id=${encodeURIComponent(game.id)}`;
+  const href = `game?id=${encodeURIComponent(game.id)}`;
   const saved = isSaved(game.id);
   const theme = options.theme || "";
   const twistMatch = theme && themeMatch(game, theme) && !(game.themes || []).includes(theme);

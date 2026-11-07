@@ -50,6 +50,9 @@ function checkReference(file, reference) {
   if (!pathPart) return;
 
   let target = resolve(dirname(file), decodeURIComponent(pathPart));
+  if (!extname(target) && !existsSync(target) && existsSync(`${target}.html`)) {
+    target = `${target}.html`;
+  }
   if (existsSync(target) && statSync(target).isDirectory()) {
     target = join(target, "index.html");
   }

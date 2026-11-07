@@ -23,26 +23,20 @@
       <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
         <svg class="icon icon--lg" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#menu"></use></svg>
       </button>
-      <a class="brand" href="../index.html" aria-label="Scout Tools home">
+      <a class="brand" href="../" aria-label="Scout Tools home">
         <picture>
           <source srcset="../assets/img/scouts-white.svg" media="(prefers-color-scheme: dark)">
           <img src="../assets/img/scouts-black.svg" alt="Scouts" width="176" height="50">
         </picture>
       </a>
       <nav class="site-nav" id="site-nav" aria-label="Main navigation">
-        <a class="site-nav__link" href="../index.html">All tools</a>
-        <a class="site-nav__link" href="index.html">Find a game</a>
-        <a class="site-nav__link" href="index.html?saved=1">Saved games</a>
-        <a class="site-nav__link" href="add.html">Add a game</a>
-        <a class="site-nav__link is-active" href="about.html" aria-current="page">About</a>
-        <a class="site-nav__link" href="../kit-list/">Kit list</a>
+        <a class="site-nav__link" href="../">All tools</a>
+        <a class="site-nav__link" href="./">Games finder</a>
+        <a class="site-nav__link" href="../kit-list/">Kit list generator</a>
+        <a class="site-nav__link is-active" href="about" aria-current="page">About</a>
       </nav>
       <div class="header-actions">
-        <a class="header-saved" href="index.html?saved=1" aria-label="View saved games">
-          <svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#bookmark"></use></svg>
-          <span class="header-saved__count" data-saved-count>0</span>
-        </a>
-        <a class="btn btn--primary btn--small header-cta" href="add.html">Add a game</a>
+        <a class="btn btn--primary btn--small header-cta" href="https://github.com/Jackson-Ryan/scouts/issues/new?title=%5BTool%20idea%5D%20" target="_blank" rel="noopener">Suggest a tool</a>
       </div>
     </div>
   </header>
@@ -61,7 +55,7 @@
         <p class="prose__lead">Every meeting needs a game that fits the section, the space and the time you actually have. This library is designed to get you from “what shall we play?” to a clear set of rules in under a minute.</p>
 
         <h2 id="how-it-works">How the library works</h2>
-        <p>Games are tagged by section, length, setting, energy, noise and mess. Use the filters on the <a href="index.html">find a game</a> page to narrow the list, then open a game for the full rules, equipment, safety notes and leader tips.</p>
+        <p>Games are tagged by section, length, setting, energy, noise and mess. Use the filters on the <a href="./">find a game</a> page to narrow the list, then open a game for the full rules, equipment, safety notes and leader tips.</p>
         <div class="info-grid">
           <div class="info-card">
             <div class="info-card__icon">
@@ -120,11 +114,11 @@
         <p>Look out for games that involve throwing, running, contact, blindfolds or food. Adapt them for your venue and group, and stop any game that stops feeling safe. A leader should always be able to see the whole playing area.</p>
 
         <h2 id="adding">Adding a game</h2>
-        <p>The <a href="add.html">add a game form</a> walks you through the fields, shows a live card preview and produces a complete JSON entry. You can download the game file, download the full updated <code>games.json</code>, or submit it as a GitHub issue if the site is connected to a repository.</p>
+        <p>The <a href="add">add a game form</a> walks you through the fields, shows a live card preview and produces a complete JSON entry. You can download the game file, download the full updated <code>games.json</code>, or submit it as a GitHub issue if the site is connected to a repository.</p>
         <p>Submissions are checked by a leader before they are added. Please include realistic safety notes and adaptions, and make sure the rules are your own words. If a game is not yours, credit the source in the author field.</p>
 
         <h2 id="themes">Themed twists</h2>
-        <p>Twists are a quick way to refresh a game without learning new rules. A good twist changes the story and the props, not the structure. The <a href="index.html">theme filter</a> finds both games that naturally suit a theme and games with a themed twist idea.</p>
+        <p>Twists are a quick way to refresh a game without learning new rules. A good twist changes the story and the props, not the structure. The <a href="./">theme filter</a> finds both games that naturally suit a theme and games with a themed twist idea.</p>
 
         <h2 id="hosting">Run your own copy</h2>
         <p>This is a static site. There is no database or server to maintain: the games live in <code>data/games.json</code>, and the pages are plain HTML, CSS and JavaScript. Fork the repository, edit the JSON or use the form, then publish it with GitHub Pages. The included GitHub Actions check the data and can import game submissions from issues.</p>
@@ -140,23 +134,23 @@
         <div class="about-card about-card--purple">
           <h2>Got a game to share?</h2>
           <p>Turn your meeting favourite into a clear, printable game sheet in a few minutes.</p>
-          <a class="btn btn--light" href="add.html">Add a game</a>
+          <a class="btn btn--light" href="add">Add a game</a>
         </div>
         <div class="about-card">
           <h2>Quick links</h2>
           <ul class="footer-links">
-            <li><a href="index.html?time=quick">Quick 5–10 minute games</a></li>
-            <li><a href="index.html?section=beavers">Games for Beavers</a></li>
-            <li><a href="index.html?section=cubs">Games for Cubs</a></li>
-            <li><a href="index.html?section=scouts">Games for Scouts</a></li>
-            <li><a href="index.html?theme=halloween">Halloween ideas</a></li>
-            <li><a href="index.html?theme=christmas">Christmas ideas</a></li>
+            <li><a href="./?time=quick">Quick 5–10 minute games</a></li>
+            <li><a href="./?section=beavers">Games for Beavers</a></li>
+            <li><a href="./?section=cubs">Games for Cubs</a></li>
+            <li><a href="./?section=scouts">Games for Scouts</a></li>
+            <li><a href="./?theme=halloween">Halloween ideas</a></li>
+            <li><a href="./?theme=christmas">Christmas ideas</a></li>
           </ul>
         </div>
         <div class="about-card">
           <h2>Independent resource</h2>
           <p>Not an official Scouts publication. Built by volunteers for leaders who need a game that works.</p>
-          <p class="mb-0"><a href="index.html">Browse the library</a></p>
+          <p class="mb-0"><a href="./">Browse the library</a></p>
         </div>
       </aside>
     </div>
@@ -167,47 +161,47 @@
       <div class="footer-top">
         <div class="footer-brand">
           <img src="../assets/img/scouts-stack-white.svg" alt="Scouts" width="110" height="80">
-          <p>A practical games library for Beaver, Cub and Scout leaders. Made for busy meeting nights.</p>
+          <p>A growing toolbox of practical, free tools for Beaver, Cub and Scout leaders. Made for busy meeting nights.</p>
         </div>
         <div>
-          <h2>Explore</h2>
+          <h2>Toolbox</h2>
           <ul class="footer-links">
-            <li><a href="index.html">All games</a></li>
-            <li><a href="index.html?time=quick">Quick games</a></li>
-            <li><a href="index.html?time=long">Long games</a></li>
-            <li><a href="index.html?saved=1">Saved games</a></li>
+            <li><a href="../">All tools</a></li>
+            <li><a href="./">Games finder</a></li>
+            <li><a href="../kit-list/">Kit list generator</a></li>
+            <li><a href="https://github.com/Jackson-Ryan/scouts/issues/new?title=%5BTool%20idea%5D%20" target="_blank" rel="noopener">Suggest a tool</a></li>
           </ul>
         </div>
         <div>
           <h2>Sections</h2>
           <ul class="footer-links">
-            <li><a href="index.html?section=beavers">Beavers</a></li>
-            <li><a href="index.html?section=cubs">Cubs</a></li>
-            <li><a href="index.html?section=scouts">Scouts</a></li>
-            <li><a href="index.html?section=">All sections</a></li>
+            <li><a href="./?section=beavers">Beavers</a></li>
+            <li><a href="./?section=cubs">Cubs</a></li>
+            <li><a href="./?section=scouts">Scouts</a></li>
+            <li><a href="./">All games</a></li>
           </ul>
         </div>
         <div>
-          <h2>For leaders</h2>
+          <h2>Help</h2>
           <ul class="footer-links">
-            <li><a href="add.html">Add a game</a></li>
-            <li><a href="about.html#how-it-works">How it works</a></li>
-            <li><a href="about.html#safety">Safety notes</a></li>
-            <li><a href="index.html">Print a game sheet</a></li>
+            <li><a href="about">About this site</a></li>
+            <li><a href="about#how-it-works">How it works</a></li>
+            <li><a href="about#safety">Safety notes</a></li>
+            <li><a href="about#credits">Credits</a></li>
           </ul>
         </div>
         <div>
-          <h2>About</h2>
+          <h2>Development</h2>
           <ul class="footer-links">
-            <li><a href="about.html">About this site</a></li>
-            <li><a href="about.html#variants">Variants explained</a></li>
-            <li><a href="about.html#themes">Themed twists</a></li>
-            <li><a href="about.html#credits">Credits</a></li>
+            <li><a href="https://github.com/Jackson-Ryan/scouts" target="_blank" rel="noopener">GitHub repository</a></li>
+            <li><a href="https://github.com/Jackson-Ryan/scouts#readme" target="_blank" rel="noopener">README</a></li>
+            <li><a href="https://github.com/Jackson-Ryan/scouts/releases" target="_blank" rel="noopener">Releases</a></li>
+            <li><a href="https://github.com/Jackson-Ryan/scouts/issues/new" target="_blank" rel="noopener">Report an issue</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-legal">
-        <p>An independent, volunteer-made games library for Scout leaders. Not an official Scouts publication, and not endorsed by The Scout Association. Always follow your own risk assessment and safeguarding procedures. Scouts and the Scouts fleur-de-lis are trademarks of The Scout Association.</p>
+        <p>An independent, volunteer-made toolbox for Scout leaders. Not an official Scouts publication, and not endorsed by The Scout Association. Always follow your own risk assessment and safeguarding procedures. Scouts and the Scouts fleur-de-lis are trademarks of The Scout Association.</p>
         <span class="footer-badge">Independent resource</span>
       </div>
     </div>

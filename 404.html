@@ -120,6 +120,31 @@
 
     .header-link:hover { color: var(--purple); }
 
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .header-nav .header-link { white-space: nowrap; }
+
+    .header-cta {
+      background: var(--purple);
+      border-color: var(--purple);
+      color: #fff;
+      min-height: 38px;
+      padding: 7px 16px;
+      font-size: 0.85rem;
+    }
+
+    .header-cta:hover { background: var(--purple-dark); border-color: var(--purple-dark); }
+
+    @media (max-width: 820px) {
+      .header-nav { display: none; }
+      .header-cta { display: none; }
+    }
+
     .hero {
       position: relative;
       overflow: hidden;
@@ -374,11 +399,17 @@
 
   <header class="site-header">
     <div class="container site-header__inner">
-      <a class="brand" href="index.html" aria-label="Scout Tools home">
+      <a class="brand" href="./" aria-label="Scout Tools home">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.5 21 14 3M20.5 21 10 3M15.5 21 12 15l-3.5 6M2 21h20"/></svg>
         Scout Tools
       </a>
-      <a class="header-link" href="games/">Games finder</a>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a class="header-link" href="./">All tools</a>
+        <a class="header-link" href="games/">Games finder</a>
+        <a class="header-link" href="kit-list/">Kit list generator</a>
+        <a class="header-link" href="games/about">About</a>
+      </nav>
+      <a class="btn btn--small header-cta" href="https://github.com/Jackson-Ryan/scouts/issues/new?title=%5BTool%20idea%5D%20" target="_blank" rel="noopener">Suggest a tool</a>
     </div>
   </header>
 
@@ -399,7 +430,7 @@
         <h2>Let’s get you back on track</h2>
         <p>Head back to the toolbox, or jump straight into the Games Finder for your next meeting.</p>
         <div class="actions">
-          <a class="btn btn--primary" href="index.html">Go to the toolbox</a>
+          <a class="btn btn--primary" href="./">Go to the toolbox</a>
           <a class="btn btn--ghost" href="games/">Open the Games Finder</a>
         </div>
       </div>
