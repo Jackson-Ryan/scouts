@@ -6,7 +6,6 @@ import {
   MESS_LEVELS,
   NOISE_LEVELS,
   PLAYER_OPTIONS,
-  SECTIONS,
   SETTINGS,
   THEMES,
   TIME_BANDS,
@@ -179,7 +178,7 @@ function populateVariants() {
     .filter((game) => !game.variantOf)
     .sort((a, b) => a.title.localeCompare(b.title, "en-GB"));
   elements.variant.innerHTML = `
-    <option value="">No — this is a new original game</option>
+    <option value="">No, this is a standalone game</option>
     ${baseGames
       .map((game) => `<option value="${escapeHTML(game.id)}">${escapeHTML(game.title)}</option>`)
       .join("")}
@@ -292,11 +291,12 @@ function updatePreview() {
   elements.summaryCount.textContent = String(elements.summary.value.length);
 
   const checks = [
-    { label: "A clear title", done: game.title.length >= 3 },
-    { label: "A short summary", done: game.summary.length >= 10 },
+    { label: "Title", done: game.title.length >= 3 },
+    { label: "Short summary", done: game.summary.length >= 10 },
     { label: "At least one section", done: game.sections.length > 0 },
     { label: "Equipment list", done: game.equipment.length > 0 },
-    { label: "Rules and set-up", done: game.steps.length > 0 && game.setup.length > 0 },
+    { label: "Set-up and rules", done: game.steps.length > 0 && game.setup.length > 0 },
+    { label: "How to win", done: game.winning.length >= 10 },
     { label: "Safety notes", done: game.safety.length >= 10 },
   ];
   elements.checklist.innerHTML = checks
@@ -363,7 +363,7 @@ function validate() {
   if (game.sections.length === 0) errors.push(["sections", "Choose at least one section."]);
   if (!game.duration) errors.push(["duration", "Add a guide duration, such as “10–20 mins”."]);
   if (!game.timeBand) errors.push(["timeBand", "Choose a time filter."]);
-  if (game.equipment.length === 0) errors.push(["equipment", "List at least one piece of equipment, or write “None”."]);
+  if (game.equipment.length === 0) errors.push(["equipment", "List at least one item, or write “None”."]);
   if (game.setup.length === 0) errors.push(["setup", "Add at least one set-up step."]);
   if (game.steps.length === 0) errors.push(["steps", "Add at least one rule or step."]);
   if (game.winning.length < 10) errors.push(["winning", "Explain how the game ends or how a team wins."]);
@@ -375,11 +375,11 @@ function validate() {
     return hasAny && !complete;
   });
   if (incompleteTwists.length > 0) {
-    errors.push(["twists", "Complete the theme, title and description for each twist, or remove the empty row."]);
+    errors.push(["twists", "Fill in the theme, title and description for each twist, or remove the incomplete row."]);
   }
 
   if (game.variantOf && !baseGames.some((base) => base.id === game.variantOf)) {
-    errors.push(["variantOf", "Choose a valid base game, or leave this as a new original game."]);
+    errors.push(["variantOf", "Choose a valid base game, or leave this as a standalone game."]);
   }
 
   if (errors.length > 0) {
@@ -407,19 +407,19 @@ function renderExport(game) {
   const json = JSON.stringify(game, null, 2);
   elements.jsonPreview.textContent = json;
   elements.exportPanel.hidden = false;
-  elements.formStatus.textContent = "Game prepared. Check the preview, then download the JSON or send it to us.";
+  elements.formStatus.textContent = "Game prepared. Check the preview, then submit it on GitHub or download the JSON.";
   elements.formStatus.classList.add("is-success");
   elements.formStatus.hidden = false;
 
   if (issueUrl) {
     elements.submitIssue.href = issueUrl;
     elements.submitIssue.hidden = false;
-    elements.issueHint.textContent = "This opens a GitHub issue with your game JSON already filled in. A leader will review it before it goes live.";
+    elements.issueHint.textContent = "Opens a GitHub issue with your game JSON filled in, ready to submit.";
   } else {
     elements.submitIssue.hidden = true;
     elements.issueHint.textContent = detectRepo()
-      ? "The GitHub issue link could not be built. Copy the issue text instead."
-      : "The GitHub issue button appears once this site is published and the repository is configured. For now, download the JSON or copy the issue text.";
+      ? "Could not build the GitHub issue link. Copy the issue text instead."
+      : "The GitHub button appears once a repository is configured. For now, download the JSON or copy the issue text.";
   }
 
   elements.exportPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
@@ -463,10 +463,6 @@ function bindEvents() {
     }
     lastAutoDuration = next;
     updatePreview();
-  });
-
-  elements.summary.addEventListener("input", () => {
-    elements.summaryCount.textContent = String(elements.summary.value.length);
   });
 
   elements.colorPicker.addEventListener("click", (event) => {
@@ -563,10 +559,10 @@ async function init() {
     populateVariants();
     if (elements.submit) elements.submit.disabled = false;
     updatePreview();
-  } catch (error) {
+  } catch {
     libraryLoaded = false;
     if (elements.submit) elements.submit.disabled = false;
-    elements.formStatus.textContent = "The existing games could not be loaded, so variant links and the full-library download may be unavailable. You can still fill in the form and download this game on its own.";
+    elements.formStatus.textContent = "The existing games did not load, so variant links and the full-library download are unavailable. You can still download your game on its own.";
     elements.formStatus.classList.remove("is-success");
     elements.formStatus.hidden = false;
     elements.downloadLibrary.disabled = true;

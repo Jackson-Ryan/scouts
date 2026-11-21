@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Page not found — Scouts Games Library</title>
-  <meta name="description" content="That page could not be found. Browse the Scouts Games Library instead.">
+  <title>Page not found — Scout Tools</title>
+  <meta name="description" content="That page could not be found. Browse the Games Finder or return to Scout Tools.">
+  <meta name="robots" content="noindex">
   <meta name="theme-color" content="#590fa9">
   <meta name="theme-color" content="#00132b" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
@@ -12,7 +13,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;1,6..12,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/base.css">
-  <link rel="stylesheet" href="assets/css/misc.css">
   <script type="module" src="assets/js/about.js"></script>
 </head>
 <body>
@@ -20,9 +20,6 @@
 
   <header class="site-header">
     <div class="container site-header__inner">
-      <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
-        <svg class="icon icon--lg" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#menu"></use></svg>
-      </button>
       <a class="brand" href="../" aria-label="Scout Tools home">
         <picture>
           <source srcset="../assets/img/scouts-white.svg" media="(prefers-color-scheme: dark)">
@@ -31,13 +28,17 @@
       </a>
       <nav class="site-nav" id="site-nav" aria-label="Main navigation">
         <a class="site-nav__link" href="../">All tools</a>
-        <a class="site-nav__link is-active" href="./" aria-current="page">Games finder</a>
+        <a class="site-nav__link" href="./">Games finder</a>
         <a class="site-nav__link" href="../kit-list/">Kit list generator</a>
-        <a class="site-nav__link" href="about">About</a>
+        <a class="site-nav__link" href="../about">About</a>
+        <a class="site-nav__link site-nav__link--mobile" href="https://github.com/Jackson-Ryan/scouts/issues/new?title=%5BTool%20idea%5D%20" target="_blank" rel="noopener">Suggest a tool</a>
       </nav>
       <div class="header-actions">
         <a class="btn btn--primary btn--small header-cta" href="https://github.com/Jackson-Ryan/scouts/issues/new?title=%5BTool%20idea%5D%20" target="_blank" rel="noopener">Suggest a tool</a>
       </div>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <svg class="icon icon--lg" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#menu"></use></svg>
+      </button>
     </div>
   </header>
 
@@ -45,21 +46,21 @@
     <section class="hero hero--compact">
       <div class="container hero__inner">
         <p class="hero__eyebrow">404</p>
-        <h1>That page has wandered off</h1>
-        <p class="hero__lead">The link may be out of date, or the page may have moved. The games library is still right here.</p>
+        <h1>Page not found</h1>
+        <p class="hero__lead">That link may be out of date, or the page may have moved.</p>
       </div>
     </section>
 
     <div class="container">
       <div class="empty mt-6">
         <div class="empty__icon">
-          <svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#compass"></use></svg>
+          <svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#compass"></use></svg>
         </div>
-        <h2>Let’s get you back to the games</h2>
-        <p>Search by section, time or theme, or add a game for the next meeting.</p>
+        <h2>Back to the Games Finder</h2>
+        <p>Browse games by section, length or theme, or head back to all tools.</p>
         <div class="empty__actions">
           <a class="btn btn--primary" href="./">Browse all games</a>
-          <a class="btn btn--ghost" href="add">Add a game</a>
+          <a class="btn btn--ghost" href="../">All tools</a>
         </div>
       </div>
     </div>
@@ -70,7 +71,7 @@
       <div class="footer-top">
         <div class="footer-brand">
           <img src="../assets/img/scouts-stack-white.svg" alt="Scouts" width="110" height="80">
-          <p>A growing toolbox of practical, free tools for Beaver, Cub and Scout leaders. Made for busy meeting nights.</p>
+          <p>Free, practical tools for Beaver, Cub and Scout leaders.</p>
         </div>
         <div>
           <h2>Toolbox</h2>
@@ -82,7 +83,7 @@
           </ul>
         </div>
         <div>
-          <h2>Sections</h2>
+          <h2>Games by section</h2>
           <ul class="footer-links">
             <li><a href="./?section=beavers">Beavers</a></li>
             <li><a href="./?section=cubs">Cubs</a></li>
@@ -93,16 +94,16 @@
         <div>
           <h2>Help</h2>
           <ul class="footer-links">
-            <li><a href="about">About this site</a></li>
-            <li><a href="about#how-it-works">How it works</a></li>
-            <li><a href="about#safety">Safety notes</a></li>
-            <li><a href="about#credits">Credits</a></li>
+            <li><a href="../about">About Scout Tools</a></li>
+            <li><a href="../about#how-it-works">How it works</a></li>
+            <li><a href="../about#safety">Safety notes</a></li>
+            <li><a href="../about#credits">Credits</a></li>
           </ul>
         </div>
         <div>
-          <h2>Development</h2>
+          <h2>GitHub</h2>
           <ul class="footer-links">
-            <li><a href="https://github.com/Jackson-Ryan/scouts" target="_blank" rel="noopener">GitHub repository</a></li>
+            <li><a href="https://github.com/Jackson-Ryan/scouts" target="_blank" rel="noopener">Repository</a></li>
             <li><a href="https://github.com/Jackson-Ryan/scouts#readme" target="_blank" rel="noopener">README</a></li>
             <li><a href="https://github.com/Jackson-Ryan/scouts/releases" target="_blank" rel="noopener">Releases</a></li>
             <li><a href="https://github.com/Jackson-Ryan/scouts/issues/new" target="_blank" rel="noopener">Report an issue</a></li>

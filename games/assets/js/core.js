@@ -1,4 +1,7 @@
+import { escapeHTML, initMenu } from "../../../assets/js/site.js";
 import { SITE_CONFIG } from "./config.js";
+
+export { escapeHTML };
 
 export const SECTIONS = [
   { value: "beavers", label: "Beavers", ages: "6–8" },
@@ -138,19 +141,6 @@ export function getGame(games, id) {
   return games.find((game) => game.id === id) || null;
 }
 
-export function escapeHTML(value) {
-  return String(value ?? "").replace(/[&<>"']/g, (character) => {
-    const map = {
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;",
-    };
-    return map[character];
-  });
-}
-
 export function slugify(value) {
   return String(value ?? "")
     .toLowerCase()
@@ -173,7 +163,7 @@ export function uniqueId(title, existingIds) {
 
 export function iconMarkup(name, className = "icon") {
   const safeName = String(name || "gamepad").replace(/[^a-z0-9-]/g, "");
-  return `<svg class="${className}" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#${safeName}"></use></svg>`;
+  return `<svg class="${className}" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#${safeName}"></use></svg>`;
 }
 
 export function sectionLabel(section) {
@@ -273,7 +263,7 @@ export function coverMarkup(game, options = {}) {
     <div class="game-cover cover--${color}" aria-hidden="true">
       <div class="game-cover__stripes"></div>
       ${badgeMarkup}
-      <svg class="game-cover__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#${icon}"></use></svg>
+      <svg class="game-cover__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#${icon}"></use></svg>
       <span class="game-cover__kicker">${escapeHTML(game.gameType || "Game")}</span>
     </div>
   `;
@@ -322,7 +312,7 @@ export function previewCardMarkup(game) {
   const preview = {
     ...game,
     title: game.title || "Your game title",
-    summary: game.summary || "A short, friendly summary of the game will appear here.",
+    summary: game.summary || "A short summary of the game will appear here.",
     duration: game.duration || "10–20 mins",
     gameType: game.gameType || "Game",
   };
@@ -405,19 +395,10 @@ export function toggleSaved(id) {
   try {
     localStorage.setItem(SITE_CONFIG.savedKey, JSON.stringify(next));
   } catch {
-    // Storage can be unavailable in private modes; the UI still works for this page.
+    // Storage can be unavailable in private browsing; the UI still works for this session.
   }
   document.dispatchEvent(new CustomEvent("savedchange", { detail: { id, saved: next.includes(id), ids: next } }));
-  updateSavedCount();
   return next.includes(id);
-}
-
-export function updateSavedCount() {
-  const count = savedIds().length;
-  document.querySelectorAll("[data-saved-count]").forEach((element) => {
-    element.textContent = String(count);
-    element.dataset.count = String(count);
-  });
 }
 
 export function showToast(message, duration = 2600) {
@@ -454,7 +435,7 @@ export async function copyText(text, successMessage = "Copied to clipboard.") {
     showToast(successMessage);
     return true;
   } catch {
-    showToast("Could not copy automatically. Please select the text and copy it.");
+    showToast("Could not copy automatically. Select the text and copy it instead.");
     return false;
   }
 }
@@ -472,35 +453,7 @@ export async function sharePage({ title, text, url = window.location.href }) {
 }
 
 export function initHeader() {
-  const toggle = document.querySelector("#menu-toggle");
-  const nav = document.querySelector("#site-nav");
-  if (toggle && nav) {
-    const close = () => {
-      nav.classList.remove("is-open");
-      toggle.setAttribute("aria-expanded", "false");
-      toggle.setAttribute("aria-label", "Open menu");
-    };
-    toggle.addEventListener("click", () => {
-      const open = !nav.classList.contains("is-open");
-      nav.classList.toggle("is-open", open);
-      toggle.setAttribute("aria-expanded", String(open));
-      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-    });
-    nav.addEventListener("click", (event) => {
-      if (event.target.closest("a")) close();
-    });
-    document.addEventListener("click", (event) => {
-      if (!nav.contains(event.target) && !toggle.contains(event.target)) close();
-    });
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") close();
-    });
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 900) close();
-    });
-  }
-  updateSavedCount();
-  document.addEventListener("savedchange", updateSavedCount);
+  initMenu();
 }
 
 export function initAccordions(root = document) {
@@ -540,7 +493,7 @@ export function buildIssueBody(game) {
     `**Sections:** ${sectionLabels(game.sections)}`,
     `**Time:** ${game.duration}`,
     "",
-    "Please check the game and add it to the library. The JSON between the markers is used by the submission workflow.",
+    "The JSON between the markers is used by the submission workflow.",
     "",
     "<!-- GAME_SUBMISSION_START -->",
     "```json",
@@ -563,12 +516,22 @@ export function buildIssueUrl(game) {
   return `https://github.com/${repo}/issues/new?${params.toString()}`;
 }
 
+export function buildEditIssueUrl(game) {
+  const repo = detectRepo();
+  if (!repo) return "";
+  const params = new URLSearchParams({
+    title: `[Edit] ${game.title}`,
+    body: `Game: ${game.title} (\`${game.id}\`)\n\nWhat should be updated?\n`,
+  });
+  return `https://github.com/${repo}/issues/new?${params.toString()}`;
+}
+
 export function buildIssueMarkdown(game) {
   const repo = detectRepo();
   return [
     `# New game: ${game.title}`,
     "",
-    repo ? `Submit this as an issue at https://github.com/${repo}/issues/new` : "Create an issue in your games repository and paste this in.",
+    repo ? `Submit this as an issue at https://github.com/${repo}/issues/new` : "Create an issue in your repository and paste this in.",
     "",
     buildIssueBody(game),
   ].join("\n");

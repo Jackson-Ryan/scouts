@@ -391,7 +391,7 @@
 .export-panel code {
   padding: 2px 5px;
   border-radius: 4px;
-  background: rgba(31, 81, 41, 0.1);
+  background: var(--code-inline-bg);
   font-size: 0.8em;
 }
 

@@ -54,20 +54,11 @@
   min-width: 0;
 }
 
-.game-lede {
-  max-width: 760px;
-  margin: 0 0 18px;
-  color: var(--grey-900);
-  font-size: 1.18rem;
-  font-weight: 600;
-  line-height: 1.55;
-}
-
 .meta-row {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 34px;
+  margin-bottom: 30px;
 }
 
 .pill {
@@ -223,9 +214,9 @@
   color: var(--warning-icon);
 }
 
-.safety-box h2 {
+.safety-box h3 {
   margin: 0 0 6px;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 900;
 }
 
@@ -492,22 +483,6 @@
   line-height: 1.55;
 }
 
-.twist-card__same {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  margin-top: auto;
-  padding-top: 8px;
-  color: var(--success-icon);
-  font-size: 0.72rem;
-  font-weight: 800;
-}
-
-.twist-card__same .icon {
-  width: 13px;
-  height: 13px;
-}
-
 /* Variants ---------------------------------------------------------------- */
 
 .variants {
@@ -594,10 +569,6 @@
     padding-top: 34px;
   }
 
-  .game-lede {
-    font-size: 1.05rem;
-  }
-
   .content-block {
     margin-top: 30px;
   }
@@ -643,5 +614,119 @@
   .winning-box,
   .safety-box {
     padding: 16px;
+  }
+}
+
+/* Print ------------------------------------------------------------------- */
+
+@media print {
+  @page {
+    margin: 16mm;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 11pt;
+  }
+
+  .site-header,
+  .site-footer,
+  .breadcrumb,
+  .hero__actions,
+  .game-sidebar .sidebar-cta,
+  .related,
+  .twists,
+  .variants,
+  .toast,
+  .skip-link,
+  .no-print {
+    display: none !important;
+  }
+
+  .hero--game {
+    background: #fff !important;
+    color: #000 !important;
+    border-bottom: 2px solid #000;
+  }
+
+  .hero--game::before,
+  .hero--game::after {
+    display: none;
+  }
+
+  .hero--game .hero__inner {
+    display: block;
+    padding: 0 0 12px;
+  }
+
+  .hero__eyebrow {
+    border-color: #999;
+    color: #000;
+  }
+
+  .hero--game h1 {
+    color: #000;
+    font-size: 24pt;
+  }
+
+  .hero--game .hero__lead {
+    color: #333;
+  }
+
+  .game-emblem {
+    display: none;
+  }
+
+  .game-intro {
+    display: block;
+    padding-top: 18px;
+  }
+
+  .game-sidebar {
+    position: static;
+    display: block;
+    margin-top: 20px;
+  }
+
+  .glance,
+  .tip-panel {
+    break-inside: avoid;
+    border: 1px solid #ccc;
+    background: #fff;
+  }
+
+  .content-block {
+    margin-top: 18px;
+    break-inside: avoid;
+  }
+
+  .steps li::before {
+    background: #000;
+  }
+
+  .safety-box,
+  .winning-box {
+    border: 1px solid #999;
+    background: #fff;
+  }
+
+  .accordion__panel {
+    display: block !important;
+    padding-bottom: 8px;
+  }
+
+  .accordion__button .icon {
+    display: none;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+
+  .container {
+    width: 100%;
+    max-width: none;
   }
 }

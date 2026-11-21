@@ -1,3 +1,3 @@
-import { initHeader } from "./core.js";
+import { initMenu } from "../../../assets/js/site.js";
 
-initHeader();
+initMenu();

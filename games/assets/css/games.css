@@ -113,24 +113,6 @@
   padding-block: 46px 0;
 }
 
-.section-head {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px;
-  margin-bottom: 22px;
-}
-
-.section-head h2 {
-  margin-bottom: 0;
-  font-size: clamp(1.45rem, 2.4vw, 1.8rem);
-  font-weight: 900;
-}
-
-.section-head .eyebrow {
-  margin-bottom: 6px;
-}
-
 .featured__grid,
 .game-grid {
   display: grid;
@@ -512,53 +494,6 @@
   font-size: 0.93rem;
 }
 
-/* Empty state ------------------------------------------------------------- */
-
-.empty {
-  display: grid;
-  place-items: center;
-  gap: 12px;
-  padding: 56px 24px;
-  border: 2px dashed var(--border-accent-soft);
-  border-radius: var(--radius-lg);
-  background: var(--surface-accent-soft);
-  text-align: center;
-}
-
-.empty__icon {
-  display: grid;
-  place-items: center;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: var(--surface);
-  color: var(--accent-text);
-}
-
-.empty__icon .icon {
-  width: 30px;
-  height: 30px;
-}
-
-.empty h2 {
-  margin: 0;
-  font-size: 1.35rem;
-}
-
-.empty p {
-  max-width: 480px;
-  margin: 0;
-  color: var(--grey-600);
-}
-
-.empty__actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 6px;
-}
-
 /* Pagination -------------------------------------------------------------- */
 
 .pagination {
@@ -639,7 +574,7 @@
   top: -80px;
   width: 280px;
   height: 280px;
-  background: url("../img/fleur.svg") center / contain no-repeat;
+  background: url("../../../assets/img/fleur.svg") center / contain no-repeat;
   opacity: 0.12;
   pointer-events: none;
 }

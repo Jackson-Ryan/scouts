@@ -121,7 +121,7 @@ async function testIndex() {
   const savedId = saveButton.dataset.saveId;
   saveButton.click();
   await waitFor(() => dom.window.localStorage.getItem("scouts-games-saved-v1")?.includes(savedId), "saved game is stored");
-  assert(doc.querySelector(".header-saved__count").textContent === "1", "header saved count updates");
+  await waitFor(() => doc.querySelector('[data-chip="saved"] .chip__count').textContent === "1", "saved chip count updates");
 
   doc.querySelector('[data-chip="all"]').click();
   await waitFor(() => doc.querySelectorAll("#game-grid .game-card").length === 12, "all games chip resets filters");
@@ -131,7 +131,6 @@ async function testIndex() {
   await waitFor(() => doc.querySelector("#game-grid .game-card").dataset.gameId !== firstId, "pagination changes page");
   assert(doc.querySelectorAll("#game-grid .game-card").length === 12, "page two has twelve games");
 
-  await waitFor(() => doc.querySelector('[data-chip="saved"] .chip__count').textContent === "1", "saved chip count updates");
   doc.querySelector('[data-chip="saved"]').click();
   await waitFor(() => doc.querySelectorAll("#game-grid .game-card").length === 1, "saved filter shows one game");
 

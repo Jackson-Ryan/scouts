@@ -1,5 +1,6 @@
+import { SITE_CONFIG } from "./config.js";
 import {
-  THEMES,
+  buildEditIssueUrl,
   escapeHTML,
   formatDate,
   gameCardMarkup,
@@ -23,9 +24,6 @@ const COLOR_VALUES = ["purple", "teal", "blue", "green", "orange", "pink", "navy
 const ENERGY_LABELS = { low: "Low energy", medium: "Medium energy", high: "High energy" };
 const NOISE_LABELS = { quiet: "Quiet", medium: "Medium noise", loud: "Loud" };
 const MESS_LABELS = { none: "No mess", low: "A little mess", medium: "Messy" };
-const ENERGY_ICONS = { low: "moon", medium: "zap", high: "zap" };
-const NOISE_ICONS = { quiet: "speaker-off", medium: "volume", loud: "megaphone" };
-const MESS_ICONS = { none: "check", low: "bucket", medium: "splat" };
 const ADAPT_ICONS = ["lightbulb", "zap", "accessibility"];
 
 const elements = {
@@ -37,7 +35,6 @@ const elements = {
   emblem: document.querySelector("#game-emblem"),
   emblemIcon: document.querySelector("#game-emblem-icon use"),
   breadcrumb: document.querySelector("#breadcrumb-title"),
-  shareTop: document.querySelector("#share-game-top"),
   save: document.querySelector("#save-game"),
   saveLabel: document.querySelector("#save-game-label"),
   share: document.querySelector("#share-game"),
@@ -76,12 +73,8 @@ function renderMetaPills(game) {
     metaPill("users", sectionLabels(game.sections)),
     metaPill("clock", game.duration || "Flexible"),
     metaPill("map-pin", settingLabel(game.setting)),
-    metaPill("gamepad", game.gameType || "Game"),
   ];
   if (game.players) pills.push(metaPill("users", game.players));
-  if (game.energy) pills.push(metaPill(ENERGY_ICONS[game.energy] || "zap", label(game.energy, ENERGY_LABELS)));
-  if (game.noise) pills.push(metaPill(NOISE_ICONS[game.noise] || "volume", label(game.noise, NOISE_LABELS)));
-  if (game.mess) pills.push(metaPill(MESS_ICONS[game.mess] || "bucket", label(game.mess, MESS_LABELS)));
   (game.themes || []).forEach((theme) => {
     pills.push(metaPill(themeIcon(theme), themeLabel(theme), " pill--theme"));
   });
@@ -97,7 +90,7 @@ function renderEquipment(game) {
     ? equipment.map((item) => `<li>${iconMarkup("check", "icon")}${escapeHTML(item)}</li>`).join("")
     : `<li>${iconMarkup("check", "icon")}No special equipment needed</li>`;
   return `
-    <section class="content-block" aria-labelledby="equipment-title">
+    <section class="content-block mt-0" aria-labelledby="equipment-title">
       <h2 id="equipment-title">What you need</h2>
       <ul class="equipment-list">${items}</ul>
     </section>
@@ -137,7 +130,7 @@ function renderSafety(game) {
       <div class="safety-box">
         ${iconMarkup("alert-triangle", "icon")}
         <div>
-          <h2>Before you play</h2>
+          <h3>Before you play</h3>
           <p>${escapeHTML(game.safety)}</p>
         </div>
       </div>
@@ -169,7 +162,6 @@ function renderAdaptations(game) {
 
 function renderMain(game) {
   return [
-    `<p class="game-lede">${escapeHTML(game.summary)}</p>`,
     renderMetaPills(game),
     renderEquipment(game),
     renderSteps("Set up", game.setup, "setup-title", true),
@@ -193,7 +185,7 @@ function glanceRow(icon, term, value) {
 }
 
 function renderGlance(game) {
-  const themes = (game.themes || []).map(themeLabel).join(", ") || "No theme tags";
+  const themes = (game.themes || []).map(themeLabel).join(", ") || "None";
   const extras = [label(game.energy, ENERGY_LABELS, ""), label(game.noise, NOISE_LABELS, ""), label(game.mess, MESS_LABELS, "")]
     .filter(Boolean)
     .join(" · ");
@@ -203,7 +195,7 @@ function renderGlance(game) {
     glanceRow("map-pin", "Setting", settingLabel(game.setting)),
     glanceRow("gamepad", "Game type", game.gameType || "Game"),
     glanceRow("users", "Players", game.players || "Flexible"),
-    extras ? glanceRow("zap", "Energy, noise and mess", extras) : "",
+    extras ? glanceRow("zap", "Energy, noise & mess", extras) : "",
     glanceRow("sparkles", "Themes", themes),
     game.added ? glanceRow("calendar", "Added", formatDate(game.added)) : "",
     game.author ? glanceRow("heart", "Contributed by", game.author) : "",
@@ -236,7 +228,7 @@ function renderTips(game) {
           )
           .join("")}
       </div>`
-    : `<p class="field__hint">No leader tips yet. If you have one, add it through the game form.</p>`;
+    : `<p class="field__hint">No leader tips yet.</p>`;
 
   return `
     <div class="tip-panel">
@@ -247,14 +239,19 @@ function renderTips(game) {
 }
 
 function renderSidebar(game) {
+  const editUrl = buildEditIssueUrl(game);
+  const editButton = editUrl
+    ? `<a class="btn btn--ghost-light mt-2" href="${escapeHTML(editUrl)}" target="_blank" rel="noopener">Suggest an edit</a>`
+    : "";
+
   return `
     ${renderGlance(game)}
     ${renderTips(game)}
     <div class="sidebar-cta">
-      <h2>Make it yours</h2>
-      <p>Change the rules? Add a variant. Keeping the rules and changing the story? Add a themed twist instead.</p>
+      <h2>Know another version?</h2>
+      <p>If your section plays this with different rules, add it as a variant. Spotted a mistake or a safety tweak? Let us know on GitHub.</p>
       <a class="btn btn--light" href="add?variantOf=${encodeURIComponent(game.id)}">Add a variant</a>
-      <a class="btn btn--ghost-light mt-2" href="add">Suggest an edit</a>
+      ${editButton}
     </div>
   `;
 }
@@ -275,7 +272,6 @@ function renderTwists(game) {
         </span>
         <h3>${escapeHTML(twist.title || "Themed twist")}</h3>
         <p>${escapeHTML(twist.text || "")}</p>
-        <span class="twist-card__same">${iconMarkup("check", "icon")}Same rules as ${escapeHTML(game.title)}</span>
       </article>`,
     )
     .join("");
@@ -304,7 +300,7 @@ function renderVariants(game, games) {
     elements.variantsTitle.textContent = `Variants of ${family.base.title}`;
     elements.variantFamily.innerHTML = `
       ${iconMarkup("layers", "icon")}
-      <span class="variant-family__label">Part of the ${escapeHTML(family.base.title)} family.</span>
+      <span class="variant-family__label">Based on ${escapeHTML(family.base.title)}.</span>
       <span>This version changes the rules. <a href="game?id=${encodeURIComponent(family.base.id)}">View the original game</a>.</span>
     `;
   } else {
@@ -312,7 +308,7 @@ function renderVariants(game, games) {
     elements.variantFamily.innerHTML = `
       ${iconMarkup("layers", "icon")}
       <span class="variant-family__label">${unique.length} ${unique.length === 1 ? "variant" : "variants"} with different rules.</span>
-      <span>Each one is a separate game with its own equipment and safety notes.</span>
+      <span>Each one has its own equipment, rules and safety notes.</span>
     `;
   }
 
@@ -345,6 +341,12 @@ function bindActions() {
     toggleSaved(currentGame.id);
   });
 
+  document.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-save-id]");
+    if (!button) return;
+    toggleSaved(button.dataset.saveId);
+  });
+
   document.addEventListener("savedchange", () => {
     updateSaveState();
     document.querySelectorAll("[data-save-id]").forEach((button) => {
@@ -357,16 +359,15 @@ function bindActions() {
     });
   });
 
-  const share = () => {
+  elements.share.addEventListener("click", () => {
     if (!currentGame) return;
     sharePage({
-      title: `${currentGame.title} — Scouts Games Library`,
+      title: `${currentGame.title} — ${SITE_CONFIG.toolName} — ${SITE_CONFIG.siteName}`,
       text: currentGame.summary,
       url: window.location.href,
     });
-  };
-  elements.share.addEventListener("click", share);
-  elements.shareTop.addEventListener("click", share);
+  });
+
   elements.print.addEventListener("click", () => window.print());
 }
 
@@ -375,7 +376,7 @@ function renderGame(game, games) {
   const color = safeColor(game.art?.color);
   const icon = String(game.art?.icon || "gamepad").replace(/[^a-z0-9-]/g, "");
 
-  document.title = `${game.title} — Scouts Games Library`;
+  document.title = `${game.title} — ${SITE_CONFIG.toolName} — ${SITE_CONFIG.siteName}`;
   const description = document.querySelector('meta[name="description"]');
   if (description) description.setAttribute("content", game.summary || "");
 
@@ -384,7 +385,7 @@ function renderGame(game, games) {
   elements.summary.textContent = game.summary || "";
   elements.breadcrumb.textContent = game.title;
   elements.emblem.className = `game-emblem cover--${color}`;
-  elements.emblemIcon.setAttribute("href", `assets/img/icons.svg#${icon}`);
+  elements.emblemIcon.setAttribute("href", `../assets/img/icons.svg#${icon}`);
 
   elements.main.innerHTML = renderMain(game);
   elements.sidebar.innerHTML = renderSidebar(game);
@@ -396,13 +397,12 @@ function renderGame(game, games) {
   elements.loading.hidden = true;
   elements.content.hidden = false;
   elements.actions.hidden = false;
-  elements.shareTop.hidden = false;
   updateSaveState();
 }
 
 function renderNotFound() {
-  document.title = "Game not found — Scouts Games Library";
-  elements.eyebrow.textContent = "Oops";
+  document.title = `Game not found — ${SITE_CONFIG.toolName} — ${SITE_CONFIG.siteName}`;
+  elements.eyebrow.textContent = "Not found";
   elements.title.textContent = "Game not found";
   elements.summary.textContent = "That game is not in the library. It may have been renamed, or the link may be out of date.";
   elements.breadcrumb.textContent = "Not found";
@@ -430,7 +430,7 @@ async function init() {
     }
     renderGame(game, games);
   } catch (error) {
-    elements.loading.innerHTML = `<div class="error-panel"><strong>We could not load this game.</strong><span>${escapeHTML(error.message)}</span><span>Try refreshing the page. If you are viewing the files locally, run a small web server rather than opening the HTML file directly.</span></div>`;
+    elements.loading.innerHTML = `<div class="error-panel"><strong>Could not load this game.</strong><span>${escapeHTML(error.message)}</span><span>Try refreshing the page. If you are viewing the files locally, start a web server (<code>npm run serve</code>) instead of opening the HTML file directly.</span></div>`;
   }
 }
 

@@ -1,7 +1,8 @@
-/* Site configuration. Update githubRepo after you create your GitHub repository. */
+/* Site configuration. Update githubRepo if you fork this repository. */
 export const SITE_CONFIG = {
-  siteName: "Scouts Games Library",
-  // Example: "your-username/scout-games". Leave blank to auto-detect on GitHub Pages.
+  siteName: "Scout Tools",
+  toolName: "Games Finder",
+  // Example: "your-username/scouts". Leave blank to auto-detect on GitHub Pages.
   githubRepo: "Jackson-Ryan/scouts",
   issueLabel: "game-submission",
   savedKey: "scouts-games-saved-v1",

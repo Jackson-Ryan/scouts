@@ -8,7 +8,7 @@ body:
       value: |
         Thanks for sharing a game!
 
-        The easiest way is to use the **Add a game** form on the site. It produces the JSON for you and fills in this issue automatically. If you are creating the issue by hand, paste the JSON between the markers below — keep the markers exactly as they are.
+        The easiest way is to use the **Add a game** form on the site, which builds the JSON and fills in this issue for you. If you are submitting by hand, paste the JSON between the markers below and leave the markers unchanged.
   - type: textarea
     id: json
     attributes:

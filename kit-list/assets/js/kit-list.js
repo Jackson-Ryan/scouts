@@ -2,6 +2,7 @@
  * Kit List Generator — interactive wizard.
  */
 
+import { escapeHTML, initMenu } from "../../../assets/js/site.js";
 import {
   SECTIONS,
   TRIP_TYPES,
@@ -24,6 +25,7 @@ import {
   nightsBetween,
   normaliseAnswers,
   plainTextList,
+  tripMetaLine,
   tripTitle,
 } from "./kit-data.js";
 import { downloadCsv } from "./kit-csv.js";
@@ -98,19 +100,8 @@ function saveState() {
    Small helpers
    -------------------------------------------------------------------------- */
 
-function escapeHTML(value) {
-  return String(value == null ? "" : value).replace(/[&<>"']/g, (character) => {
-    const map = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
-    return map[character];
-  });
-}
-
 function icon(name, className = "icon") {
   return `<svg class="${className}" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#${escapeHTML(name)}"></use></svg>`;
-}
-
-function checked(name, value) {
-  return state[name] === value ? " checked" : "";
 }
 
 function arrayChecked(name, value) {
@@ -169,6 +160,10 @@ function chipOptions(items, name, selected, type = "checkbox") {
 }
 
 function renderStaticOptions() {
+  document.querySelectorAll("[data-activity-count]").forEach((element) => {
+    element.textContent = String(ACTIVITIES.length);
+  });
+
   document.querySelector("#section-options").innerHTML = optionCards(SECTIONS, "section", state.section, { showAges: true });
   document.querySelector("#trip-options").innerHTML = optionCards(TRIP_TYPES, "tripType", state.tripType);
   document.querySelector("#accommodation-options").innerHTML = optionCards(ACCOMMODATIONS, "accommodation", state.accommodation);
@@ -253,13 +248,13 @@ function renderNights() {
 
   const hint = document.querySelector("#nights-hint");
   if (trip.id === "day") {
-    hint.textContent = "No overnight stay — sleeping kit will not be added.";
+    hint.textContent = "No overnight stay, so sleeping kit will not be added.";
   } else if (trip.id === "sleepover") {
-    hint.textContent = "An indoor sleepover is one night.";
+    hint.textContent = "An indoor sleepover is 1 night.";
   } else if (trip.id === "weekend") {
-    hint.textContent = `${section.name} weekend camps default to ${section.defaultNights === 1 ? "one night" : "two nights"}. Change it if you need to.`;
+    hint.textContent = `${section.name} weekend camps default to ${section.defaultNights === 1 ? "1 night" : "2 nights"}.`;
   } else {
-    hint.textContent = "Set the number of nights so the quantities are right.";
+    hint.textContent = "Set the number of nights so clothing quantities match.";
   }
 }
 
@@ -271,7 +266,7 @@ function renderActivityOptions() {
     container.innerHTML = `
       <div class="info-panel">
         ${icon("info")}
-        <p>No activities selected yet. The list will still cover the essentials — add activities for specialist kit.</p>
+        <p>No activities selected. The list will still cover standard kit; pick activities above if you need specialist items.</p>
       </div>
     `;
     return;
@@ -332,7 +327,7 @@ function renderActivityOptions() {
             <h4 id="activity-${activity.id}-title">${escapeHTML(activity.name)}</h4>
             <button class="text-button" type="button" data-remove-activity="${activity.id}">Remove</button>
           </div>
-          <div class="question-grid">${questions}</div>
+          ${questions ? `<div class="question-grid">${questions}</div>` : `<p class="field__hint">Specialist kit for ${escapeHTML(activity.name.toLowerCase())} will be included automatically.</p>`}
         </section>
       `;
     })
@@ -350,7 +345,7 @@ function updateConditionalVisibility() {
   if (day) {
     noteText.textContent = "This is a day trip, so sleeping kit will not be added. Weather and activity choices still shape the list.";
   } else if (sleepover) {
-    noteText.textContent = "This is an indoor sleepover, so we will pack for a hall or hut rather than a tent.";
+    noteText.textContent = "This is an indoor sleepover, so tent gear will not be added.";
   }
   const tentSelected = ["tent", "mixed"].includes(state.accommodation) && !day && !sleepover;
   document.querySelector("#own-tents-fieldset").hidden = !tentSelected;
@@ -362,7 +357,7 @@ function updateConditionalVisibility() {
 function updateActivityCount() {
   const count = state.activities.length;
   const label = document.querySelector("#activity-count");
-  label.textContent = count === 0 ? "No activities selected yet" : `${count} activit${count === 1 ? "y" : "ies"} selected`;
+  label.textContent = count === 0 ? "No activities selected" : `${count} activit${count === 1 ? "y" : "ies"} selected`;
 }
 
 /* --------------------------------------------------------------------------
@@ -417,17 +412,24 @@ function renderReview() {
     </div>
   `;
 
+  const tripBits = [section.name, trip.name];
+  if (state.startDate || state.endDate) tripBits.push(formatTripDates(state));
+  if (state.nights > 0) {
+    tripBits.push(`${state.nights} night${state.nights === 1 ? "" : "s"}`);
+    tripBits.push(accommodation.name);
+  }
+
   container.innerHTML = [
-    row("Section & trip", `${escapeHTML(section.name)} • ${escapeHTML(trip.name)} • ${escapeHTML(formatTripDates(state))}${state.nights ? ` • ${state.nights} night${state.nights === 1 ? "" : "s"}` : ""}${state.nights ? ` • ${escapeHTML(accommodation.name)}` : ""}`, 1),
+    row("Section & trip", tripBits.map(escapeHTML).join(" • "), 1),
     row("Activities", activityNames.length ? activityNames.map(escapeHTML).join(" • ") : "No specialist activities selected.", 3),
     row("Season & weather", `${escapeHTML(SEASONS.find((item) => item.id === state.season)?.name || "Mixed")} • ${weatherNames.length ? weatherNames.map(escapeHTML).join(", ") : "Mixed"} • Showers: ${escapeHTML(state.showers === "unknown" ? "not sure" : state.showers)}`, 2),
     row("Food & uniform", `${escapeHTML(meal)}${uniformNames.length ? ` • ${uniformNames.map(escapeHTML).join(", ")}` : " • no uniform needed"}`, 4),
     row("Personal & extras", `${personalNames.length ? personalNames.map(escapeHTML).join(", ") : "No extra needs"}${extraNames.length ? ` • ${extraNames.map(escapeHTML).join(", ")}` : ""}`, 4),
-    row("Leader & group kit", state.includeLeaderKit ? "Included — first aid, consent forms, fire kit, water and more." : "Not included.", 4),
+    row("Leader & group kit", state.includeLeaderKit ? "Included (first aid, consent forms, fire kit, water and group gear)." : "Not included.", 4),
     state.customItems.trim()
       ? row("Your additions", state.customItems.split(/\r?\n|;/).map((line) => escapeHTML(line.trim())).filter(Boolean).join(" • "), 4)
       : "",
-    `<div class="review-total"><span>Estimated personal and group items</span><strong>${list.totalItems}</strong></div>`,
+    `<div class="review-total"><span>Total items on the list</span><strong>${list.totalItems}</strong></div>`,
   ].join("");
 }
 
@@ -484,15 +486,6 @@ function showFormError(message) {
    -------------------------------------------------------------------------- */
 
 function renderKitDocument(list) {
-  const meta = [
-    ["Section", list.section],
-    ["Trip", list.tripType],
-    ["Dates", list.dates],
-    ["Nights", list.nights === 0 ? "Day trip" : String(list.nights)],
-    ["Sleeping", list.nights === 0 ? "Not staying over" : list.accommodation],
-    ["Weather", list.weather.length ? list.weather.join(", ") : "Mixed"],
-  ];
-
   const sections = list.groups
     .map(
       (group) => `
@@ -522,11 +515,6 @@ function renderKitDocument(list) {
     )
     .join("");
 
-  const metaLine = [list.section, list.dates, list.nights ? `${list.nights} night${list.nights === 1 ? "" : "s"}` : "Day trip", list.nights ? list.accommodation : "", list.venue, list.groupName]
-    .filter(Boolean)
-    .map(escapeHTML)
-    .join("  •  ");
-
   const generated = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" }).format(list.generatedAt);
 
   return `
@@ -534,12 +522,12 @@ function renderKitDocument(list) {
       <img class="kit-doc__logo" src="../assets/img/scouts-white.svg" alt="Scouts" width="176" height="50">
       <p class="kit-doc__eyebrow">Kit list</p>
       <h2 class="kit-doc__title">${escapeHTML(list.title)}</h2>
-      <p class="kit-doc__meta">${metaLine}</p>
+      <p class="kit-doc__meta">${escapeHTML(tripMetaLine(list))}</p>
     </header>
     <dl class="kit-doc__summary">
-      ${meta.map(([label, value]) => `<div><dt>${escapeHTML(label)}</dt><dd>${escapeHTML(value)}</dd></div>`).join("")}
+      ${list.meta.map(({ label, value }) => `<div><dt>${escapeHTML(label)}</dt><dd>${escapeHTML(value)}</dd></div>`).join("")}
     </dl>
-    <p class="kit-doc__note">Work through this list with a grown-up and tick each item as it goes into your bag. It is a starting point — always check your event kit list and risk assessment too.</p>
+    <p class="kit-doc__note">Work through this list with a grown-up and tick each item as it goes into your bag. Check your event instructions and risk assessment too.</p>
     ${list.activities.length ? `<p class="kit-doc__activities"><strong>Activities:</strong> ${list.activities.map(escapeHTML).join(", ")}</p>` : ""}
     <div class="kit-doc__body">${sections}</div>
     <div class="kit-doc__tips">
@@ -555,8 +543,11 @@ function renderKitDocument(list) {
 
 function showResults(list) {
   currentList = list;
+  const activityText = list.activities.length
+    ? `${list.activities.length} ${list.activities.length === 1 ? "activity" : "activities"}`
+    : "standard kit";
   document.querySelector("#kit-doc").innerHTML = renderKitDocument(list);
-  document.querySelector("#results-subtitle").textContent = `${list.totalItems} items across ${list.groups.length} sections, tailored for ${list.section} and ${list.activities.length ? list.activities.length + " activities" : "the essentials"}.`;
+  document.querySelector("#results-subtitle").textContent = `${list.totalItems} items across ${list.groups.length} sections for ${list.section} (${activityText}).`;
   results.hidden = false;
   builder.hidden = true;
   setStatus("Your PDF and CSV are ready to download.", "success");
@@ -619,8 +610,6 @@ function updateFromControl(target) {
       const dateNights = nightsBetween(state.startDate, state.endDate);
       if (dateNights != null) state.nights = clampNights(dateNights, state.tripType, state.section);
     }
-  } else if (["tripName", "groupName", "venue", "customItems", "season", "ownTents", "showers", "laundry", "accommodation", "meals"].includes(name)) {
-    state[name] = target.value;
   } else {
     state[name] = target.value;
   }
@@ -646,16 +635,17 @@ function handleChange(event) {
    -------------------------------------------------------------------------- */
 
 async function handlePdfDownload() {
-  if (!currentList) currentList = buildKitList(state);
+  const list = buildKitList(state);
+  currentList = list;
   pdfButton.disabled = true;
   pdfButton.classList.add("is-busy");
   setStatus("Building your PDF…");
   try {
-    await downloadKitListPdf(buildKitList(state));
+    await downloadKitListPdf(list);
     setStatus("PDF downloaded. Check your downloads folder.", "success");
   } catch (error) {
     console.error(error);
-    setStatus(`${error.message || "The PDF could not be built."} You can use Print and choose “Save as PDF” instead.`, "error");
+    setStatus(`${error.message || "The PDF could not be built."} Use Print and choose “Save as PDF” instead.`, "error");
   } finally {
     pdfButton.disabled = false;
     pdfButton.classList.remove("is-busy");
@@ -665,7 +655,7 @@ async function handlePdfDownload() {
 function handleCsvDownload() {
   const list = buildKitList(state);
   downloadCsv(list);
-  setStatus("CSV downloaded — open it in a spreadsheet or copy the item column into OSM.", "success");
+  setStatus("CSV downloaded. Open it in a spreadsheet or copy the item column into OSM.", "success");
 }
 
 async function copyList() {
@@ -693,12 +683,12 @@ async function copyList() {
       button.innerHTML = original;
     }, 2200);
   } catch {
-    setStatus("Copying did not work in this browser. Try the PDF or print instead.", "error");
+    setStatus("Could not copy automatically in this browser. Try downloading the PDF or printing instead.", "error");
   }
 }
 
 function resetAll() {
-  if (!window.confirm("Start a new kit list? Your current answers will be cleared from this device.")) return;
+  if (!window.confirm("Start a new kit list? Your current answers will be cleared.")) return;
   state = normaliseAnswers(defaultAnswers());
   currentList = null;
   try {
@@ -815,57 +805,6 @@ document.querySelector("#edit-answers").addEventListener("click", () => {
   builder.hidden = false;
   goToStep(5);
 });
-
-document.querySelectorAll('a[href="#builder"]').forEach((link) => {
-  link.addEventListener("click", (event) => {
-    if (!builder.hidden) return;
-    event.preventDefault();
-    results.hidden = true;
-    builder.hidden = false;
-    goToStep(1);
-  });
-});
-
-document.querySelector("#accommodation-options").addEventListener("change", () => {
-  updateConditionalVisibility();
-});
-
-/* Mobile menu -------------------------------------------------------------- */
-
-function initMenu() {
-  const toggle = document.querySelector("#menu-toggle");
-  const nav = document.querySelector("#site-nav");
-  if (!toggle || !nav) return;
-
-  const close = () => {
-    nav.classList.remove("is-open");
-    toggle.setAttribute("aria-expanded", "false");
-    toggle.setAttribute("aria-label", "Open menu");
-  };
-
-  toggle.addEventListener("click", () => {
-    const open = !nav.classList.contains("is-open");
-    nav.classList.toggle("is-open", open);
-    toggle.setAttribute("aria-expanded", String(open));
-    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-  });
-
-  nav.addEventListener("click", (event) => {
-    if (event.target.closest("a")) close();
-  });
-
-  document.addEventListener("click", (event) => {
-    if (!nav.contains(event.target) && !toggle.contains(event.target)) close();
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") close();
-  });
-
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 900) close();
-  });
-}
 
 /* --------------------------------------------------------------------------
    Boot

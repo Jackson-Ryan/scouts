@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Add a game — Scouts Games Library</title>
-  <meta name="description" content="Add a game to the Scouts Games Library. Use the guided form to build a complete game entry, preview it live, download JSON or submit it on GitHub.">
+  <title>Add a game — Games Finder — Scout Tools</title>
+  <meta name="description" content="Write up a game for the Scout Tools Games Finder, preview the card live, download the JSON or submit it on GitHub.">
   <meta name="theme-color" content="#590fa9">
   <meta name="theme-color" content="#00132b" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
@@ -14,7 +14,9 @@
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="assets/css/games.css">
   <link rel="stylesheet" href="assets/css/forms.css">
-  <link rel="stylesheet" href="assets/css/misc.css">
+  <meta property="og:title" content="Add a game — Games Finder — Scout Tools">
+  <meta property="og:description" content="Submit a new game to the Scout Tools Games Finder.">
+  <meta property="og:type" content="website">
   <script type="module" src="assets/js/add.js"></script>
 </head>
 <body>
@@ -22,9 +24,6 @@
 
   <header class="site-header">
     <div class="container site-header__inner">
-      <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
-        <svg class="icon icon--lg" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#menu"></use></svg>
-      </button>
       <a class="brand" href="../" aria-label="Scout Tools home">
         <picture>
           <source srcset="../assets/img/scouts-white.svg" media="(prefers-color-scheme: dark)">
@@ -33,22 +32,38 @@
       </a>
       <nav class="site-nav" id="site-nav" aria-label="Main navigation">
         <a class="site-nav__link" href="../">All tools</a>
-        <a class="site-nav__link is-active" href="./" aria-current="page">Games finder</a>
+        <a class="site-nav__link is-active" href="./">Games finder</a>
         <a class="site-nav__link" href="../kit-list/">Kit list generator</a>
-        <a class="site-nav__link" href="about">About</a>
+        <a class="site-nav__link" href="../about">About</a>
+        <a class="site-nav__link site-nav__link--mobile" href="https://github.com/Jackson-Ryan/scouts/issues/new?title=%5BTool%20idea%5D%20" target="_blank" rel="noopener">Suggest a tool</a>
       </nav>
       <div class="header-actions">
         <a class="btn btn--primary btn--small header-cta" href="https://github.com/Jackson-Ryan/scouts/issues/new?title=%5BTool%20idea%5D%20" target="_blank" rel="noopener">Suggest a tool</a>
       </div>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <svg class="icon icon--lg" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#menu"></use></svg>
+      </button>
     </div>
   </header>
+
+  <div class="breadcrumb">
+    <div class="container breadcrumb__inner">
+      <nav aria-label="Breadcrumb">
+        <ol>
+          <li><a href="../">All tools</a></li>
+          <li><a href="./">Games finder</a></li>
+          <li aria-current="page">Add a game</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
 
   <main id="main">
     <section class="hero hero--compact">
       <div class="container hero__inner">
-        <p class="hero__eyebrow">Share a game</p>
-        <h1>Add a game to the library</h1>
-        <p class="hero__lead">Fill in what you know, watch the card preview update, then download the JSON or send it to us on GitHub. Nothing is published until a leader checks it.</p>
+        <p class="hero__eyebrow">Games Finder</p>
+        <h1>Add a game</h1>
+        <p class="hero__lead">Fill in the details below to preview the card, then download the JSON or open a GitHub issue to submit it.</p>
       </div>
     </section>
 
@@ -60,20 +75,20 @@
               <span class="form-step" aria-hidden="true">1</span>
               <div>
                 <h2 id="basics-title">The basics</h2>
-                <p>What is it called, who is it for, and how long does it take?</p>
+                <p>What it is called, who it suits, and roughly how long it takes.</p>
               </div>
             </div>
             <div class="form-grid">
               <div class="field field--full">
                 <label for="game-title">Game title</label>
                 <input class="input" id="game-title" name="title" type="text" maxlength="80" placeholder="e.g. French v English" autocomplete="off" required>
-                <p class="field__hint">Keep it short and easy to spot in a search.</p>
+                <p class="field__hint">Keep it short and easy to recognise.</p>
                 <p class="field__error" data-error-for="title"></p>
               </div>
               <div class="field field--full">
                 <label for="game-summary">Short summary</label>
-                <textarea class="textarea" id="game-summary" name="summary" maxlength="180" placeholder="A high-energy team dodgeball game with a rope divide, foam balls and a rescue mission." required></textarea>
-                <p class="field__hint"><span id="summary-count">0</span>/180 characters. This appears on the game card.</p>
+                <textarea class="textarea" id="game-summary" name="summary" maxlength="180" placeholder="A team dodgeball game with a rope divide, foam balls and a rescue chair." required></textarea>
+                <p class="field__hint"><span id="summary-count">0</span>/180 characters. Shown on the game card.</p>
                 <p class="field__error" data-error-for="summary"></p>
               </div>
               <fieldset class="field field--full">
@@ -106,13 +121,13 @@
               <div class="field">
                 <label for="game-timeband">Time filter</label>
                 <select class="select" id="game-timeband" name="timeBand"></select>
-                <p class="field__hint">Which filter should find it?</p>
+                <p class="field__hint">Controls which length filter shows it.</p>
                 <p class="field__error" data-error-for="timeBand"></p>
               </div>
               <div class="field">
-                <label for="game-minutes">Typical minutes</label>
+                <label for="game-minutes">Typical minutes <span class="field__optional">optional</span></label>
                 <input class="input" id="game-minutes" name="minutes" type="number" min="1" max="180" placeholder="e.g. 15">
-                <p class="field__hint">Optional. Used for sorting.</p>
+                <p class="field__hint">Used when sorting by shortest first.</p>
               </div>
               <div class="field">
                 <label for="game-energy">Energy</label>
@@ -134,20 +149,20 @@
               <span class="form-step" aria-hidden="true">2</span>
               <div>
                 <h2 id="play-title">How to play</h2>
-                <p>Write it so another leader could run the game without asking you questions.</p>
+                <p>Write the steps clearly enough that another leader can run the game straight from the page.</p>
               </div>
             </div>
             <div class="form-grid">
               <div class="field field--full">
                 <label for="game-equipment">Equipment</label>
                 <textarea class="textarea" id="game-equipment" name="equipment" placeholder="One item per line, e.g.&#10;Long rope&#10;6–10 foam balls&#10;Bibs or team colours" required></textarea>
-                <p class="field__hint">One item per line. Use everyday items where you can.</p>
+                <p class="field__hint">One item per line. Write “None” if nothing is needed.</p>
                 <p class="field__error" data-error-for="equipment"></p>
               </div>
               <div class="field field--full">
                 <label for="game-setup">Set-up</label>
                 <textarea class="textarea" id="game-setup" name="setup" placeholder="One step per line, e.g.&#10;Lay the rope across the middle of the hall.&#10;Put one chair at the back of each team’s area." required></textarea>
-                <p class="field__hint">One step per line. Keep each line short.</p>
+                <p class="field__hint">One step per line.</p>
                 <p class="field__error" data-error-for="setup"></p>
               </div>
               <div class="field field--full">
@@ -158,7 +173,7 @@
               </div>
               <div class="field field--full">
                 <label for="game-winning">How to win</label>
-                <textarea class="textarea" id="game-winning" name="winning" placeholder="Explain how a winner is decided, or how a round ends." required></textarea>
+                <textarea class="textarea" id="game-winning" name="winning" placeholder="Explain how a winner is decided, or when a round ends." required></textarea>
                 <p class="field__error" data-error-for="winning"></p>
               </div>
             </div>
@@ -169,7 +184,7 @@
               <span class="form-step" aria-hidden="true">3</span>
               <div>
                 <h2 id="safety-title">Safety and inclusion</h2>
-                <p>Help leaders run the game safely and adapt it for everyone.</p>
+                <p>Practical notes to help leaders run the game safely and adapt it for their group.</p>
               </div>
             </div>
             <div class="form-grid">
@@ -180,21 +195,21 @@
                 <p class="field__error" data-error-for="safety"></p>
               </div>
               <div class="field field--full">
-                <label for="game-tips">Leader tips</label>
-                <textarea class="textarea" id="game-tips" name="tips" placeholder="One tip per line. You can add a heading with a colon, e.g.&#10;Keep it moving: Have a leader return stray balls.&#10;Team talk: Pause halfway for a 30-second huddle."></textarea>
-                <p class="field__hint">Optional. One tip per line; use “Heading: tip” for a titled tip.</p>
+                <label for="game-tips">Leader tips <span class="field__optional">optional</span></label>
+                <textarea class="textarea" id="game-tips" name="tips" placeholder="One tip per line, e.g.&#10;Keep it moving: Have a leader return stray balls.&#10;Team talk: Pause halfway for a 30-second huddle."></textarea>
+                <p class="field__hint">One tip per line. Use “Heading: tip” to give a tip a title.</p>
               </div>
               <div class="field field--full">
-                <label for="game-easier">Make it easier</label>
-                <textarea class="textarea" id="game-easier" name="easier" placeholder="Optional. How could a younger section or a less confident player join in?"></textarea>
+                <label for="game-easier">Make it easier <span class="field__optional">optional</span></label>
+                <textarea class="textarea" id="game-easier" name="easier" placeholder="How could a younger section or less confident player join in?"></textarea>
               </div>
               <div class="field field--full">
-                <label for="game-harder">Make it harder</label>
-                <textarea class="textarea" id="game-harder" name="harder" placeholder="Optional. How could you add a challenge for older or more experienced players?"></textarea>
+                <label for="game-harder">Make it harder <span class="field__optional">optional</span></label>
+                <textarea class="textarea" id="game-harder" name="harder" placeholder="How could you add a challenge for older or more experienced players?"></textarea>
               </div>
               <div class="field field--full">
-                <label for="game-include">Include everyone</label>
-                <textarea class="textarea" id="game-include" name="include" placeholder="Optional. Adaptations for different abilities, sensory needs or accessibility."></textarea>
+                <label for="game-include">Include everyone <span class="field__optional">optional</span></label>
+                <textarea class="textarea" id="game-include" name="include" placeholder="Adaptations for different mobility, sensory needs or accessibility."></textarea>
               </div>
             </div>
           </section>
@@ -204,21 +219,21 @@
               <span class="form-step" aria-hidden="true">4</span>
               <div>
                 <h2 id="themes-title">Themes and twists</h2>
-                <p>Optional ideas that keep the rules the same but change the story.</p>
+                <p>Tag themes the game suits, or add themed twists that keep the same rules.</p>
               </div>
             </div>
             <fieldset class="field">
               <legend>Theme tags</legend>
               <div class="choice-group" id="themes-group"></div>
-              <p class="field__hint">Pick any themes this game already suits.</p>
+              <p class="field__hint">Pick any themes this game already fits.</p>
             </fieldset>
             <div class="field mt-4">
-              <span class="field__label" id="twists-label">Themed twists</span>
-              <p class="field__hint">A twist is inspiration only. It does not change the rules, equipment or safety notes.</p>
+              <span class="field__label" id="twists-label">Themed twists <span class="field__optional">optional</span></span>
+              <p class="field__hint">A twist changes the story or props only, not the rules, equipment or safety notes.</p>
               <div class="repeat-list" id="twist-list" aria-labelledby="twists-label"></div>
               <div class="mt-4">
                 <button class="btn btn--ghost btn--small" id="add-twist" type="button">
-                  <svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#plus"></use></svg>
+                  <svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#plus"></use></svg>
                   Add a themed twist
                 </button>
               </div>
@@ -230,8 +245,8 @@
             <div class="form-section__head">
               <span class="form-step" aria-hidden="true">5</span>
               <div>
-                <h2 id="style-title">Style and links</h2>
-                <p>Choose the cover art, link a variant and add your name.</p>
+                <h2 id="style-title">Cover art and credit</h2>
+                <p>Pick a colour and icon for the card, link a base game if this is a variant, and add your credit.</p>
               </div>
             </div>
             <div class="field">
@@ -248,25 +263,25 @@
               <div class="field field--full">
                 <label for="game-variant">Is this a variant of another game?</label>
                 <select class="select" id="game-variant" name="variantOf">
-                  <option value="">No — this is a new original game</option>
+                  <option value="">No, this is a standalone game</option>
                 </select>
-                <p class="field__hint">Only choose a variant if the rules change. A themed twist is not a variant.</p>
+                <p class="field__hint">Only link a base game if the rules change. For a theme swap, use a themed twist above.</p>
                 <p class="field__error" data-error-for="variantOf"></p>
               </div>
               <div class="field field--full">
-                <label for="game-author">Your name or leader team</label>
+                <label for="game-author">Your name or group <span class="field__optional">optional</span></label>
                 <input class="input" id="game-author" name="author" type="text" maxlength="80" placeholder="e.g. 1st Riverside Cubs">
-                <p class="field__hint">Optional. This is shown as the game’s author.</p>
+                <p class="field__hint">Shown under “Contributed by” on the game page.</p>
               </div>
             </div>
           </section>
 
           <div class="form-actions">
-            <p class="form-note">Nothing is published automatically. You will get a single game JSON file, a full-library download and a GitHub issue option.</p>
+            <p class="form-note">Nothing is sent until you download the JSON or open the GitHub issue.</p>
             <div class="form-actions__buttons">
               <button class="btn btn--ghost" id="reset-form" type="reset">Clear form</button>
               <button class="btn btn--primary" id="prepare-game" type="submit" disabled>
-                <svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#check"></use></svg>
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#check"></use></svg>
                 Prepare game
               </button>
             </div>
@@ -278,44 +293,44 @@
           <div class="preview-card">
             <p class="eyebrow">Live preview</p>
             <div id="preview-card"></div>
-            <div class="preview-checklist" id="preview-checklist" aria-label="Submission checklist"></div>
+            <div class="preview-checklist" id="preview-checklist" aria-label="Required fields"></div>
           </div>
 
           <div class="preview-note">
             <h2>What happens next?</h2>
             <ol>
-              <li>Prepare the game and check the JSON preview.</li>
-              <li>Download the file, or send it to us with the GitHub issue button.</li>
-              <li>A leader checks the rules and safety notes before it goes live.</li>
+              <li>Click <strong>Prepare game</strong> to validate your entry and build the JSON.</li>
+              <li>Download the JSON file, or use the GitHub button to open a pre-filled issue.</li>
+              <li>GitHub validates the submission format and adds valid entries to the library.</li>
             </ol>
           </div>
 
           <div class="export-panel" id="export-panel" hidden>
             <h2>Your game is ready</h2>
-            <p>Download the single game file, or send the whole updated <code>games.json</code> if you are managing the site yourself.</p>
+            <p>Open a GitHub issue to submit it, or download the JSON if you are editing your own copy of <code>games.json</code>.</p>
             <div class="export-actions">
-              <button class="btn btn--primary btn--small" id="copy-json" type="button">
-                <svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#copy"></use></svg>
+              <a class="btn btn--primary btn--small" id="submit-issue" href="#" target="_blank" rel="noopener" hidden>
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#github"></use></svg>
+                Open GitHub issue
+              </a>
+              <button class="btn btn--ghost btn--small" id="copy-json" type="button">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#copy"></use></svg>
                 Copy JSON
               </button>
               <button class="btn btn--ghost btn--small" id="download-json" type="button">
-                <svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#download"></use></svg>
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#download"></use></svg>
                 Download game
               </button>
               <button class="btn btn--ghost btn--small" id="download-library" type="button">
-                <svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#download"></use></svg>
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#download"></use></svg>
                 Download games.json
               </button>
-              <a class="btn btn--primary btn--small" id="submit-issue" href="#" target="_blank" rel="noopener" hidden>
-                <svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#github"></use></svg>
-                Open GitHub issue
-              </a>
               <button class="btn btn--ghost btn--small" id="copy-issue" type="button">
-                <svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#copy"></use></svg>
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#copy"></use></svg>
                 Copy issue text
               </button>
             </div>
-            <p class="field__hint mt-4" id="issue-hint">The GitHub button appears once this site is published and the repository is configured.</p>
+            <p class="field__hint mt-4" id="issue-hint">The GitHub button appears once a repository is configured.</p>
             <details class="json-details">
               <summary>Preview JSON</summary>
               <pre id="json-preview"></pre>
@@ -328,19 +343,16 @@
     <template id="twist-row-template">
       <div class="repeat-row" data-twist-row>
         <div class="field">
-          <label class="sr-only">Twist theme</label>
-          <select class="select" data-twist-theme></select>
+          <select class="select" data-twist-theme aria-label="Twist theme"></select>
         </div>
         <div class="field">
-          <label class="sr-only">Twist title</label>
-          <input class="input" data-twist-title type="text" maxlength="70" placeholder="Twist title">
+          <input class="input" data-twist-title type="text" maxlength="70" placeholder="Twist title" aria-label="Twist title">
         </div>
         <div class="field">
-          <label class="sr-only">Twist description</label>
-          <textarea class="textarea" data-twist-text maxlength="240" placeholder="What changes? Keep the rules the same."></textarea>
+          <textarea class="textarea" data-twist-text maxlength="240" placeholder="What changes? Keep the rules the same." aria-label="Twist description"></textarea>
         </div>
         <button class="repeat-remove" data-remove-twist type="button" aria-label="Remove themed twist">
-          <svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#x"></use></svg>
+          <svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#x"></use></svg>
         </button>
       </div>
     </template>
@@ -351,7 +363,7 @@
       <div class="footer-top">
         <div class="footer-brand">
           <img src="../assets/img/scouts-stack-white.svg" alt="Scouts" width="110" height="80">
-          <p>A growing toolbox of practical, free tools for Beaver, Cub and Scout leaders. Made for busy meeting nights.</p>
+          <p>Free, practical tools for Beaver, Cub and Scout leaders.</p>
         </div>
         <div>
           <h2>Toolbox</h2>
@@ -363,7 +375,7 @@
           </ul>
         </div>
         <div>
-          <h2>Sections</h2>
+          <h2>Games by section</h2>
           <ul class="footer-links">
             <li><a href="./?section=beavers">Beavers</a></li>
             <li><a href="./?section=cubs">Cubs</a></li>
@@ -374,16 +386,16 @@
         <div>
           <h2>Help</h2>
           <ul class="footer-links">
-            <li><a href="about">About this site</a></li>
-            <li><a href="about#how-it-works">How it works</a></li>
-            <li><a href="about#safety">Safety notes</a></li>
-            <li><a href="about#credits">Credits</a></li>
+            <li><a href="../about">About Scout Tools</a></li>
+            <li><a href="../about#how-it-works">How it works</a></li>
+            <li><a href="../about#safety">Safety notes</a></li>
+            <li><a href="../about#credits">Credits</a></li>
           </ul>
         </div>
         <div>
-          <h2>Development</h2>
+          <h2>GitHub</h2>
           <ul class="footer-links">
-            <li><a href="https://github.com/Jackson-Ryan/scouts" target="_blank" rel="noopener">GitHub repository</a></li>
+            <li><a href="https://github.com/Jackson-Ryan/scouts" target="_blank" rel="noopener">Repository</a></li>
             <li><a href="https://github.com/Jackson-Ryan/scouts#readme" target="_blank" rel="noopener">README</a></li>
             <li><a href="https://github.com/Jackson-Ryan/scouts/releases" target="_blank" rel="noopener">Releases</a></li>
             <li><a href="https://github.com/Jackson-Ryan/scouts/issues/new" target="_blank" rel="noopener">Report an issue</a></li>

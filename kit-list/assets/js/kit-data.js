@@ -1,8 +1,8 @@
 /**
  * Kit List Generator — options and packing logic.
  *
- * This module is deliberately framework-free so it can be tested in Node and
- * reused by the browser wizard and the PDF builder.
+ * This module is framework-free so it can be tested in Node and reused by the
+ * browser wizard and PDF builder.
  */
 
 export const SECTIONS = [
@@ -11,7 +11,7 @@ export const SECTIONS = [
     name: "Beavers",
     ages: "6–8",
     icon: "users",
-    blurb: "Short adventures, big excitement. Beavers usually camp for one night.",
+    blurb: "Usually camp for 1 night.",
     defaultNights: 1,
   },
   {
@@ -19,7 +19,7 @@ export const SECTIONS = [
     name: "Cubs",
     ages: "8–10½",
     icon: "compass",
-    blurb: "Busy weekends and plenty of mud. Cubs usually camp for two nights.",
+    blurb: "Usually camp for 2 nights.",
     defaultNights: 2,
   },
   {
@@ -27,7 +27,7 @@ export const SECTIONS = [
     name: "Scouts",
     ages: "10½–14",
     icon: "tent",
-    blurb: "Bigger challenges and more independence. Scouts usually camp for two nights.",
+    blurb: "Usually camp for 2 nights or more.",
     defaultNights: 2,
   },
 ];
@@ -37,35 +37,35 @@ export const TRIP_TYPES = [
     id: "day",
     name: "Day trip",
     icon: "sun",
-    blurb: "A visit, hike or activity with no overnight stay.",
+    blurb: "A visit, hike or activity day with no overnight stay.",
     nights: 0,
   },
   {
     id: "sleepover",
     name: "Indoor sleepover",
     icon: "moon",
-    blurb: "One night indoors — a hall, hut or sleepover venue.",
+    blurb: "One night indoors in a hall, hut or venue.",
     nights: 1,
   },
   {
     id: "weekend",
     name: "Weekend camp",
     icon: "tent",
-    blurb: "The classic Friday-to-Sunday camp, or a Saturday night for Beavers.",
+    blurb: "Friday to Sunday, or Saturday night for Beavers.",
     nights: null,
   },
   {
     id: "long",
     name: "Longer camp",
     icon: "calendar",
-    blurb: "Three or more nights under canvas, with a bit more kit.",
+    blurb: "Three or more nights away, such as a summer camp.",
     nights: 4,
   },
   {
     id: "international",
     name: "International trip",
     icon: "globe",
-    blurb: "Travel abroad, with passports, insurance and travel extras.",
+    blurb: "Travel abroad, including passport and travel documents.",
     nights: 5,
   },
 ];
@@ -75,7 +75,7 @@ export const ACCOMMODATIONS = [
     id: "tent",
     name: "Tent",
     icon: "tent",
-    blurb: "Patrol tents, tunnel tents or a tent you bring yourself.",
+    blurb: "Group tents or tents brought from home.",
   },
   {
     id: "indoor",
@@ -87,19 +87,19 @@ export const ACCOMMODATIONS = [
     id: "hammock",
     name: "Hammock or bivvy",
     icon: "tree",
-    blurb: "Lightweight camping under a tarp or in a bivvy bag.",
+    blurb: "Sleeping under a tarp or in a bivvy bag.",
   },
   {
     id: "mixed",
     name: "A mix",
     icon: "layers",
-    blurb: "Some nights under canvas and some nights indoors.",
+    blurb: "Some nights under canvas and some indoors.",
   },
   {
     id: "hostel",
     name: "Hostel or lodge",
     icon: "bed",
-    blurb: "Beds, showers and a proper roof over your head.",
+    blurb: "Indoor beds and shared facilities.",
   },
 ];
 
@@ -125,20 +125,20 @@ export const ACTIVITIES = [
     id: "water",
     name: "Water activities",
     icon: "waves",
-    blurb: "Splash games, pool sessions, paddling or sailing.",
+    blurb: "Splash games, swimming, paddling or sailing.",
     questions: [
       {
         id: "types",
         type: "checkbox",
         label: "What kind of water activity?",
-        hint: "Choose everything you will be doing. We will only add kit for those sessions.",
+        hint: "Tick everything on the programme so only relevant kit is added.",
         options: [
-          { value: "splash", label: "Splash games", desc: "Water fight, paddling pool or field games" },
-          { value: "pool", label: "Swimming pool", desc: "A session at a pool or leisure centre" },
-          { value: "openwater", label: "Open water swim", desc: "Lake, river or sea dip" },
-          { value: "paddle", label: "Kayaking or canoeing", desc: "Paddling on flat or moving water" },
-          { value: "raft", label: "Raft building", desc: "Build it, launch it, hope it floats" },
-          { value: "sail", label: "Sailing or windsurfing", desc: "On the water with a sail" },
+          { value: "splash", label: "Splash games", desc: "Water games or field activities" },
+          { value: "pool", label: "Swimming pool", desc: "Session at a pool or leisure centre" },
+          { value: "openwater", label: "Open water swim", desc: "Lake, river or sea" },
+          { value: "paddle", label: "Kayaking or canoeing", desc: "Flat or moving water paddling" },
+          { value: "raft", label: "Raft building", desc: "Building and launching rafts" },
+          { value: "sail", label: "Sailing or windsurfing", desc: "Dinghy sailing or windsurfing" },
           { value: "sup", label: "Paddleboarding", desc: "Stand-up paddleboarding" },
         ],
       },
@@ -146,7 +146,7 @@ export const ACTIVITIES = [
         id: "sessions",
         type: "select",
         label: "How many water sessions?",
-        hint: "This sets how many swimsuits and towels to pack.",
+        hint: "Sets the number of swimsuits to pack.",
         options: [
           { value: "1", label: "1 session" },
           { value: "2", label: "2 sessions" },
@@ -158,7 +158,7 @@ export const ACTIVITIES = [
         id: "wetsuit",
         type: "radio",
         label: "Will wetsuits be provided?",
-        hint: "If not, each young person needs their own wetsuit that fits.",
+        hint: "If not, young people will need their own.",
         options: [
           { value: "provided", label: "Yes, by the centre" },
           { value: "own", label: "No, bring your own" },
@@ -168,8 +168,8 @@ export const ACTIVITIES = [
       {
         id: "showers",
         type: "radio",
-        label: "Will there be showers?",
-        hint: "Paddling usually means a shower and a full change of clothes afterwards.",
+        label: "Will there be showers afterwards?",
+        hint: "Paddling sessions usually need a shower and a full change of clothes.",
         options: [
           { value: "yes", label: "Yes" },
           { value: "no", label: "No" },
@@ -182,7 +182,7 @@ export const ACTIVITIES = [
     id: "hiking",
     name: "Hiking or hill walk",
     icon: "footprints",
-    blurb: "From a local wander to a full day on the hills.",
+    blurb: "Local walks, day hikes or expeditions.",
     questions: [
       {
         id: "length",
@@ -190,9 +190,9 @@ export const ACTIVITIES = [
         label: "How long is the walk?",
         options: [
           { value: "short", label: "Short walk", desc: "Under 2 hours, easy ground" },
-          { value: "half", label: "Half day", desc: "2–4 hours, some hills" },
-          { value: "full", label: "Full day", desc: "4+ hours, proper hill kit" },
-          { value: "expedition", label: "Expedition", desc: "A full day with a packed rucksack" },
+          { value: "half", label: "Half day", desc: "2–4 hours, mixed ground" },
+          { value: "full", label: "Full day", desc: "4+ hours, hill walking kit" },
+          { value: "expedition", label: "Expedition", desc: "Full day with a packed rucksack" },
         ],
       },
       {
@@ -212,7 +212,7 @@ export const ACTIVITIES = [
     id: "climbing",
     name: "Climbing or abseiling",
     icon: "mountain",
-    blurb: "Indoor wall, outdoor crag or a high ropes course.",
+    blurb: "Indoor wall, outdoor crag or high ropes.",
     questions: [
       {
         id: "where",
@@ -230,13 +230,13 @@ export const ACTIVITIES = [
     id: "archery",
     name: "Archery",
     icon: "target",
-    blurb: "A range session with bows and arrows.",
+    blurb: "Range session with bows and arrows.",
   },
   {
     id: "cycling",
     name: "Cycling",
     icon: "bike",
-    blurb: "Trail rides, cycle paths or a bike session.",
+    blurb: "Trail rides, cycle paths or bike sessions.",
     questions: [
       {
         id: "bikes",
@@ -264,7 +264,7 @@ export const ACTIVITIES = [
     id: "campfire",
     name: "Campfire",
     icon: "fire",
-    blurb: "Songs, stories and possibly something wrapped in foil.",
+    blurb: "Evening campfire, songs or fire cooking.",
     questions: [
       {
         id: "cooking",
@@ -281,67 +281,67 @@ export const ACTIVITIES = [
     id: "cooking",
     name: "Cooking",
     icon: "utensils",
-    blurb: "Patrol cooking, backwoods cooking or cooking your own tea.",
+    blurb: "Patrol cooking, backwoods cooking or camp stoves.",
   },
   {
     id: "sports",
     name: "Sports and wide games",
     icon: "football",
-    blurb: "Team games, tournaments and running about.",
+    blurb: "Team games, sports or outdoor wide games.",
   },
   {
     id: "crafts",
     name: "Crafts and badges",
     icon: "scissors",
-    blurb: "Making things, badge work and messy creativity.",
+    blurb: "Making activities, badge work and messy crafts.",
   },
   {
     id: "beach",
     name: "Beach or coast",
     icon: "anchor",
-    blurb: "Sand, sea, rock pools and ice cream.",
+    blurb: "Coastal visit, beach games or rock pooling.",
   },
   {
     id: "nighthike",
     name: "Night hike",
     icon: "moon",
-    blurb: "Torches, stars and a walk in the dark.",
+    blurb: "Evening or night walk with torches.",
   },
   {
     id: "adventure",
     name: "Adventure course",
     icon: "zap",
-    blurb: "High ropes, obstacle courses and team challenges.",
+    blurb: "High ropes, obstacle courses or team challenges.",
   },
   {
     id: "snow",
     name: "Snow and winter",
     icon: "snowflake",
-    blurb: "Sledging, snow games or a winter expedition.",
+    blurb: "Sledging, snow games or winter trips.",
   },
   {
     id: "service",
     name: "Service or conservation",
     icon: "tree",
-    blurb: "Litter picks, path clearing and looking after the outdoors.",
+    blurb: "Litter picks, path clearing or outdoor maintenance.",
   },
   {
     id: "performance",
     name: "Music or performance",
     icon: "music",
-    blurb: "Campfire songs, a show or a talent night.",
+    blurb: "Campfire songs, gang show or talent night.",
   },
   {
     id: "pioneering",
     name: "Pioneering",
     icon: "knot",
-    blurb: "Ropes, poles, lashes and something ambitious.",
+    blurb: "Ropes, poles and lashings.",
   },
   {
     id: "photography",
     name: "Photography or film",
     icon: "camera",
-    blurb: "Capturing the weekend for the group log.",
+    blurb: "Taking photos or filming during the trip.",
   },
 ];
 
@@ -350,7 +350,7 @@ export const MEALS = [
     id: "catered",
     name: "Catered by leaders",
     icon: "utensils",
-    blurb: "Food is provided and cooked for everyone.",
+    blurb: "Meals are prepared for everyone.",
   },
   {
     id: "patrol",
@@ -362,7 +362,7 @@ export const MEALS = [
     id: "own",
     name: "Bring your own food",
     icon: "cup",
-    blurb: "Each young person brings and prepares their own meals.",
+    blurb: "Everyone brings and prepares their own meals.",
   },
   {
     id: "mixed",
@@ -512,8 +512,9 @@ export function clampNights(value, tripType, sectionId) {
   const parsed = Number(value);
   const fallback = trip.nights == null ? section.defaultNights : trip.nights;
   const nights = Number.isFinite(parsed) && parsed >= 0 ? Math.round(parsed) : fallback;
+  const min = trip.id === "long" ? 2 : 1;
   const max = trip.id === "international" ? 21 : trip.id === "long" ? 14 : 4;
-  return Math.min(Math.max(nights, trip.id === "weekend" ? 1 : 2), max);
+  return Math.min(Math.max(nights, min), max);
 }
 
 export function nightsBetween(startDate, endDate) {
@@ -526,27 +527,37 @@ export function nightsBetween(startDate, endDate) {
 }
 
 export function formatTripDates(answers) {
-  const { startDate, endDate, nights } = answers;
+  const { startDate, endDate } = answers;
   if (!startDate && !endDate) {
-    if (!nights) return "Day trip";
-    return `${nights} night${nights === 1 ? "" : "s"}`;
+    return "To be confirmed";
   }
 
   const parse = (value) => new Date(`${value}T12:00:00`);
   const start = startDate ? parse(startDate) : null;
   const end = endDate ? parse(endDate) : null;
-  if (start && Number.isNaN(start.getTime())) return "Dates to be confirmed";
+  if (start && Number.isNaN(start.getTime())) return "To be confirmed";
 
   const day = (date) => new Intl.DateTimeFormat("en-GB", { weekday: "short", day: "numeric", month: "short" }).format(date);
   const longDay = (date) => new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" }).format(date);
 
   if (start && end && !Number.isNaN(end.getTime())) {
+    if (startDate === endDate) return longDay(start);
     return `${day(start)} – ${longDay(end)}`;
   }
   if (start) {
-    return startDate ? longDay(start) : "Dates to be confirmed";
+    return longDay(start);
   }
-  return end && !Number.isNaN(end.getTime()) ? `Ends ${longDay(end)}` : "Dates to be confirmed";
+  return end && !Number.isNaN(end.getTime()) ? `Ends ${longDay(end)}` : "To be confirmed";
+}
+
+export function tripMetaLine(list) {
+  const parts = [list.section];
+  if (list.hasDates) parts.push(list.dates);
+  parts.push(list.nights > 0 ? `${list.nights} night${list.nights === 1 ? "" : "s"}` : "Day trip");
+  if (list.nights > 0 && list.accommodation) parts.push(list.accommodation);
+  if (list.venue) parts.push(list.venue);
+  if (list.groupName) parts.push(list.groupName);
+  return parts.join("  •  ");
 }
 
 export function tripTitle(answers) {
@@ -583,7 +594,7 @@ export function buildKitList(input) {
   const nights = answers.nights;
   const overnight = nights > 0;
   const dayTrip = nights === 0;
-  const winter = answers.season === "winter" || hasAny(weather, ["freezing", "cold"]) || hasAny(weather, ["snow"]);
+  const winter = answers.season === "winter" || hasAny(weather, ["freezing", "cold"]) || answers.activities.includes("snow");
   const warm = answers.season === "summer" || hasAny(weather, ["sunny"]);
   const wet = hasAny(weather, ["wet", "muddy"]);
   const windy = hasAny(weather, ["windy"]);
@@ -678,23 +689,23 @@ export function buildKitList(input) {
     "day-bag",
     "Day bag or rucksack",
     hiking
-      ? "A proper rucksack for the walk: waterproofs, lunch, water and a spare layer."
+      ? "A sturdy rucksack for the walk with room for waterproofs, lunch, water and a spare layer."
       : "For waterproofs, lunch, water and spare layers.",
     1,
   );
   if (warm || dayTrip || hasWetWater) {
-    addGroupItem("sun-cream", "Sun cream (SPF 30 or higher)", "Pack it even when it is cloudy — reflections from water and snow burn too.", 1);
+    addGroupItem("sun-cream", "Sun cream (SPF 30 or higher)", "Pack it even if it is overcast, especially near water or snow.", 1);
   }
   if (warm || overnight || campfire) {
-    addGroupItem("insect-repellent", "Insect repellent", "Useful for evenings, long grass and campsites near water.", 1);
+    addGroupItem("insect-repellent", "Insect repellent", "Useful for evenings, long grass and sites near water.", 1);
   }
   addGroupItem("tissues", "Tissues or wet wipes");
   addGroupItem("hand-gel", "Hand sanitiser");
-  addGroupItem("contact-card", "Emergency contact card", "Leaders should carry a copy. Do not put personal details on display.", 1);
+  addGroupItem("contact-card", "Emergency contact card", "Leaders should carry a copy. Keep personal details inside the bag, not on the outside.", 1);
   if (international) {
     addGroupItem("passport", "Passport", "Check it is in date and keep it in a named, waterproof pouch.", 1);
-    addGroupItem("ehic", "EHIC or GHIC card", "Plus travel insurance details.", 1);
-    addGroupItem("insurance", "Travel insurance details", "A copy for leaders and one kept with your documents.", 1);
+    addGroupItem("ehic", "EHIC or GHIC card", "Keep with your travel insurance details.", 1);
+    addGroupItem("insurance", "Travel insurance details", "One copy for leaders and one kept with your documents.", 1);
     addGroupItem("currency", "Local currency", "A small amount, plus a contactless card if agreed with leaders.", 1);
     addGroupItem("adapter", "Travel plug adapter", "Check the plug type for your destination.", 1);
     addGroupItem("document-copies", "Copies of important documents", "Passport, insurance and emergency contacts, kept separately.", 1);
@@ -702,37 +713,37 @@ export function buildKitList(input) {
   }
 
   if (personal.has("medication")) {
-    addGroupItem("medication", "Prescribed medication", "Hand it to leaders in a labelled bag with clear dosage instructions.", 1);
+    addGroupItem("medication", "Prescribed medication", "Hand to leaders in a labelled bag with clear dosage instructions.", 1);
   }
   if (personal.has("inhaler")) {
-    addGroupItem("inhaler", "Inhaler", "Bring a spare if you have one, and tell leaders where it is.", 1);
+    addGroupItem("inhaler", "Inhaler", "Bring a spare if you have one, and tell leaders where it is kept.", 1);
   }
   if (personal.has("epipen")) {
-    addGroupItem("epipen", "Adrenaline auto-injector", "Give it to leaders with your allergy action plan.", 1);
+    addGroupItem("epipen", "Adrenaline auto-injector", "Hand to leaders with your allergy action plan.", 1);
   }
   if (personal.has("glasses")) {
-    addGroupItem("spare-glasses", "Spare glasses or contact lenses", "Plus solution and a case if you wear contacts.", 1);
+    addGroupItem("spare-glasses", "Spare glasses or contact lenses", "Include solution and a case if you wear lenses.", 1);
   }
   if (personal.has("period")) {
-    addGroupItem("period-products", "Period products", "Pack enough for the whole trip, plus a spare pair of pants.", 1);
+    addGroupItem("period-products", "Period products", "Pack enough for the whole trip, plus spare underwear.", 1);
   }
   if (personal.has("continence")) {
-    addGroupItem("continence", "Continence supplies", "Pack discreetly and tell a leader where they are kept.", 1);
+    addGroupItem("continence", "Continence supplies", "Pack discreetly and let a leader know where they are kept.", 1);
   }
   if (personal.has("sensory")) {
     addGroupItem("sensory", "Sensory or comfort item", "Something small that helps you feel settled.", 1);
   }
   if (personal.has("mobility")) {
-    addGroupItem("mobility", "Mobility or accessibility equipment", "Label it and check it is suitable for the terrain.", 1);
+    addGroupItem("mobility", "Mobility or accessibility equipment", "Label it and check it suits the venue and terrain.", 1);
   }
   if (personal.has("religious")) {
-    addGroupItem("religious-clothing", "Religious or cultural clothing", "Bring anything you need for prayer, diet or dress.", 1);
+    addGroupItem("religious-clothing", "Religious or cultural clothing", "Bring anything needed for prayer, diet or dress.", 1);
   }
   if (personal.has("travelsick")) {
-    addGroupItem("travel-sickness", "Travel sickness remedies", "Give them to leaders if they are prescribed.", 1);
+    addGroupItem("travel-sickness", "Travel sickness remedies", "Hand to leaders if prescribed.", 1);
   }
   if (personal.has("diet")) {
-    addGroupItem("diet-info", "Allergy and dietary information", "Give a copy to the catering team and keep one with the group's health forms.", 1);
+    addGroupItem("diet-info", "Allergy and dietary information", "Give a copy to the catering team and keep one with health forms.", 1);
   }
 
   // -------------------------------------------------------------------------
@@ -747,13 +758,13 @@ export function buildKitList(input) {
 
   addItem("clothing", { id: "underwear", name: "Underwear", qty: underwearQty });
   addItem("clothing", { id: "socks", name: "Socks", note: hiking ? "Include a spare pair for walking." : "", qty: socksQty });
-  addItem("clothing", { id: "tshirts", name: "T-shirts", note: hasWetWater ? "Include an extra dry layer for after water activities." : "", qty: tshirtQty });
-  addItem("clothing", { id: "trousers", name: "Trousers or shorts", note: "Quick-drying walking trousers are best for wet or muddy trips.", qty: trouserQty });
+  addItem("clothing", { id: "tshirts", name: "T-shirts", note: hasWetWater ? "Include an extra dry top for after water activities." : "", qty: tshirtQty });
+  addItem("clothing", { id: "trousers", name: "Trousers or shorts", note: "Quick-drying trousers are best if it is wet or muddy.", qty: trouserQty });
   if (winter || hasWetWater || hiking || windy) {
-    addItem("clothing", { id: "long-sleeve", name: "Long-sleeve base layer", note: "Synthetic or wool — not cotton — if you will be on the water.", qty: 1 });
+    addItem("clothing", { id: "long-sleeve", name: "Long-sleeve base layer", note: "Synthetic or wool rather than cotton, especially on the water.", qty: 1 });
   }
   addItem("clothing", { id: "fleece", name: "Fleece or warm jumper", qty: winter ? 2 : 1 });
-  addItem("clothing", { id: "waterproof-jacket", name: "Waterproof jacket", note: "A proper waterproof, not just a shower-resistant coat.", qty: 1 });
+  addItem("clothing", { id: "waterproof-jacket", name: "Waterproof jacket", note: "A proper waterproof, not just a showerproof coat.", qty: 1 });
   if (wet || hiking || hasWetWater || windy) {
     addItem("clothing", { id: "waterproof-trousers", name: "Waterproof trousers", qty: 1 });
   }
@@ -770,24 +781,24 @@ export function buildKitList(input) {
   }
   addItem("clothing", { id: "trainers", name: "Trainers or sturdy shoes", qty: 1 });
   if (overnight) {
-    addItem("clothing", { id: "camp-shoes", name: "Camp shoes or slippers", note: "Something easy to slip on inside the tent or hall.", qty: 1 });
+    addItem("clothing", { id: "camp-shoes", name: "Camp shoes or slippers", note: "Easy to slip on inside the tent or hall.", qty: 1 });
   }
   if (hiking) {
     addItem("clothing", {
       id: "walking-boots",
       name: "Walking boots",
-      note: "Worn in, waterproof and comfortable. Pack spare socks.",
+      note: "Worn in, waterproof and comfortable.",
       qty: 1,
     });
   }
   if (muddy || wet || (overnight && accommodation.id === "tent")) {
-    addItem("clothing", { id: "wellies", name: "Wellies or waterproof boots", note: "Useful for a muddy campsite.", qty: 1 });
+    addItem("clothing", { id: "wellies", name: "Wellies or waterproof boots", note: "Useful if the site gets muddy.", qty: 1 });
   }
   if (waterAny || beach) {
     const sessions = waterAny ? waterSessions : 1;
     addItem("clothing", { id: "swimwear", name: "Swimming costume or trunks", qty: sessions });
-    addItem("clothing", { id: "wet-bag", name: "Plastic bags for wet clothes", note: "Pack two: one for wet kit and one for muddy shoes.", qty: 2 });
-    addItem("clothing", { id: "change-clothes", name: "Full change of clothes", note: "For after water activities — keep it dry in a bag.", qty: 1 });
+    addItem("clothing", { id: "wet-bag", name: "Plastic bags for wet clothes", note: "One for wet kit and one for muddy footwear.", qty: 2 });
+    addItem("clothing", { id: "change-clothes", name: "Full change of clothes", note: "Keep it dry in a bag for after water activities.", qty: 1 });
   }
 
   // -------------------------------------------------------------------------
@@ -796,22 +807,22 @@ export function buildKitList(input) {
 
   if (overnight) {
     const bagRating = winter ? "A 4-season or extra-warm sleeping bag" : "A 2–3 season sleeping bag";
-    addItem("sleeping", { id: "sleeping-bag", name: "Sleeping bag", note: `${bagRating}. Check it fits and is clean before you pack.`, qty: 1 });
-    addItem("sleeping", { id: "sleeping-mat", name: "Sleeping mat", note: "A roll mat or self-inflating mat — it keeps you warm as well as comfortable.", qty: 1 });
+    addItem("sleeping", { id: "sleeping-bag", name: "Sleeping bag", note: `${bagRating}. Check it fits and is clean before packing.`, qty: 1 });
+    addItem("sleeping", { id: "sleeping-mat", name: "Sleeping mat", note: "Roll mat or self-inflating mat for warmth and comfort.", qty: 1 });
     addItem("sleeping", { id: "pillow", name: "Pillow or pillowcase", note: "A small travel pillow is fine.", qty: 1 });
     if (winter) {
       addItem("sleeping", { id: "extra-blanket", name: "Extra blanket", qty: 1 });
-      addItem("sleeping", { id: "hot-water-bottle", name: "Hot water bottle", note: "Fill it at bedtime, never inside the sleeping bag.", qty: 1 });
+      addItem("sleeping", { id: "hot-water-bottle", name: "Hot water bottle", note: "Fill at bedtime, never inside the sleeping bag.", qty: 1 });
     }
     if (["tent", "mixed"].includes(accommodation.id) && answers.ownTents !== "no") {
-      addItem("sleeping", { id: "tent", name: "Tent", note: "Check poles, pegs and instructions before you leave. Practise putting it up.", qty: 1 });
+      addItem("sleeping", { id: "tent", name: "Tent", note: "Check poles, pegs and instructions before leaving.", qty: 1 });
       addItem("sleeping", { id: "mallet", name: "Mallet", qty: 1 });
       addItem("sleeping", { id: "spare-pegs", name: "Spare tent pegs and guy lines", qty: 1 });
       addItem("sleeping", { id: "groundsheet", name: "Groundsheet or footprint", qty: 1 });
     }
     if (extras.has("chair")) addItem("sleeping", { id: "camping-chair", name: "Camping chair", qty: 1 });
     if (extras.has("earplugs")) addItem("sleeping", { id: "earplugs", name: "Earplugs or eye mask", qty: 1 });
-    addItem("sleeping", { id: "lantern", name: "Small lantern", note: "A torch is essential; a lantern makes the tent feel like home.", qty: 1 });
+    addItem("sleeping", { id: "lantern", name: "Torch or small lantern", note: "Include spare batteries.", qty: 1 });
   }
 
   // -------------------------------------------------------------------------
@@ -825,25 +836,35 @@ export function buildKitList(input) {
     addItem("toiletries", { id: "shampoo", name: "Shampoo and conditioner", qty: 1 });
     addItem("toiletries", { id: "shower-shoes", name: "Flip flops for the shower", qty: 1 });
   } else if (overnight) {
-    addItem("toiletries", { id: "dry-shampoo", name: "Dry shampoo or a flannel wash kit", note: "There may not be showers, so pack a way to freshen up.", qty: 1 });
+    addItem("toiletries", { id: "dry-shampoo", name: "Dry shampoo or flannel wash kit", note: "Helpful when there are no showers on site.", qty: 1 });
   }
   if (section.id !== "beavers") {
     addItem("toiletries", { id: "deodorant", name: "Deodorant", qty: 1 });
   }
   addItem("toiletries", { id: "hairbrush", name: "Hairbrush and hair ties", note: "Long hair should be tied back for water sports, climbing and archery.", qty: 1 });
+
   const towelQty = 1 + (showers ? 1 : 0) + (waterAny ? 1 : 0);
-  addItem("toiletries", { id: "towel", name: "Towel", note: towelQty > 1 ? "One for washing, one for after water activities." : "", qty: towelQty });
+  let towelNote = "";
+  if (waterAny && showers) {
+    towelNote = "One for washing, one for showers and one for water activities.";
+  } else if (waterAny) {
+    towelNote = "One for washing and one for after water activities.";
+  } else if (showers) {
+    towelNote = "Pack a spare so you always have a dry one.";
+  }
+  addItem("toiletries", { id: "towel", name: "Towel", note: towelNote, qty: towelQty });
+
   if (hasPaddling && waterShowers) {
     addItem("toiletries", {
       id: "paddling-shower-kit",
       name: "Extra shower kit for after paddling",
-      note: "A second towel, shower gel, shampoo and clean, dry clothes. Paddling usually ends with a proper shower.",
+      note: "A second towel, shower gel, shampoo and clean, dry clothes.",
       qty: 1,
     });
   }
   if (warm || winter) addItem("toiletries", { id: "lip-balm", name: "Lip balm", qty: 1 });
-  if (section.id === "scouts" && overnight) addItem("toiletries", { id: "razor", name: "Razor and shaving kit (if needed)", qty: 1 });
-  if (answers.laundry === "yes") addItem("toiletries", { id: "travel-wash", name: "Travel wash and a laundry bag", qty: 1 });
+  if (section.id === "scouts" && overnight) addItem("toiletries", { id: "razor", name: "Razor and shaving kit", note: "If needed.", qty: 1, optional: true });
+  if (answers.laundry === "yes") addItem("toiletries", { id: "laundry-bag", name: "Travel wash and laundry bag", qty: 1 });
 
   // -------------------------------------------------------------------------
   // Eating
@@ -860,7 +881,7 @@ export function buildKitList(input) {
       addItem("eating", { id: "recipe", name: "Recipe and ingredients", note: "Check the menu, allergies and who is carrying what.", qty: 1 });
     }
     if (answers.meals === "catered" && !fireCooking) {
-      addItem("eating", { id: "mess-kit-catered", name: "Mug and cutlery", note: "Even catered camps usually need your own mug.", qty: 1 });
+      addItem("eating", { id: "mess-kit-catered", name: "Mug and cutlery", note: "Even catered camps usually ask for your own mug.", qty: 1 });
     }
   }
   addItem("eating", { id: "snacks", name: "Snacks for the journey", note: "Check the section's allergy guidance before packing nuts or shared snacks.", qty: 1 });
@@ -871,10 +892,10 @@ export function buildKitList(input) {
 
   if (water) {
     if (waterTypes.size === 0) {
-      addItem("activities", { id: "water-basic", name: "Swimming kit", note: "Choose the water activity type in the form for a more precise list.", qty: 1 });
+      addItem("activities", { id: "water-basic", name: "Swimming kit", note: "Select the specific water activities above for a detailed list.", qty: 1 });
     }
     if (waterTypes.has("splash")) {
-      addItem("activities", { id: "splash-clothes", name: "Old clothes for splash games", note: "Clothes you do not mind getting wet and muddy.", qty: 1 });
+      addItem("activities", { id: "splash-clothes", name: "Old clothes for splash games", note: "Clothes that can get wet and muddy.", qty: 1 });
       addItem("activities", { id: "water-shoes", name: "Water shoes or old trainers", qty: 1 });
     }
     if (waterTypes.has("pool")) {
@@ -885,19 +906,19 @@ export function buildKitList(input) {
       addItem("activities", { id: "pool-coin", name: "£1 coin", note: "For lockers or hair dryers.", qty: 1 });
     }
     if (waterTypes.has("openwater")) {
-      if (wetsuit !== "provided") addItem("activities", { id: "wetsuit", name: "Wetsuit", note: "Check it fits, and bring a spare if you have one.", qty: 1 });
+      if (wetsuit !== "provided") addItem("activities", { id: "wetsuit", name: "Wetsuit", note: "Check it fits before you leave.", qty: 1 });
       addItem("activities", { id: "dry-robe", name: "Dry robe or warm change robe", qty: 1 });
-      addItem("activities", { id: "tow-float", name: "Tow float", note: "Usually provided — check with the activity leader.", qty: 1, optional: true });
+      addItem("activities", { id: "tow-float", name: "Tow float", note: "Usually provided; check with the activity leader.", qty: 1, optional: true });
       addItem("activities", { id: "hot-drink", name: "Flask or hot drink", qty: 1 });
     }
     if (hasPaddling) {
-      if (wetsuit !== "provided") addItem("activities", { id: "wetsuit", name: "Wetsuit", note: "Check it fits, and bring a spare if you have one.", qty: 1 });
+      if (wetsuit !== "provided") addItem("activities", { id: "wetsuit", name: "Wetsuit", note: "Check it fits before you leave.", qty: 1 });
       addItem("activities", { id: "water-shoes", name: "Water shoes or old trainers", qty: 1 });
-      addItem("activities", { id: "rash-vest", name: "Rash vest or thermal top", note: "Synthetic layers only — cotton stays cold when wet.", qty: 1 });
-      addItem("activities", { id: "dry-bag", name: "Dry bag", note: "For a phone, spare layers and anything that must stay dry.", qty: 1 });
+      addItem("activities", { id: "rash-vest", name: "Rash vest or thermal top", note: "Synthetic layers only, as cotton stays cold when wet.", qty: 1 });
+      addItem("activities", { id: "dry-bag", name: "Dry bag", note: "For spare layers and anything that must stay dry.", qty: 1 });
       addItem("activities", { id: "paddle-gloves", name: "Paddling gloves", note: "Useful for longer sessions or cold weather.", qty: 1, optional: true });
       addItem("activities", { id: "nose-clip", name: "Nose clip and ear plugs", note: "If you use them for water sports.", qty: 1, optional: true });
-      addItem("activities", { id: "glasses-strap", name: "Glasses strap", note: "Essential if you wear glasses on the water.", qty: 1, optional: true });
+      addItem("activities", { id: "glasses-strap", name: "Glasses strap", note: "Recommended if you wear glasses on the water.", qty: 1, optional: true });
       addItem("activities", { id: "after-water-layer", name: "Warm, dry layer for after paddling", qty: 1 });
     }
     if (waterTypes.has("sail")) {
@@ -908,7 +929,7 @@ export function buildKitList(input) {
       addItem("activities", { id: "raft-gloves", name: "Old gloves", note: "For handling ropes and barrels.", qty: 1 });
     }
     if (hasWetWater) {
-      addItem("activities", { id: "water-snacks", name: "Energy snacks", note: "Paddling and open water make you hungrier than you expect.", qty: 1 });
+      addItem("activities", { id: "water-snacks", name: "Extra snacks", note: "Water sessions use plenty of energy.", qty: 1 });
     }
   }
 
@@ -920,13 +941,13 @@ export function buildKitList(input) {
       addItem("activities", { id: "emergency-shelter", name: "Emergency shelter", note: "Usually carried by the leader.", qty: 1, optional: true });
     }
     if (hikeTerrain === "hills" || hikeTerrain === "snow") {
-      addItem("activities", { id: "trekking-poles", name: "Trekking poles (optional)", qty: 1, optional: true });
+      addItem("activities", { id: "trekking-poles", name: "Trekking poles", qty: 1, optional: true });
     }
     if (hikeMuddy) {
-      addItem("activities", { id: "gaiters", name: "Gaiters (optional)", qty: 1, optional: true });
+      addItem("activities", { id: "gaiters", name: "Gaiters", qty: 1, optional: true });
     }
     if (answers.season === "summer") {
-      addItem("activities", { id: "midge-net", name: "Midge net", note: "A lifesaver in the Scottish Highlands and on still summer evenings.", qty: 1, optional: true });
+      addItem("activities", { id: "midge-net", name: "Midge net", note: "Worth packing for Scotland and still summer evenings.", qty: 1, optional: true });
     }
     addItem("activities", { id: "hike-whistle", name: "Whistle", note: "Usually carried by the leader.", qty: 1, optional: true });
   }
@@ -936,9 +957,9 @@ export function buildKitList(input) {
     addItem("activities", { id: "climb-trousers", name: "Flexible trousers", note: "Stretchy trousers or shorts you can move in.", qty: 1 });
     addItem("activities", { id: "hair-ties", name: "Hair ties", note: "Long hair must be tied back.", qty: 1 });
     addItem("activities", { id: "climb-water", name: "Water and a snack", qty: 1 });
-    addItem("activities", { id: "climb-no-jewellery", name: "Leave jewellery at home", note: "Rings, watches and necklaces should stay at home or in a safe place.", qty: "" });
-    if (climbWhere === "indoor") addItem("activities", { id: "chalk-bag", name: "Chalk bag (optional)", qty: 1, optional: true });
-    if (climbWhere === "outdoor") addItem("activities", { id: "harness", name: "Harness (if you have your own)", qty: 1, optional: true });
+    addItem("activities", { id: "climb-no-jewellery", name: "Leave jewellery at home", note: "Rings, watches and necklaces must come off before climbing.", qty: "" });
+    if (climbWhere === "indoor") addItem("activities", { id: "chalk-bag", name: "Chalk bag", qty: 1, optional: true });
+    if (climbWhere === "outdoor") addItem("activities", { id: "harness", name: "Climbing harness", note: "If you have your own.", qty: 1, optional: true });
   }
 
   if (answers.activities.includes("archery")) {
@@ -949,19 +970,19 @@ export function buildKitList(input) {
   }
 
   if (cycling) {
-    addItem("activities", { id: "bike-helmet", name: "Cycle helmet", note: "Check it fits and is not damaged.", qty: 1 });
-    if (ownBikes) addItem("activities", { id: "bike", name: "Bicycle", note: "Check brakes, tyres and gears before you leave.", qty: 1 });
+    addItem("activities", { id: "bike-helmet", name: "Cycle helmet", note: "Check it fits properly and is not damaged.", qty: 1 });
+    if (ownBikes) addItem("activities", { id: "bike", name: "Bicycle", note: "Check brakes, tyres and gears before leaving.", qty: 1 });
     addItem("activities", { id: "bike-gloves", name: "Cycling gloves", qty: 1 });
     addItem("activities", { id: "hi-vis", name: "High-vis top or jacket", qty: 1 });
     addItem("activities", { id: "bike-shorts", name: "Padded shorts or comfortable trousers", qty: 1 });
-    addItem("activities", { id: "bike-lock", name: "Bike lock", note: "If you are bringing your own bike.", qty: 1, optional: true });
+    addItem("activities", { id: "bike-lock", name: "Bike lock", note: "If bringing your own bike.", qty: 1, optional: true });
     addItem("activities", { id: "bike-repair", name: "Puncture repair kit", note: "Usually carried by the leader.", qty: 1, optional: true });
     addItem("activities", { id: "bike-snacks", name: "Water and snacks", qty: 1 });
     if (bikeOffroad) addItem("activities", { id: "bike-glasses", name: "Sports glasses or sunglasses", qty: 1 });
   }
 
   if (campfire) {
-    addItem("activities", { id: "campfire-layer", name: "Warm layer for the campfire", note: "It gets cold once the sun goes down.", qty: 1 });
+    addItem("activities", { id: "campfire-layer", name: "Warm layer for the campfire", note: "Evenings cool down quickly once the sun drops.", qty: 1 });
     addItem("activities", { id: "campfire-gloves", name: "Fire gloves", note: "Usually provided by the leader.", qty: 1, optional: true });
     if (fireCooking) addItem("activities", { id: "campfire-stick", name: "Marshmallow stick or long fork", qty: 1, optional: true });
     addItem("activities", { id: "campfire-blanket", name: "Campfire blanket", note: "If your section uses them.", qty: 1, optional: true });
@@ -975,14 +996,14 @@ export function buildKitList(input) {
   if (answers.activities.includes("sports")) {
     addItem("activities", { id: "sports-kit", name: "PE kit or sports clothes", qty: 1 });
     addItem("activities", { id: "sports-shoes", name: "Trainers", qty: 1 });
-    addItem("activities", { id: "sports-shin", name: "Shin pads (if playing contact sports)", qty: 1, optional: true });
-    addItem("activities", { id: "sports-mouth", name: "Mouthguard (if needed)", qty: 1, optional: true });
+    addItem("activities", { id: "sports-shin", name: "Shin pads", note: "If playing contact sports.", qty: 1, optional: true });
+    addItem("activities", { id: "sports-mouth", name: "Mouthguard", note: "If needed.", qty: 1, optional: true });
     addItem("activities", { id: "water-bottle", name: "Water bottle", qty: 1 });
   }
 
   if (answers.activities.includes("crafts")) {
     addItem("activities", { id: "craft-shirt", name: "Old shirt or apron", qty: 1 });
-    addItem("activities", { id: "craft-kit", name: "Craft materials", note: "Check the activity instructions for anything specific.", qty: 1 });
+    addItem("activities", { id: "craft-kit", name: "Craft materials", note: "Check the programme for anything specific.", qty: 1 });
     addItem("activities", { id: "craft-wipes", name: "Wet wipes", qty: 1 });
   }
 
@@ -990,14 +1011,14 @@ export function buildKitList(input) {
     addItem("activities", { id: "beach-shoes", name: "Water shoes or sandals", qty: 1 });
     addItem("activities", { id: "beach-towel", name: "Beach towel", qty: 1 });
     addItem("activities", { id: "beach-bag", name: "Dry bag or waterproof bag", qty: 1 });
-    addItem("activities", { id: "beach-bucket", name: "Bucket and spade", note: "Optional, but excellent.", qty: 1, optional: true });
+    addItem("activities", { id: "beach-bucket", name: "Bucket and spade", qty: 1, optional: true });
     addItem("activities", { id: "beach-windbreak", name: "Windbreak", note: "Usually a group item.", qty: 1, optional: true });
   }
 
   if (answers.activities.includes("nighthike")) {
     addItem("activities", { id: "night-torch", name: "Torch or headtorch", note: "With spare batteries.", qty: 1 });
     addItem("activities", { id: "hi-vis", name: "High-vis top or jacket", qty: 1 });
-    addItem("activities", { id: "night-glow", name: "Glow stick", note: "Useful for keeping the group together.", qty: 1, optional: true });
+    addItem("activities", { id: "night-glow", name: "Glow stick", note: "Helpful for spotting everyone in the dark.", qty: 1, optional: true });
     addItem("activities", { id: "night-map", name: "Map and compass", note: "Usually carried by the leader.", qty: 1, optional: true });
   }
 
@@ -1047,7 +1068,7 @@ export function buildKitList(input) {
   // -------------------------------------------------------------------------
 
   if (travelUniform || smartUniform) {
-    addItem("clothing", { id: "uniform", name: "Section uniform", note: "Shirt or top, plus your neckerchief.", qty: 1 });
+    addItem("clothing", { id: "uniform", name: "Section uniform", note: "Shirt or top, plus neckerchief.", qty: 1 });
     addItem("clothing", { id: "neckerchief", name: "Neckerchief", qty: 1 });
   }
   if (smartUniform) {
@@ -1058,10 +1079,10 @@ export function buildKitList(input) {
   // Extras
   // -------------------------------------------------------------------------
 
-  if (extras.has("phone")) addItem("extras", { id: "phone", name: "Phone", note: "Only if your leader has agreed. Keep it charged and in a dry bag.", qty: 1 });
+  if (extras.has("phone")) addItem("extras", { id: "phone", name: "Phone", note: "Only if agreed with leaders. Keep it charged and in a dry bag.", qty: 1 });
   if (extras.has("camera")) addItem("extras", { id: "camera", name: "Camera", qty: 1 });
   if (extras.has("teddy")) addItem("extras", { id: "teddy", name: "Teddy or comfort toy", qty: 1 });
-  if (extras.has("book")) addItem("extras", { id: "book", name: "Book, cards or a quiet game", qty: 1 });
+  if (extras.has("book")) addItem("extras", { id: "book", name: "Book, cards or quiet game", qty: 1 });
   if (extras.has("instrument")) addItem("extras", { id: "instrument", name: "Musical instrument", note: "Check with leaders before bringing anything valuable.", qty: 1 });
   if (extras.has("fancy")) addItem("extras", { id: "fancy-dress", name: "Fancy dress", qty: 1 });
   if (extras.has("money")) addItem("extras", { id: "money", name: "Small amount of money", note: "Only if leaders have said it is needed.", qty: 1 });
@@ -1086,11 +1107,11 @@ export function buildKitList(input) {
   // -------------------------------------------------------------------------
 
   if (answers.includeLeaderKit) {
-    addItem("leaders", { id: "leader-first-aid", name: "Group first aid kit", note: "Check it is in date and includes burns and blister supplies.", qty: 1 });
-    addItem("leaders", { id: "leader-consent", name: "Consent and health forms", note: "Printed copies, kept securely.", qty: 1 });
+    addItem("leaders", { id: "leader-first-aid", name: "Group first aid kit", note: "Check it is in date and stocked with burns and blister supplies.", qty: 1 });
+    addItem("leaders", { id: "leader-consent", name: "Consent and health forms", note: "Printed copies, stored securely.", qty: 1 });
     addItem("leaders", { id: "leader-medication", name: "Medication log and safe storage", qty: 1 });
     addItem("leaders", { id: "leader-risk", name: "Risk assessments and emergency plan", qty: 1 });
-    addItem("leaders", { id: "leader-contacts", name: "Emergency contact list", note: "Plus the venue address and nearest hospital.", qty: 1 });
+    addItem("leaders", { id: "leader-contacts", name: "Emergency contact list", note: "Include the venue address and nearest hospital.", qty: 1 });
     addItem("leaders", { id: "leader-printed", name: "Printed kit list and programme", qty: 1 });
     addItem("leaders", { id: "leader-water", name: "Water containers and hand-wash station", qty: 1 });
     addItem("leaders", { id: "leader-fire", name: "Fire kit, fire blanket and burns kit", qty: 1 });
@@ -1114,6 +1135,8 @@ export function buildKitList(input) {
 
   const totalItems = orderedGroups.reduce((total, group) => total + group.items.length, 0);
   const activityNames = answers.activities.map((id) => getActivity(id)?.name).filter(Boolean);
+  const hasDates = Boolean(answers.startDate || answers.endDate);
+  const dates = formatTripDates(answers);
 
   return {
     title: tripTitle(answers),
@@ -1121,7 +1144,8 @@ export function buildKitList(input) {
     sectionId: section.id,
     tripType: trip.name,
     tripTypeId: trip.id,
-    dates: formatTripDates(answers),
+    hasDates,
+    dates,
     nights,
     accommodation: accommodation.name,
     season: SEASONS.find((season) => season.id === answers.season)?.name || "Mixed",
@@ -1135,7 +1159,7 @@ export function buildKitList(input) {
     meta: [
       { label: "Section", value: section.name },
       { label: "Trip", value: trip.name },
-      { label: "Dates", value: formatTripDates(answers) },
+      { label: "Dates", value: dates },
       { label: "Nights", value: nights === 0 ? "Day trip" : String(nights) },
       { label: "Sleeping", value: overnight ? accommodation.name : "Not staying over" },
       { label: "Weather", value: answers.weather.length ? answers.weather.map((id) => WEATHER.find((item) => item.id === id)?.name).join(", ") : "Mixed" },
@@ -1146,42 +1170,42 @@ export function buildKitList(input) {
 
 function buildTips(answers, context) {
   const tips = [
-    "Label every item with your name — including socks, towels and water bottles.",
-    "Pack your bag together with a grown-up and check it against this list before you leave.",
-    "Check the forecast the night before and swap in extra warm or waterproof layers if needed.",
+    "Label every item with your name, including socks, towels and water bottles.",
+    "Pack your bag with a grown-up and tick off each item before you leave.",
+    "Check the forecast the night before and add extra warm or waterproof layers if needed.",
     "Leave valuables and anything you would be upset to lose at home.",
   ];
 
   if (context.overnight) {
-    tips.push("Keep a full change of clothes and your sleeping kit in a separate dry bag inside your rucksack.");
+    tips.push("Keep a dry change of clothes and your sleeping bag in waterproof bags inside your rucksack.");
   }
   if (context.waterAny || context.hasPaddling) {
-    tips.push("Pack wet kit in a plastic bag and keep a dry change of clothes at the top of your bag.");
+    tips.push("Pack a plastic bag for wet kit and keep dry clothes near the top of your bag.");
   }
   if (context.hasPaddling) {
-    tips.push("Bring a second towel and your shower kit — paddling usually ends with a shower and a full change.");
+    tips.push("Bring a spare towel and shower kit, as paddling sessions usually end with a shower and a full change.");
   }
   if (context.winter) {
-    tips.push("Pack layers rather than one thick jumper, and keep spares dry. A hot water bottle makes a big difference.");
+    tips.push("Pack layers rather than one thick jumper, and keep spare clothes dry.");
   }
   if (context.hiking) {
-    tips.push("Wear your walking boots on a short walk before the trip so they are broken in.");
+    tips.push("Wear walking boots on a short walk beforehand so they are broken in.");
   }
   if (context.international) {
-    tips.push("Keep passports, insurance details and medication in your hand luggage, not the hold.");
+    tips.push("Keep passports, insurance details and medication in hand luggage rather than hold bags.");
   }
   if (context.section.id === "beavers") {
-    tips.push("Beavers often need a spare set of clothes and a comfort toy — both are very welcome.");
+    tips.push("A spare set of clothes and a comfort toy are always welcome for Beavers.");
   }
   if (answers.personal.some((id) => ["medication", "inhaler", "epipen"].includes(id))) {
-    tips.push("Hand medication to a leader at the start of the trip, in a labelled bag with clear instructions.");
+    tips.push("Hand medication to a leader at drop-off, in a labelled bag with clear instructions.");
   }
   return tips;
 }
 
 export function plainTextList(list) {
   const lines = [`${list.title} — kit list`, ""];
-  lines.push(`${list.section} • ${list.dates} • ${list.accommodation}`);
+  lines.push(tripMetaLine(list));
   lines.push("");
   for (const group of list.groups) {
     lines.push(`${group.title.toUpperCase()}`);

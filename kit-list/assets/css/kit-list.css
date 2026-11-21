@@ -3,20 +3,6 @@
    Uses the shared design system in ../../assets/css/base.css.
    ========================================================================== */
 
-/* Hero --------------------------------------------------------------------- */
-
-.kit-hero .hero__inner {
-  padding-block: 48px 52px;
-}
-
-.kit-hero .hero__lead {
-  max-width: 730px;
-}
-
-.kit-hero .hero__actions {
-  justify-content: center;
-}
-
 /* Builder layout ----------------------------------------------------------- */
 
 .kit-builder {
@@ -35,7 +21,7 @@
   background: var(--surface);
   border: 1px solid var(--border-default);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow);
   overflow: hidden;
 }
 
@@ -226,13 +212,6 @@
   margin-top: 8px;
 }
 
-.field__optional {
-  color: var(--grey-600);
-  font-weight: 700;
-  text-transform: none;
-  letter-spacing: 0;
-}
-
 .field-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -287,7 +266,7 @@
   min-width: 0;
   padding: 14px;
   border: 2px solid var(--border-default);
-  border-radius: 12px;
+  border-radius: var(--radius);
   background: var(--surface);
   cursor: pointer;
   transition: border-color var(--transition), background var(--transition), box-shadow var(--transition), transform var(--transition);
@@ -483,7 +462,7 @@
   gap: 12px;
   padding: 14px;
   border: 1px solid var(--border-default);
-  border-radius: 12px;
+  border-radius: var(--radius);
   background: var(--surface);
   cursor: pointer;
 }
@@ -559,7 +538,7 @@
 .activity-panel {
   padding: 18px;
   border: 1px solid var(--border-default);
-  border-radius: 12px;
+  border-radius: var(--radius);
   background: var(--surface);
 }
 
@@ -712,7 +691,7 @@
   gap: 14px;
   padding: 14px 16px;
   border: 1px solid var(--border-default);
-  border-radius: 10px;
+  border-radius: var(--radius);
   background: var(--surface);
 }
 
@@ -752,7 +731,7 @@
   margin-top: 6px;
   padding: 14px 16px;
   border: 1px dashed var(--border-accent-soft);
-  border-radius: 10px;
+  border-radius: var(--radius);
   background: var(--surface-accent-soft);
 }
 
@@ -1415,6 +1394,7 @@
   }
 
   .wizard-progress__steps button {
+    min-height: 40px;
     font-size: 0;
   }
 
@@ -1549,7 +1529,7 @@
 
   .site-header,
   .site-footer,
-  .kit-hero,
+  .hero,
   .kit-builder,
   .how-it-works,
   .skip-link,
