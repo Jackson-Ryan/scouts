@@ -72,14 +72,13 @@ npm run validate
 
 ## Adding a game
 
-### 1. Use the form (recommended)
+### 1. Use the in-app form (recommended)
 
-Open `add.html` and fill in the fields. The live preview shows the game card as you type. When the game is ready you can:
+Open `/games/add` and fill in the fields. The live preview shows the game card as you type. Click **Submit game** to send it straight into the moderation queue — no GitHub account needed. Maintainers review and publish queued submissions in one click inside `/admin/`.
 
-- **Download game** — a single `<game-id>.json` file.
-- **Download games.json** — the full library with your game appended.
-- **Open GitHub issue** — if the site is connected to a repository, this fills in the issue body automatically.
-- **Copy issue text** — for pasting into an issue by hand.
+### 2. Manage in bulk via `/admin/`
+
+Sign in at `/admin/` with your authorised GitHub account to add games in bulk, edit existing games, delete games, and review pending submissions — publishing all changes in a single validated commit.
 
 ### 2. Add it on the command line
 
@@ -157,7 +156,7 @@ All paths below are inside `games/`:
 - **Site name and repository** — `assets/js/config.js`. Set `githubRepo` to `owner/repo` if the automatic GitHub Pages detection does not fit. Leave it blank on `*.github.io` and the site works it out from the URL.
 - **Saved games** — stored in `localStorage` under `savedKey`; no account is needed.
 - **Colours and fonts** — the shared theme lives in the repo root at `assets/css/base.css` (the `:root` block). The palette follows the supplied Scouts CSS, so every tool matches.
-- **Icons** — add a `<symbol id="...">` to `assets/img/icons.svg` in the repo root and add it to `ICON_OPTIONS` in `assets/js/core.js` so it appears in the form.
+- **Icons** — add a `<symbol id="...">` to `assets/img/icons.svg` in the repo root and add it to `ICON_OPTIONS` in `assets/js/core.js` so it appears in the searchable icon picker. Run `npm run check` to verify the symbol exists.
 - **Themes** — add to `THEMES` in `assets/js/core.js`; the filter, form and twist picker all read from it.
 
 ## Deploying

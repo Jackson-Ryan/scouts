@@ -173,7 +173,7 @@
     "variantOf": null,
     "featured": true,
     "art": {
-      "icon": "football",
+      "icon": "crab",
       "color": "teal"
     },
     "added": "2026-11-02",
@@ -434,7 +434,7 @@
     "variantOf": null,
     "featured": false,
     "art": {
-      "icon": "target",
+      "icon": "basketball",
       "color": "orange"
     },
     "added": "2026-11-02",
@@ -609,7 +609,7 @@
     "variantOf": null,
     "featured": false,
     "art": {
-      "icon": "fish",
+      "icon": "shark",
       "color": "blue"
     },
     "added": "2026-11-02",
@@ -779,7 +779,7 @@
     "variantOf": null,
     "featured": false,
     "art": {
-      "icon": "megaphone",
+      "icon": "helm",
       "color": "navy"
     },
     "added": "2026-11-02",
@@ -2241,7 +2241,7 @@
     "variantOf": null,
     "featured": false,
     "art": {
-      "icon": "moon",
+      "icon": "binoculars",
       "color": "navy"
     },
     "added": "2026-11-02",
@@ -2329,7 +2329,7 @@
     "variantOf": null,
     "featured": false,
     "art": {
-      "icon": "users",
+      "icon": "fish",
       "color": "teal"
     },
     "added": "2026-11-02",
@@ -2420,7 +2420,7 @@
     "variantOf": null,
     "featured": false,
     "art": {
-      "icon": "anchor",
+      "icon": "treasure",
       "color": "navy"
     },
     "added": "2026-11-02",
@@ -2510,7 +2510,7 @@
     "variantOf": null,
     "featured": false,
     "art": {
-      "icon": "tree",
+      "icon": "leaf",
       "color": "green"
     },
     "added": "2026-11-02",
@@ -2866,7 +2866,7 @@
     "variantOf": null,
     "featured": false,
     "art": {
-      "icon": "egg",
+      "icon": "spoon",
       "color": "yellow"
     },
     "added": "2026-11-02",
@@ -2958,7 +2958,7 @@
     "variantOf": null,
     "featured": false,
     "art": {
-      "icon": "gift",
+      "icon": "candy-cane",
       "color": "red"
     },
     "added": "2026-11-02",
@@ -3317,7 +3317,7 @@
     "variantOf": null,
     "featured": false,
     "art": {
-      "icon": "shield",
+      "icon": "mask",
       "color": "blue"
     },
     "added": "2026-11-02",
@@ -4021,7 +4021,7 @@
     "variantOf": null,
     "featured": false,
     "art": {
-      "icon": "moon",
+      "icon": "zzz",
       "color": "navy"
     },
     "added": "2026-11-02",
@@ -4189,7 +4189,7 @@
     "variantOf": "dodgeball",
     "featured": false,
     "art": {
-      "icon": "ghost",
+      "icon": "skull",
       "color": "purple"
     },
     "added": "2026-11-02",

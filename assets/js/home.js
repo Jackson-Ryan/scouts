@@ -1,24 +1,23 @@
 /**
  * Scout Tools — home page behaviour.
  *
- * Renders the tool cards from /tools.json and wires up the mobile menu.
+ * Renders the tool cards from /tools.json and boots the shared site chrome.
  * To add a new tool: create its folder, then add an entry to tools.json.
  */
 
-import { escapeHTML, initMenu } from "./site.js";
+import {
+  BRAND_COLORS,
+  SUGGEST_TOOL_URL,
+  escapeHTML,
+  initSite,
+  loadTools,
+  spriteIcon,
+} from "./site.js";
 
-const TOOLS_URL = new URL("../../tools.json", import.meta.url);
-const SUGGEST_TOOL_URL = "https://github.com/Jackson-Ryan/scouts/issues/new?title=%5BTool%20idea%5D%20";
-const TOOL_COLORS = ["purple", "teal", "blue", "green", "orange", "pink", "navy", "yellow", "red", "mint"];
 const STATUS_LABELS = { ready: "Ready", beta: "Beta", planned: "Planned" };
 
 function safeColor(color) {
-  return TOOL_COLORS.includes(color) ? color : "purple";
-}
-
-function iconMarkup(name, className = "icon") {
-  const safeName = String(name || "cube").replace(/[^a-z0-9-]/g, "");
-  return `<svg class="${className}" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#${safeName}"></use></svg>`;
+  return BRAND_COLORS.includes(color) ? color : "purple";
 }
 
 function toolCardMarkup(tool) {
@@ -26,9 +25,9 @@ function toolCardMarkup(tool) {
   const tags = Array.isArray(tool.tags) ? tool.tags : [];
   const badgeMarkup = status === "beta" ? `<span class="tool-card__badge tool-card__badge--beta">${escapeHTML(STATUS_LABELS[status])}</span>` : "";
   const cover = `
-    <div class="tool-card__cover cover-tile--${safeColor(tool.color)}" aria-hidden="true">
+    <div class="tool-card__cover cover--${safeColor(tool.color)}" aria-hidden="true">
       ${badgeMarkup}
-      <svg class="tool-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#${String(tool.icon || "cube").replace(/[^a-z0-9-]/g, "")}"></use></svg>
+      ${spriteIcon(tool.icon || "cube", { root: "./", className: "tool-card__icon" })}
       ${tool.kicker ? `<span class="tool-card__kicker">${escapeHTML(tool.kicker)}</span>` : ""}
     </div>
   `;
@@ -52,7 +51,7 @@ function toolCardMarkup(tool) {
         ${cover}
         ${body}
         <div class="tool-card__footer">
-          <span class="tool-card__cta">${iconMarkup("clock", "icon")} Coming soon</span>
+          <span class="tool-card__cta">${spriteIcon("clock", { root: "./" })} Coming soon</span>
         </div>
       </div>
     `;
@@ -63,7 +62,7 @@ function toolCardMarkup(tool) {
       ${cover}
       ${body}
       <div class="tool-card__footer">
-        <span class="tool-card__cta">Open tool ${iconMarkup("arrow-right", "icon")}</span>
+        <span class="tool-card__cta">Open tool ${spriteIcon("arrow-right", { root: "./" })}</span>
       </div>
     </a>
   `;
@@ -73,14 +72,14 @@ function suggestCardMarkup() {
   return `
     <a class="tool-card tool-card--planned" href="${SUGGEST_TOOL_URL}" target="_blank" rel="noopener">
       <div class="tool-card__cover" aria-hidden="true">
-        <svg class="tool-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#plus"></use></svg>
+        ${spriteIcon("plus", { root: "./", className: "tool-card__icon" })}
       </div>
       <div class="tool-card__body">
         <h3 class="tool-card__title">Got an idea for a tool?</h3>
         <p class="tool-card__desc">If something would save you time on a meeting night or before camp, suggest it on GitHub.</p>
       </div>
       <div class="tool-card__footer">
-        <span class="tool-card__cta">Suggest a tool ${iconMarkup("external-link", "icon")}</span>
+        <span class="tool-card__cta">Suggest a tool ${spriteIcon("external-link", { root: "./" })}</span>
       </div>
     </a>
   `;
@@ -91,12 +90,7 @@ async function renderTools() {
   if (!grid) return;
 
   try {
-    const response = await fetch(TOOLS_URL, { cache: "no-cache" });
-    if (!response.ok) {
-      throw new Error(`Could not load the tools list (${response.status}).`);
-    }
-    const data = await response.json();
-    const tools = Array.isArray(data.tools) ? data.tools : [];
+    const tools = await loadTools();
     const ready = tools.filter((tool) => tool.status !== "planned" && tool.href).length;
 
     document.querySelectorAll("[data-tool-count]").forEach((element) => {
@@ -115,5 +109,5 @@ async function renderTools() {
   }
 }
 
-initMenu();
+initSite();
 renderTools();

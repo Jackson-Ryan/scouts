@@ -1,9 +1,10 @@
-/* Site configuration. Update githubRepo if you fork this repository. */
+/* Games Finder configuration (inherits shared repo settings from site-config.js). */
+import { SITE_SETTINGS } from "../../../assets/js/site-config.js";
+
 export const SITE_CONFIG = {
-  siteName: "Scout Tools",
+  siteName: SITE_SETTINGS.siteName,
   toolName: "Games Finder",
-  // Example: "your-username/scouts". Leave blank to auto-detect on GitHub Pages.
-  githubRepo: "Jackson-Ryan/scouts",
+  githubRepo: SITE_SETTINGS.githubRepo,
   issueLabel: "game-submission",
   savedKey: "scouts-games-saved-v1",
   gamesPerPage: 12,

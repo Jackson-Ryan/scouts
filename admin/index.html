@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin — Scout Tools</title>
+  <meta name="description" content="Maintainer admin console for Scout Tools.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#590fa9">
+  <meta name="theme-color" content="#00132b" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;1,6..12,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../games/assets/css/games.css">
+  <link rel="stylesheet" href="../games/assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+  <script type="module" src="assets/js/admin.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-site-header data-root="../" data-active="admin"></header>
+
+  <main id="main">
+    <section class="hero hero--compact">
+      <div class="container hero__inner">
+        <p class="hero__eyebrow">Maintainer console</p>
+        <h1>Scout Tools Admin</h1>
+        <p class="hero__lead">Sign in with your GitHub account to manage eligible tools, publish updates in bulk and review community game submissions.</p>
+      </div>
+    </section>
+
+    <noscript>
+      <div class="container mt-6">
+        <div class="error-panel">
+          <strong>JavaScript is required for the admin console.</strong>
+          <span>Enable JavaScript in your browser to sign in and manage Scout Tools.</span>
+        </div>
+      </div>
+    </noscript>
+
+    <!-- Sign-in gate (shown until an authorised maintainer session is verified) -->
+    <section class="admin-auth container" id="admin-auth">
+      <div class="admin-auth__card">
+        <div class="admin-auth__icon" aria-hidden="true">
+          <svg class="icon icon--lg" viewBox="0 0 24 24" focusable="false"><use href="../assets/img/icons.svg#lock"></use></svg>
+        </div>
+        <h2>Sign in to continue</h2>
+        <p class="admin-auth__lead">
+          Only authorised repository maintainers can access this console. Signing in uses GitHub OAuth with PKCE and checks your repository write permissions.
+        </p>
+
+        <div class="admin-auth__actions">
+          <button class="btn btn--primary btn--block" id="btn-github-login" type="button">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#github"></use></svg>
+            Sign in with GitHub
+          </button>
+        </div>
+
+        <p class="form-status" id="auth-status" role="alert" hidden></p>
+
+        <div class="admin-setup-box" id="auth-setup-note" hidden>
+          <h3>Finish setting up GitHub SSO</h3>
+          <p>
+            To enable GitHub sign-in on GitHub Pages, deploy the free Cloudflare Worker in <code>worker/</code> and add your
+            <code>githubClientId</code> and <code>apiBase</code> to <code>assets/js/site-config.js</code>. Full instructions are in
+            <code>worker/README.md</code>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Authenticated workspace -->
+    <section class="admin-workspace container" id="admin-workspace" hidden>
+      <div class="admin-bar">
+        <div class="admin-user">
+          <span class="admin-user__avatar" id="admin-avatar" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" focusable="false"><use href="../assets/img/icons.svg#github"></use></svg>
+          </span>
+          <div class="admin-user__meta">
+            <strong id="admin-user-name">Signed in</strong>
+            <span id="admin-user-detail">Checking permissions…</span>
+          </div>
+        </div>
+        <div class="admin-bar__right">
+          <span class="admin-mode-pill" id="admin-mode-pill">GitHub SSO</span>
+          <button class="btn btn--ghost btn--small" id="btn-sign-out" type="button">Sign out</button>
+        </div>
+      </div>
+
+      <nav class="admin-tool-tabs" id="admin-tool-tabs" aria-label="Editable tools"></nav>
+
+      <div id="admin-tool-root"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer" data-site-footer data-root="../"></footer>
+</body>
+</html>

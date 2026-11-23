@@ -17,15 +17,20 @@ about.html             About Scout Tools, safety notes and credits
 404.html               Site-wide not found page (self-contained)
 tools.json             Tool manifest read by the home page
 assets/                Shared theme, scripts and brand assets
-  css/base.css         Design tokens, header, footer, hero, buttons, forms
+  css/base.css         Design tokens, header, footer, hero, buttons, custom controls
   css/home.css         Home page and tool cards
   css/about.css        About page layout and prose styles
-  js/site.js           Shared mobile menu and HTML escaping helpers
+  js/site-config.js    Public site settings (repo, allowed admins, OAuth client id, worker URL)
+  js/auth.js           GitHub OAuth 2.0 + PKCE client, repo API & in-app submissions client
+  js/site.js           Shared header/footer renderer, tools loader, icons and menu
+  js/controls.js       Shared custom themed selects, date pickers, steppers and dialogs
   js/home.js           Home page behaviour (renders tools.json)
-  js/about.js          Menu behaviour for about.html
-  img/                 Scouts logos, favicon, icon sprite, fleur
+  js/about.js          Site chrome bootstrap for about.html
+  img/                 Scouts logos, favicon, icon sprite (~200 icons), fleur
+admin/                 Maintainer admin console (/admin/, GitHub SSO)
 games/                 Games Finder tool (see games/README.md)
 kit-list/              Kit List Generator tool (see kit-list/README.md)
+worker/                Cloudflare Worker for GitHub SSO & in-app game submissions (see worker/README.md)
 scripts/               Shared dev tooling
   dev-server.mjs       Zero-dependency preview server (npm run serve)
   check-assets.mjs     Verifies every local link and sprite icon (npm run check)
@@ -55,14 +60,20 @@ npm run serve   # opens on http://localhost:8080
 ## Adding a new tool
 
 1. Create a folder (for example `mytool/`) with `index.html`, `assets/css/`, and `assets/js/`.
-2. Link `../assets/css/base.css` before your own stylesheet, and import `initMenu` from `../assets/js/site.js` so the header and footer match the rest of the site.
-3. Add an entry to `tools.json` with `id`, `title`, `href`, `status` (`ready`, `beta` or `planned`), `icon` (any symbol in `assets/img/icons.svg`), `color`, `kicker`, `tagline`, `description` and `tags`.
-4. Run `npm run check` to verify every link and asset path.
+2. Link `../assets/css/base.css` before your own stylesheet, include the two shared chrome placeholders in your page:
+   ```html
+   <header class="site-header" data-site-header data-root="../" data-active="mytool"></header>
+   <footer class="site-footer" data-site-footer data-root="../"></footer>
+   ```
+   and call `initSite()` from `../assets/js/site.js`. That renders the header, footer and mobile menu automatically and upgrades every `.select`, `input[type="date"]`, `input[type="search"]` and `input[type="number"]` into the site's custom themed controls. Use `confirmDialog()` from `../assets/js/site.js` instead of `window.confirm()`, and `.cover--purple`..`.cover--mint` from `base.css` for brand cover art.
+3. Add an entry to `tools.json` with `id`, `title`, `href`, `status` (`ready`, `beta` or `planned`), `icon` (any symbol in `assets/img/icons.svg`), `color`, `kicker`, `tagline`, `description` and `tags`. The home page, navbar and footer pick it up automatically.
+4. Run `npm run check` to verify every link, asset path and icon reference.
 
 ## Tool documentation
 
-- [Games Finder](games/README.md) — data schema, validation, add-a-game form, CLI scripts and GitHub issue import workflow.
+- [Games Finder](games/README.md) — data schema, validation, in-app game submissions, CLI scripts and admin tools.
 - [Kit List Generator](kit-list/README.md) — packing logic, PDF generation (vendored [jsPDF](https://github.com/parallax/jsPDF), MIT + Nunito Sans) and OSM CSV format.
+- [Admin SSO & Submission Worker](worker/README.md) — 5-minute setup for GitHub SSO on `/admin/` and account-free public game submissions on GitHub Pages.
 
 ## Deploying
 

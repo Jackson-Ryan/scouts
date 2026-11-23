@@ -12,9 +12,10 @@
 import { readFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { dirname, extname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { ICON_OPTIONS } from "../games/assets/js/core.js";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const skipDirs = new Set([".git", "node_modules"]);
+const skipDirs = new Set([".git", "node_modules", ".wrangler"]);
 const problems = [];
 let checked = 0;
 
@@ -73,8 +74,10 @@ function checkReference(file, reference) {
 }
 
 const files = walk(root);
+const spriteFile = join(root, "assets", "img", "icons.svg");
+const spriteText = existsSync(spriteFile) ? readFileSync(spriteFile, "utf8") : "";
 
-// The tool manifest powers the home page; make sure every tool it lists exists.
+// The tool manifest powers the home page and shared header/footer; make sure every tool & icon exists.
 const manifestFile = join(root, "tools.json");
 if (existsSync(manifestFile)) {
   try {
@@ -85,6 +88,13 @@ if (existsSync(manifestFile)) {
       if (!tool.id || !tool.title) {
         problems.push("tools.json -> every tool needs an id and a title");
         continue;
+      }
+      if (tool.icon) {
+        if (!spriteText.includes(`id="${tool.icon}"`)) {
+          problems.push(`tools.json -> ${tool.id}: icon "${tool.icon}" is missing from assets/img/icons.svg`);
+        } else {
+          checked += 1;
+        }
       }
       if (tool.status === "planned" || !tool.href) continue;
       const target = resolve(root, decodeURIComponent(String(tool.href)));
@@ -100,6 +110,20 @@ if (existsSync(manifestFile)) {
   }
 }
 
+// Verify every icon listed in Games Finder's ICON_OPTIONS exists in the shared sprite without duplicates.
+const seenIcons = new Set();
+for (const option of ICON_OPTIONS) {
+  if (seenIcons.has(option.value)) {
+    problems.push(`games/assets/js/core.js -> duplicate ICON_OPTIONS entry "${option.value}"`);
+  }
+  seenIcons.add(option.value);
+  if (!spriteText.includes(`id="${option.value}"`)) {
+    problems.push(`games/assets/js/core.js -> ICON_OPTIONS "${option.value}" is missing from assets/img/icons.svg`);
+  } else {
+    checked += 1;
+  }
+}
+
 for (const file of files) {
   const extension = extname(file).toLowerCase();
   const text = readFileSync(file, "utf8");
@@ -112,6 +136,12 @@ for (const file of files) {
 
   if (extension === ".css") {
     for (const match of text.matchAll(/url\(\s*['"]?([^'")]+)['"]?\s*\)/g)) {
+      checkReference(file, match[1]);
+    }
+  }
+
+  if ((extension === ".js" || extension === ".mjs") && !file.includes("vendor")) {
+    for (const match of text.matchAll(/\bfrom\s+["'](\.[^"']+)["']/g)) {
       checkReference(file, match[1]);
     }
   }

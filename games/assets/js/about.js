@@ -1,3 +1,3 @@
-import { initMenu } from "../../../assets/js/site.js";
+import { initSite } from "../../../assets/js/site.js";
 
-initMenu();
+initSite();

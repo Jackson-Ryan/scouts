@@ -1,3 +1,3 @@
-import { initMenu } from "./site.js";
+import { initSite } from "./site.js";
 
-initMenu();
+initSite();

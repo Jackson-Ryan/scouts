@@ -2,7 +2,7 @@
  * Kit List Generator — interactive wizard.
  */
 
-import { escapeHTML, initMenu } from "../../../assets/js/site.js";
+import { confirmDialog, escapeHTML, initSite, spriteIcon } from "../../../assets/js/site.js";
 import {
   SECTIONS,
   TRIP_TYPES,
@@ -101,7 +101,7 @@ function saveState() {
    -------------------------------------------------------------------------- */
 
 function icon(name, className = "icon") {
-  return `<svg class="${className}" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#${escapeHTML(name)}"></use></svg>`;
+  return spriteIcon(name, { root: "../", className });
 }
 
 function arrayChecked(name, value) {
@@ -605,7 +605,7 @@ function updateFromControl(target) {
     }
   } else if (name === "startDate" || name === "endDate") {
     state[name] = target.value;
-    if (state.startDate) document.querySelector("#end-date").min = state.startDate;
+    document.querySelector("#end-date").min = state.startDate || "";
     if (state.startDate && state.endDate) {
       const dateNights = nightsBetween(state.startDate, state.endDate);
       if (dateNights != null) state.nights = clampNights(dateNights, state.tripType, state.section);
@@ -625,7 +625,7 @@ function updateFromControl(target) {
 
 function handleChange(event) {
   const target = event.target;
-  if (!(target instanceof HTMLInputElement || target instanceof HTMLSelectElement || target instanceof HTMLTextAreaElement)) return;
+  if (!target || !["INPUT", "SELECT", "TEXTAREA"].includes(target.tagName)) return;
   if (event.type === "input" && !["text", "textarea", "search"].includes(target.type)) return;
   updateFromControl(target);
 }
@@ -687,8 +687,14 @@ async function copyList() {
   }
 }
 
-function resetAll() {
-  if (!window.confirm("Start a new kit list? Your current answers will be cleared.")) return;
+async function resetAll() {
+  const confirmed = await confirmDialog({
+    title: "Start a new kit list?",
+    message: "Your current answers will be cleared from this browser.",
+    confirmLabel: "Start again",
+    cancelLabel: "Keep editing",
+  });
+  if (!confirmed) return;
   state = normaliseAnswers(defaultAnswers());
   currentList = null;
   try {
@@ -696,6 +702,7 @@ function resetAll() {
   } catch {
     // Ignore storage failures.
   }
+  document.querySelector("#end-date").min = "";
   renderStaticOptions();
   renderTextFields();
   renderNights();
@@ -729,7 +736,7 @@ form.addEventListener("submit", (event) => {
 form.addEventListener("keydown", (event) => {
   if (event.key !== "Enter") return;
   const target = event.target;
-  if (!(target instanceof HTMLInputElement)) return;
+  if (!target || target.tagName !== "INPUT") return;
   if (["checkbox", "radio", "date"].includes(target.type)) return;
   event.preventDefault();
   showFormError("");
@@ -818,5 +825,5 @@ updateConditionalVisibility();
 renderSidebar();
 updateActivityCount();
 renderReview();
-initMenu();
+initSite();
 goToStep(1, { scroll: false, focus: false });

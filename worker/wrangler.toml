@@ -1,0 +1,14 @@
+name = "scout-tools-api"
+main = "src/index.js"
+compatibility_date = "2026-01-01"
+
+[vars]
+GITHUB_REPO = "Jackson-Ryan/scouts"
+ALLOWED_ADMINS = "Jackson-Ryan"
+ALLOWED_ORIGINS = "https://jackson-ryan.github.io,http://localhost:8080,http://127.0.0.1:8080"
+SUBMISSION_LABEL = "pending-game-submission"
+
+# Secrets (set with `npx wrangler secret put <NAME>` — never commit these):
+#   GITHUB_CLIENT_ID         - GitHub OAuth App Client ID
+#   GITHUB_CLIENT_SECRET     - GitHub OAuth App Client Secret
+#   GITHUB_SUBMISSIONS_TOKEN - Fine-grained GitHub PAT with Issues (Read & write) ONLY on Jackson-Ryan/scouts
