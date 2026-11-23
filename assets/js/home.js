@@ -1,34 +1,23 @@
 /**
- * Scout Tools hub — home page behaviour.
+ * Scout Tools — home page behaviour.
  *
- * Renders the tool cards from /tools.json and wires up the mobile menu.
+ * Renders the tool cards from /tools.json and boots the shared site chrome.
  * To add a new tool: create its folder, then add an entry to tools.json.
  */
 
-const TOOLS_URL = new URL("../../tools.json", import.meta.url);
-const TOOL_COLORS = ["purple", "teal", "blue", "green", "orange", "pink", "navy", "yellow", "red", "mint"];
+import {
+  BRAND_COLORS,
+  SUGGEST_TOOL_URL,
+  escapeHTML,
+  initSite,
+  loadTools,
+  spriteIcon,
+} from "./site.js";
+
 const STATUS_LABELS = { ready: "Ready", beta: "Beta", planned: "Planned" };
 
-function escapeHTML(value) {
-  return String(value ?? "").replace(/[&<>"']/g, (character) => {
-    const map = {
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;",
-    };
-    return map[character];
-  });
-}
-
 function safeColor(color) {
-  return TOOL_COLORS.includes(color) ? color : "purple";
-}
-
-function iconMarkup(name, className = "icon") {
-  const safeName = String(name || "cube").replace(/[^a-z0-9-]/g, "");
-  return `<svg class="${className}" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#${safeName}"></use></svg>`;
+  return BRAND_COLORS.includes(color) ? color : "purple";
 }
 
 function toolCardMarkup(tool) {
@@ -36,9 +25,9 @@ function toolCardMarkup(tool) {
   const tags = Array.isArray(tool.tags) ? tool.tags : [];
   const badgeMarkup = status === "beta" ? `<span class="tool-card__badge tool-card__badge--beta">${escapeHTML(STATUS_LABELS[status])}</span>` : "";
   const cover = `
-    <div class="tool-card__cover cover-tile--${safeColor(tool.color)}" aria-hidden="true">
+    <div class="tool-card__cover cover--${safeColor(tool.color)}" aria-hidden="true">
       ${badgeMarkup}
-      <svg class="tool-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#${String(tool.icon || "cube").replace(/[^a-z0-9-]/g, "")}"></use></svg>
+      ${spriteIcon(tool.icon || "cube", { root: "./", className: "tool-card__icon" })}
       ${tool.kicker ? `<span class="tool-card__kicker">${escapeHTML(tool.kicker)}</span>` : ""}
     </div>
   `;
@@ -62,7 +51,7 @@ function toolCardMarkup(tool) {
         ${cover}
         ${body}
         <div class="tool-card__footer">
-          <span class="tool-card__cta">${iconMarkup("clock", "icon")} Coming soon</span>
+          <span class="tool-card__cta">${spriteIcon("clock", { root: "./" })} Coming soon</span>
         </div>
       </div>
     `;
@@ -73,62 +62,27 @@ function toolCardMarkup(tool) {
       ${cover}
       ${body}
       <div class="tool-card__footer">
-        <span class="tool-card__cta">Open tool ${iconMarkup("arrow-right", "icon")}</span>
+        <span class="tool-card__cta">Open tool ${spriteIcon("arrow-right", { root: "./" })}</span>
       </div>
     </a>
   `;
 }
 
-function plannedCardMarkup() {
+function suggestCardMarkup() {
   return `
-    <div class="tool-card tool-card--planned">
+    <a class="tool-card tool-card--planned" href="${SUGGEST_TOOL_URL}" target="_blank" rel="noopener">
       <div class="tool-card__cover" aria-hidden="true">
-        <svg class="tool-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#sparkles"></use></svg>
+        ${spriteIcon("plus", { root: "./", className: "tool-card__icon" })}
       </div>
       <div class="tool-card__body">
-        <h3 class="tool-card__title">More tools are on the way</h3>
-        <p class="tool-card__desc">The toolbox is built to grow — badge helpers, meeting planners and more can all live here.</p>
+        <h3 class="tool-card__title">Got an idea for a tool?</h3>
+        <p class="tool-card__desc">If something would save you time on a meeting night or before camp, suggest it on GitHub.</p>
       </div>
       <div class="tool-card__footer">
-        <span class="tool-card__cta">Suggest a tool ${iconMarkup("external-link", "icon")}</span>
+        <span class="tool-card__cta">Suggest a tool ${spriteIcon("external-link", { root: "./" })}</span>
       </div>
-    </div>
+    </a>
   `;
-}
-
-function initMenu() {
-  const toggle = document.querySelector("#menu-toggle");
-  const nav = document.querySelector("#site-nav");
-  if (!toggle || !nav) return;
-
-  const close = () => {
-    nav.classList.remove("is-open");
-    toggle.setAttribute("aria-expanded", "false");
-    toggle.setAttribute("aria-label", "Open menu");
-  };
-
-  toggle.addEventListener("click", () => {
-    const open = !nav.classList.contains("is-open");
-    nav.classList.toggle("is-open", open);
-    toggle.setAttribute("aria-expanded", String(open));
-    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-  });
-
-  nav.addEventListener("click", (event) => {
-    if (event.target.closest("a")) close();
-  });
-
-  document.addEventListener("click", (event) => {
-    if (!nav.contains(event.target) && !toggle.contains(event.target)) close();
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") close();
-  });
-
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 900) close();
-  });
 }
 
 async function renderTools() {
@@ -136,29 +90,24 @@ async function renderTools() {
   if (!grid) return;
 
   try {
-    const response = await fetch(TOOLS_URL, { cache: "no-cache" });
-    if (!response.ok) {
-      throw new Error(`The tools list could not be loaded (${response.status}).`);
-    }
-    const data = await response.json();
-    const tools = Array.isArray(data.tools) ? data.tools : [];
+    const tools = await loadTools();
     const ready = tools.filter((tool) => tool.status !== "planned" && tool.href).length;
 
     document.querySelectorAll("[data-tool-count]").forEach((element) => {
       element.textContent = String(ready);
     });
 
-    grid.innerHTML = tools.map(toolCardMarkup).join("") + plannedCardMarkup();
+    grid.innerHTML = tools.map(toolCardMarkup).join("") + suggestCardMarkup();
   } catch (error) {
     grid.innerHTML = `
-      <div class="hub-error">
-        <strong>We could not load the tools list.</strong>
+      <div class="error-panel">
+        <strong>Could not load the tools list.</strong>
         <span>${escapeHTML(error.message)}</span>
-        <span>If you are viewing the files locally, run a small web server (for example <code>npm run serve</code>) rather than opening the HTML file directly.</span>
+        <span>If you are running this locally, start a web server (such as <code>npm run serve</code>) instead of opening the HTML file directly.</span>
       </div>
     `;
   }
 }
 
-initMenu();
+initSite();
 renderTools();

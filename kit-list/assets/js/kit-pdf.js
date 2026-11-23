@@ -6,7 +6,7 @@
  * selectable and small enough to email.
  */
 
-import { slugify } from "./kit-data.js";
+import { slugify, tripMetaLine } from "./kit-data.js";
 
 const A4 = { width: 595.28, height: 841.89 };
 const MARGIN = 42;
@@ -166,12 +166,7 @@ export function createKitListPdf({ jsPDF, list, fonts, logoDataUrl }) {
   const titleLines = doc.splitTextToSize(list.title, CONTENT_WIDTH - 130);
   const titleLineHeight = titleSize * 1.08;
 
-  const metaBits = [list.section, list.dates];
-  if (list.nights > 0) metaBits.push(`${list.nights} night${list.nights === 1 ? "" : "s"}`);
-  metaBits.push(list.accommodation);
-  if (list.venue) metaBits.push(list.venue);
-  if (list.groupName) metaBits.push(list.groupName);
-  const metaLine = metaBits.filter(Boolean).join("  •  ");
+  const metaLine = tripMetaLine(list);
   setRegular(9.5, [239, 234, 250]);
   const metaLines = doc.splitTextToSize(metaLine, CONTENT_WIDTH - 120);
   const metaY = 106 + (titleLines.length - 1) * titleLineHeight + 24;
@@ -218,14 +213,7 @@ export function createKitListPdf({ jsPDF, list, fonts, logoDataUrl }) {
   doc.setFillColor(...COLOURS.purple);
   doc.roundedRect(MARGIN, y, 4, summaryHeight, 2, 2, "F");
 
-  const summary = [
-    ["SECTION", list.section],
-    ["TRIP", list.tripType],
-    ["DATES", list.dates],
-    ["NIGHTS", list.nights === 0 ? "Day trip" : String(list.nights)],
-    ["SLEEPING", list.nights === 0 ? "Not staying over" : list.accommodation],
-    ["WEATHER", list.weather.length ? list.weather.slice(0, 3).join(", ") : "Mixed"],
-  ];
+  const summary = (list.meta || []).map(({ label, value }) => [label.toUpperCase(), value]);
 
   const columnWidth = (CONTENT_WIDTH - 24) / 3;
   summary.forEach(([label, value], index) => {
@@ -246,7 +234,7 @@ export function createKitListPdf({ jsPDF, list, fonts, logoDataUrl }) {
 
   // How to use note
   const note =
-    "Work through this list with a grown-up and tick each item as it goes into your bag. It is a starting point — always check your event kit list and risk assessment too.";
+    "Work through this list with a grown-up and tick each item as it goes into your bag. Check your event instructions and risk assessment too.";
   doc.setFillColor(...COLOURS.yellow);
   doc.rect(MARGIN, y, 3, 30, "F");
   setRegular(8.5, COLOURS.grey);

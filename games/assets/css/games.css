@@ -21,12 +21,13 @@
   position: relative;
 }
 
-.field--search .icon {
+.field--search > .icon {
   position: absolute;
   left: 14px;
   /* Centre on the input (flush with the bottom of the field), not the label + input group. */
   top: auto;
   bottom: 24px;
+  z-index: 2;
   width: 19px;
   height: 19px;
   transform: translateY(50%);
@@ -36,6 +37,11 @@
 
 .field--search .input {
   padding-left: 44px;
+}
+
+.field--search .ui-search .input {
+  padding-left: 44px;
+  padding-right: 40px;
 }
 
 .filters__panel .btn {
@@ -111,24 +117,6 @@
 
 .featured {
   padding-block: 46px 0;
-}
-
-.section-head {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px;
-  margin-bottom: 22px;
-}
-
-.section-head h2 {
-  margin-bottom: 0;
-  font-size: clamp(1.45rem, 2.4vw, 1.8rem);
-  font-weight: 900;
-}
-
-.section-head .eyebrow {
-  margin-bottom: 6px;
 }
 
 .featured__grid,
@@ -327,17 +315,13 @@
 /* Cover art --------------------------------------------------------------- */
 
 .game-cover {
-  --cover-bg: var(--purple);
-  --cover-fg: var(--white);
-  --cover-soft: rgba(255, 255, 255, 0.15);
-  --cover-line: rgba(255, 255, 255, 0.35);
   position: relative;
   display: grid;
   place-items: center;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: var(--cover-bg);
-  color: var(--cover-fg);
+  background: var(--cover-bg, var(--purple));
+  color: var(--cover-fg, var(--white));
   isolation: isolate;
 }
 
@@ -349,7 +333,7 @@
   width: 72%;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: var(--cover-soft);
+  background: var(--cover-soft, rgba(255, 255, 255, 0.15));
   z-index: 0;
 }
 
@@ -360,7 +344,7 @@
   right: 8%;
   width: 21%;
   aspect-ratio: 1;
-  border: 2px dashed var(--cover-line);
+  border: 2px dashed var(--cover-line, rgba(255, 255, 255, 0.35));
   border-radius: 50%;
   z-index: 0;
 }
@@ -435,69 +419,6 @@
   text-transform: uppercase;
 }
 
-.cover--purple {
-  --cover-bg: #590fa9;
-  --cover-fg: #fff;
-  --cover-soft: rgba(255, 255, 255, 0.16);
-}
-
-.cover--teal {
-  --cover-bg: #088486;
-  --cover-fg: #fff;
-  --cover-soft: rgba(255, 255, 255, 0.16);
-}
-
-.cover--blue {
-  --cover-bg: #006ddf;
-  --cover-fg: #fff;
-  --cover-soft: rgba(255, 255, 255, 0.16);
-}
-
-.cover--green {
-  --cover-bg: #008a1c;
-  --cover-fg: #fff;
-  --cover-soft: rgba(255, 255, 255, 0.16);
-}
-
-.cover--orange {
-  --cover-bg: #e9730c;
-  --cover-fg: #2b1400;
-  --cover-soft: rgba(43, 20, 0, 0.12);
-  --cover-line: rgba(43, 20, 0, 0.28);
-}
-
-.cover--pink {
-  --cover-bg: #ffb4e5;
-  --cover-fg: #400b7a;
-  --cover-soft: rgba(64, 11, 122, 0.1);
-  --cover-line: rgba(64, 11, 122, 0.28);
-}
-
-.cover--navy {
-  --cover-bg: #003982;
-  --cover-fg: #fff;
-  --cover-soft: rgba(255, 255, 255, 0.16);
-}
-
-.cover--yellow {
-  --cover-bg: #ffe627;
-  --cover-fg: #2b2500;
-  --cover-soft: rgba(43, 37, 0, 0.1);
-  --cover-line: rgba(43, 37, 0, 0.28);
-}
-
-.cover--red {
-  --cover-bg: #ed3f23;
-  --cover-fg: #fff;
-  --cover-soft: rgba(255, 255, 255, 0.16);
-}
-
-.cover--mint {
-  --cover-bg: #0e8f3a;
-  --cover-fg: #fff;
-  --cover-soft: rgba(255, 255, 255, 0.16);
-}
-
 /* Featured cards ---------------------------------------------------------- */
 
 .game-card--featured .game-cover {
@@ -510,53 +431,6 @@
 
 .game-card--featured .game-card__summary {
   font-size: 0.93rem;
-}
-
-/* Empty state ------------------------------------------------------------- */
-
-.empty {
-  display: grid;
-  place-items: center;
-  gap: 12px;
-  padding: 56px 24px;
-  border: 2px dashed var(--border-accent-soft);
-  border-radius: var(--radius-lg);
-  background: var(--surface-accent-soft);
-  text-align: center;
-}
-
-.empty__icon {
-  display: grid;
-  place-items: center;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: var(--surface);
-  color: var(--accent-text);
-}
-
-.empty__icon .icon {
-  width: 30px;
-  height: 30px;
-}
-
-.empty h2 {
-  margin: 0;
-  font-size: 1.35rem;
-}
-
-.empty p {
-  max-width: 480px;
-  margin: 0;
-  color: var(--grey-600);
-}
-
-.empty__actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 6px;
 }
 
 /* Pagination -------------------------------------------------------------- */
@@ -639,7 +513,7 @@
   top: -80px;
   width: 280px;
   height: 280px;
-  background: url("../img/fleur.svg") center / contain no-repeat;
+  background: url("../../../assets/img/fleur.svg") center / contain no-repeat;
   opacity: 0.12;
   pointer-events: none;
 }
@@ -794,14 +668,16 @@
     justify-content: space-between;
   }
 
-  .sort-control .select {
+  .sort-control .select,
+  .sort-control .ui-select {
     flex: 1;
   }
 }
 
 /* Keep form controls at 16px on small screens so iOS does not zoom on focus. */
 @media (max-width: 640px) {
-  .sort-control .select {
+  .sort-control .select,
+  .sort-control .ui-select__trigger {
     font-size: 16px;
   }
 }

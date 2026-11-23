@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 /**
  * A tiny static file server for local previewing.
+ * Matches GitHub Pages clean URLs and trailing-slash directory redirects.
+ *
  * Run with: npm run serve
  */
 
@@ -11,6 +13,7 @@ import { dirname, extname, join, normalize, resolve, sep } from "node:path";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const port = Number(process.env.PORT) || 8080;
+const host = process.env.HOST || "127.0.0.1";
 
 const types = {
   ".html": "text/html; charset=utf-8",
@@ -28,7 +31,7 @@ const types = {
   ".md": "text/markdown; charset=utf-8",
 };
 
-async function send(response, status, body, type = "text/plain; charset=utf-8") {
+function send(response, status, body, type = "text/plain; charset=utf-8") {
   response.writeHead(status, {
     "Content-Type": type,
     "Cache-Control": "no-store",
@@ -45,16 +48,22 @@ createServer(async (request, response) => {
 
     const filePath = normalize(join(root, pathname));
     if (!filePath.startsWith(root + sep) && filePath !== root) {
-      await send(response, 403, "Forbidden");
+      send(response, 403, "Forbidden");
       return;
     }
 
     let target = filePath;
     try {
       const info = await stat(target);
-      if (info.isDirectory()) target = join(target, "index.html");
+      if (info.isDirectory()) {
+        if (!url.pathname.endsWith("/")) {
+          response.writeHead(301, { Location: `${url.pathname}/${url.search}`, "Cache-Control": "no-store" });
+          response.end();
+          return;
+        }
+        target = join(target, "index.html");
+      }
     } catch {
-      // Support extensionless URLs like GitHub Pages (e.g. /games/about → games/about.html)
       const candidates = [];
       if (!extname(target)) candidates.push(`${target}.html`);
       candidates.push(join(target, "index.html"));
@@ -72,16 +81,16 @@ createServer(async (request, response) => {
         }
       }
       if (!found) {
-        await send(response, 404, await readFile(join(root, "404.html"), "utf8"), types[".html"]);
+        send(response, 404, await readFile(join(root, "404.html"), "utf8"), types[".html"]);
         return;
       }
     }
 
     const body = await readFile(target);
-    await send(response, 200, body, types[extname(target).toLowerCase()] || "application/octet-stream");
+    send(response, 200, body, types[extname(target).toLowerCase()] || "application/octet-stream");
   } catch (error) {
-    await send(response, 500, `Server error: ${error.message}`);
+    send(response, 500, `Server error: ${error.message}`);
   }
-}).listen(port, () => {
+}).listen(port, host, () => {
   console.log(`Serving ${root} at http://localhost:${port}`);
 });

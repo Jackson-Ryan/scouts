@@ -2,7 +2,7 @@
   {
     "id": "french-v-english",
     "title": "French v English",
-    "summary": "A high-energy team dodgeball game with a rope divide, foam balls and a rescue mission.",
+    "summary": "A fast-paced team dodgeball game with a centre rope, foam balls and a rescue chair.",
     "sections": [
       "cubs",
       "scouts"
@@ -85,7 +85,7 @@
       "color": "purple"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "crab-football",
@@ -157,32 +157,32 @@
       {
         "theme": "halloween",
         "title": "Spider Football",
-        "text": "The rules stay exactly the same. Teams are spiders, the goals are webs and every pass is a web-sling."
+        "text": "Teams play as spiders, the goals are webs and every pass is a web-sling."
       },
       {
         "theme": "christmas",
         "title": "Reindeer Football",
-        "text": "Same crab football rules, but players wear antlers and the ball has a red nose."
+        "text": "Players wear antlers and play with a red ball for Rudolph’s nose."
       },
       {
         "theme": "space",
         "title": "Moon Crab Football",
-        "text": "Same rules, with slow-motion moon moves and a countdown before every restart."
+        "text": "Move in slow-motion moon steps and add a countdown before every restart."
       }
     ],
     "variantOf": null,
     "featured": true,
     "art": {
-      "icon": "football",
+      "icon": "crab",
       "color": "teal"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "dodgeball",
     "title": "Dodgeball",
-    "summary": "The classic team game: dodge, catch and throw your way to the last player standing.",
+    "summary": "Dodge, catch and throw foam balls until one team is left standing.",
     "sections": [
       "cubs",
       "scouts"
@@ -248,12 +248,12 @@
       {
         "theme": "space",
         "title": "Meteor Dodgeball",
-        "text": "Same rules, but the balls are meteors and players must freeze like astronauts when a meteor passes."
+        "text": "Call the balls meteors; players freeze like astronauts whenever one flies past."
       },
       {
         "theme": "halloween",
         "title": "Ghost Dodgeball",
-        "text": "Same rules, with spooky music and a ghostly ‘boo’ every time a player is out."
+        "text": "Play spooky music and add a ghostly ‘boo’ whenever a player is hit."
       }
     ],
     "variantOf": null,
@@ -263,7 +263,7 @@
       "color": "blue"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "capture-the-flag",
@@ -336,12 +336,12 @@
       {
         "theme": "pirates",
         "title": "Pirate Treasure",
-        "text": "The flags become treasure chests. Same rules, with pirate names for the bases and jail."
+        "text": "Turn the flags into treasure chests and give the bases and jail pirate names."
       },
       {
         "theme": "jungle",
         "title": "Jungle Flag",
-        "text": "Same rules, but players must move like a jungle animal of their choice between bases."
+        "text": "Players pick a jungle animal and move like it whenever they cross between bases."
       }
     ],
     "variantOf": null,
@@ -351,7 +351,7 @@
       "color": "green"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "bench-ball",
@@ -423,27 +423,27 @@
       {
         "theme": "space",
         "title": "Space Station Catch",
-        "text": "Same rules, but the benches are space stations and every pass is a ‘docking manoeuvre’."
+        "text": "Call the benches space stations and treat every pass as a docking manoeuvre."
       },
       {
         "theme": "christmas",
         "title": "Santa’s Sleigh",
-        "text": "Same rules, with a sleigh bell on the bench and Christmas music between points."
+        "text": "Put a sleigh bell on each bench and play Christmas music between points."
       }
     ],
     "variantOf": null,
     "featured": false,
     "art": {
-      "icon": "target",
+      "icon": "basketball",
       "color": "orange"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "stuck-in-the-mud",
     "title": "Stuck in the Mud",
-    "summary": "A simple, brilliant tag game that works with any size of group and needs almost no equipment.",
+    "summary": "A simple tag game that works for almost any group size with no equipment.",
     "sections": [
       "beavers",
       "cubs"
@@ -508,17 +508,17 @@
       {
         "theme": "winter",
         "title": "Frozen in the Mud",
-        "text": "Same rules, but frozen players strike a snowman pose and rescuers give them a warm-up high-five."
+        "text": "Frozen players strike a snowman pose and rescuers unfreeze them with a warm-up high-five."
       },
       {
         "theme": "jungle",
         "title": "Jungle Mud",
-        "text": "Same rules, with animal noises for each rescue and a ‘swamp’ area marked with cones."
+        "text": "Mark a cone ‘swamp’ in the middle and make an animal noise on every rescue."
       },
       {
         "theme": "halloween",
         "title": "Zombie Mud",
-        "text": "Same rules, but frozen players groan like zombies until they are rescued."
+        "text": "Frozen players groan like zombies until a teammate frees them."
       }
     ],
     "variantOf": null,
@@ -528,7 +528,7 @@
       "color": "mint"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "sharks-and-minnows",
@@ -598,27 +598,27 @@
       {
         "theme": "summer",
         "title": "Jellyfish Tag",
-        "text": "Same rules, but seaweed players wobble their arms like jellyfish and everyone makes a sea sound when tagged."
+        "text": "Seaweed players wobble their arms like jellyfish and make a sea sound when they tag someone."
       },
       {
         "theme": "space",
         "title": "Space Invaders",
-        "text": "Same rules, with asteroids for seaweed and a countdown before each crossing."
+        "text": "Seaweed becomes drifting asteroids, with a countdown before each crossing."
       }
     ],
     "variantOf": null,
     "featured": false,
     "art": {
-      "icon": "fish",
+      "icon": "shark",
       "color": "blue"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "grandmas-footsteps",
     "title": "Grandma’s Footsteps",
-    "summary": "A classic quiet-to-loud game of sneaking up on Grandma without being spotted.",
+    "summary": "Sneak up on Grandma without being spotted moving when they turn round.",
     "sections": [
       "beavers",
       "cubs"
@@ -682,12 +682,12 @@
       {
         "theme": "pirates",
         "title": "Sleeping Pirates",
-        "text": "Grandma becomes the sleeping pirate. Same rules, but players must creep like they are on a ship."
+        "text": "Grandma becomes a sleeping pirate captain and everyone creeps like they are on a ship’s deck."
       },
       {
         "theme": "christmas",
         "title": "Santa’s Footsteps",
-        "text": "Same rules, with Santa’s hat on the caller and a jingle bell that rings when they turn."
+        "text": "Give the caller a Santa hat and a jingle bell to ring when they turn round."
       }
     ],
     "variantOf": null,
@@ -697,7 +697,7 @@
       "color": "pink"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "captains-coming",
@@ -768,22 +768,22 @@
       {
         "theme": "space",
         "title": "Astronaut’s Orders",
-        "text": "Same rules, with commands like ‘boosters’, ‘gravity off’ and ‘alien spotted’. Everyone floats between moves."
+        "text": "Swap ship orders for ‘boosters’, ‘gravity off’ and ‘alien spotted’, floating between moves."
       },
       {
         "theme": "christmas",
         "title": "Santa’s Coming",
-        "text": "Same rules, with commands like ‘load the sleigh’, ‘check the list’ and ‘ho ho ho’."
+        "text": "Call festive commands like ‘load the sleigh’, ‘check the list’ and ‘ho ho ho’."
       }
     ],
     "variantOf": null,
     "featured": false,
     "art": {
-      "icon": "megaphone",
+      "icon": "helm",
       "color": "navy"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "zip-zap-boing",
@@ -853,12 +853,12 @@
       {
         "theme": "christmas",
         "title": "Santa Zap",
-        "text": "Same rules, but players pass a pretend present and say ‘ho ho ho’ instead of boing."
+        "text": "Pass a pretend present around the circle and shout ‘ho ho ho’ instead of boing."
       },
       {
         "theme": "space",
         "title": "Alien Zap",
-        "text": "Same rules, with alien noises and a ‘warp speed’ round where everything speeds up."
+        "text": "Use alien noises and add a ‘warp speed’ round where the pace ramps up."
       }
     ],
     "variantOf": null,
@@ -868,7 +868,7 @@
       "color": "yellow"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "splat",
@@ -938,12 +938,12 @@
       {
         "theme": "halloween",
         "title": "Pumpkin Splat",
-        "text": "Same rules, with a pumpkin gesture and a spooky ‘boo’ instead of splat."
+        "text": "Use a pumpkin gesture and a spooky ‘boo’ instead of splat."
       },
       {
         "theme": "winter",
         "title": "Snowball Splat",
-        "text": "Same rules, with a pretend snowball throw and a ‘whoosh’ sound."
+        "text": "Mime throwing a snowball with a ‘whoosh’ sound instead of splat."
       }
     ],
     "variantOf": null,
@@ -953,7 +953,7 @@
       "color": "red"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "fruit-salad",
@@ -1022,12 +1022,12 @@
       {
         "theme": "christmas",
         "title": "Christmas Dinner",
-        "text": "Same rules, with sprouts, carrots, potatoes and pudding. ‘Christmas dinner’ means everyone swaps."
+        "text": "Use sprouts, carrots, potatoes and pudding. Calling ‘Christmas dinner’ swaps everyone."
       },
       {
         "theme": "jungle",
         "title": "Jungle Salad",
-        "text": "Same rules, with animal names and animal noises as players swap."
+        "text": "Give players jungle animal names and make the animal sound as you swap seats."
       }
     ],
     "variantOf": null,
@@ -1037,7 +1037,7 @@
       "color": "green"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "four-corners",
@@ -1106,12 +1106,12 @@
       {
         "theme": "halloween",
         "title": "Haunted Houses",
-        "text": "Same rules, with four haunted house signs and a spooky sound for each corner."
+        "text": "Label the four corners as haunted rooms with a spooky sound for each."
       },
       {
         "theme": "space",
         "title": "Space Stations",
-        "text": "Same rules, with four space station names and a countdown from ten."
+        "text": "Name the corners after space stations and run a countdown from ten before choosing."
       }
     ],
     "variantOf": null,
@@ -1121,7 +1121,7 @@
       "color": "orange"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "wink-murder",
@@ -1191,12 +1191,12 @@
       {
         "theme": "halloween",
         "title": "Ghost in the Circle",
-        "text": "Same rules, but the murderer is a ghost and winked-at villagers float down to the floor."
+        "text": "The murderer is a ghost, and winked-at players float slowly down to the floor."
       },
       {
         "theme": "christmas",
         "title": "Santa’s Spy",
-        "text": "Same rules, with a naughty-or-nice list and a jingle bell for each guess."
+        "text": "Keep a naughty-or-nice list and ring a jingle bell before each guess."
       }
     ],
     "variantOf": null,
@@ -1206,7 +1206,7 @@
       "color": "navy"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "human-knot",
@@ -1275,12 +1275,12 @@
       {
         "theme": "halloween",
         "title": "Spaghetti Monster",
-        "text": "Same rules, with a spaghetti-monster story and silly slurping noises when the group gets stuck."
+        "text": "Tell a spaghetti-monster story and make slurping noises whenever the group gets stuck."
       },
       {
         "theme": "space",
         "title": "Space Tangle",
-        "text": "Same rules, with astronauts linked by a ‘gravity rope’ and a countdown to untangle."
+        "text": "Players are astronauts tangled in a tether with a countdown to get free."
       }
     ],
     "variantOf": null,
@@ -1290,7 +1290,7 @@
       "color": "teal"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "helium-stick",
@@ -1359,12 +1359,12 @@
       {
         "theme": "halloween",
         "title": "Magic Wand",
-        "text": "Same rules, but the pole is a wizard’s wand that must be lowered into a cauldron."
+        "text": "Call the pole a giant wizard’s wand that has to be lowered into a cauldron."
       },
       {
         "theme": "space",
         "title": "Laser Beam",
-        "text": "Same rules, with a ‘laser beam’ that must be lowered into the docking bay without breaking contact."
+        "text": "Treat the stick as a laser beam that must be lowered into the docking bay without losing contact."
       }
     ],
     "variantOf": null,
@@ -1374,7 +1374,7 @@
       "color": "purple"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "all-aboard",
@@ -1444,12 +1444,12 @@
       {
         "theme": "space",
         "title": "Space Station Evacuation",
-        "text": "Same rules, but the island is a space station and each fold is a meteor strike."
+        "text": "The mat is a shrinking space station and every fold is a meteor strike."
       },
       {
         "theme": "pirates",
         "title": "Pirate Raft",
-        "text": "Same rules, with a sinking raft and a pirate countdown before each fold."
+        "text": "Treat the mat as a sinking raft with a pirate countdown before each fold."
       }
     ],
     "variantOf": null,
@@ -1459,12 +1459,12 @@
       "color": "mint"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "river-crossing",
     "title": "River Crossing",
-    "summary": "A classic team challenge: cross the crocodile-infested river using only a few floating mats.",
+    "summary": "Get the whole team across an imaginary river using only a few stepping mats.",
     "sections": [
       "cubs",
       "scouts"
@@ -1530,12 +1530,12 @@
       {
         "theme": "space",
         "title": "Mars Crossing",
-        "text": "Same rules, but the river is a crater field and the mats are moon boots."
+        "text": "The river becomes a crater field and the mats are moon boots."
       },
       {
         "theme": "jungle",
         "title": "Swamp Crossing",
-        "text": "Same rules, with crocodiles, vines and a jungle soundtrack."
+        "text": "Add crocodiles, vines and a jungle soundtrack while teams cross."
       }
     ],
     "variantOf": null,
@@ -1545,7 +1545,7 @@
       "color": "blue"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "toxic-waste",
@@ -1618,12 +1618,12 @@
       {
         "theme": "space",
         "title": "Alien Slime",
-        "text": "Same rules, but the bucket is a container of alien slime that must be returned to the mothership."
+        "text": "Turn the bucket into a canister of alien slime that needs to reach the mothership."
       },
       {
         "theme": "halloween",
         "title": "Witch’s Brew",
-        "text": "Same rules, with a cauldron, glowing balls and a spell to recite before each lift."
+        "text": "Use a cauldron with glowing balls and recite a short spell before each lift."
       }
     ],
     "variantOf": null,
@@ -1633,7 +1633,7 @@
       "color": "orange"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "human-tic-tac-toe",
@@ -1704,12 +1704,12 @@
       {
         "theme": "superheroes",
         "title": "Superhero Showdown",
-        "text": "Same rules, with superhero names for each team and a power pose before every move."
+        "text": "Give each team a superhero name and strike a power pose before placing a marker."
       },
       {
         "theme": "halloween",
         "title": "Pumpkin Patch",
-        "text": "Same rules, with orange and black beanbags and a spooky cackle for every winning row."
+        "text": "Use orange and black beanbags and celebrate a winning row with a spooky cackle."
       }
     ],
     "variantOf": null,
@@ -1719,12 +1719,12 @@
       "color": "pink"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "parachute-popcorn",
     "title": "Parachute Popcorn",
-    "summary": "A joyful parachute game that turns soft balls into popping popcorn.",
+    "summary": "Bounce soft balls high off a parachute like popping popcorn.",
     "sections": [
       "beavers",
       "cubs"
@@ -1789,12 +1789,12 @@
       {
         "theme": "halloween",
         "title": "Popping Pumpkins",
-        "text": "Same rules, with orange balls and a witch’s cackle every time a pumpkin pops off."
+        "text": "Use orange balls and let out a cackle every time a pumpkin bounces off."
       },
       {
         "theme": "winter",
         "title": "Snowstorm",
-        "text": "Same rules, with white balls and a gentle ‘brrr’ as the snow falls."
+        "text": "Use white balls and shiver with a ‘brrr’ whenever the snow flies out."
       }
     ],
     "variantOf": null,
@@ -1804,12 +1804,12 @@
       "color": "pink"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "tug-of-war",
     "title": "Tug of War",
-    "summary": "The ultimate team pull: two teams, one rope and a lot of noise.",
+    "summary": "Two teams, one rope and a straightforward test of teamwork.",
     "sections": [
       "beavers",
       "cubs",
@@ -1876,12 +1876,12 @@
       {
         "theme": "christmas",
         "title": "Grinch’s Tug",
-        "text": "Same rules, with a ‘stolen Christmas’ story and a festive countdown."
+        "text": "Frame it as a tug for Christmas presents with a festive countdown."
       },
       {
         "theme": "pirates",
         "title": "Pirate Tug",
-        "text": "Same rules, with pirate names for each team and a treasure chest marker."
+        "text": "Give each team a pirate crew name and put a treasure chest marker at the centre."
       }
     ],
     "variantOf": null,
@@ -1891,7 +1891,7 @@
       "color": "red"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "balloon-volleyball",
@@ -1962,12 +1962,12 @@
       {
         "theme": "halloween",
         "title": "Ghost Balloons",
-        "text": "Same rules, with white balloons decorated as ghosts and spooky music between points."
+        "text": "Draw ghost faces on white balloons and play spooky music between points."
       },
       {
         "theme": "space",
         "title": "Space Balloon",
-        "text": "Same rules, with a countdown before each serve and slow-motion moon moves."
+        "text": "Add a countdown before each serve and move in slow-motion moon steps."
       }
     ],
     "variantOf": null,
@@ -1977,7 +1977,7 @@
       "color": "yellow"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "indoor-hockey",
@@ -2050,12 +2050,12 @@
       {
         "theme": "halloween",
         "title": "Wizards’ Hockey",
-        "text": "Same rules, with broomsticks for sticks and a ‘flying’ celebration after each goal."
+        "text": "Call the sticks broomsticks and add a flying celebration after every goal."
       },
       {
         "theme": "christmas",
         "title": "Reindeer Hockey",
-        "text": "Same rules, with antlers and a red ball for Rudolph’s nose."
+        "text": "Wear reindeer antlers and play with a red ball for Rudolph’s nose."
       }
     ],
     "variantOf": null,
@@ -2065,7 +2065,7 @@
       "color": "teal"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "rounders",
@@ -2140,12 +2140,12 @@
       {
         "theme": "pirates",
         "title": "Pirate Rounders",
-        "text": "Same rules, with treasure chest bases and a ‘walk the plank’ celebration for every rounder."
+        "text": "Call the bases treasure chests and celebrate a rounder by walking the plank."
       },
       {
         "theme": "space",
         "title": "Space Rounders",
-        "text": "Same rules, with planet bases and a countdown before each hit."
+        "text": "Name each base after a planet and count down before the first pitch."
       }
     ],
     "variantOf": null,
@@ -2155,12 +2155,12 @@
       "color": "green"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "manhunt",
     "title": "Manhunt",
-    "summary": "A thrilling wide game of hiding, seeking and jailbreaks for longer evenings and camps.",
+    "summary": "A wide game of hiding, seeking and jailbreaks for longer evenings and camps.",
     "sections": [
       "cubs",
       "scouts"
@@ -2230,22 +2230,22 @@
       {
         "theme": "halloween",
         "title": "Ghost Hunt",
-        "text": "Same rules, with ghostly hiders and torches covered with red film for a spooky glow."
+        "text": "Cover torches with red film for a spooky glow while hiders creep like ghosts."
       },
       {
         "theme": "christmas",
         "title": "Santa’s Elves",
-        "text": "Same rules, with elves hiding presents and seekers trying to find them before midnight."
+        "text": "Elves hide with small parcels while seekers try to spot them before midnight."
       }
     ],
     "variantOf": null,
     "featured": false,
     "art": {
-      "icon": "moon",
+      "icon": "binoculars",
       "color": "navy"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "sardines",
@@ -2318,22 +2318,22 @@
       {
         "theme": "halloween",
         "title": "Ghost Sardines",
-        "text": "Same rules, with ghostly whispers and a torch under a sheet at the hiding place."
+        "text": "Use quiet ghostly whispers and place a torch under a sheet at the hiding spot."
       },
       {
         "theme": "christmas",
         "title": "Elf Sardines",
-        "text": "Same rules, with a jingle bell at the hiding place and elf hats for the seekers."
+        "text": "Put a jingle bell at the hiding spot and give the seekers elf hats."
       }
     ],
     "variantOf": null,
     "featured": false,
     "art": {
-      "icon": "users",
+      "icon": "fish",
       "color": "teal"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "pirate-treasure-hunt",
@@ -2409,22 +2409,22 @@
       {
         "theme": "space",
         "title": "Space Treasure",
-        "text": "Same rules, with planet checkpoints and ‘moon rock’ treasure."
+        "text": "Rename the checkpoints after planets and hide ‘moon rocks’ at the end."
       },
       {
         "theme": "christmas",
         "title": "Santa’s Stocking Hunt",
-        "text": "Same rules, with Christmas clues and a stocking at the end."
+        "text": "Use Christmas clues leading to a filled stocking at the finish."
       }
     ],
     "variantOf": null,
     "featured": false,
     "art": {
-      "icon": "anchor",
+      "icon": "treasure",
       "color": "navy"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "nature-scavenger-hunt",
@@ -2499,22 +2499,22 @@
       {
         "theme": "around-the-world",
         "title": "World Safari",
-        "text": "Same rules, with continents to match to the natural items you find."
+        "text": "Match each natural item you find to a different continent."
       },
       {
         "theme": "jungle",
         "title": "Jungle Explorer",
-        "text": "Same rules, with explorer names and a jungle sound hunt."
+        "text": "Give groups explorer names and add a jungle sound to listen out for."
       }
     ],
     "variantOf": null,
     "featured": false,
     "art": {
-      "icon": "tree",
+      "icon": "leaf",
       "color": "green"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "photo-orienteering",
@@ -2590,12 +2590,12 @@
       {
         "theme": "space",
         "title": "Space Mission Photos",
-        "text": "Same rules, with planet names for checkpoints and a mission log to complete."
+        "text": "Name each checkpoint after a planet and give teams a mission log to tick off."
       },
       {
         "theme": "pirates",
         "title": "Pirate Map",
-        "text": "Same rules, with a treasure map and a gold coin at each checkpoint."
+        "text": "Give teams a treasure map look and leave a chocolate or card coin at each checkpoint."
       }
     ],
     "variantOf": null,
@@ -2605,12 +2605,12 @@
       "color": "orange"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "charades",
     "title": "Charades",
-    "summary": "A classic guessing game that works with any theme and any size of group.",
+    "summary": "Act out clues without speaking. Easy to fit to any theme or group size.",
     "sections": [
       "beavers",
       "cubs",
@@ -2677,17 +2677,17 @@
       {
         "theme": "jungle",
         "title": "Jungle Charades",
-        "text": "Same rules, with jungle animals, explorers and jungle sounds."
+        "text": "Fill the prompt cards with jungle animals, explorers and jungle sounds."
       },
       {
         "theme": "space",
         "title": "Space Charades",
-        "text": "Same rules, with planets, aliens and astronaut jobs."
+        "text": "Use planets, aliens and astronaut jobs on the prompt cards."
       },
       {
         "theme": "around-the-world",
         "title": "Around the World Charades",
-        "text": "Same rules, with countries, landmarks and travel actions."
+        "text": "Use countries, landmarks and ways to travel on the prompt cards."
       }
     ],
     "variantOf": null,
@@ -2697,7 +2697,7 @@
       "color": "pink"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "simon-says",
@@ -2765,12 +2765,12 @@
       {
         "theme": "christmas",
         "title": "Santa Says",
-        "text": "Same rules, with festive actions like wrapping a present or loading a sleigh."
+        "text": "Call festive actions like wrapping a present, loading the sleigh or climbing a chimney."
       },
       {
         "theme": "space",
         "title": "Astronaut Says",
-        "text": "Same rules, with floating, moonwalking and alien greetings."
+        "text": "Call space actions like floating, moonwalking and waving to mission control."
       }
     ],
     "variantOf": null,
@@ -2780,12 +2780,12 @@
       "color": "mint"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "egg-and-spoon",
     "title": "Egg and Spoon Race",
-    "summary": "A classic balancing relay that is much harder than it looks.",
+    "summary": "A balancing relay that is trickier than it looks.",
     "sections": [
       "beavers",
       "cubs"
@@ -2855,22 +2855,22 @@
       {
         "theme": "halloween",
         "title": "Pumpkin and Spoon",
-        "text": "Same rules, with small orange balls as pumpkins."
+        "text": "Use small orange balls or mini pumpkins instead of eggs."
       },
       {
         "theme": "christmas",
         "title": "Bauble and Spoon",
-        "text": "Same rules, with unbreakable baubles and a Christmas song at the finish line."
+        "text": "Use unbreakable baubles and play a Christmas song at the finish line."
       }
     ],
     "variantOf": null,
     "featured": false,
     "art": {
-      "icon": "egg",
+      "icon": "spoon",
       "color": "yellow"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "santa-relay",
@@ -2947,22 +2947,22 @@
       {
         "theme": "winter",
         "title": "Snowman Relay",
-        "text": "Same rules, with scarves, hats and paper snowballs to build a snowman."
+        "text": "Dress a teammate as a snowman using scarves, hats and paper snowballs."
       },
       {
         "theme": "christmas",
         "title": "Elf Relay",
-        "text": "Same rules, with pointy hats and a present to deliver at the finish."
+        "text": "Use pointy elf hats and deliver a wrapped parcel on the final leg."
       }
     ],
     "variantOf": null,
     "featured": false,
     "art": {
-      "icon": "gift",
+      "icon": "candy-cane",
       "color": "red"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "pumpkin-relay",
@@ -3036,12 +3036,12 @@
       {
         "theme": "halloween",
         "title": "Witch’s Hat Relay",
-        "text": "Same rules, but players wear a witch’s hat while they weave."
+        "text": "Players wear a witch’s hat while weaving through the cones."
       },
       {
         "theme": "summer",
         "title": "Watermelon Relay",
-        "text": "Same rules, with a green ball as a watermelon and a summer picnic at the finish."
+        "text": "Use a green ball as a watermelon and set up a summer picnic at the finish."
       }
     ],
     "variantOf": null,
@@ -3051,12 +3051,12 @@
       "color": "orange"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "easter-egg-hunt",
     "title": "Easter Egg Hunt",
-    "summary": "A classic hunt with clues, teams and a count-at-the-end twist.",
+    "summary": "A team hunt with clues, hidden eggs and a group count at the end.",
     "sections": [
       "beavers",
       "cubs"
@@ -3126,12 +3126,12 @@
       {
         "theme": "space",
         "title": "Space Egg Hunt",
-        "text": "Same rules, with planet-shaped eggs and a countdown to blast-off."
+        "text": "Use planet-shaped eggs and start the hunt with a rocket countdown."
       },
       {
         "theme": "pirates",
         "title": "Pirate Egg Hunt",
-        "text": "Same rules, with a treasure map and golden eggs."
+        "text": "Hand out a simple treasure map and hide golden eggs."
       }
     ],
     "variantOf": null,
@@ -3141,7 +3141,7 @@
       "color": "pink"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "jungle-animal-relay",
@@ -3215,12 +3215,12 @@
       {
         "theme": "around-the-world",
         "title": "Safari Relay",
-        "text": "Same rules, with animals from different continents."
+        "text": "Use animals from different continents for each leg."
       },
       {
         "theme": "winter",
         "title": "Polar Animal Relay",
-        "text": "Same rules, with penguins, polar bears and seals."
+        "text": "Move like penguins, polar bears and seals on each leg."
       }
     ],
     "variantOf": null,
@@ -3230,7 +3230,7 @@
       "color": "green"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "superhero-training",
@@ -3306,22 +3306,22 @@
       {
         "theme": "space",
         "title": "Space Cadet Training",
-        "text": "Same rules, with astronaut training stations and a mission patch for each recruit."
+        "text": "Turn the stations into astronaut training and hand out a mission patch at the end."
       },
       {
         "theme": "pirates",
         "title": "Pirate Training",
-        "text": "Same rules, with ship-board challenges and a pirate oath at the end."
+        "text": "Give each station a shipboard name and finish with a pirate oath."
       }
     ],
     "variantOf": null,
     "featured": false,
     "art": {
-      "icon": "shield",
+      "icon": "mask",
       "color": "blue"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "around-the-world-relay",
@@ -3397,12 +3397,12 @@
       {
         "theme": "space",
         "title": "Space Race",
-        "text": "Same rules, with planets instead of continents."
+        "text": "Swap the continents for planets around the hall."
       },
       {
         "theme": "christmas",
         "title": "Santa’s Journey",
-        "text": "Same rules, with countries Santa visits on Christmas Eve."
+        "text": "Use countries Santa visits on Christmas Eve as the stations."
       }
     ],
     "variantOf": null,
@@ -3412,12 +3412,12 @@
       "color": "teal"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "human-foosball",
     "title": "Human Foosball",
-    "summary": "A team game that turns the classic table football formation into a full-body challenge.",
+    "summary": "Players hold hands in rows and move sideways like table football.",
     "sections": [
       "cubs",
       "scouts"
@@ -3484,12 +3484,12 @@
       {
         "theme": "halloween",
         "title": "Wizard Foosball",
-        "text": "Same rules, with broomstick moves and a spell before every goal."
+        "text": "Shout a quick spell before every kick-off and move like you are on broomsticks."
       },
       {
         "theme": "christmas",
         "title": "Reindeer Foosball",
-        "text": "Same rules, with antlers and a sleigh-bell ball."
+        "text": "Wear antlers and tie a small bell near the goals."
       }
     ],
     "variantOf": null,
@@ -3499,7 +3499,7 @@
       "color": "mint"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "silent-line-up",
@@ -3569,12 +3569,12 @@
       {
         "theme": "christmas",
         "title": "Elf Line Up",
-        "text": "Same rules, with elf names and a Christmas list to organise."
+        "text": "Give everyone elf names or toy-list numbers to sort into order."
       },
       {
         "theme": "space",
         "title": "Space Crew",
-        "text": "Same rules, with astronauts lining up by mission number."
+        "text": "Hand out mission numbers and line up the astronaut crew in order."
       }
     ],
     "variantOf": null,
@@ -3584,7 +3584,7 @@
       "color": "purple"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "electric-fence",
@@ -3658,12 +3658,12 @@
       {
         "theme": "space",
         "title": "Laser Grid",
-        "text": "Same rules, with a laser grid to cross and a countdown to safety."
+        "text": "Call the rope a laser grid with a countdown to get the whole crew through."
       },
       {
         "theme": "jungle",
         "title": "Dragon’s Lair",
-        "text": "Same rules, with a sleeping dragon and a treasure to reach."
+        "text": "Pretend a sleeping dragon guards the far side so teams have to stay quiet as they cross."
       }
     ],
     "variantOf": null,
@@ -3673,7 +3673,7 @@
       "color": "orange"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "marshmallow-tower",
@@ -3749,12 +3749,12 @@
       {
         "theme": "space",
         "title": "Space Tower",
-        "text": "Same rules, with a mission to build a tower on Mars and a countdown to launch."
+        "text": "Set it as a mission to build a communications tower on Mars, ending with a launch countdown."
       },
       {
         "theme": "christmas",
         "title": "Gingerbread Tower",
-        "text": "Same rules, with a festive story and a star on top of the winning tower."
+        "text": "Give it a festive story and place a paper star on top of the winning tower."
       }
     ],
     "variantOf": null,
@@ -3764,7 +3764,7 @@
       "color": "yellow"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "paper-aeroplane",
@@ -3838,12 +3838,12 @@
       {
         "theme": "space",
         "title": "Rocket Launch",
-        "text": "Same rules, with rocket designs and a countdown before each throw."
+        "text": "Decorate the planes as rockets and count down before every throw."
       },
       {
         "theme": "christmas",
         "title": "Santa’s Sleigh",
-        "text": "Same rules, with sleigh designs and a ‘deliver the present’ target."
+        "text": "Decorate the planes as sleighs and aim for a ‘chimney’ hoop target."
       }
     ],
     "variantOf": null,
@@ -3853,7 +3853,7 @@
       "color": "blue"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "cup-stack-relay",
@@ -3924,12 +3924,12 @@
       {
         "theme": "halloween",
         "title": "Pumpkin Stack",
-        "text": "Same rules, with orange cups and a pumpkin on top of the winning pyramid."
+        "text": "Use orange cups and balance a small pumpkin or orange ball on top of the finished pyramid."
       },
       {
         "theme": "winter",
         "title": "Snowman Stack",
-        "text": "Same rules, with white cups and a snowman face on the top cup."
+        "text": "Use white cups and draw a snowman face on the top cup."
       }
     ],
     "variantOf": null,
@@ -3939,7 +3939,7 @@
       "color": "pink"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "sleeping-lions",
@@ -4010,22 +4010,22 @@
       {
         "theme": "christmas",
         "title": "Sleeping Reindeer",
-        "text": "Same rules, with reindeer antlers and a quiet Christmas story."
+        "text": "Wear reindeer antlers and tell a quiet Christmas Eve story while players stay still."
       },
       {
         "theme": "halloween",
         "title": "Sleeping Bats",
-        "text": "Same rules, with bats hanging upside down (or sitting still) until sunrise."
+        "text": "Players pretend to be bats resting quietly until ‘sunrise’."
       }
     ],
     "variantOf": null,
     "featured": false,
     "art": {
-      "icon": "moon",
+      "icon": "zzz",
       "color": "navy"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "snowball-siege",
@@ -4100,7 +4100,7 @@
       {
         "theme": "winter",
         "title": "New Year Countdown",
-        "text": "Same rules, with a countdown from ten and a ‘midnight’ celebration at the end of each round."
+        "text": "End each round with a countdown from ten and a ‘midnight’ cheer."
       }
     ],
     "variantOf": "french-v-english",
@@ -4110,7 +4110,7 @@
       "color": "blue"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "zombie-dodgeball",
@@ -4183,17 +4183,17 @@
       {
         "theme": "halloween",
         "title": "Mummy Dodgeball",
-        "text": "Same rules, with toilet-paper mummies and a slower zombie walk."
+        "text": "Hit players move with a slow, stiff mummy walk."
       }
     ],
     "variantOf": "dodgeball",
     "featured": false,
     "art": {
-      "icon": "ghost",
+      "icon": "skull",
       "color": "purple"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "present-dash",
@@ -4269,7 +4269,7 @@
       {
         "theme": "christmas",
         "title": "Santa’s Sack",
-        "text": "Same rules, with a Santa hat for the sack guard and a jingle bell on each present."
+        "text": "Give the sack guard a Santa hat and tie a jingle bell to each parcel."
       }
     ],
     "variantOf": "capture-the-flag",
@@ -4279,7 +4279,7 @@
       "color": "red"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
+    "author": "Scout Tools"
   },
   {
     "id": "crab-handball",
@@ -4351,12 +4351,12 @@
       {
         "theme": "halloween",
         "title": "Spider Handball",
-        "text": "Same rules, with spider names and a web-shaped goal."
+        "text": "Give teams spider names and mark the goal area as a web."
       },
       {
         "theme": "space",
         "title": "Moon Crab Handball",
-        "text": "Same rules, with slow-motion moon moves and a countdown before each restart."
+        "text": "Move in slow-motion moon steps with a countdown before each restart."
       }
     ],
     "variantOf": "crab-football",
@@ -4366,69 +4366,6 @@
       "color": "teal"
     },
     "added": "2026-11-02",
-    "author": "Games library team"
-  },
-  {
-    "title": "Teat Game",
-    "summary": "Testkv. K ksvkb",
-    "sections": [
-      "beavers",
-      "cubs",
-      "scouts"
-    ],
-    "timeBand": "normal",
-    "duration": "10–20 mins",
-    "minutes": 20,
-    "setting": "indoors",
-    "players": "Whole section",
-    "gameType": "Calm",
-    "energy": "medium",
-    "noise": "medium",
-    "mess": "none",
-    "themes": [
-      "halloween",
-      "pirates"
-    ],
-    "equipment": [
-      "Teat"
-    ],
-    "setup": [
-      "Exmaple"
-    ],
-    "steps": [
-      "Example"
-    ],
-    "winning": "Example ms lbs ksbkbs skbskbskbksbkbsj",
-    "safety": "Testjvskvsk skbksbksbksbb",
-    "tips": [
-      {
-        "title": "Leader tip 1",
-        "text": "Test"
-      }
-    ],
-    "adaptations": [
-      {
-        "title": "Make it easier",
-        "text": "Test"
-      },
-      {
-        "title": "Make it harder",
-        "text": "Test"
-      },
-      {
-        "title": "Include everyone",
-        "text": "Test"
-      }
-    ],
-    "themedTwists": [],
-    "variantOf": null,
-    "featured": false,
-    "art": {
-      "color": "purple",
-      "icon": "dodgeball"
-    },
-    "added": "2026-11-03",
-    "author": "Test Maker",
-    "id": "teat-game"
+    "author": "Scout Tools"
   }
 ]

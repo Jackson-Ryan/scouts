@@ -1,19 +1,8 @@
+import { canSubmitInApp, submitPublicGame } from "../../../assets/js/auth.js";
 import {
   COLORS,
-  ENERGY_LEVELS,
-  GAME_TYPES,
   ICON_OPTIONS,
-  MESS_LEVELS,
-  NOISE_LEVELS,
-  PLAYER_OPTIONS,
-  SECTIONS,
-  SETTINGS,
-  THEMES,
-  TIME_BANDS,
-  buildIssueMarkdown,
-  buildIssueUrl,
   copyText,
-  detectRepo,
   escapeHTML,
   iconMarkup,
   initHeader,
@@ -23,12 +12,19 @@ import {
   showToast,
   uniqueId,
 } from "./core.js";
-
-const AUTO_DURATIONS = { quick: "5–10 mins", normal: "10–20 mins", long: "20+ mins" };
-const DEFAULT_MINUTES = { quick: 10, normal: 20, long: 30 };
-const ENERGY_LABELS = { low: "Low", medium: "Medium", high: "High" };
-const NOISE_LABELS = { quiet: "Quiet", medium: "Medium", loud: "Loud" };
-const MESS_LABELS = { none: "None", low: "A little", medium: "Messy" };
+import {
+  AUTO_DURATIONS,
+  appendTwistRow,
+  inferMinutes,
+  parseTips,
+  populateGameSelects,
+  readTwistRows,
+  renderColorSwatches,
+  renderIconChoices,
+  renderThemeCheckboxes,
+  todayISO,
+  validateGameFields,
+} from "./game-editor.js";
 
 const form = document.querySelector("#add-game-form");
 const elements = {
@@ -59,63 +55,45 @@ const elements = {
   icon: document.querySelector("#game-icon"),
   colorPicker: document.querySelector("#color-picker"),
   iconPicker: document.querySelector("#icon-picker"),
+  iconSearch: document.querySelector("#icon-search"),
+  iconCount: document.querySelector("#icon-count"),
   variant: document.querySelector("#game-variant"),
   author: document.querySelector("#game-author"),
+  website: document.querySelector("#game-website"),
   twistList: document.querySelector("#twist-list"),
   twistTemplate: document.querySelector("#twist-row-template"),
   addTwist: document.querySelector("#add-twist"),
   preview: document.querySelector("#preview-card"),
   checklist: document.querySelector("#preview-checklist"),
   exportPanel: document.querySelector("#export-panel"),
+  exportTitle: document.querySelector("#export-title"),
+  exportMessage: document.querySelector("#export-message"),
+  submitAnother: document.querySelector("#submit-another"),
   formStatus: document.querySelector("#form-status"),
   jsonPreview: document.querySelector("#json-preview"),
   copyJson: document.querySelector("#copy-json"),
   downloadJson: document.querySelector("#download-json"),
-  downloadLibrary: document.querySelector("#download-library"),
-  submitIssue: document.querySelector("#submit-issue"),
-  copyIssue: document.querySelector("#copy-issue"),
-  issueHint: document.querySelector("#issue-hint"),
   reset: document.querySelector("#reset-form"),
   submit: document.querySelector("#prepare-game"),
 };
 
 let allGames = [];
 let baseGames = [];
-let libraryLoaded = false;
 let currentGame = null;
 let lastAutoDuration = AUTO_DURATIONS.normal;
 let requestedVariant = "";
-
-function fillSelect(select, options, { valueKey = "value", labelKey = "label" } = {}) {
-  select.innerHTML = options
-    .map((option) => {
-      const value = typeof option === "string" ? option : option[valueKey];
-      const label = typeof option === "string" ? option : option[labelKey];
-      return `<option value="${escapeHTML(value)}">${escapeHTML(label)}</option>`;
-    })
-    .join("");
-}
+let submitting = false;
 
 function populateFields() {
-  fillSelect(elements.gameType, GAME_TYPES);
-  fillSelect(elements.setting, [...SETTINGS, { value: "both", label: "Indoors or outdoors" }]);
-  fillSelect(elements.players, PLAYER_OPTIONS);
-  fillSelect(
-    elements.timeBand,
-    TIME_BANDS.map((band) => ({ value: band.value, label: `${band.label} (${band.detail})` })),
-  );
-  fillSelect(
-    elements.energy,
-    ENERGY_LEVELS.map((value) => ({ value, label: ENERGY_LABELS[value] })),
-  );
-  fillSelect(
-    elements.noise,
-    NOISE_LEVELS.map((value) => ({ value, label: NOISE_LABELS[value] })),
-  );
-  fillSelect(
-    elements.mess,
-    MESS_LEVELS.map((value) => ({ value, label: MESS_LABELS[value] })),
-  );
+  populateGameSelects({
+    gameType: elements.gameType,
+    setting: elements.setting,
+    players: elements.players,
+    timeBand: elements.timeBand,
+    energy: elements.energy,
+    noise: elements.noise,
+    mess: elements.mess,
+  });
 
   elements.gameType.value = "Active";
   elements.setting.value = "indoors";
@@ -127,28 +105,9 @@ function populateFields() {
   elements.noise.value = "medium";
   elements.mess.value = "none";
 
-  elements.themes.innerHTML = THEMES.map(
-    (theme) => `
-      <label class="choice">
-        <input type="checkbox" name="themes" value="${escapeHTML(theme.value)}">
-        <span class="choice__dot" aria-hidden="true"></span>
-        ${iconMarkup(theme.icon, "icon icon--sm")}
-        ${escapeHTML(theme.label)}
-      </label>`,
-  ).join("");
-
-  elements.colorPicker.innerHTML = COLORS.map(
-    (color) => `
-      <button class="swatch" type="button" data-color="${escapeHTML(color.value)}" aria-label="${escapeHTML(color.label)}" aria-pressed="false" title="${escapeHTML(color.label)}"></button>`,
-  ).join("");
-
-  elements.iconPicker.innerHTML = ICON_OPTIONS.map(
-    (option) => `
-      <button class="icon-choice" type="button" data-icon="${escapeHTML(option.value)}" aria-label="${escapeHTML(option.label)}" aria-pressed="false" title="${escapeHTML(option.label)}">
-        ${iconMarkup(option.value, "icon")}
-        <span class="icon-choice__label">${escapeHTML(option.label)}</span>
-      </button>`,
-  ).join("");
+  renderThemeCheckboxes(elements.themes);
+  renderColorSwatches(elements.colorPicker, "purple");
+  renderIconChoices(elements.iconPicker, elements.iconCount, { query: "", activeIcon: "gamepad" });
 
   setColor("purple");
   setIcon("gamepad");
@@ -179,7 +138,7 @@ function populateVariants() {
     .filter((game) => !game.variantOf)
     .sort((a, b) => a.title.localeCompare(b.title, "en-GB"));
   elements.variant.innerHTML = `
-    <option value="">No — this is a new original game</option>
+    <option value="">No, this is a standalone game</option>
     ${baseGames
       .map((game) => `<option value="${escapeHTML(game.id)}">${escapeHTML(game.title)}</option>`)
       .join("")}
@@ -193,61 +152,12 @@ function checkedValues(name) {
   return [...form.querySelectorAll(`input[name="${name}"]:checked`)].map((input) => input.value);
 }
 
-function readTwists() {
-  return [...elements.twistList.querySelectorAll("[data-twist-row]")].map((row) => ({
-    theme: row.querySelector("[data-twist-theme]")?.value || "",
-    title: row.querySelector("[data-twist-title]")?.value.trim() || "",
-    text: row.querySelector("[data-twist-text]")?.value.trim() || "",
-    row,
-  }));
-}
-
-function addTwistRow(values = {}) {
-  const fragment = elements.twistTemplate.content.cloneNode(true);
-  const row = fragment.querySelector("[data-twist-row]");
-  const themeSelect = row.querySelector("[data-twist-theme]");
-  fillSelect(
-    themeSelect,
-    THEMES.map((theme) => ({ value: theme.value, label: theme.label })),
-  );
-  themeSelect.value = values.theme || THEMES[0].value;
-  row.querySelector("[data-twist-title]").value = values.title || "";
-  row.querySelector("[data-twist-text]").value = values.text || "";
-  elements.twistList.append(row);
-  return row;
-}
-
-function parseTips(value) {
-  return parseLines(value)
-    .map((line, index) => {
-      const colon = line.indexOf(":");
-      if (colon > 0 && colon < 60) {
-        return { title: line.slice(0, colon).trim(), text: line.slice(colon + 1).trim() };
-      }
-      return { title: `Leader tip ${index + 1}`, text: line };
-    })
-    .filter((tip) => tip.text);
-}
-
 function adaptationsFromForm() {
   return [
     { title: "Make it easier", text: elements.easier.value.trim() },
     { title: "Make it harder", text: elements.harder.value.trim() },
     { title: "Include everyone", text: elements.include.value.trim() },
   ].filter((item) => item.text);
-}
-
-function todayISO() {
-  const date = new Date();
-  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
-}
-
-function inferMinutes(duration, timeBand) {
-  const explicit = Number(elements.minutes.value);
-  if (Number.isFinite(explicit) && explicit > 0) return Math.min(180, Math.round(explicit));
-  const match = String(duration).match(/\d+/);
-  if (match) return Number(match[0]);
-  return DEFAULT_MINUTES[timeBand] || 20;
 }
 
 function draftGame() {
@@ -260,7 +170,7 @@ function draftGame() {
     sections: checkedValues("sections"),
     timeBand,
     duration,
-    minutes: inferMinutes(duration, timeBand),
+    minutes: inferMinutes(duration, timeBand, elements.minutes.value),
     setting: elements.setting.value,
     players: elements.players.value,
     gameType: elements.gameType.value,
@@ -275,7 +185,7 @@ function draftGame() {
     safety: elements.safety.value.trim(),
     tips: parseTips(elements.tips.value),
     adaptations: adaptationsFromForm(),
-    themedTwists: readTwists()
+    themedTwists: readTwistRows(elements.twistList)
       .filter((twist) => twist.theme && twist.title && twist.text)
       .map(({ theme, title: twistTitle, text }) => ({ theme, title: twistTitle, text })),
     variantOf: elements.variant.value || null,
@@ -292,11 +202,12 @@ function updatePreview() {
   elements.summaryCount.textContent = String(elements.summary.value.length);
 
   const checks = [
-    { label: "A clear title", done: game.title.length >= 3 },
-    { label: "A short summary", done: game.summary.length >= 10 },
+    { label: "Title", done: game.title.length >= 3 },
+    { label: "Short summary", done: game.summary.length >= 10 },
     { label: "At least one section", done: game.sections.length > 0 },
     { label: "Equipment list", done: game.equipment.length > 0 },
-    { label: "Rules and set-up", done: game.steps.length > 0 && game.setup.length > 0 },
+    { label: "Set-up and rules", done: game.steps.length > 0 && game.setup.length > 0 },
+    { label: "How to win", done: game.winning.length >= 10 },
     { label: "Safety notes", done: game.safety.length >= 10 },
   ];
   elements.checklist.innerHTML = checks
@@ -310,7 +221,7 @@ function updatePreview() {
     .join("");
 }
 
-function invalidateExport() {
+function invalidateSubmission() {
   if (!currentGame) return;
   currentGame = null;
   elements.exportPanel.hidden = true;
@@ -355,32 +266,8 @@ function setError(key, message) {
 function validate() {
   clearErrors();
   const game = draftGame();
-  const errors = [];
-
-  if (game.title.length < 3) errors.push(["title", "Give the game a title of at least 3 characters."]);
-  if (game.title.length > 80) errors.push(["title", "Keep the title under 80 characters."]);
-  if (game.summary.length < 10) errors.push(["summary", "Write a summary of at least 10 characters."]);
-  if (game.sections.length === 0) errors.push(["sections", "Choose at least one section."]);
-  if (!game.duration) errors.push(["duration", "Add a guide duration, such as “10–20 mins”."]);
-  if (!game.timeBand) errors.push(["timeBand", "Choose a time filter."]);
-  if (game.equipment.length === 0) errors.push(["equipment", "List at least one piece of equipment, or write “None”."]);
-  if (game.setup.length === 0) errors.push(["setup", "Add at least one set-up step."]);
-  if (game.steps.length === 0) errors.push(["steps", "Add at least one rule or step."]);
-  if (game.winning.length < 10) errors.push(["winning", "Explain how the game ends or how a team wins."]);
-  if (game.safety.length < 10) errors.push(["safety", "Add a safety note of at least 10 characters."]);
-
-  const incompleteTwists = readTwists().filter((twist) => {
-    const hasAny = Boolean(twist.title || twist.text);
-    const complete = Boolean(twist.theme && twist.title && twist.text);
-    return hasAny && !complete;
-  });
-  if (incompleteTwists.length > 0) {
-    errors.push(["twists", "Complete the theme, title and description for each twist, or remove the empty row."]);
-  }
-
-  if (game.variantOf && !baseGames.some((base) => base.id === game.variantOf)) {
-    errors.push(["variantOf", "Choose a valid base game, or leave this as a new original game."]);
-  }
+  const twists = readTwistRows(elements.twistList);
+  const errors = validateGameFields(game, twists, baseGames);
 
   if (errors.length > 0) {
     let firstField = null;
@@ -388,7 +275,7 @@ function validate() {
       const field = setError(key, message);
       if (!firstField && field) firstField = field;
     });
-    elements.formStatus.textContent = "Please fix the highlighted fields before preparing the game.";
+    elements.formStatus.textContent = "Please fix the highlighted fields before submitting.";
     elements.formStatus.classList.remove("is-success");
     elements.formStatus.hidden = false;
     firstField?.focus();
@@ -401,28 +288,66 @@ function validate() {
   };
 }
 
-function renderExport(game) {
+function showResultPanel(game, { submitted, title, message }) {
   currentGame = game;
-  const issueUrl = buildIssueUrl(game);
-  const json = JSON.stringify(game, null, 2);
-  elements.jsonPreview.textContent = json;
+  elements.jsonPreview.textContent = JSON.stringify(game, null, 2);
+  elements.exportTitle.textContent = title;
+  elements.exportMessage.textContent = message;
   elements.exportPanel.hidden = false;
-  elements.formStatus.textContent = "Game prepared. Check the preview, then download the JSON or send it to us.";
-  elements.formStatus.classList.add("is-success");
+  elements.formStatus.textContent = submitted
+    ? "Game submitted! A maintainer will review and publish it to the library."
+    : message;
+  elements.formStatus.classList.toggle("is-success", submitted);
   elements.formStatus.hidden = false;
+  elements.exportPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
 
-  if (issueUrl) {
-    elements.submitIssue.href = issueUrl;
-    elements.submitIssue.hidden = false;
-    elements.issueHint.textContent = "This opens a GitHub issue with your game JSON already filled in. A leader will review it before it goes live.";
-  } else {
-    elements.submitIssue.hidden = true;
-    elements.issueHint.textContent = detectRepo()
-      ? "The GitHub issue link could not be built. Copy the issue text instead."
-      : "The GitHub issue button appears once this site is published and the repository is configured. For now, download the JSON or copy the issue text.";
+async function handleSubmit() {
+  if (submitting) return;
+  invalidateSubmission();
+  const game = validate();
+  if (!game) return;
+
+  if (!canSubmitInApp()) {
+    showResultPanel(game, {
+      submitted: false,
+      title: "Submission service not connected yet",
+      message:
+        "Live in-app submissions need the Scout Tools submission worker configured in assets/js/site-config.js. In the meantime you can download or copy your game JSON below.",
+    });
+    return;
   }
 
-  elements.exportPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  submitting = true;
+  const originalLabel = elements.submit.innerHTML;
+  elements.submit.disabled = true;
+  elements.submit.textContent = "Submitting…";
+
+  try {
+    const result = await submitPublicGame(game, { website: elements.website?.value || "" });
+    showResultPanel(game, {
+      submitted: true,
+      title: "Thanks — your game has been submitted",
+      message:
+        result.message ||
+        "Your game is now in the review queue and will appear in the Games Finder once approved.",
+    });
+    showToast("Game submitted for review.");
+  } catch (error) {
+    elements.formStatus.textContent = error.message || "Could not submit your game. Please try again.";
+    elements.formStatus.classList.remove("is-success");
+    elements.formStatus.hidden = false;
+    showResultPanel(game, {
+      submitted: false,
+      title: "Could not send automatically",
+      message:
+        "Your game details are valid, so you can try submitting again or download a JSON copy below so nothing is lost.",
+    });
+  } finally {
+    submitting = false;
+    elements.submit.disabled = false;
+    elements.submit.innerHTML = originalLabel;
+  }
 }
 
 function downloadText(text, filename, type = "application/json") {
@@ -437,24 +362,54 @@ function downloadText(text, filename, type = "application/json") {
   window.setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
+function resetWholeForm() {
+  form.reset();
+  window.setTimeout(() => {
+    currentGame = null;
+    elements.exportPanel.hidden = true;
+    elements.formStatus.hidden = true;
+    elements.jsonPreview.textContent = "";
+    elements.twistList.innerHTML = "";
+    clearErrors();
+    if (elements.iconSearch) {
+      elements.iconSearch.value = "";
+      renderIconChoices(elements.iconPicker, elements.iconCount, { query: "", activeIcon: "gamepad" });
+    }
+    setColor("purple");
+    setIcon("gamepad");
+    elements.duration.value = AUTO_DURATIONS.normal;
+    lastAutoDuration = AUTO_DURATIONS.normal;
+    updatePreview();
+    elements.title.focus();
+  }, 0);
+}
+
 function bindEvents() {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-    invalidateExport();
-    const game = validate();
-    if (!game) return;
-    renderExport(game);
+    handleSubmit();
   });
 
-  form.addEventListener("input", () => {
-    invalidateExport();
+  form.addEventListener("input", (event) => {
+    if (event.target === elements.iconSearch) return;
+    invalidateSubmission();
     updatePreview();
   });
 
-  form.addEventListener("change", () => {
-    invalidateExport();
+  form.addEventListener("change", (event) => {
+    if (event.target === elements.iconSearch) return;
+    invalidateSubmission();
     updatePreview();
   });
+
+  if (elements.iconSearch) {
+    elements.iconSearch.addEventListener("input", () => {
+      renderIconChoices(elements.iconPicker, elements.iconCount, {
+        query: elements.iconSearch.value,
+        activeIcon: elements.icon.value,
+      });
+    });
+  }
 
   elements.timeBand.addEventListener("change", () => {
     const next = AUTO_DURATIONS[elements.timeBand.value] || AUTO_DURATIONS.normal;
@@ -465,14 +420,10 @@ function bindEvents() {
     updatePreview();
   });
 
-  elements.summary.addEventListener("input", () => {
-    elements.summaryCount.textContent = String(elements.summary.value.length);
-  });
-
   elements.colorPicker.addEventListener("click", (event) => {
     const button = event.target.closest("[data-color]");
     if (!button) return;
-    invalidateExport();
+    invalidateSubmission();
     setColor(button.dataset.color);
     updatePreview();
   });
@@ -480,14 +431,14 @@ function bindEvents() {
   elements.iconPicker.addEventListener("click", (event) => {
     const button = event.target.closest("[data-icon]");
     if (!button) return;
-    invalidateExport();
+    invalidateSubmission();
     setIcon(button.dataset.icon);
     updatePreview();
   });
 
   elements.addTwist.addEventListener("click", () => {
-    invalidateExport();
-    const row = addTwistRow();
+    invalidateSubmission();
+    const row = appendTwistRow(elements.twistList, elements.twistTemplate);
     row.querySelector("[data-twist-title]").focus();
     updatePreview();
   });
@@ -495,13 +446,13 @@ function bindEvents() {
   elements.twistList.addEventListener("click", (event) => {
     const remove = event.target.closest("[data-remove-twist]");
     if (!remove) return;
-    invalidateExport();
+    invalidateSubmission();
     remove.closest("[data-twist-row]").remove();
     updatePreview();
   });
 
   elements.twistList.addEventListener("input", () => {
-    invalidateExport();
+    invalidateSubmission();
     updatePreview();
   });
 
@@ -516,21 +467,7 @@ function bindEvents() {
     showToast("Game JSON downloaded.");
   });
 
-  elements.downloadLibrary.addEventListener("click", () => {
-    if (!currentGame) return;
-    if (!libraryLoaded) {
-      showToast("The existing library did not load, so only the single game download is available.");
-      return;
-    }
-    const library = [...allGames, currentGame];
-    downloadText(JSON.stringify(library, null, 2), "games.json");
-    showToast("Updated games.json downloaded.");
-  });
-
-  elements.copyIssue.addEventListener("click", () => {
-    if (!currentGame) return;
-    copyText(buildIssueMarkdown(currentGame), "Issue text copied to clipboard.");
-  });
+  elements.submitAnother?.addEventListener("click", resetWholeForm);
 
   elements.reset.addEventListener("click", () => {
     window.setTimeout(() => {
@@ -540,6 +477,10 @@ function bindEvents() {
       elements.jsonPreview.textContent = "";
       elements.twistList.innerHTML = "";
       clearErrors();
+      if (elements.iconSearch) {
+        elements.iconSearch.value = "";
+        renderIconChoices(elements.iconPicker, elements.iconCount, { query: "", activeIcon: "gamepad" });
+      }
       setColor("purple");
       setIcon("gamepad");
       lastAutoDuration = elements.duration.value || AUTO_DURATIONS.normal;
@@ -559,17 +500,14 @@ async function init() {
 
   try {
     allGames = await loadGames();
-    libraryLoaded = true;
     populateVariants();
     if (elements.submit) elements.submit.disabled = false;
     updatePreview();
-  } catch (error) {
-    libraryLoaded = false;
+  } catch {
     if (elements.submit) elements.submit.disabled = false;
-    elements.formStatus.textContent = "The existing games could not be loaded, so variant links and the full-library download may be unavailable. You can still fill in the form and download this game on its own.";
+    elements.formStatus.textContent = "The existing games did not load, so variant links are unavailable right now. You can still submit your game.";
     elements.formStatus.classList.remove("is-success");
     elements.formStatus.hidden = false;
-    elements.downloadLibrary.disabled = true;
   }
 }
 

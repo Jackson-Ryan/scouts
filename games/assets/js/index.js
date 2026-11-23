@@ -1,7 +1,9 @@
+import { SITE_CONFIG } from "./config.js";
 import {
   SECTIONS,
   THEMES,
   TIME_BANDS,
+  escapeHTML,
   gameCardMarkup,
   initHeader,
   loadGames,
@@ -11,7 +13,7 @@ import {
   toggleSaved,
 } from "./core.js";
 
-const GAMES_PER_PAGE = 12;
+const GAMES_PER_PAGE = SITE_CONFIG.gamesPerPage;
 const SORT_OPTIONS = ["featured", "shortest", "az", "newest"];
 const SECTION_VALUES = SECTIONS.map((section) => section.value);
 const THEME_VALUES = THEMES.map((theme) => theme.value);
@@ -145,7 +147,7 @@ function updateHeadings() {
     elements.resultsTitle.textContent = "Search results";
   } else if (state.theme) {
     const theme = THEMES.find((item) => item.value === state.theme);
-    elements.resultsTitle.textContent = `${theme?.label || "Themed"} ideas`;
+    elements.resultsTitle.textContent = `${theme?.label || "Themed"} games`;
   } else {
     elements.resultsTitle.textContent = "All games";
   }
@@ -174,10 +176,10 @@ function renderResults() {
   if (pageGames.length === 0) {
     if (state.saved) {
       elements.emptyTitle.textContent = "No saved games yet";
-      elements.emptyText.textContent = "Tap the bookmark on any game to keep it here. Your saved games stay in this browser, ready for your next meeting.";
+      elements.emptyText.textContent = "Use the bookmark button on any game to keep it here. Saved games stay in this browser.";
     } else {
       elements.emptyTitle.textContent = "No games match those filters";
-      elements.emptyText.textContent = "Try a different section, a longer game, or clear the search box. There are plenty more games waiting.";
+      elements.emptyText.textContent = "Try widening your filters or clearing the search box.";
     }
   }
 
@@ -198,7 +200,7 @@ function renderPagination(pageCount) {
   fragment.append(
     paginationButton({
       label: "Previous page",
-      content: `<svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#chevron-left"></use></svg>`,
+      content: `<svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#chevron-left"></use></svg>`,
       page: state.page - 1,
       disabled: state.page === 1,
       ariaLabel: "Previous page",
@@ -229,7 +231,7 @@ function renderPagination(pageCount) {
   fragment.append(
     paginationButton({
       label: "Next page",
-      content: `<svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#chevron-right"></use></svg>`,
+      content: `<svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#chevron-right"></use></svg>`,
       page: state.page + 1,
       disabled: state.page === pageCount,
       ariaLabel: "Next page",
@@ -276,7 +278,7 @@ function renderQuickChips() {
       .map(
         (chip) => `
         <button class="chip" type="button" data-chip="${chip.key}">
-          <svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#${chip.icon}"></use></svg>
+          <svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#${chip.icon}"></use></svg>
           ${chip.label}
           <span class="chip__count">${chip.count}</span>
         </button>`,
@@ -432,7 +434,7 @@ async function init() {
       .join("");
     applyFilters({ resetPage: false });
   } catch (error) {
-    elements.loading.innerHTML = `<div class="error-panel"><strong>We could not load the games.</strong><span>${error.message}</span><span>Try refreshing the page. If you are viewing the files locally, run a small web server rather than opening the HTML file directly.</span></div>`;
+    elements.loading.innerHTML = `<div class="error-panel"><strong>Could not load the games.</strong><span>${escapeHTML(error.message)}</span><span>Try refreshing the page. If you are viewing the files locally, start a web server (<code>npm run serve</code>) instead of opening the HTML file directly.</span></div>`;
     elements.featuredGrid.innerHTML = "";
     elements.resultsCount.textContent = "Games could not be loaded";
   }

@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Page not found — Scout Tools</title>
-  <meta name="description" content="That page could not be found. Head back to the toolbox or open the Games Finder.">
+  <meta name="description" content="That page could not be found. Head back to Scout Tools or open one of the tools directly.">
   <meta name="robots" content="noindex">
   <meta name="theme-color" content="#590fa9">
   <meta name="theme-color" content="#00132b" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23590fa9'/%3E%3Cpath d='M8 25 18 6M24 25 14 6M19 25l-3-8-3 8M7 25h18' fill='none' stroke='%23ffe627' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
   <script>
     // GitHub Pages serves this 404 page for any missing path, and the page has no
-    // external local assets, so it always renders. Work out the site root so the
-    // links still point at the toolbox from deep URLs too.
+    // external local assets so it always renders. Set the base URL so relative links
+    // still resolve from nested paths.
     (function () {
       var segments = window.location.pathname.split("/").filter(Boolean);
       var isProjectSite = window.location.hostname.endsWith(".github.io") && segments.length > 0 && segments[0].indexOf(".") === -1;
@@ -33,12 +33,22 @@
       --ink: #1a1a1a;
       --grey-700: #5f5f5f;
       --grey-600: #6e6e6e;
-      --border: #dedede;
+      --grey-200: #e6e6e6;
+      --grey-100: #f1f1f1;
+      --border-accent-soft: #d1bce7;
       --page-bg: #ffffff;
       --surface: #ffffff;
+      --surface-accent-soft: #fbf8ff;
+      --header-bg: #ffffff;
+      --hero-bg: var(--purple);
+      --footer-bg: var(--purple);
+      --accent: var(--purple);
+      --accent-hover: var(--purple-dark);
       --accent-text: var(--purple);
+      --accent-text-strong: var(--purple-dark);
       --accent-soft: var(--purple-light);
-      --radius: 8px;
+      --shadow: 0 4px 18px rgba(26, 26, 26, 0.08);
+      --radius-sm: 4px;
       --radius-lg: 14px;
       --radius-pill: 999px;
       --font: "Nunito Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -59,107 +69,135 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    a { color: var(--purple); }
+    a { color: var(--accent-text); }
 
     .container {
-      width: min(100% - 32px, 1240px);
+      width: min(100% - 48px, 1240px);
       margin-inline: auto;
     }
 
     .skip-link {
-      position: absolute;
+      position: fixed;
       left: 12px;
       top: 12px;
+      z-index: 1000;
       padding: 10px 18px;
       border-radius: var(--radius-pill);
       background: var(--ink);
       color: #fff;
       font-weight: 800;
+      text-decoration: none;
       transform: translateY(-160%);
     }
 
     .skip-link:focus { transform: translateY(0); }
 
-    .site-header { border-bottom: 1px solid #e6e6e6; }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--header-bg);
+      border-bottom: 1px solid var(--grey-200);
+    }
 
     .site-header__inner {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      min-height: 68px;
+      gap: 28px;
+      min-height: 80px;
     }
 
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
-      color: var(--purple);
-      font-size: 1.3rem;
-      font-weight: 900;
-      letter-spacing: -0.02em;
+      flex-shrink: 0;
+      color: var(--ink);
       text-decoration: none;
     }
 
     .brand svg {
+      display: block;
+      width: 149px;
+      height: auto;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: auto;
+    }
+
+    .site-nav__link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 42px;
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      color: var(--ink);
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 180ms ease, color 180ms ease;
+    }
+
+    .site-nav__link:hover {
+      background: var(--accent-soft);
+      color: var(--accent-text);
+    }
+
+    .site-nav__link--mobile { display: none; }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .menu-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      margin-left: auto;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .menu-toggle:hover {
+      background: var(--accent-soft);
+      color: var(--accent-text);
+    }
+
+    .menu-toggle svg {
       width: 26px;
       height: 26px;
       fill: none;
       stroke: currentColor;
       stroke-width: 1.8;
       stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .header-link {
-      color: var(--ink);
-      font-size: 0.88rem;
-      font-weight: 800;
-      text-decoration: none;
-    }
-
-    .header-link:hover { color: var(--purple); }
-
-    .header-nav {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .header-nav .header-link { white-space: nowrap; }
-
-    .header-cta {
-      background: var(--purple);
-      border-color: var(--purple);
-      color: #fff;
-      min-height: 38px;
-      padding: 7px 16px;
-      font-size: 0.85rem;
-    }
-
-    .header-cta:hover { background: var(--purple-dark); border-color: var(--purple-dark); }
-
-    @media (max-width: 820px) {
-      .header-nav { display: none; }
-      .header-cta { display: none; }
     }
 
     .hero {
       position: relative;
       overflow: hidden;
-      background: var(--purple);
+      background: var(--hero-bg);
       color: #fff;
     }
 
     .hero::after {
       content: "";
       position: absolute;
-      right: -120px;
-      top: -160px;
+      bottom: -160px;
+      left: -100px;
       width: 360px;
       height: 360px;
-      border: 2px dashed rgba(255, 255, 255, 0.18);
+      border: 2px dashed rgba(255, 255, 255, 0.16);
       border-radius: 50%;
       pointer-events: none;
     }
@@ -167,7 +205,8 @@
     .hero__inner {
       position: relative;
       z-index: 1;
-      padding-block: 42px 46px;
+      padding-block: 44px 48px;
+      text-align: center;
     }
 
     .eyebrow {
@@ -185,17 +224,17 @@
 
     h1 {
       margin: 0 0 10px;
-      font-size: clamp(2.15rem, 10vw, 3rem);
+      font-size: clamp(2.1rem, 5.5vw, 3.2rem);
       font-weight: 900;
       letter-spacing: -0.03em;
-      line-height: 1.1;
+      line-height: 1.08;
     }
 
     .lead {
       max-width: 620px;
-      margin: 0;
+      margin: 0 auto;
       color: rgba(255, 255, 255, 0.88);
-      font-size: 1rem;
+      font-size: clamp(1rem, 2vw, 1.1rem);
     }
 
     main { flex: 1; }
@@ -204,11 +243,11 @@
       display: grid;
       place-items: center;
       gap: 12px;
-      margin-block: 28px 48px;
-      padding: 40px 24px;
-      border: 2px dashed #d1bce7;
+      margin-block: 36px 0;
+      padding: 48px 24px;
+      border: 2px dashed var(--border-accent-soft);
       border-radius: var(--radius-lg);
-      background: #fbf8ff;
+      background: var(--surface-accent-soft);
       text-align: center;
     }
 
@@ -234,13 +273,13 @@
 
     .not-found h2 {
       margin: 0;
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       font-weight: 900;
       line-height: 1.25;
     }
 
     .not-found p {
-      max-width: 460px;
+      max-width: 480px;
       margin: 0;
       color: var(--grey-600);
       font-size: 0.95rem;
@@ -252,7 +291,7 @@
       justify-content: center;
       gap: 10px;
       width: 100%;
-      margin-top: 4px;
+      margin-top: 6px;
     }
 
     .btn {
@@ -267,47 +306,109 @@
       font-weight: 800;
       line-height: 1.2;
       text-decoration: none;
-      transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+      transition: background 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn--small {
+      min-height: 38px;
+      padding: 7px 16px;
+      font-size: 0.85rem;
     }
 
     .btn--primary {
-      background: var(--purple);
-      border-color: var(--purple);
+      background: var(--accent);
+      border-color: var(--accent);
       color: #fff;
     }
 
     .btn--primary:hover {
-      background: var(--purple-dark);
-      border-color: var(--purple-dark);
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
     }
 
     .btn--ghost {
       background: var(--surface);
-      border-color: var(--purple);
+      border-color: var(--accent);
       color: var(--accent-text);
     }
 
-    .btn--ghost:hover { background: var(--accent-soft); }
-
-    .site-footer {
-      border-top: 1px solid #e6e6e6;
-      padding-block: 18px;
-      color: var(--grey-600);
-      font-size: 0.74rem;
+    .btn--ghost:hover {
+      background: var(--accent-soft);
+      color: var(--accent-text-strong);
     }
 
-    .site-footer p {
+    .site-footer {
+      margin-top: 80px;
+      background: var(--footer-bg);
+      color: #fff;
+      padding-block: 24px;
+    }
+
+    .footer-legal {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .footer-legal p {
       max-width: 900px;
       margin: 0;
     }
 
-    .site-footer a { color: var(--grey-700); }
+    .footer-legal a {
+      color: rgba(255, 255, 255, 0.92);
+    }
 
-    @media (min-width: 700px) {
-      .hero__inner { padding-block: 56px 60px; }
-      .not-found { margin-block: 40px 64px; padding: 52px 24px; }
-      .not-found h2 { font-size: 1.5rem; }
-      .lead { font-size: 1.1rem; }
+    .footer-badge {
+      flex-shrink: 0;
+      padding: 8px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: var(--radius-sm);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 900px) {
+      .site-nav { display: none; }
+      .site-nav.is-open {
+        display: flex;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 24px 16px;
+        background: var(--header-bg);
+        border-bottom: 1px solid var(--grey-200);
+        box-shadow: var(--shadow);
+      }
+      .site-nav.is-open .site-nav__link {
+        border-radius: 0;
+        border-bottom: 1px solid var(--grey-100);
+        padding: 14px 4px;
+      }
+      .site-nav.is-open .site-nav__link:last-child { border-bottom: 0; }
+      .site-nav.is-open .site-nav__link--mobile { display: inline-flex; color: var(--accent-text); }
+      .header-actions { display: none; }
+      .menu-toggle { display: inline-flex; }
+      .footer-legal { flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: calc(100% - 32px); }
+      .site-header__inner { min-height: 68px; gap: 12px; }
+      .brand svg { width: 124px; }
+      .site-footer { margin-top: 56px; }
     }
 
     :focus-visible {
@@ -317,79 +418,28 @@
 
     @media (prefers-color-scheme: dark) {
       :root {
-        --purple: #7413dc;
-        --purple-dark: #8b3ae8;
-        --purple-light: #21133f;
         --ink: #f7f4fd;
         --grey-700: #c2cbdd;
         --grey-600: #a5b3ca;
-        --border: #26456f;
+        --grey-200: #223c61;
+        --grey-100: #001a36;
+        --border-accent-soft: #4a2a78;
         --page-bg: #00132b;
         --surface: #002048;
+        --surface-accent-soft: #21133f;
+        --header-bg: #00132b;
+        --hero-bg: linear-gradient(135deg, #2b0b58 0%, #003982 100%);
+        --footer-bg: #190a36;
+        --accent: #7413dc;
+        --accent-hover: #8b3ae8;
         --accent-text: #cba6ff;
+        --accent-text-strong: #e3d1ff;
         --accent-soft: #21133f;
-      }
-
-      .site-header {
-        background: var(--page-bg);
-        border-bottom-color: #223c61;
-      }
-
-      .brand {
-        color: var(--accent-text);
       }
 
       .skip-link {
         background: var(--yellow);
         color: #1a1a1a;
-      }
-
-      a {
-        color: #8ec5ff;
-      }
-
-      .header-link:hover {
-        color: var(--accent-text);
-      }
-
-      .hero {
-        background: linear-gradient(135deg, #2b0b58 0%, #003982 100%);
-      }
-
-      .not-found {
-        border-color: #4a2a78;
-        background: #21133f;
-      }
-
-      .not-found__icon {
-        background: #002048;
-        color: var(--accent-text);
-      }
-
-      .not-found p {
-        color: #c2cbdd;
-      }
-
-      .btn--primary {
-        color: #ffffff;
-      }
-
-      .btn--ghost {
-        border-color: #cba6ff;
-        color: #cba6ff;
-      }
-
-      .btn--ghost:hover {
-        background: #21133f;
-      }
-
-      .site-footer {
-        border-top-color: #223c61;
-        color: #a5b3ca;
-      }
-
-      .site-footer a {
-        color: #c2cbdd;
       }
     }
   </style>
@@ -400,16 +450,21 @@
   <header class="site-header">
     <div class="container site-header__inner">
       <a class="brand" href="./" aria-label="Scout Tools home">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.5 21 14 3M20.5 21 10 3M15.5 21 12 15l-3.5 6M2 21h20"/></svg>
-        Scout Tools
+        <svg viewBox="0 0 176 50" width="176" height="50" role="img" aria-label="Scouts"><g fill="currentColor" fill-rule="evenodd"><path d="M0,39.2695946 L3.17676628,35.4567568 C5.37642912,37.2756757 7.68128736,38.4297297 10.4736858,38.4297297 C12.6726743,38.4297297 13.9997548,37.5554054 13.9997548,36.1216216 L13.9997548,36.0513514 C13.9997548,34.6864865 13.1615632,33.9871622 9.0764751,32.9378378 C4.15386973,31.6783784 0.977103448,30.3141892 0.977103448,25.4513514 L0.977103448,25.3817568 C0.977103448,20.9391892 4.53823755,18 9.53097318,18 C13.091433,18 16.1292874,19.1195946 18.6087969,21.1141892 L15.8150498,25.1722973 C13.6504521,23.6675676 11.5209195,22.7581081 9.46016858,22.7581081 C7.40144061,22.7581081 6.31846743,23.7027027 6.31846743,24.8918919 L6.31846743,24.9621622 C6.31846743,26.5716216 7.36570115,27.0959459 11.5910498,28.1797297 C16.548046,29.4743243 19.3404444,31.2587838 19.3404444,35.5263514 L19.3404444,35.5966216 C19.3404444,40.4587838 15.6403985,43.1871622 10.3684904,43.1871622 C6.66777011,43.1871622 2.932659,41.8932432 0,39.2695946"/><path d="M21.8031632,33.2068919 L21.8031632,33.1366216 C21.8031632,27.7845946 25.887577,23.3764865 31.6133088,23.3764865 C35.1407264,23.3764865 37.3397149,24.5663514 39.085554,26.5251351 L35.8386575,30.0237838 C34.6518375,28.7643243 33.4650176,27.9595946 31.5795923,27.9595946 C28.9254314,27.9595946 27.0400061,30.3035135 27.0400061,33.0663514 L27.0400061,33.1366216 C27.0400061,36.0055405 28.8903663,38.3143243 31.7879602,38.3143243 C33.5695387,38.3143243 34.7914238,37.5447297 36.0827648,36.3204054 L39.1900751,39.4690541 C37.3747801,41.4622973 35.2803126,42.8967568 31.5438529,42.8967568 C25.9226421,42.8967568 21.8031632,38.5595946 21.8031632,33.2068919"/><path d="M55.2415448,33.2068919 L55.2415448,33.1366216 C55.2415448,30.3731081 53.2515985,27.9595946 50.3189395,27.9595946 C47.2817594,27.9595946 45.46579,30.3035135 45.46579,33.0663514 L45.46579,33.1366216 C45.46579,35.9008108 47.4557364,38.3143243 50.3883954,38.3143243 C53.4262498,38.3143243 55.2415448,35.9704054 55.2415448,33.2068919 M40.2289471,33.2068919 L40.2289471,33.1366216 C40.2289471,27.7494595 44.5588169,23.3764865 50.3883954,23.3764865 C56.1842575,23.3764865 60.4777134,27.6798649 60.4777134,33.0663514 L60.4777134,33.1366216 C60.4777134,38.5237838 56.148518,42.8967568 50.3189395,42.8967568 C44.5230774,42.8967568 40.2289471,38.5947297 40.2289471,33.2068919"/><path d="M62.5483096,35.8654054 L62.5483096,23.7268919 L67.8552828,23.7268919 L67.8552828,34.1863514 C67.8552828,36.7052703 69.0421027,37.9991892 71.0671142,37.9991892 C73.0914513,37.9991892 74.3834667,36.7052703 74.3834667,34.1863514 L74.3834667,23.7268919 L79.6904398,23.7268919 L79.6904398,42.4768919 L74.3834667,42.4768919 L74.3834667,39.8187838 C73.1615816,41.3924324 71.5910682,42.8262162 68.9025165,42.8262162 C64.8875586,42.8262162 62.5483096,40.1681081 62.5483096,35.8654054"/><path d="M82.7736766,37.16 L82.7736766,18.9336486 L88.0799755,18.9336486 L88.0799755,23.7262162 L92.4806498,23.7262162 L92.4806498,28.2741892 L88.0799755,28.2741892 L88.0799755,36.285 C88.0799755,37.51 88.6046038,38.1045946 89.7914238,38.1045946 C90.7678529,38.1045946 91.6411096,37.8593243 92.4091709,37.4397297 L92.4091709,41.707973 C91.2924812,42.3721622 90.0011402,42.7917568 88.2195617,42.7917568 C84.9733395,42.7917568 82.7736766,41.4978378 82.7736766,37.16"/><path d="M94.8168644,39.9936486 L97.0866575,36.495 C99.1109946,37.9645946 101.240527,38.7341892 102.985692,38.7341892 C104.522489,38.7341892 105.221094,38.1747297 105.221094,37.3348649 L105.221094,37.2652703 C105.221094,36.1098649 103.405125,35.7254054 101.345048,35.0956757 C98.7273011,34.3260811 95.759577,33.1024324 95.759577,29.4639189 L95.759577,29.3936486 C95.759577,25.5808108 98.8318222,23.447027 102.602673,23.447027 C104.976313,23.447027 107.559669,24.2510811 109.585355,25.6152703 L107.559669,29.2889189 C105.709983,28.2044595 103.858949,27.5395946 102.497477,27.5395946 C101.205462,27.5395946 100.542596,28.0997297 100.542596,28.8335135 L100.542596,28.9037838 C100.542596,29.9537838 102.3235,30.4436486 104.347163,31.142973 C106.966933,32.017973 110.004113,33.2767568 110.004113,36.7051351 L110.004113,36.7747297 C110.004113,40.9382432 106.896803,42.8267568 102.847454,42.8267568 C100.228359,42.8267568 97.2956996,41.9524324 94.8168644,39.9936486"/><path d="M135.718657,22.555473 C137.232527,24.8797973 137.995194,27.5406081 138.233907,29.3453378 L140.997983,29.3453378 C140.766688,27.1399324 139.877922,23.909527 138.018795,21.0520946 C135.806995,17.6541216 132.926933,15.8561486 129.690826,15.8541216 L129.67127,15.8541216 C127.203225,15.8541216 124.892972,16.9656081 123.331899,18.9041216 C121.69193,20.9419595 121.070872,23.5777703 121.627868,26.1358784 L124.310351,25.5480405 C123.936098,23.8352027 124.369692,21.9966892 125.468849,20.6311486 C126.522152,19.3250676 128.01242,18.605473 129.671945,18.605473 L129.686106,18.605473 C132.549309,18.6075 134.547347,20.7541216 135.718657,22.555473"/><path d="M155.671528,41.8274324 C154.597321,40.3375676 153.81375,38.5531081 153.467819,36.8368919 L150.678118,36.8368919 C150.892555,38.1767568 151.461015,40.3895946 152.958026,42.7233784 C152.020034,44.297027 150.335559,45.8504054 148.556003,46.7794595 C148.554654,46.7787838 148.55398,46.7787838 148.552631,46.7781081 C148.551957,46.7787838 148.550608,46.7787838 148.549934,46.7794595 C146.768356,45.8504054 145.085229,44.297027 144.147237,42.7233784 C145.644248,40.3895946 146.212034,38.1767568 146.42647,36.8368919 L143.636769,36.8368919 C143.291513,38.5531081 142.507942,40.3375676 141.433735,41.8274324 L140.966425,42.4767568 L141.299543,43.2058108 C142.465459,45.7537838 145.156708,48.3085135 147.996984,49.5632432 L148.548585,49.8078378 L148.552631,49.8071622 L148.556003,49.8078378 L149.107605,49.5632432 C151.94788,48.3085135 154.63913,45.7537838 155.805045,43.2058108 L156.138164,42.4767568 L155.671528,41.8274324 Z"/><path d="M161.385864,22.555473 C159.871994,24.8797973 159.109327,27.5406081 158.871289,29.3453378 L156.107212,29.3453378 C156.338507,27.1399324 157.226599,23.909527 159.0864,21.0520946 C161.297526,17.6541216 164.177588,15.8561486 167.413695,15.8541216 L167.433925,15.8541216 C169.901297,15.8541216 172.210875,16.9656081 173.771948,18.9041216 C175.412592,20.9419595 176.033649,23.5777703 175.475979,26.1358784 L172.79417,25.5480405 C173.167749,23.8352027 172.734829,21.9966892 171.636346,20.6311486 C170.582369,19.3250676 169.092101,18.605473 167.432576,18.605473 L167.418415,18.605473 C164.555212,18.6075 162.557848,20.7541216 161.385864,22.555473"/><path d="M143.754642,29.3452703 L146.519393,29.3452703 C146.174136,26.1540541 144.924604,23.3736486 143.817355,20.9108108 C142.711454,18.4533784 141.668267,16.1310811 141.683102,13.8175676 C141.706029,11.1567568 143.219899,8.44459459 145.733799,6.55878378 C146.174136,6.22635135 147.426366,5.26283784 148.552497,4.2277027 C149.677278,5.26283784 150.930182,6.22635135 151.37052,6.55878378 C153.88442,8.44459459 155.398964,11.1567568 155.421891,13.8175676 C155.436052,16.1310811 154.392864,18.4533784 153.287638,20.9108108 C152.179715,23.3736486 150.930857,26.1540541 150.5856,29.3452703 L153.349677,29.3452703 C153.691562,26.7101351 154.758351,24.3391892 155.790749,22.0405405 C157.022749,19.302027 158.185293,16.7148649 158.167761,13.7966216 C158.136067,10.2797297 156.211531,6.7527027 153.017232,4.35878378 C152.640956,4.07297297 150.682029,2.57702703 149.556573,1.36216216 L148.552497,0.277027027 L147.549094,1.36216216 C146.42229,2.57702703 144.463362,4.07297297 144.086412,4.35878378 C140.894136,6.7527027 138.968926,10.2797297 138.937232,13.7966216 C138.919025,16.7148649 140.082244,19.302027 141.312895,22.0405405 C142.346642,24.3391892 143.412757,26.7101351 143.754642,29.3452703"/><polygon points="132.871 34.409 164.234 34.409 164.234 31.772 132.871 31.772"/></g></svg>
       </a>
-      <nav class="header-nav" aria-label="Main navigation">
-        <a class="header-link" href="./">All tools</a>
-        <a class="header-link" href="games/">Games finder</a>
-        <a class="header-link" href="kit-list/">Kit list generator</a>
-        <a class="header-link" href="games/about">About</a>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a class="site-nav__link" href="./">All tools</a>
+        <a class="site-nav__link" href="games/">Games finder</a>
+        <a class="site-nav__link" href="kit-list/">Kit list generator</a>
+        <a class="site-nav__link" href="about">About</a>
+        <a class="site-nav__link site-nav__link--mobile" href="https://github.com/Jackson-Ryan/scouts/issues/new?title=%5BTool%20idea%5D%20" target="_blank" rel="noopener">Suggest a tool</a>
       </nav>
-      <a class="btn btn--small header-cta" href="https://github.com/Jackson-Ryan/scouts/issues/new?title=%5BTool%20idea%5D%20" target="_blank" rel="noopener">Suggest a tool</a>
+      <div class="header-actions">
+        <a class="btn btn--primary btn--small" href="https://github.com/Jackson-Ryan/scouts/issues/new?title=%5BTool%20idea%5D%20" target="_blank" rel="noopener">Suggest a tool</a>
+      </div>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      </button>
     </div>
   </header>
 
@@ -417,8 +472,8 @@
     <section class="hero">
       <div class="container hero__inner">
         <p class="eyebrow">404</p>
-        <h1>That page has wandered off</h1>
-        <p class="lead">The link may be out of date, or the page may have moved. The toolbox is still right here.</p>
+        <h1>Page not found</h1>
+        <p class="lead">That link may be out of date, or the page may have moved.</p>
       </div>
     </section>
 
@@ -427,11 +482,12 @@
         <div class="not-found__icon">
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
         </div>
-        <h2>Let’s get you back on track</h2>
-        <p>Head back to the toolbox, or jump straight into the Games Finder for your next meeting.</p>
+        <h2>Where were you headed?</h2>
+        <p>Head back to the toolbox, or open one of the tools directly.</p>
         <div class="actions">
-          <a class="btn btn--primary" href="./">Go to the toolbox</a>
-          <a class="btn btn--ghost" href="games/">Open the Games Finder</a>
+          <a class="btn btn--primary" href="./">All tools</a>
+          <a class="btn btn--ghost" href="games/">Games finder</a>
+          <a class="btn btn--ghost" href="kit-list/">Kit list generator</a>
         </div>
       </div>
     </div>
@@ -439,8 +495,41 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>An independent, volunteer-made toolbox for Scout leaders. Not an official Scouts publication, and not endorsed by The Scout Association. Scouts and the Scouts fleur-de-lis are trademarks of The Scout Association. <a href="https://github.com/Jackson-Ryan/scouts" target="_blank" rel="noopener">GitHub</a></p>
+      <div class="footer-legal">
+        <p>An independent, volunteer-made toolbox for Scout leaders. Not an official Scouts publication, and not endorsed by The Scout Association. Scouts and the Scouts fleur-de-lis are trademarks of The Scout Association. <a href="https://github.com/Jackson-Ryan/scouts" target="_blank" rel="noopener">GitHub</a></p>
+        <span class="footer-badge">Independent resource</span>
+      </div>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      var toggle = document.getElementById("menu-toggle");
+      var nav = document.getElementById("site-nav");
+      if (!toggle || !nav) return;
+      function close(restoreFocus) {
+        if (!nav.classList.contains("is-open")) return;
+        nav.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.setAttribute("aria-label", "Open menu");
+        if (restoreFocus) toggle.focus();
+      }
+      toggle.addEventListener("click", function () {
+        var open = !nav.classList.contains("is-open");
+        nav.classList.toggle("is-open", open);
+        toggle.setAttribute("aria-expanded", String(open));
+        toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      });
+      document.addEventListener("click", function (event) {
+        if (!nav.contains(event.target) && !toggle.contains(event.target)) close(false);
+      });
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") close(true);
+      });
+      window.addEventListener("resize", function () {
+        if (window.innerWidth > 900) close(false);
+      });
+    })();
+  </script>
 </body>
 </html>

@@ -1,142 +1,90 @@
 # Scout Tools
 
-A growing toolbox of free, practical tools for Beaver, Cub and Scout leaders, published as a static site on GitHub Pages.
+Free, practical tools for Beaver, Cub and Scout leaders, published as a static site on GitHub Pages.
 
-**Currently in the box:**
+**Currently included:**
 
-- [Games Finder](games/) — a searchable library of 50+ games with full rules, safety notes and leader tips.
-- [Kit List Generator](kit-list/) — an interactive packing list builder with a branded PDF and an OSM checklist CSV.
+- [Games Finder](games/) — a searchable library of 50 games with rules, equipment, safety notes, adaptations and themed twists.
+- [Kit List Generator](kit-list/) — a packing list builder with a printable A4 PDF and a CSV for Online Scout Manager.
 
 > This is an independent, volunteer-made resource. It is not an official Scouts publication and is not endorsed by The Scout Association. Scouts and the Scouts fleur-de-lis are trademarks of The Scout Association.
 
 ## Repository layout
 
-```
-index.html             Toolbox home page (lists every tool)
-404.html               Site-wide not found page
-tools.json             The tool manifest — the home page reads this
-assets/                Shared theme and brand kit
-  css/base.css         Design tokens, header, footer, hero, buttons, forms
+```text
+index.html             Home page (renders tools.json)
+about.html             About Scout Tools, safety notes and credits
+404.html               Site-wide not found page (self-contained)
+tools.json             Tool manifest read by the home page
+assets/                Shared theme, scripts and brand assets
+  css/base.css         Design tokens, header, footer, hero, buttons, custom controls
   css/home.css         Home page and tool cards
+  css/about.css        About page layout and prose styles
+  js/site-config.js    Public site settings (repo, allowed admins, OAuth client id, worker URL)
+  js/auth.js           GitHub OAuth 2.0 + PKCE client, repo API & in-app submissions client
+  js/site.js           Shared header/footer renderer, tools loader, icons and menu
+  js/controls.js       Shared custom themed selects, date pickers, steppers and dialogs
   js/home.js           Home page behaviour (renders tools.json)
-  img/                 Scouts logos, favicon, icon sprite, fleur
-games/                 The Games Finder tool (see games/README.md)
-kit-list/              The Kit List Generator (see kit-list/README.md)
+  js/about.js          Site chrome bootstrap for about.html
+  img/                 Scouts logos, favicon, icon sprite (~200 icons), fleur
+admin/                 Maintainer admin console (/admin/, GitHub SSO)
+games/                 Games Finder tool (see games/README.md)
+kit-list/              Kit List Generator tool (see kit-list/README.md)
+worker/                Cloudflare Worker for GitHub SSO & in-app game submissions (see worker/README.md)
 scripts/               Shared dev tooling
   dev-server.mjs       Zero-dependency preview server (npm run serve)
-  check-assets.mjs     Verifies every local link (npm run check)
+  check-assets.mjs     Verifies every local link and sprite icon (npm run check)
 .github/workflows/     Pages deploy, data validation, game issue import
 ```
 
-Each tool is a self-contained folder with its own pages, CSS, JavaScript, data and tests. The shared `assets/` folder keeps every tool on-brand.
+Each tool lives in its own folder with its own pages, styles, scripts, data and tests, while sharing the base styles and icon sprite from `assets/`.
 
 ## Local development
 
-The tools load JSON with `fetch`, so they need a small web server. Opening the HTML files directly will not work.
+The pages load JSON with `fetch`, so serve the repo over HTTP rather than opening the HTML files directly.
 
 ```bash
-npm install     # jsdom, used by the games smoke test
-npm run serve   # then open http://localhost:8080
+npm install     # installs jsdom for the Games Finder smoke test
+npm run serve   # opens on http://localhost:8080
 ```
 
 | Command | What it does |
 | --- | --- |
-| `npm run serve` | Serves the whole toolbox at <http://localhost:8080> |
-| `npm run check` | Checks every local link and asset reference in the repo |
-| `npm run validate` | Validates `games/data/games.json` against the shared schema |
+| `npm run serve` | Serves the site at <http://localhost:8080> |
+| `npm run check` | Checks every local link, asset and SVG icon reference |
+| `npm run validate` | Validates `games/data/games.json` against the schema |
 | `npm run smoke` | Runs the Games Finder smoke test in jsdom |
 | `npm run smoke:kit` | Runs the Kit List Generator smoke test (data, CSV and PDF) |
 | `npm run add -- my-game.json` | Adds a game from the command line |
 
 ## Adding a new tool
 
-The toolbox is designed to grow. A new tool needs a folder, a manifest entry and a card icon — the home page does the rest.
+1. Create a folder (for example `mytool/`) with `index.html`, `assets/css/`, and `assets/js/`.
+2. Link `../assets/css/base.css` before your own stylesheet, include the two shared chrome placeholders in your page:
+   ```html
+   <header class="site-header" data-site-header data-root="../" data-active="mytool"></header>
+   <footer class="site-footer" data-site-footer data-root="../"></footer>
+   ```
+   and call `initSite()` from `../assets/js/site.js`. That renders the header, footer and mobile menu automatically and upgrades every `.select`, `input[type="date"]`, `input[type="search"]` and `input[type="number"]` into the site's custom themed controls. Use `confirmDialog()` from `../assets/js/site.js` instead of `window.confirm()`, and `.cover--purple`..`.cover--mint` from `base.css` for brand cover art.
+3. Add an entry to `tools.json` with `id`, `title`, `href`, `status` (`ready`, `beta` or `planned`), `icon` (any symbol in `assets/img/icons.svg`), `color`, `kicker`, `tagline`, `description` and `tags`. The home page, navbar and footer pick it up automatically.
+4. Run `npm run check` to verify every link, asset path and icon reference.
 
-**1. Create the tool folder**
+## Tool documentation
 
-```text
-mytool/
-  index.html                 The tool's main page
-  assets/
-    css/mytool.css           Tool-specific styles
-    js/mytool.js             Tool behaviour
-  README.md                  Optional: how the tool works
-```
-
-**2. Use the shared theme**
-
-Link the shared design system first, then your own stylesheet:
-
-```html
-<link rel="stylesheet" href="../assets/css/base.css">
-<link rel="stylesheet" href="assets/css/mytool.css">
-```
-
-`base.css` gives you the Scouts palette, fonts, header, footer, hero, buttons, form controls and utilities. Copy the header and footer markup from `index.html` (or a tool page) and adjust the links, so every tool looks and behaves the same.
-
-**3. Add it to the manifest**
-
-Open `tools.json` and add an entry:
-
-```json
-{
-  "id": "mytool",
-  "title": "My Tool",
-  "href": "mytool/",
-  "status": "ready",
-  "icon": "compass",
-  "color": "teal",
-  "kicker": "Planning",
-  "tagline": "One-line description for the card.",
-  "description": "A sentence or two about what the tool does.",
-  "tags": ["Beavers", "Cubs", "Scouts"]
-}
-```
-
-- `status` can be `ready`, `beta` or `planned`. Planned tools render as a "coming soon" card with no link.
-- `icon` is any symbol from `assets/img/icons.svg`.
-- `color` is one of the shared cover colours: `purple`, `teal`, `blue`, `green`, `orange`, `pink`, `navy`, `yellow`, `red`, `mint`.
-
-The home page picks it up automatically — no other changes needed.
-
-**4. Check your links**
-
-```bash
-npm run check
-```
-
-This verifies every `href`, `src` and CSS `url(...)` in the repo, including icon sprite references.
-
-**5. Optional: events and dates**
-
-If the tool has repeating dates or events, consider a small JSON data file next to its page (like `games/data/games.json`) so non-developers can edit content without touching HTML.
-
-## The Games Finder
-
-The Games Finder lives in [`games/`](games/) and has its own documentation: the data schema, validation rules, the add-a-game form, the command-line tools and the GitHub issue import workflow are all in [`games/README.md`](games/README.md).
-
-## The Kit List Generator
-
-The Kit List Generator lives in [`kit-list/`](kit-list/) and has its own documentation in [`kit-list/README.md`](kit-list/README.md). It is a self-contained wizard that writes a tailored packing list as a branded PDF and a CSV. The PDF is generated in the browser with a vendored copy of [jsPDF](https://github.com/parallax/jsPDF) (MIT) and the Scouts brand font, Nunito Sans. No data leaves the device.
+- [Games Finder](games/README.md) — data schema, validation, in-app game submissions, CLI scripts and admin tools.
+- [Kit List Generator](kit-list/README.md) — packing logic, PDF generation (vendored [jsPDF](https://github.com/parallax/jsPDF), MIT + Nunito Sans) and OSM CSV format.
+- [Admin SSO & Submission Worker](worker/README.md) — 5-minute setup for GitHub SSO on `/admin/` and account-free public game submissions on GitHub Pages.
 
 ## Deploying
 
 1. Push the repository to GitHub.
-2. Go to **Settings → Pages** and set **Source** to **GitHub Actions**.
-3. The `Deploy to GitHub Pages` workflow publishes the site on every push to `main`.
+2. In **Settings → Pages**, set **Source** to **GitHub Actions**.
+3. The `Deploy to GitHub Pages` workflow publishes the site on pushes to `main`.
 
-The `.nojekyll` file stops GitHub Pages from running Jekyll, which keeps every asset path simple. If you use a custom domain, set `githubRepo` in `games/assets/js/config.js` so the add-a-game form can build GitHub issue links.
+`.nojekyll` disables Jekyll processing so asset paths stay straightforward. If you fork the site onto a custom domain, set `githubRepo` in `games/assets/js/config.js` so the add-a-game form links to your repository.
 
-## Releases
+## Safety and credits
 
-Tag releases with `git tag v1.1.0 && git push --tags`, then create a GitHub release from the tag. The workflow picks up the change and redeploys automatically.
-
-## Safety and content
-
-Tools are contributed by leaders and edited for clarity. Safety notes are a starting point and are not a substitute for your own risk assessment, safeguarding procedures or the guidance of your section.
-
-## Credits
-
-- Layout and visual style are inspired by the Scouts activity finder and use the supplied Scouts brand assets.
-- Scouts and the Scouts fleur-de-lis are trademarks of The Scout Association.
-- This project is independent and not endorsed by The Scout Association.
+- Safety notes and kit lists are a starting point and do not replace your own risk assessment, venue checks or safeguarding procedures.
+- Visual styling takes inspiration from the Scouts activity finder and uses supplied Scouts brand assets.
+- Scouts and the Scouts fleur-de-lis are trademarks of The Scout Association. This project is independent and not endorsed by The Scout Association.

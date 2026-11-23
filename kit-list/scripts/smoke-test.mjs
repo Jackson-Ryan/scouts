@@ -9,7 +9,7 @@ import assert from "node:assert/strict";
 import { readFileSync, writeFileSync, unlinkSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { buildKitList, defaultAnswers, csvRows } from "../assets/js/kit-data.js";
+import { ACTIVITIES, buildKitList, defaultAnswers, csvRows, tripMetaLine } from "../assets/js/kit-data.js";
 import { buildCsv } from "../assets/js/kit-csv.js";
 import { createKitListPdf } from "../assets/js/kit-pdf.js";
 
@@ -42,10 +42,20 @@ assert.equal(buildKitList({ ...base, section: "beavers", nights: 1 }).nights, 1)
 assert.equal(buildKitList({ ...base, section: "cubs" }).nights, 2);
 assert.equal(buildKitList({ ...base, section: "scouts" }).nights, 2);
 
-// A day trip never includes sleeping kit.
+// A day trip never includes sleeping kit or accommodation in its meta line.
 const dayTrip = buildKitList({ ...base, tripType: "day", nights: 0, activities: ["hiking"] });
 assert.equal(dayTrip.nights, 0);
 assert.equal(itemNames(dayTrip).some((name) => name.toLowerCase().includes("sleeping bag")), false);
+assert.equal(tripMetaLine(dayTrip), "Cubs  •  Day trip");
+
+// Without dates, the meta line does not duplicate the night count.
+const undatedWeekend = buildKitList(base);
+assert.equal(tripMetaLine(undatedWeekend), "Cubs  •  2 nights  •  Tent");
+
+// Towel note only mentions water activities when water activities are selected.
+const dryTowel = undatedWeekend.groups.flatMap((group) => group.items).find((item) => item.id === "towel");
+assert.equal(dryTowel.note.toLowerCase().includes("water"), false);
+assert.equal(ACTIVITIES.length, 17);
 
 // A sleepover is always indoors, even if the previous answer said tent.
 const sleepover = buildKitList({ ...base, tripType: "sleepover", accommodation: "tent", nights: 1 });

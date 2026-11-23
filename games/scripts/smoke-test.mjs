@@ -39,9 +39,18 @@ async function waitFor(condition, message, timeout = 5000) {
 }
 
 const realFetch = globalThis.fetch;
+const submittedPayloads = [];
 globalThis.fetch = async (input, init) => {
   const url = typeof input === "string" ? input : input.href ?? String(input);
-  const parsed = new URL(url);
+  if (url === "/api/submissions" || url.endsWith("/api/submissions")) {
+    const body = JSON.parse(init?.body || "{}");
+    submittedPayloads.push(body);
+    return new Response(
+      JSON.stringify({ ok: true, id: body.game?.id || "ok", message: "Thanks! Your game has been submitted for review." }),
+      { status: 201, headers: { "content-type": "application/json" } },
+    );
+  }
+  const parsed = new URL(url, "http://localhost:8080/");
   if (parsed.protocol === "file:") {
     const body = await readFile(parsed, "utf8");
     return new Response(body, { status: 200, headers: { "content-type": "application/json" } });
@@ -92,6 +101,9 @@ async function testIndex() {
   const doc = dom.window.document;
 
   await waitFor(() => doc.querySelectorAll("#game-grid .game-card").length === 12, "first page of games");
+  assert(doc.querySelectorAll(".site-header .site-nav__link").length >= 4, "shared site header renders");
+  assert(doc.querySelectorAll(".site-footer .footer-links").length >= 4, "shared site footer renders");
+  assert(doc.querySelectorAll(".ui-select .ui-select__trigger").length === 5, "all five selects use custom dropdowns");
   assert(doc.querySelectorAll("#featured-grid .game-card").length === 3, "three featured games render");
   assert(
     doc.querySelector("#results-count").textContent.includes(String(library.length)),
@@ -99,6 +111,18 @@ async function testIndex() {
   );
   assert(doc.querySelectorAll("#quick-chips [data-chip]").length === 6, "six quick filter chips render");
   assert(doc.querySelectorAll("#filter-theme option").length > 5, "theme filter is populated");
+
+  // Custom dropdown interaction updates underlying select and filters the grid.
+  const sectionTrigger = doc.querySelector("#filter-section").closest(".ui-select").querySelector(".ui-select__trigger");
+  sectionTrigger.click();
+  const scoutsOption = doc.querySelector('#filter-section').closest(".ui-select").querySelector('.ui-select__option[data-value="scouts"]');
+  assert(Boolean(scoutsOption), "custom dropdown opens and renders options");
+  scoutsOption.click();
+  await waitFor(() => doc.querySelector("#filter-section").value === "scouts", "custom dropdown updates select value");
+  assert(sectionTrigger.querySelector(".ui-select__label").textContent === "Scouts", "custom dropdown trigger label syncs");
+  doc.querySelector("#clear-filters").click();
+  await waitFor(() => doc.querySelector("#filter-section").value === "", "clearing filters resets custom dropdown");
+  assert(sectionTrigger.querySelector(".ui-select__label").textContent === "All sections", "custom dropdown label resets on clear");
 
   const search = doc.querySelector("#filter-search");
   search.value = "parachute";
@@ -121,7 +145,7 @@ async function testIndex() {
   const savedId = saveButton.dataset.saveId;
   saveButton.click();
   await waitFor(() => dom.window.localStorage.getItem("scouts-games-saved-v1")?.includes(savedId), "saved game is stored");
-  assert(doc.querySelector(".header-saved__count").textContent === "1", "header saved count updates");
+  await waitFor(() => doc.querySelector('[data-chip="saved"] .chip__count').textContent === "1", "saved chip count updates");
 
   doc.querySelector('[data-chip="all"]').click();
   await waitFor(() => doc.querySelectorAll("#game-grid .game-card").length === 12, "all games chip resets filters");
@@ -131,7 +155,6 @@ async function testIndex() {
   await waitFor(() => doc.querySelector("#game-grid .game-card").dataset.gameId !== firstId, "pagination changes page");
   assert(doc.querySelectorAll("#game-grid .game-card").length === 12, "page two has twelve games");
 
-  await waitFor(() => doc.querySelector('[data-chip="saved"] .chip__count').textContent === "1", "saved chip count updates");
   doc.querySelector('[data-chip="saved"]').click();
   await waitFor(() => doc.querySelectorAll("#game-grid .game-card").length === 1, "saved filter shows one game");
 
@@ -189,9 +212,23 @@ async function testAdd() {
 
   await waitFor(() => !doc.querySelector("#prepare-game").disabled, "form is ready");
   assert(doc.querySelectorAll("#game-variant option").length > 20, "base games populate the variant picker");
-  assert(doc.querySelectorAll("#icon-picker .icon-choice").length > 40, "icon picker is populated");
+  assert(doc.querySelectorAll("#icon-picker .icon-choice").length >= 150, "expanded icon picker is populated");
   assert(doc.querySelectorAll("#color-picker .swatch").length === 10, "colour picker is populated");
   assert(doc.querySelector("#preview-card .game-card"), "live preview card renders");
+
+  // Searchable icon picker filters icons live.
+  const iconSearch = doc.querySelector("#icon-search");
+  iconSearch.value = "pirate";
+  fire(iconSearch, "input");
+  assert(doc.querySelectorAll("#icon-picker .icon-choice").length >= 1 && doc.querySelectorAll("#icon-picker .icon-choice").length < 10, "icon search filters icons");
+  iconSearch.value = "";
+  fire(iconSearch, "input");
+
+  // Custom number stepper updates Typical minutes.
+  const minutesInc = doc.querySelector("#game-minutes").closest(".ui-number").querySelector(".ui-number__btn--inc");
+  minutesInc.click();
+  assert(doc.querySelector("#game-minutes").value === "1", "custom number stepper increments value");
+  doc.querySelector("#game-minutes").value = "";
 
   typeInto(doc.querySelector("#game-title"), "Test Volcano Game");
   typeInto(doc.querySelector("#game-summary"), "A quick throwing game used to check the add form works from end to end.");
@@ -209,8 +246,10 @@ async function testAdd() {
   );
   assert(doc.querySelectorAll("#preview-checklist .is-done").length >= 5, "checklist tracks completed fields");
 
+  submittedPayloads.length = 0;
   doc.querySelector("#prepare-game").click();
-  await waitFor(() => !doc.querySelector("#export-panel").hidden, "export panel opens");
+  await waitFor(() => !doc.querySelector("#export-panel").hidden, "in-app submission panel opens");
+  assert(submittedPayloads.length === 1, "in-app submission POSTs directly to /api/submissions");
   const json = JSON.parse(doc.querySelector("#json-preview").textContent);
   assert(json.id === "test-volcano-game", `generated id is ${json.id}`);
   assert(json.sections.length === 1 && json.sections[0] === "cubs", "selected section is included");
@@ -224,12 +263,12 @@ async function testAdd() {
   twistRow.querySelector("[data-twist-title]").value = "Lava Twist";
   twistRow.querySelector("[data-twist-text]").value = "Call the cones volcanoes and play spooky music.";
   fire(twistRow.querySelector("[data-twist-text]"), "input");
-  await waitFor(() => doc.querySelector("#export-panel").hidden, "editing after export closes the export panel");
+  await waitFor(() => doc.querySelector("#export-panel").hidden, "editing after submission closes the confirmation panel");
 
   doc.querySelector("#prepare-game").click();
-  await waitFor(() => !doc.querySelector("#export-panel").hidden, "export panel reopens");
+  await waitFor(() => !doc.querySelector("#export-panel").hidden, "in-app submission panel reopens");
   const updated = JSON.parse(doc.querySelector("#json-preview").textContent);
-  assert(updated.themedTwists.length === 1, "themed twist is included in the JSON");
+  assert(updated.themedTwists.length === 1, "themed twist is included in the submitted JSON");
 
   doc.querySelector("#reset-form").click();
   await waitFor(() => doc.querySelector("#game-title").value === "" && doc.querySelector("#export-panel").hidden, "reset clears the form");

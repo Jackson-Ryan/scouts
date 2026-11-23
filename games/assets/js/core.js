@@ -1,4 +1,7 @@
+import { escapeHTML, initSite, spriteIcon } from "../../../assets/js/site.js";
 import { SITE_CONFIG } from "./config.js";
+
+export { escapeHTML };
 
 export const SECTIONS = [
   { value: "beavers", label: "Beavers", ages: "6–8" },
@@ -45,52 +48,185 @@ export const COLORS = [
 ];
 
 export const ICON_OPTIONS = [
+  // Sports & active
+  { value: "gamepad", label: "Games" },
   { value: "dodgeball", label: "Dodgeball" },
   { value: "football", label: "Football" },
-  { value: "flag", label: "Flag" },
+  { value: "basketball", label: "Basketball" },
+  { value: "tennis", label: "Tennis" },
+  { value: "rugby", label: "Rugby" },
+  { value: "volleyball", label: "Volleyball" },
+  { value: "hockey", label: "Hockey" },
+  { value: "bat", label: "Bat & ball" },
+  { value: "ping-pong", label: "Ping-pong" },
+  { value: "bowling", label: "Bowling" },
+  { value: "bowling-pin", label: "Skittles" },
+  { value: "goal", label: "Goal" },
   { value: "target", label: "Target" },
+  { value: "bow", label: "Archery" },
+  { value: "runner", label: "Running" },
   { value: "footprints", label: "Footprints" },
-  { value: "fish", label: "Fish" },
-  { value: "megaphone", label: "Megaphone" },
-  { value: "zap", label: "Energy" },
-  { value: "splat", label: "Splat" },
-  { value: "apple", label: "Fruit" },
-  { value: "grid", label: "Grid" },
-  { value: "knot", label: "Knot" },
-  { value: "layers", label: "Layers" },
-  { value: "minus", label: "Stick" },
-  { value: "bridge", label: "Bridge" },
-  { value: "hazard", label: "Hazard" },
+  { value: "whistle", label: "Whistle" },
+  { value: "stopwatch", label: "Timer" },
+  { value: "medal", label: "Medal" },
+  { value: "trophy", label: "Trophy" },
+  { value: "flag", label: "Flag" },
+  { value: "flags", label: "Bunting" },
+  { value: "cone", label: "Cone" },
+  { value: "hoop", label: "Hoop" },
+  { value: "frisbee", label: "Frisbee" },
+  { value: "kite", label: "Kite" },
   { value: "parachute", label: "Parachute" },
   { value: "rope", label: "Rope" },
-  { value: "balloon", label: "Balloon" },
-  { value: "hockey", label: "Hockey" },
-  { value: "bat", label: "Bat" },
-  { value: "tree", label: "Tree" },
-  { value: "camera", label: "Camera" },
-  { value: "theatre", label: "Theatre" },
-  { value: "hand", label: "Hand" },
-  { value: "gift", label: "Gift" },
-  { value: "pumpkin", label: "Pumpkin" },
-  { value: "egg", label: "Egg" },
-  { value: "paw", label: "Paw" },
-  { value: "shield", label: "Shield" },
-  { value: "globe", label: "Globe" },
-  { value: "goal", label: "Goal" },
-  { value: "bucket", label: "Bucket" },
-  { value: "speaker-off", label: "Quiet" },
-  { value: "fence", label: "Fence" },
-  { value: "cube", label: "Cube" },
-  { value: "plane", label: "Plane" },
-  { value: "cup", label: "Cup" },
-  { value: "moon", label: "Moon" },
-  { value: "snowflake", label: "Snowflake" },
-  { value: "ghost", label: "Ghost" },
-  { value: "anchor", label: "Anchor" },
-  { value: "users", label: "Team" },
-  { value: "eye", label: "Eye" },
-  { value: "rocket", label: "Rocket" },
+  { value: "bike", label: "Bike" },
+  { value: "swim", label: "Swim" },
+  { value: "dumbbell", label: "Strength" },
+
+  // Outdoors, camp & nature
   { value: "tent", label: "Tent" },
+  { value: "fire", label: "Campfire" },
+  { value: "compass", label: "Compass" },
+  { value: "map", label: "Map" },
+  { value: "binoculars", label: "Binoculars" },
+  { value: "telescope", label: "Telescope" },
+  { value: "torch", label: "Torch" },
+  { value: "lantern", label: "Lantern" },
+  { value: "backpack", label: "Rucksack" },
+  { value: "boot", label: "Boot" },
+  { value: "knot", label: "Knot" },
+  { value: "bridge", label: "Bridge" },
+  { value: "fence", label: "Fence" },
+  { value: "tree", label: "Tree" },
+  { value: "leaf", label: "Leaf" },
+  { value: "clover", label: "Clover" },
+  { value: "flower", label: "Flower" },
+  { value: "mushroom", label: "Mushroom" },
+  { value: "feather", label: "Feather" },
+  { value: "shell", label: "Shell" },
+  { value: "mountain", label: "Mountain" },
+  { value: "sun", label: "Sun" },
+  { value: "moon", label: "Moon" },
+  { value: "cloud", label: "Cloud" },
+  { value: "cloud-rain", label: "Rain" },
+  { value: "umbrella", label: "Umbrella" },
+  { value: "snowflake", label: "Snowflake" },
+  { value: "wind", label: "Wind" },
+  { value: "rainbow", label: "Rainbow" },
+  { value: "waves", label: "Water" },
+  { value: "droplet", label: "Splash" },
+
+  // Animals & creatures
+  { value: "paw", label: "Animal" },
+  { value: "dog", label: "Dog" },
+  { value: "cat", label: "Cat" },
+  { value: "bunny", label: "Bunny" },
+  { value: "fox", label: "Fox" },
+  { value: "bird", label: "Bird" },
+  { value: "duck", label: "Duck" },
+  { value: "owl", label: "Owl" },
+  { value: "fish", label: "Fish" },
+  { value: "shark", label: "Shark" },
+  { value: "crab", label: "Crab" },
+  { value: "turtle", label: "Turtle" },
+  { value: "frog", label: "Frog" },
+  { value: "snake", label: "Snake" },
+  { value: "bug", label: "Bug" },
+  { value: "butterfly", label: "Butterfly" },
+  { value: "spider", label: "Spider" },
+  { value: "dinosaur", label: "Dinosaur" },
+
+  // Props, toys, craft & STEM
+  { value: "balloon", label: "Balloon" },
+  { value: "bucket", label: "Bucket" },
+  { value: "cup", label: "Cup" },
+  { value: "bottle", label: "Bottle" },
+  { value: "spoon", label: "Spoon" },
+  { value: "chair", label: "Chair" },
+  { value: "minus", label: "Stick" },
+  { value: "dice", label: "Dice" },
+  { value: "domino", label: "Domino" },
+  { value: "cards", label: "Cards" },
+  { value: "puzzle", label: "Puzzle" },
+  { value: "chess", label: "Strategy" },
+  { value: "cube", label: "Cube" },
+  { value: "hourglass", label: "Countdown" },
+  { value: "plane", label: "Paper plane" },
+  { value: "key", label: "Key" },
+  { value: "lock", label: "Lock" },
+  { value: "bell", label: "Bell" },
+  { value: "drum", label: "Drum" },
+  { value: "music", label: "Music" },
+  { value: "guitar", label: "Guitar" },
+  { value: "microphone", label: "Mic" },
+  { value: "megaphone", label: "Megaphone" },
+  { value: "camera", label: "Camera" },
+  { value: "film", label: "Film" },
+  { value: "paintbrush", label: "Paint" },
+  { value: "pencil", label: "Drawing" },
+  { value: "scissors", label: "Craft" },
+  { value: "magnet", label: "Magnet" },
+  { value: "flask", label: "Science" },
+  { value: "atom", label: "STEM" },
+  { value: "gear", label: "Build" },
+  { value: "scale", label: "Balance" },
+  { value: "lightbulb", label: "Idea" },
+  { value: "wand", label: "Magic" },
+
+  // Themes, stories, vehicles & food
+  { value: "pumpkin", label: "Pumpkin" },
+  { value: "ghost", label: "Ghost" },
+  { value: "skull", label: "Skull" },
+  { value: "witch-hat", label: "Witch" },
+  { value: "gift", label: "Gift" },
+  { value: "snowman", label: "Snowman" },
+  { value: "candy-cane", label: "Festive" },
+  { value: "egg", label: "Egg" },
+  { value: "rocket", label: "Rocket" },
+  { value: "planet", label: "Planet" },
+  { value: "ufo", label: "UFO" },
+  { value: "anchor", label: "Anchor" },
+  { value: "helm", label: "Ship wheel" },
+  { value: "ship", label: "Pirate ship" },
+  { value: "treasure", label: "Treasure" },
+  { value: "gem", label: "Gem" },
+  { value: "coin", label: "Coin" },
+  { value: "sword", label: "Sword" },
+  { value: "crown", label: "Crown" },
+  { value: "castle", label: "Castle" },
+  { value: "shield", label: "Shield" },
+  { value: "mask", label: "Hero mask" },
+  { value: "robot", label: "Robot" },
+  { value: "globe", label: "Globe" },
+  { value: "car", label: "Car" },
+  { value: "train", label: "Train" },
+  { value: "submarine", label: "Submarine" },
+  { value: "apple", label: "Fruit" },
+  { value: "pizza", label: "Pizza" },
+  { value: "cookie", label: "Cookie" },
+  { value: "cake", label: "Cake" },
+  { value: "ice-cream", label: "Ice cream" },
+
+  // People, mind, calm & symbols
+  { value: "users", label: "Team" },
+  { value: "hand", label: "Hand" },
+  { value: "eye", label: "Eye" },
+  { value: "ear", label: "Listen" },
+  { value: "brain", label: "Memory" },
+  { value: "smile", label: "Fun" },
+  { value: "theatre", label: "Drama" },
+  { value: "book", label: "Story" },
+  { value: "message", label: "Word game" },
+  { value: "zzz", label: "Sleepy" },
+  { value: "speaker-off", label: "Quiet" },
+  { value: "volume", label: "Loud" },
+  { value: "zap", label: "Energy" },
+  { value: "splat", label: "Splat" },
+  { value: "grid", label: "Grid" },
+  { value: "layers", label: "Layers" },
+  { value: "hazard", label: "Hazard" },
+  { value: "heart", label: "Kindness" },
+  { value: "star", label: "Star" },
+  { value: "sparkles", label: "Sparkle" },
 ];
 
 export const GAME_TYPES = [
@@ -138,19 +274,6 @@ export function getGame(games, id) {
   return games.find((game) => game.id === id) || null;
 }
 
-export function escapeHTML(value) {
-  return String(value ?? "").replace(/[&<>"']/g, (character) => {
-    const map = {
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;",
-    };
-    return map[character];
-  });
-}
-
 export function slugify(value) {
   return String(value ?? "")
     .toLowerCase()
@@ -172,8 +295,7 @@ export function uniqueId(title, existingIds) {
 }
 
 export function iconMarkup(name, className = "icon") {
-  const safeName = String(name || "gamepad").replace(/[^a-z0-9-]/g, "");
-  return `<svg class="${className}" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#${safeName}"></use></svg>`;
+  return spriteIcon(name || "gamepad", { root: "../", className });
 }
 
 export function sectionLabel(section) {
@@ -273,7 +395,7 @@ export function coverMarkup(game, options = {}) {
     <div class="game-cover cover--${color}" aria-hidden="true">
       <div class="game-cover__stripes"></div>
       ${badgeMarkup}
-      <svg class="game-cover__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#${icon}"></use></svg>
+      <svg class="game-cover__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#${icon}"></use></svg>
       <span class="game-cover__kicker">${escapeHTML(game.gameType || "Game")}</span>
     </div>
   `;
@@ -322,7 +444,7 @@ export function previewCardMarkup(game) {
   const preview = {
     ...game,
     title: game.title || "Your game title",
-    summary: game.summary || "A short, friendly summary of the game will appear here.",
+    summary: game.summary || "A short summary of the game will appear here.",
     duration: game.duration || "10–20 mins",
     gameType: game.gameType || "Game",
   };
@@ -405,19 +527,10 @@ export function toggleSaved(id) {
   try {
     localStorage.setItem(SITE_CONFIG.savedKey, JSON.stringify(next));
   } catch {
-    // Storage can be unavailable in private modes; the UI still works for this page.
+    // Storage can be unavailable in private browsing; the UI still works for this session.
   }
   document.dispatchEvent(new CustomEvent("savedchange", { detail: { id, saved: next.includes(id), ids: next } }));
-  updateSavedCount();
   return next.includes(id);
-}
-
-export function updateSavedCount() {
-  const count = savedIds().length;
-  document.querySelectorAll("[data-saved-count]").forEach((element) => {
-    element.textContent = String(count);
-    element.dataset.count = String(count);
-  });
 }
 
 export function showToast(message, duration = 2600) {
@@ -454,7 +567,7 @@ export async function copyText(text, successMessage = "Copied to clipboard.") {
     showToast(successMessage);
     return true;
   } catch {
-    showToast("Could not copy automatically. Please select the text and copy it.");
+    showToast("Could not copy automatically. Select the text and copy it instead.");
     return false;
   }
 }
@@ -472,35 +585,7 @@ export async function sharePage({ title, text, url = window.location.href }) {
 }
 
 export function initHeader() {
-  const toggle = document.querySelector("#menu-toggle");
-  const nav = document.querySelector("#site-nav");
-  if (toggle && nav) {
-    const close = () => {
-      nav.classList.remove("is-open");
-      toggle.setAttribute("aria-expanded", "false");
-      toggle.setAttribute("aria-label", "Open menu");
-    };
-    toggle.addEventListener("click", () => {
-      const open = !nav.classList.contains("is-open");
-      nav.classList.toggle("is-open", open);
-      toggle.setAttribute("aria-expanded", String(open));
-      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-    });
-    nav.addEventListener("click", (event) => {
-      if (event.target.closest("a")) close();
-    });
-    document.addEventListener("click", (event) => {
-      if (!nav.contains(event.target) && !toggle.contains(event.target)) close();
-    });
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") close();
-    });
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 900) close();
-    });
-  }
-  updateSavedCount();
-  document.addEventListener("savedchange", updateSavedCount);
+  initSite();
 }
 
 export function initAccordions(root = document) {
@@ -540,7 +625,7 @@ export function buildIssueBody(game) {
     `**Sections:** ${sectionLabels(game.sections)}`,
     `**Time:** ${game.duration}`,
     "",
-    "Please check the game and add it to the library. The JSON between the markers is used by the submission workflow.",
+    "The JSON between the markers is used by the submission workflow.",
     "",
     "<!-- GAME_SUBMISSION_START -->",
     "```json",
@@ -563,12 +648,22 @@ export function buildIssueUrl(game) {
   return `https://github.com/${repo}/issues/new?${params.toString()}`;
 }
 
+export function buildEditIssueUrl(game) {
+  const repo = detectRepo();
+  if (!repo) return "";
+  const params = new URLSearchParams({
+    title: `[Edit] ${game.title}`,
+    body: `Game: ${game.title} (\`${game.id}\`)\n\nWhat should be updated?\n`,
+  });
+  return `https://github.com/${repo}/issues/new?${params.toString()}`;
+}
+
 export function buildIssueMarkdown(game) {
   const repo = detectRepo();
   return [
     `# New game: ${game.title}`,
     "",
-    repo ? `Submit this as an issue at https://github.com/${repo}/issues/new` : "Create an issue in your games repository and paste this in.",
+    repo ? `Submit this as an issue at https://github.com/${repo}/issues/new` : "Create an issue in your repository and paste this in.",
     "",
     buildIssueBody(game),
   ].join("\n");
