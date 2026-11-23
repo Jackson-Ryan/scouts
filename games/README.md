@@ -8,7 +8,7 @@ A static, searchable games finder for Beaver, Cub and Scout leaders. It is inspi
 - Full detail pages with equipment, set-up, rules, safety notes and leader tips.
 - **Variants** are separate games with different rules.
 - **Themed twists** keep the same rules and change the story or props.
-- A guided **Add a game** form with live preview, JSON download and GitHub issue submission.
+- A guided **Add a game** form with live preview, in-app submission and JSON download.
 - No build step, no database, no tracking.
 
 > This is an independent resource. It is not an official Scouts publication and is not endorsed by The Scout Association. Scouts and the Scouts fleur-de-lis are trademarks of The Scout Association.
@@ -40,16 +40,15 @@ index.html                 Games finder
 game.html                  Game detail page
 add.html                   Add a game form
 about.html                 Redirect to ../about
-404.html                   Not found page (the repo root serves the real one)
 data/games.json            The whole games library
 assets/css/                games, detail, forms (shared theme comes from ../assets)
 assets/js/
   config.js                Site name, repository, saved-games key
   core.js                  Shared data loading, filtering and rendering
+  game-editor.js           Shared form helpers used by add.html and /admin/
   index.js                 Finder page behaviour
   game.js                  Detail page behaviour
   add.js                   Add form behaviour
-  about.js                 Header/menu behaviour for static pages
 scripts/
   game-schema.mjs          Shared validation rules
   validate-games.mjs       npm run validate (from the repo root)
@@ -80,7 +79,7 @@ Open `/games/add` and fill in the fields. The live preview shows the game card a
 
 Sign in at `/admin/` with your authorised GitHub account to add games in bulk, edit existing games, delete games, and review pending submissions — publishing all changes in a single validated commit.
 
-### 2. Add it on the command line
+### 3. Add it on the command line
 
 Run from the repository root (or use the same paths from inside `games/` without the `games/` prefix):
 
@@ -92,7 +91,7 @@ npm run validate
 
 The file can contain one game object or an array of games. The script checks the shared schema, refuses duplicate ids and base-game problems, and writes `games/data/games.json`.
 
-### 3. Import from a GitHub issue
+### 4. Import from a GitHub issue
 
 The **Import game submission** workflow looks for JSON between these markers:
 
@@ -111,7 +110,7 @@ To enable it:
 1. Push the repository to GitHub.
 2. Create a label called `game-submission` (optional, but the issue form references it).
 3. Make sure Actions have **Read and write permissions** (Settings → Actions → General → Workflow permissions).
-4. Open an issue with the **Game submission** template, or use the button in `add.html`.
+4. Open an issue using the **Game submission** template and paste the game JSON.
 
 ## Game data schema
 
@@ -153,7 +152,7 @@ Validation is shared by the browser form, the command-line tools and the GitHub 
 
 All paths below are inside `games/`:
 
-- **Site name and repository** — `assets/js/config.js`. Set `githubRepo` to `owner/repo` if the automatic GitHub Pages detection does not fit. Leave it blank on `*.github.io` and the site works it out from the URL.
+- **Site name and repository** — inherited from `../assets/js/site-config.js` via `assets/js/config.js`. Set `githubRepo` in `assets/js/site-config.js` if you fork the site.
 - **Saved games** — stored in `localStorage` under `savedKey`; no account is needed.
 - **Colours and fonts** — the shared theme lives in the repo root at `assets/css/base.css` (the `:root` block). The palette follows the supplied Scouts CSS, so every tool matches.
 - **Icons** — add a `<symbol id="...">` to `assets/img/icons.svg` in the repo root and add it to `ICON_OPTIONS` in `assets/js/core.js` so it appears in the searchable icon picker. Run `npm run check` to verify the symbol exists.

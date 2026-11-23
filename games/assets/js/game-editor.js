@@ -1,9 +1,4 @@
-/**
- * Shared game form & editor helpers used by both /games/add and /admin.
- *
- * Keeps option labels, icon search, colour swatches, twist rows, tip parsing
- * and validation consistent across public submissions and admin editing.
- */
+// Shared game form helpers used by /games/add and /admin.
 
 import {
   COLORS,

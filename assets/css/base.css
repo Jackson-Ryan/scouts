@@ -1,7 +1,4 @@
-/* ==========================================================================
-   Scout Tools — shared base styles
-   Design tokens, header, footer, hero, buttons, forms and shared utilities.
-   ========================================================================== */
+/* Shared base styles, design tokens and common components */
 
 :root {
   color-scheme: light dark;

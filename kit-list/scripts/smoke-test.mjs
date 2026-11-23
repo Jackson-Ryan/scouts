@@ -63,7 +63,7 @@ assert.equal(sleepover.accommodation, "Indoor");
 assert.equal(itemNames(sleepover).includes("Tent"), false);
 assert.ok(itemNames(sleepover).includes("Sleeping bag"));
 
-// Paddling with showers adds the extra shower kit parents always forget.
+// Paddling with showers adds the post-paddling shower kit and scales swimwear/towels.
 const paddling = buildKitList({
   ...base,
   season: "summer",
@@ -77,8 +77,7 @@ assert.ok(names.includes("Swimming costume or trunks"), "expected swimwear");
 assert.equal(paddling.groups.flatMap((group) => group.items).find((item) => item.id === "swimwear").qty, "2");
 assert.equal(paddling.groups.flatMap((group) => group.items).find((item) => item.id === "towel").qty, "3");
 
-// With showers on site, paddling gets the extra shower kit even before the
-// leader answers the water-specific shower question.
+// Site showers imply paddling shower kit even when the water shower option is unset.
 const paddlingDefaults = buildKitList({
   ...base,
   showers: "yes",
@@ -87,7 +86,7 @@ const paddlingDefaults = buildKitList({
 });
 assert.ok(itemNames(paddlingDefaults).includes("Extra shower kit for after paddling"));
 
-// Winter adds warmth.
+// Winter conditions add cold-weather clothing and extra bedding.
 const winter = buildKitList({ ...base, season: "winter", weather: ["freezing"] });
 assert.ok(itemNames(winter).includes("Warm hat or beanie"));
 assert.ok(itemNames(winter).includes("Extra blanket"));

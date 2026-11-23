@@ -1,10 +1,4 @@
-/**
- * Kit List Generator — PDF builder.
- *
- * Uses jsPDF (vendored, MIT) with the Scouts brand font, Nunito Sans. The
- * layout is built from simple vector primitives so the output stays crisp,
- * selectable and small enough to email.
- */
+// A4 PDF builder using vendored jsPDF (MIT) and embedded Nunito Sans fonts.
 
 import { slugify, tripMetaLine } from "./kit-data.js";
 
@@ -157,9 +151,7 @@ export function createKitListPdf({ jsPDF, list, fonts, logoDataUrl }) {
     if (y + height > BOTTOM) newPage(continuedTitle);
   };
 
-  // ---------------------------------------------------------------------------
   // Cover header
-  // ---------------------------------------------------------------------------
 
   const titleSize = list.title.length > 62 ? 20 : list.title.length > 42 ? 23 : 27;
   setBlack(titleSize, COLOURS.white);
@@ -203,9 +195,7 @@ export function createKitListPdf({ jsPDF, list, fonts, logoDataUrl }) {
 
   y = headerHeight + 22;
 
-  // ---------------------------------------------------------------------------
   // Summary panel
-  // ---------------------------------------------------------------------------
 
   const summaryHeight = 86;
   doc.setFillColor(...COLOURS.purpleSoft);
@@ -232,7 +222,6 @@ export function createKitListPdf({ jsPDF, list, fonts, logoDataUrl }) {
 
   y += summaryHeight + 18;
 
-  // How to use note
   const note =
     "Work through this list with a grown-up and tick each item as it goes into your bag. Check your event instructions and risk assessment too.";
   doc.setFillColor(...COLOURS.yellow);
@@ -252,9 +241,7 @@ export function createKitListPdf({ jsPDF, list, fonts, logoDataUrl }) {
 
   y += 8;
 
-  // ---------------------------------------------------------------------------
   // Categories and items
-  // ---------------------------------------------------------------------------
 
   const drawCategory = (group) => {
     ensureSpace(80, group.title);
@@ -320,9 +307,7 @@ export function createKitListPdf({ jsPDF, list, fonts, logoDataUrl }) {
     y += 12;
   });
 
-  // ---------------------------------------------------------------------------
   // Before you go / leader notes
-  // ---------------------------------------------------------------------------
 
   const tipLines = list.tips.map((tip) => doc.splitTextToSize(tip, CONTENT_WIDTH - 46));
   const tipHeight = 24 + tipLines.reduce((height, lines) => height + lines.length * 11 + 4, 0) + 18;

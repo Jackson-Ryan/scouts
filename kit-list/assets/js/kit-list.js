@@ -1,6 +1,4 @@
-/**
- * Kit List Generator — interactive wizard.
- */
+// Kit List Generator interactive wizard.
 
 import { confirmDialog, escapeHTML, initSite, spriteIcon } from "../../../assets/js/site.js";
 import {
@@ -55,9 +53,7 @@ const QUESTION_DEFAULTS = {
   "campfire.cooking": "no",
 };
 
-/* --------------------------------------------------------------------------
-   State
-   -------------------------------------------------------------------------- */
+// State persistence
 
 function loadState() {
   const defaults = defaultAnswers();
@@ -82,7 +78,7 @@ function loadState() {
       }
     }
   } catch {
-    // Local storage can be unavailable in private browsing. The form still works.
+    // localStorage may be unavailable in private browsing.
   }
 
   return normaliseAnswers(defaults);
@@ -95,10 +91,6 @@ function saveState() {
     // Ignore storage failures.
   }
 }
-
-/* --------------------------------------------------------------------------
-   Small helpers
-   -------------------------------------------------------------------------- */
 
 function icon(name, className = "icon") {
   return spriteIcon(name, { root: "../", className });
@@ -122,9 +114,7 @@ function setStatus(message, tone = "") {
   statusLine.classList.toggle("is-success", tone === "success");
 }
 
-/* --------------------------------------------------------------------------
-   Option rendering
-   -------------------------------------------------------------------------- */
+// Option rendering
 
 function optionCards(items, name, selected, options = {}) {
   const { type = "radio", activity = false, showAges = false } = options;
@@ -360,9 +350,7 @@ function updateActivityCount() {
   label.textContent = count === 0 ? "No activities selected" : `${count} activit${count === 1 ? "y" : "ies"} selected`;
 }
 
-/* --------------------------------------------------------------------------
-   Sidebar and review
-   -------------------------------------------------------------------------- */
+// Sidebar and review
 
 function renderSidebar() {
   const section = getSection(state.section);
@@ -433,9 +421,7 @@ function renderReview() {
   ].join("");
 }
 
-/* --------------------------------------------------------------------------
-   Wizard navigation
-   -------------------------------------------------------------------------- */
+// Wizard navigation
 
 function goToStep(nextStep, options = {}) {
   const target = Math.min(5, Math.max(1, Number(nextStep) || 1));
@@ -481,9 +467,7 @@ function showFormError(message) {
   error.hidden = !message;
 }
 
-/* --------------------------------------------------------------------------
-   Results
-   -------------------------------------------------------------------------- */
+// Results document
 
 function renderKitDocument(list) {
   const sections = list.groups
@@ -555,9 +539,7 @@ function showResults(list) {
   window.setTimeout(() => resultsTitle.focus({ preventScroll: true }), 120);
 }
 
-/* --------------------------------------------------------------------------
-   Change handling
-   -------------------------------------------------------------------------- */
+// Change handling
 
 function updateFromControl(target) {
   const name = target.name;
@@ -630,9 +612,7 @@ function handleChange(event) {
   updateFromControl(target);
 }
 
-/* --------------------------------------------------------------------------
-   Downloads and reset
-   -------------------------------------------------------------------------- */
+// Downloads and reset
 
 async function handlePdfDownload() {
   const list = buildKitList(state);
@@ -718,9 +698,7 @@ async function resetAll() {
   setStatus("");
 }
 
-/* --------------------------------------------------------------------------
-   Events
-   -------------------------------------------------------------------------- */
+// Event bindings
 
 form.addEventListener("change", handleChange);
 form.addEventListener("input", handleChange);
@@ -812,10 +790,6 @@ document.querySelector("#edit-answers").addEventListener("click", () => {
   builder.hidden = false;
   goToStep(5);
 });
-
-/* --------------------------------------------------------------------------
-   Boot
-   -------------------------------------------------------------------------- */
 
 renderStaticOptions();
 renderTextFields();

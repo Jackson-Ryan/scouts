@@ -1,11 +1,11 @@
 # Scout Tools API Worker
 
-A tiny Cloudflare Worker (100% free tier: 100,000 requests/day) that powers two features that a static GitHub Pages site cannot do safely in the browser:
+A small Cloudflare Worker that handles server-side operations for the static GitHub Pages site:
 
-1. **GitHub SSO for `/admin/` (`POST /api/auth/exchange`)** — completes the OAuth 2.0 + PKCE code exchange using your `GITHUB_CLIENT_SECRET`, verifies your GitHub username against `ALLOWED_ADMINS` (`Jackson-Ryan`), and confirms write permission on the repository before returning a session token. Anyone else gets `403 Forbidden`.
-2. **In-app public game submissions (`POST /api/submissions`)** — lets any Scout leader submit a game from `/games/add` without a GitHub account. Submissions are validated, rate-limited, honeypot-checked, and queued for one-click review inside `/admin/`.
+1. **GitHub SSO for `/admin/` (`POST /api/auth/exchange`)** — completes the OAuth 2.0 + PKCE code exchange using `GITHUB_CLIENT_SECRET`, verifies the GitHub username against `ALLOWED_ADMINS` (`Jackson-Ryan`), and confirms repository push permission before returning a session token. Anyone else gets `403 Forbidden`.
+2. **In-app public game submissions (`POST /api/submissions`)** — lets any Scout leader submit a game from `/games/add` without a GitHub account. Submissions are validated, rate-limited, honeypot-checked, and queued for review inside `/admin/`.
 
-## 5-minute setup
+## Setup
 
 ### 1. Create a GitHub OAuth App
 

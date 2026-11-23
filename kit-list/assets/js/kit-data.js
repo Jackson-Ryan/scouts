@@ -1,9 +1,4 @@
-/**
- * Kit List Generator — options and packing logic.
- *
- * This module is framework-free so it can be tested in Node and reused by the
- * browser wizard and PDF builder.
- */
+// Kit List Generator options and packing rules (DOM-free for browser and Node tests).
 
 export const SECTIONS = [
   {
@@ -680,9 +675,7 @@ export function buildKitList(input) {
   const personal = new Set(answers.personal);
   const extras = new Set(answers.extras);
 
-  // -------------------------------------------------------------------------
   // Essentials
-  // -------------------------------------------------------------------------
 
   addGroupItem("water-bottle", "Water bottle (1 litre or larger)", "Fill it before you leave and label it clearly.", 1);
   addGroupItem(
@@ -746,9 +739,7 @@ export function buildKitList(input) {
     addGroupItem("diet-info", "Allergy and dietary information", "Give a copy to the catering team and keep one with health forms.", 1);
   }
 
-  // -------------------------------------------------------------------------
   // Clothing
-  // -------------------------------------------------------------------------
 
   const underwearQty = dayTrip ? 1 : nights + 1;
   const socksQty = dayTrip ? 1 : nights + 2 + (hiking ? 1 : 0);
@@ -801,9 +792,7 @@ export function buildKitList(input) {
     addItem("clothing", { id: "change-clothes", name: "Full change of clothes", note: "Keep it dry in a bag for after water activities.", qty: 1 });
   }
 
-  // -------------------------------------------------------------------------
   // Sleeping & camping
-  // -------------------------------------------------------------------------
 
   if (overnight) {
     const bagRating = winter ? "A 4-season or extra-warm sleeping bag" : "A 2–3 season sleeping bag";
@@ -825,9 +814,7 @@ export function buildKitList(input) {
     addItem("sleeping", { id: "lantern", name: "Torch or small lantern", note: "Include spare batteries.", qty: 1 });
   }
 
-  // -------------------------------------------------------------------------
   // Toiletries
-  // -------------------------------------------------------------------------
 
   addItem("toiletries", { id: "wash-bag", name: "Wash bag", qty: 1 });
   addItem("toiletries", { id: "toothbrush", name: "Toothbrush and toothpaste", qty: 1 });
@@ -866,9 +853,7 @@ export function buildKitList(input) {
   if (section.id === "scouts" && overnight) addItem("toiletries", { id: "razor", name: "Razor and shaving kit", note: "If needed.", qty: 1, optional: true });
   if (answers.laundry === "yes") addItem("toiletries", { id: "laundry-bag", name: "Travel wash and laundry bag", qty: 1 });
 
-  // -------------------------------------------------------------------------
   // Eating
-  // -------------------------------------------------------------------------
 
   if (cooking) {
     if (patrolCooking || ownFood || answers.meals === "mixed") {
@@ -886,9 +871,7 @@ export function buildKitList(input) {
   }
   addItem("eating", { id: "snacks", name: "Snacks for the journey", note: "Check the section's allergy guidance before packing nuts or shared snacks.", qty: 1 });
 
-  // -------------------------------------------------------------------------
   // Activity kit
-  // -------------------------------------------------------------------------
 
   if (water) {
     if (waterTypes.size === 0) {
@@ -1063,9 +1046,7 @@ export function buildKitList(input) {
     addItem("activities", { id: "camera-case", name: "Waterproof camera case", qty: 1, optional: true });
   }
 
-  // -------------------------------------------------------------------------
   // Uniform
-  // -------------------------------------------------------------------------
 
   if (travelUniform || smartUniform) {
     addItem("clothing", { id: "uniform", name: "Section uniform", note: "Shirt or top, plus neckerchief.", qty: 1 });
@@ -1075,9 +1056,7 @@ export function buildKitList(input) {
     addItem("clothing", { id: "smart-shoes", name: "Smart shoes", note: "For a parade, ceremony or church service.", qty: 1 });
   }
 
-  // -------------------------------------------------------------------------
   // Extras
-  // -------------------------------------------------------------------------
 
   if (extras.has("phone")) addItem("extras", { id: "phone", name: "Phone", note: "Only if agreed with leaders. Keep it charged and in a dry bag.", qty: 1 });
   if (extras.has("camera")) addItem("extras", { id: "camera", name: "Camera", qty: 1 });
@@ -1102,9 +1081,7 @@ export function buildKitList(input) {
     });
   });
 
-  // -------------------------------------------------------------------------
   // Leader & group kit
-  // -------------------------------------------------------------------------
 
   if (answers.includeLeaderKit) {
     addItem("leaders", { id: "leader-first-aid", name: "Group first aid kit", note: "Check it is in date and stocked with burns and blister supplies.", qty: 1 });

@@ -1,12 +1,6 @@
 /**
- * Authentication, repository persistence and public submission client for Scout Tools.
- *
- * - Admin sign-in uses GitHub OAuth 2.0 + PKCE backed by the Cloudflare Worker in /worker.
- * - Admin access is locked to SITE_SETTINGS.allowedAdmins (enforced server-side in the
- *   Worker, verified here, and backed by GitHub repository push permissions).
- * - Public game submissions POST straight to <apiBase>/api/submissions (no GitHub account needed).
- *
- * Free of top-level DOM side effects so Node scripts can import it safely.
+ * GitHub OAuth 2.0 + PKCE client, Contents API persistence and public
+ * submission helpers. Free of top-level DOM access so Node scripts can import it.
  */
 
 import { SITE_SETTINGS, isAllowedAdmin, resolveApiBase } from "./site-config.js";
@@ -17,9 +11,7 @@ const PKCE_STATE_KEY = "scout-tools.oauth.state.v1";
 const PENDING_START = "<!-- PENDING_GAME_SUBMISSION_START -->";
 const PENDING_END = "<!-- PENDING_GAME_SUBMISSION_END -->";
 
-/* ==========================================================================
-   UTF-8 Base64 & PKCE helpers
-   ========================================================================== */
+// UTF-8 Base64 & PKCE helpers
 
 function base64UrlEncode(bytes) {
   let binary = "";
@@ -63,9 +55,7 @@ function currentRedirectUri() {
   return url.toString();
 }
 
-/* ==========================================================================
-   Session storage
-   ========================================================================== */
+// Session storage
 
 export function getAdminSession() {
   try {
@@ -99,9 +89,7 @@ export function signOut() {
   }
 }
 
-/* ==========================================================================
-   GitHub OAuth 2.0 + PKCE SSO
-   ========================================================================== */
+// GitHub OAuth 2.0 + PKCE SSO
 
 export function isGitHubSsoConfigured() {
   const clientId = String(SITE_SETTINGS.githubClientId || "").trim();
@@ -258,9 +246,7 @@ export async function verifySession(session = getAdminSession()) {
   }
 }
 
-/* ==========================================================================
-   Repository file read/write (GitHub Contents API)
-   ========================================================================== */
+// Repository file read/write (GitHub Contents API)
 
 export async function readRepoFile(session, filePath) {
   if (!session) throw new Error("Sign in to read repository files.");
@@ -298,9 +284,7 @@ export async function writeRepoFile(session, filePath, content, message, sha) {
   };
 }
 
-/* ==========================================================================
-   Public in-app submissions & admin moderation queue
-   ========================================================================== */
+// Public submissions & admin moderation queue
 
 export function canSubmitInApp() {
   return Boolean(resolveApiBase());

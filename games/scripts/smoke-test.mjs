@@ -1,12 +1,6 @@
 #!/usr/bin/env node
 /**
- * A small smoke test for the browser scripts.
- *
- * It uses jsdom to load each page, wires up the same globals the browser
- * would provide, runs the page module and checks the rendered output.
- *
- * Setup: npm install
- * Run:   npm run smoke
+ * jsdom smoke test for Games Finder pages (npm run smoke).
  */
 
 import { readFile } from "node:fs/promises";

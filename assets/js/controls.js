@@ -1,12 +1,7 @@
 /**
- * Shared custom themed UI controls for Scout Tools.
- *
- * Automatically enhances native browser controls (select dropdowns, date
- * pickers, search clear buttons, number steppers) and provides a custom
- * confirm dialog so every page matches the site theme with zero repetition.
- *
- * Kept free of top-level DOM side effects so Node scripts can safely import
- * modules that depend on it.
+ * Progressive enhancement for themed selects, date pickers, search inputs,
+ * number steppers and confirm dialogs. Free of top-level DOM access so Node
+ * scripts can import dependent modules safely.
  */
 
 const SVG_CHEVRON = `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>`;
@@ -79,6 +74,8 @@ function bindGlobalListeners(doc = document) {
 const propertyListeners = new WeakMap();
 const patchedProtos = new WeakMap();
 
+// Intercept prototype property setters (e.g. .value, .selectedIndex) so
+// programmatic updates from page scripts stay synced with enhanced controls.
 function watchProperty(element, prop, onSet) {
   let byProp = propertyListeners.get(element);
   if (!byProp) {
@@ -131,9 +128,7 @@ function shouldOpenUpward(trigger, menuHeight = 260) {
   return spaceBelow < menuHeight && spaceAbove > spaceBelow;
 }
 
-/* ==========================================================================
-   Custom Select Dropdown
-   ========================================================================== */
+// Custom select dropdown
 
 function enhanceSelect(select) {
   if (!select || select.nodeType !== 1 || select.tagName !== "SELECT") return;
@@ -170,7 +165,6 @@ function enhanceSelect(select) {
   menu.setAttribute("role", "listbox");
   menu.hidden = true;
 
-  // Associate accessible name from native label or aria-label.
   const ariaLabel = select.getAttribute("aria-label");
   if (ariaLabel) {
     trigger.setAttribute("aria-label", ariaLabel);
@@ -419,9 +413,7 @@ function enhanceSelect(select) {
   syncDisplay();
 }
 
-/* ==========================================================================
-   Custom Date Picker
-   ========================================================================== */
+// Custom date picker
 
 function parseISODate(value) {
   if (!value || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
@@ -664,9 +656,7 @@ function enhanceDate(input) {
   syncDisplay();
 }
 
-/* ==========================================================================
-   Custom Search Clear Button
-   ========================================================================== */
+// Custom search clear button
 
 function enhanceSearch(input) {
   if (!input || input.nodeType !== 1 || input.tagName !== "INPUT" || input.type !== "search") return;
@@ -711,9 +701,7 @@ function enhanceSearch(input) {
   }
 }
 
-/* ==========================================================================
-   Custom Number Stepper
-   ========================================================================== */
+// Custom number stepper
 
 function enhanceNumber(input) {
   if (!input || input.nodeType !== 1 || input.tagName !== "INPUT" || input.type !== "number") return;
@@ -759,9 +747,7 @@ function enhanceNumber(input) {
   incBtn.addEventListener("click", () => stepValue(1));
 }
 
-/* ==========================================================================
-   Custom Confirm Dialog (replaces window.confirm)
-   ========================================================================== */
+// Custom confirm dialog
 
 export function confirmDialog({
   title = "Are you sure?",
@@ -838,9 +824,7 @@ export function confirmDialog({
   });
 }
 
-/* ==========================================================================
-   Public entry point
-   ========================================================================== */
+// Public entry points
 
 export function enhanceControls(root = document) {
   if (!root || typeof document === "undefined") return;

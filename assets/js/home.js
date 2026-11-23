@@ -1,9 +1,4 @@
-/**
- * Scout Tools — home page behaviour.
- *
- * Renders the tool cards from /tools.json and boots the shared site chrome.
- * To add a new tool: create its folder, then add an entry to tools.json.
- */
+// Renders tool cards from tools.json and boots the shared site chrome.
 
 import {
   BRAND_COLORS,

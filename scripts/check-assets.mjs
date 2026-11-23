@@ -77,7 +77,7 @@ const files = walk(root);
 const spriteFile = join(root, "assets", "img", "icons.svg");
 const spriteText = existsSync(spriteFile) ? readFileSync(spriteFile, "utf8") : "";
 
-// The tool manifest powers the home page and shared header/footer; make sure every tool & icon exists.
+// Verify every tool path and sprite icon listed in tools.json.
 const manifestFile = join(root, "tools.json");
 if (existsSync(manifestFile)) {
   try {

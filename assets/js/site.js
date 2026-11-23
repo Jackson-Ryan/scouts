@@ -1,11 +1,6 @@
 /**
- * Shared site chrome, navigation, tools manifest and control bootstrapping.
- *
- * Every page uses one shared header and footer template driven by tools.json,
- * plus automatic custom themed controls. Adding a new tool to tools.json
- * automatically wires it into the home page, navbar and footer.
- *
- * Kept free of top-level DOM side effects so Node scripts can import helpers.
+ * Shared header/footer renderer, tools manifest loader and UI control bootstrap.
+ * Free of top-level DOM access so Node scripts can import helpers safely.
  */
 
 import { confirmDialog, enhanceControls, observeControls } from "./controls.js";

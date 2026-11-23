@@ -1,11 +1,10 @@
 /**
- * Scout Tools API Worker (Cloudflare Workers free tier).
+ * Cloudflare Worker API for Scout Tools.
  *
- * Handles the two things a static GitHub Pages site cannot do safely in the browser:
- *   1. POST /api/auth/exchange  - GitHub OAuth 2.0 + PKCE token exchange, locked to ALLOWED_ADMINS.
- *   2. POST /api/submissions    - In-app public game submissions (no GitHub account needed),
- *                                 validated and queued for /admin review.
- *   3. GET  /api/health         - Simple liveness check.
+ * Endpoints:
+ *   GET  /api/health         - Liveness check
+ *   POST /api/auth/exchange  - GitHub OAuth 2.0 + PKCE token exchange (restricted to ALLOWED_ADMINS)
+ *   POST /api/submissions    - Public game submissions queued as GitHub issues for /admin review
  */
 
 const PENDING_START = "<!-- PENDING_GAME_SUBMISSION_START -->";
@@ -263,7 +262,7 @@ async function handleAuthExchange(request, env) {
     );
   }
 
-  // Verify the signed-in GitHub user server-side before ever returning the token.
+  // Verify admin membership before returning the OAuth token.
   const userRes = await fetch("https://api.github.com/user", {
     headers: {
       Accept: "application/vnd.github+json",
@@ -286,7 +285,7 @@ async function handleAuthExchange(request, env) {
     );
   }
 
-  // Double-check push access on the configured repository.
+  // Confirm repository push permission.
   if (env.GITHUB_REPO) {
     const repoRes = await fetch(`https://api.github.com/repos/${env.GITHUB_REPO}`, {
       headers: {

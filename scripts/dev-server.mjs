@@ -77,7 +77,7 @@ createServer(async (request, response) => {
             break;
           }
         } catch {
-          // try next candidate
+          // Candidate does not exist; try next.
         }
       }
       if (!found) {

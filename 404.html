@@ -10,9 +10,7 @@
   <meta name="theme-color" content="#00132b" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23590fa9'/%3E%3Cpath d='M8 25 18 6M24 25 14 6M19 25l-3-8-3 8M7 25h18' fill='none' stroke='%23ffe627' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
   <script>
-    // GitHub Pages serves this 404 page for any missing path, and the page has no
-    // external local assets so it always renders. Set the base URL so relative links
-    // still resolve from nested paths.
+    // Resolve relative links from the site root even when GitHub Pages serves this 404 for nested paths.
     (function () {
       var segments = window.location.pathname.split("/").filter(Boolean);
       var isProjectSite = window.location.hostname.endsWith(".github.io") && segments.length > 0 && segments[0].indexOf(".") === -1;

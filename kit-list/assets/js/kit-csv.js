@@ -1,10 +1,4 @@
-/**
- * CSV helpers for the Kit List Generator.
- *
- * The CSV is intentionally simple: one row per item, with a category and a
- * quantity column. It opens cleanly in Excel, Numbers, Google Sheets and the
- * checklist tools leaders use alongside Online Scout Manager.
- */
+// Flat Item/Category/Quantity/Notes CSV export for spreadsheets and OSM checklists.
 
 import { csvRows, slugify } from "./kit-data.js";
 

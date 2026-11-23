@@ -1,9 +1,4 @@
-/**
- * Shared schema validation for the games library.
- *
- * The site and the command-line tools both use these constants, so the
- * JSON in data/games.json stays compatible with the browser scripts.
- */
+// Shared schema validation for games/data/games.json (used by browser and CLI scripts).
 
 import {
   COLORS,

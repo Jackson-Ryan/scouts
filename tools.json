@@ -1,5 +1,4 @@
 {
-  "_readme": "The home page reads this file and shows one card per tool. To add a new tool: create its folder, then add an entry here. status can be \"ready\", \"beta\" or \"planned\".",
   "tools": [
     {
       "id": "games",

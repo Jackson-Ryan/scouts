@@ -1,8 +1,5 @@
 /**
- * Scout Tools Admin Console — shell, GitHub SSO gate and tool registry.
- *
- * Designed so any future editable tool can plug in cleanly by adding one
- * module to ADMIN_TOOLS below.
+ * Admin console shell, GitHub SSO gate and editable-tool registry.
  */
 
 import {
@@ -17,11 +14,7 @@ import { SITE_SETTINGS } from "../../../assets/js/site-config.js";
 import { confirmDialog, escapeHTML, initSite, spriteIcon } from "../../../assets/js/site.js";
 import { createGamesAdminTool } from "./tools/games-admin.js";
 
-/**
- * Registry of admin-editable tools.
- * To add admin support for another tool later, create admin/assets/js/tools/<tool>-admin.js
- * and append its factory here.
- */
+// Each tool implements { id, title, icon, mount, unmount, hasUnsavedChanges }.
 const ADMIN_TOOLS = [createGamesAdminTool()];
 
 const el = {
@@ -173,7 +166,6 @@ async function boot() {
   initSite();
   bindEvents();
 
-  // 1. Handle GitHub OAuth redirect callback (?code=...&state=...)
   const params = new URLSearchParams(window.location.search);
   if (params.has("code") || params.has("error")) {
     el.githubLoginBtn.disabled = true;
@@ -190,7 +182,6 @@ async function boot() {
     }
   }
 
-  // 2. Restore existing verified session if present
   const existing = getAdminSession();
   if (existing) {
     try {

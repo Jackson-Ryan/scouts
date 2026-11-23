@@ -1,13 +1,6 @@
 /**
- * Games Finder Admin Tool Module.
- *
- * Provides full library management inside /admin/:
- *   - Browse, search & filter all games
- *   - Add a new game, edit any existing game, duplicate or delete
- *   - Bulk create games via a multi-row batch form OR JSON paste/upload
- *   - Bulk select & delete or toggle Featured
- *   - Review, edit, approve or decline community game submissions from /games/add
- *   - Stage all edits and publish in a single validated atomic commit
+ * Games Finder admin tool: stages edits to games/data/games.json and publishes
+ * them in a single validated GitHub commit.
  */
 
 import {
@@ -624,9 +617,7 @@ export function createGamesAdminTool() {
     bindViewEvents();
   }
 
-  /* ========================================================================
-     Full Game Editor Modal (New, Edit, Duplicate, or Edit Submission)
-     ======================================================================== */
+  // Game editor modal (new, edit, duplicate, or submission review)
 
   function openEditorModal({ mode, game = null, submissionId = null }) {
     if (activeModal) activeModal.remove();
@@ -1038,9 +1029,7 @@ export function createGamesAdminTool() {
     q("#ed-title").focus();
   }
 
-  /* ========================================================================
-     Actions (delete, bulk delete, bulk stage, approve/decline, publish)
-     ======================================================================== */
+  // Staged library mutations and publishing
 
   async function deleteGameByIds(ids) {
     const idSet = new Set(ids);
@@ -1197,7 +1186,6 @@ export function createGamesAdminTool() {
       const result = await writeRepoFile(session, GAMES_FILE_PATH, formatted, message, fileSha);
       fileSha = result.sha || fileSha;
 
-      // Close any approved pending submissions.
       const toClose = [...approvedSubmissionIds];
       for (const subId of toClose) {
         try {

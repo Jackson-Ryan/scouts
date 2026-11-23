@@ -73,7 +73,7 @@ npm run serve   # opens on http://localhost:8080
 
 - [Games Finder](games/README.md) — data schema, validation, in-app game submissions, CLI scripts and admin tools.
 - [Kit List Generator](kit-list/README.md) — packing logic, PDF generation (vendored [jsPDF](https://github.com/parallax/jsPDF), MIT + Nunito Sans) and OSM CSV format.
-- [Admin SSO & Submission Worker](worker/README.md) — 5-minute setup for GitHub SSO on `/admin/` and account-free public game submissions on GitHub Pages.
+- [Admin SSO & Submission Worker](worker/README.md) — setup guide for GitHub SSO on `/admin/` and account-free public game submissions on GitHub Pages.
 
 ## Deploying
 
@@ -81,7 +81,7 @@ npm run serve   # opens on http://localhost:8080
 2. In **Settings → Pages**, set **Source** to **GitHub Actions**.
 3. The `Deploy to GitHub Pages` workflow publishes the site on pushes to `main`.
 
-`.nojekyll` disables Jekyll processing so asset paths stay straightforward. If you fork the site onto a custom domain, set `githubRepo` in `games/assets/js/config.js` so the add-a-game form links to your repository.
+`.nojekyll` disables Jekyll processing so asset paths stay straightforward. If you fork the site onto a custom domain, update `githubRepo`, `allowedAdmins`, `githubClientId` and `apiBase` in `assets/js/site-config.js` (and `worker/wrangler.toml` if using the Worker).
 
 ## Safety and credits
 

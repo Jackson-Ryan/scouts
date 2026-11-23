@@ -527,7 +527,7 @@ export function toggleSaved(id) {
   try {
     localStorage.setItem(SITE_CONFIG.savedKey, JSON.stringify(next));
   } catch {
-    // Storage can be unavailable in private browsing; the UI still works for this session.
+    // localStorage may be unavailable in private browsing.
   }
   document.dispatchEvent(new CustomEvent("savedchange", { detail: { id, saved: next.includes(id), ids: next } }));
   return next.includes(id);
@@ -616,38 +616,6 @@ export function detectRepo() {
   return "";
 }
 
-export function buildIssueBody(game) {
-  const json = JSON.stringify(game, null, 2);
-  return [
-    "## New game submission",
-    "",
-    `**Game:** ${game.title}`,
-    `**Sections:** ${sectionLabels(game.sections)}`,
-    `**Time:** ${game.duration}`,
-    "",
-    "The JSON between the markers is used by the submission workflow.",
-    "",
-    "<!-- GAME_SUBMISSION_START -->",
-    "```json",
-    json,
-    "```",
-    "<!-- GAME_SUBMISSION_END -->",
-  ].join("\n");
-}
-
-export function buildIssueUrl(game) {
-  const repo = detectRepo();
-  if (!repo) return "";
-  const title = `[Game] ${game.title}`;
-  const body = buildIssueBody(game);
-  const params = new URLSearchParams({
-    title,
-    body,
-    labels: SITE_CONFIG.issueLabel,
-  });
-  return `https://github.com/${repo}/issues/new?${params.toString()}`;
-}
-
 export function buildEditIssueUrl(game) {
   const repo = detectRepo();
   if (!repo) return "";
@@ -656,17 +624,6 @@ export function buildEditIssueUrl(game) {
     body: `Game: ${game.title} (\`${game.id}\`)\n\nWhat should be updated?\n`,
   });
   return `https://github.com/${repo}/issues/new?${params.toString()}`;
-}
-
-export function buildIssueMarkdown(game) {
-  const repo = detectRepo();
-  return [
-    `# New game: ${game.title}`,
-    "",
-    repo ? `Submit this as an issue at https://github.com/${repo}/issues/new` : "Create an issue in your repository and paste this in.",
-    "",
-    buildIssueBody(game),
-  ].join("\n");
 }
 
 export function parseLines(value) {

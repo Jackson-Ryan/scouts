@@ -1,13 +1,10 @@
 #!/usr/bin/env node
 /**
- * Add one or more games to data/games.json from a JSON file.
+ * Append one or more games from a JSON file (single object or array) to games/data/games.json.
  *
  * Usage:
- *   node scripts/add-game.mjs path/to/game.json
- *   node scripts/add-game.mjs path/to/game.json --dry-run
- *   node scripts/add-game.mjs path/to/games-array.json
- *
- * The file can contain a single game object or an array of games.
+ *   npm run add -- path/to/game.json
+ *   node games/scripts/add-game.mjs path/to/game.json [--dry-run]
  */
 
 import { readFileSync, writeFileSync } from "node:fs";
