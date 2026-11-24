@@ -1,0 +1,27 @@
+name: Validate uniform guide
+
+on:
+  push:
+    paths:
+      - "uniform-guide/**"
+      - ".github/workflows/validate-uniform-guide.yml"
+  pull_request:
+    paths:
+      - "uniform-guide/**"
+      - ".github/workflows/validate-uniform-guide.yml"
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run the uniform guide smoke test
+        run: node uniform-guide/scripts/smoke-test.mjs

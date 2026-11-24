@@ -23,6 +23,18 @@
       "tagline": "Put together a kit list for your next trip.",
       "description": "Pick your section, nights away, weather and activities. Download a printable PDF for families and a CSV you can copy into Online Scout Manager.",
       "tags": ["Beavers", "Cubs", "Scouts", "PDF & CSV", "OSM checklist"]
+    },
+    {
+      "id": "uniform-guide",
+      "title": "Uniform & Badge Guide",
+      "href": "uniform-guide/",
+      "status": "ready",
+      "icon": "shirt",
+      "color": "blue",
+      "kicker": "Uniform",
+      "tagline": "Customise a printable badge placement guide for your group.",
+      "description": "Mirror all official Scouts uniform layouts with your group name tape, extra tapes, neckerchief colours and patterns, custom badges and uploaded badge artwork.",
+      "tags": ["All sections", "Necker designer", "Custom badges", "Printable PDF"]
     }
   ]
 }

@@ -17,6 +17,7 @@ const TOOLS_URL = new URL("../../tools.json", import.meta.url);
 const DEFAULT_TOOLS = [
   { id: "games", title: "Games finder", href: "games/", status: "ready" },
   { id: "kit-list", title: "Kit list generator", href: "kit-list/", status: "ready" },
+  { id: "uniform-guide", title: "Uniform & badge guide", href: "uniform-guide/", status: "ready" },
 ];
 
 let toolsPromise = null;

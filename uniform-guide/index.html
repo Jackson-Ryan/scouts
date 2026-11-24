@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Uniform &amp; Badge Placement Guide — Scout Tools</title>
+  <meta name="description" content="Customise official UK Scouts uniform and badge placement guides for Squirrels, Beavers, Cubs, Scouts, Explorers, Network and Adults. Design your neckerchief, add custom name tapes and badges, and export a print-ready A4 PDF.">
+  <meta name="theme-color" content="#590fa9">
+  <meta name="theme-color" content="#00132b" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;1,6..12,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/uniform-guide.css">
+  <meta property="og:title" content="Uniform &amp; Badge Placement Guide — Scout Tools">
+  <meta property="og:description" content="Build a customised, printable UK Scouts uniform and badge placement guide PDF for your group.">
+  <meta property="og:type" content="website">
+  <script src="../kit-list/assets/js/vendor/jspdf.umd.min.js" defer></script>
+  <script type="module" src="assets/js/uniform-app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-site-header data-root="../" data-active="uniform-guide"></header>
+
+  <main id="main">
+    <section class="hero hero--compact">
+      <div class="container hero__inner">
+        <p class="hero__eyebrow">Uniform &amp; Badge Placement Guide</p>
+        <h1>Customise your group’s uniform diagram</h1>
+        <p class="hero__lead">Pick a section, design your neckerchief, type your group name tape, add extra tapes or custom district and group badges, hide anything you do not use, and export a print-ready A4 PDF.</p>
+        <div class="hero__stats" aria-label="Uniform guide summary">
+          <span><strong>7</strong> sections</span>
+          <span><strong>17</strong> uniform layouts</span>
+          <span><strong>A4 PDF, PNG &amp; SVG</strong> export</span>
+        </div>
+      </div>
+    </section>
+
+    <noscript>
+      <div class="container mt-6">
+        <div class="error-panel">
+          <strong>JavaScript is needed to use the Uniform &amp; Badge Placement Guide.</strong>
+          <span>Enable JavaScript to customise the diagram and generate your printable PDF.</span>
+        </div>
+      </div>
+    </noscript>
+
+    <section class="ug-studio" aria-label="Uniform customiser studio">
+      <div class="container">
+        <div class="ug-toolbar">
+          <div class="ug-section-pills" id="section-pills" role="tablist" aria-label="Choose Scout section"></div>
+          <div class="ug-toolbar__actions">
+            <button class="btn btn--primary btn--small" type="button" id="btn-download-pdf">
+              <svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#download"></use></svg>
+              Download PDF
+            </button>
+            <button class="btn btn--ghost btn--small" type="button" id="btn-print">
+              <svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#printer"></use></svg>
+              Print
+            </button>
+            <details class="ug-more-menu" id="more-menu">
+              <summary class="btn btn--ghost btn--small">
+                More
+                <svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#chevron-down"></use></svg>
+              </summary>
+              <div class="ug-more-menu__panel" role="menu">
+                <button type="button" role="menuitem" id="btn-download-png">
+                  <svg class="icon icon--sm" aria-hidden="true"><use href="../assets/img/icons.svg#camera"></use></svg>
+                  Download PNG image
+                </button>
+                <button type="button" role="menuitem" id="btn-download-svg">
+                  <svg class="icon icon--sm" aria-hidden="true"><use href="../assets/img/icons.svg#layers"></use></svg>
+                  Download SVG vector
+                </button>
+                <hr>
+                <button type="button" role="menuitem" id="btn-export-json">
+                  <svg class="icon icon--sm" aria-hidden="true"><use href="../assets/img/icons.svg#share"></use></svg>
+                  Save group config (.json)
+                </button>
+                <button type="button" role="menuitem" id="btn-import-json">
+                  <svg class="icon icon--sm" aria-hidden="true"><use href="../assets/img/icons.svg#copy"></use></svg>
+                  Load group config (.json)
+                </button>
+                <hr>
+                <button type="button" role="menuitem" class="is-danger" id="btn-reset-all">
+                  <svg class="icon icon--sm" aria-hidden="true"><use href="../assets/img/icons.svg#x"></use></svg>
+                  Reset to defaults
+                </button>
+              </div>
+            </details>
+            <input type="file" id="import-json-input" accept="application/json,.json" hidden>
+          </div>
+        </div>
+
+        <p class="ug-status" id="studio-status" role="status" aria-live="polite"></p>
+
+        <div class="ug-grid">
+          <!-- Left panel: Tabbed Customiser -->
+          <aside class="ug-panel" aria-label="Customisation controls">
+            <nav class="ug-tabs" id="editor-tabs" role="tablist" aria-label="Customiser categories">
+              <button type="button" role="tab" data-tab="setup" aria-selected="true" class="is-active">
+                <svg class="icon icon--sm" aria-hidden="true"><use href="../assets/img/icons.svg#shirt"></use></svg>
+                <span>Uniform</span>
+              </button>
+              <button type="button" role="tab" data-tab="necker" aria-selected="false">
+                <svg class="icon icon--sm" aria-hidden="true"><use href="../assets/img/icons.svg#paintbrush"></use></svg>
+                <span>Necker</span>
+              </button>
+              <button type="button" role="tab" data-tab="tapes" aria-selected="false">
+                <svg class="icon icon--sm" aria-hidden="true"><use href="../assets/img/icons.svg#bookmark"></use></svg>
+                <span>Tapes</span>
+              </button>
+              <button type="button" role="tab" data-tab="badges" aria-selected="false">
+                <svg class="icon icon--sm" aria-hidden="true"><use href="../assets/img/icons.svg#shield"></use></svg>
+                <span>Badges</span>
+              </button>
+              <button type="button" role="tab" data-tab="custom" aria-selected="false">
+                <svg class="icon icon--sm" aria-hidden="true"><use href="../assets/img/icons.svg#sparkles"></use></svg>
+                <span>Custom</span>
+              </button>
+            </nav>
+
+            <div class="ug-panel__body" id="tab-panels">
+              <section class="ug-tab-pane" data-pane="setup" id="pane-setup"></section>
+              <section class="ug-tab-pane" data-pane="necker" id="pane-necker" hidden></section>
+              <section class="ug-tab-pane" data-pane="tapes" id="pane-tapes" hidden></section>
+              <section class="ug-tab-pane" data-pane="badges" id="pane-badges" hidden></section>
+              <section class="ug-tab-pane" data-pane="custom" id="pane-custom" hidden></section>
+            </div>
+          </aside>
+
+          <!-- Right panel: Sticky Live Interactive Diagram -->
+          <div class="ug-stage-col">
+            <div class="ug-stage" id="diagram-stage">
+              <div class="ug-stage__head">
+                <div class="ug-stage__meta">
+                  <h2 id="stage-title">1st Boxford — Beaver Scout uniform</h2>
+                  <p id="stage-subtitle">18 badges shown • 1 name tape</p>
+                </div>
+                <div class="ug-stage__controls">
+                  <div class="ug-segmented" id="style-switcher" role="group" aria-label="Diagram style">
+                    <button type="button" data-style="colour" class="is-active">Colour</button>
+                    <button type="button" data-style="official">Official</button>
+                    <button type="button" data-style="ink-saver">Ink saver</button>
+                  </div>
+                  <label class="ug-drag-toggle" title="Allow dragging official badges as well as custom badges">
+                    <input type="checkbox" id="toggle-unlock-drag">
+                    <span>Drag all</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="ug-canvas-wrap" id="canvas-wrap">
+                <div class="ug-print-header" id="print-header"></div>
+                <div class="ug-canvas" id="diagram-canvas"></div>
+                <div class="ug-canvas-notes" id="canvas-notes"></div>
+              </div>
+
+              <div class="ug-stage__foot">
+                <p class="ug-tip" id="hover-tip">Click any badge or name tape on the diagram to edit it. Drag custom badges to place them anywhere.</p>
+              </div>
+            </div>
+
+            <!-- Contextual quick inspector for clicked badge / tape -->
+            <div class="ug-inspector" id="quick-inspector" hidden></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ug-how" aria-labelledby="ug-how-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">How it works</p>
+            <h2 id="ug-how-title">Built for Scout groups &amp; families</h2>
+          </div>
+        </div>
+        <div class="ug-how-grid">
+          <article class="ug-how-card">
+            <div class="ug-how-card__icon"><svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#shirt"></use></svg></div>
+            <h3>Matches all 16 official diagrams</h3>
+            <p>Includes Squirrels, Beavers, Cubs (Land &amp; Sea), Scouts (Land, Sea Jumper, Sea Shirt &amp; Air), Explorers, Network and Adult uniforms — plus England, Scotland, Wales and Northern Ireland placement rules.</p>
+          </article>
+          <article class="ug-how-card">
+            <div class="ug-how-card__icon"><svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#sparkles"></use></svg></div>
+            <h3>Set up once, export every section</h3>
+            <p>Your group name, necker design, extra name tapes, custom district badge and uploaded badge images stay saved as you switch between Squirrels, Beavers, Cubs and Scouts.</p>
+          </article>
+          <article class="ug-how-card">
+            <div class="ug-how-card__icon"><svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#file-text"></use></svg></div>
+            <h3>Print-ready A4 PDF &amp; sewing key</h3>
+            <p>Export a crisp A4 PDF with vector labels, your custom parent note, official footnotes and an optional page-two sewing key — all generated privately in your browser.</p>
+          </article>
+        </div>
+        <div class="info-panel info-panel--plain mt-6">
+          <svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#shield"></use></svg>
+          <p><strong>Stays on your device:</strong> Your uniform setup and any uploaded badge images stay in your browser’s <code>localStorage</code>. Use <em>Save group config (.json)</em> under <em>More</em> to share your group’s setup with fellow leaders.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" data-site-footer data-root="../"></footer>
+</body>
+</html>

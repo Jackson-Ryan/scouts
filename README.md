@@ -6,6 +6,7 @@ Free, practical tools for Beaver, Cub and Scout leaders, published as a static s
 
 - [Games Finder](games/) — a searchable library of 50 games with rules, equipment, safety notes, adaptations and themed twists.
 - [Kit List Generator](kit-list/) — a packing list builder with a printable A4 PDF and a CSV for Online Scout Manager.
+- [Uniform & Badge Placement Guide](uniform-guide/) — an interactive uniform diagram customiser with neckerchief designer, custom name tapes, custom badges and printable A4 PDF export.
 
 > This is an independent, volunteer-made resource. It is not an official Scouts publication and is not endorsed by The Scout Association. Scouts and the Scouts fleur-de-lis are trademarks of The Scout Association.
 
@@ -30,6 +31,7 @@ assets/                Shared theme, scripts and brand assets
 admin/                 Maintainer admin console (/admin/, GitHub SSO)
 games/                 Games Finder tool (see games/README.md)
 kit-list/              Kit List Generator tool (see kit-list/README.md)
+uniform-guide/         Uniform & Badge Placement Guide (see uniform-guide/README.md)
 worker/                Cloudflare Worker for GitHub SSO & in-app game submissions (see worker/README.md)
 scripts/               Shared dev tooling
   dev-server.mjs       Zero-dependency preview server (npm run serve)
@@ -55,6 +57,7 @@ npm run serve   # opens on http://localhost:8080
 | `npm run validate` | Validates `games/data/games.json` against the schema |
 | `npm run smoke` | Runs the Games Finder smoke test in jsdom |
 | `npm run smoke:kit` | Runs the Kit List Generator smoke test (data, CSV and PDF) |
+| `npm run smoke:uniform` | Runs the Uniform & Badge Guide smoke test (16 layouts, SVG and PDF) |
 | `npm run add -- my-game.json` | Adds a game from the command line |
 
 ## Adding a new tool
@@ -73,6 +76,7 @@ npm run serve   # opens on http://localhost:8080
 
 - [Games Finder](games/README.md) — data schema, validation, in-app game submissions, CLI scripts and admin tools.
 - [Kit List Generator](kit-list/README.md) — packing logic, PDF generation (vendored [jsPDF](https://github.com/parallax/jsPDF), MIT + Nunito Sans) and OSM CSV format.
+- [Uniform & Badge Placement Guide](uniform-guide/README.md) — official UK Scouts layouts, neckerchief patterns, custom tapes/badges and PDF export.
 - [Admin SSO & Submission Worker](worker/README.md) — setup guide for GitHub SSO on `/admin/` and account-free public game submissions on GitHub Pages.
 
 ## Deploying
