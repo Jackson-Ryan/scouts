@@ -11,6 +11,7 @@ import {
   NECKER_PATTERNS,
   NECKER_PRESETS,
   NECKER_SWATCHES,
+  OFFICIAL_VARIANT_OPTIONS,
   SECTIONS,
   WOGGLE_SWATCHES,
   ZONES,
@@ -20,12 +21,13 @@ import {
   normaliseState,
   slugify,
 } from "./uniform-data.js";
-import { resolveUniformLayout } from "./uniform-layout.js";
+import { collectArtworkPaths, resolveUniformLayout } from "./uniform-layout.js";
 import { renderNeckerPreviewSvg, renderUniformSvg } from "./uniform-svg.js";
 import {
   buildEmbeddedFontCss,
   downloadUniformPdf,
   loadUniformPdfAssets,
+  preloadArtworkDataUrls,
   svgStringToPngDataUrl,
 } from "./uniform-pdf.js";
 
@@ -57,6 +59,9 @@ const ui = {
   expandedCustomId: null,
   expandedTapeId: "primary-tape",
   badgeSearch: "",
+  badgeLibrary: [],
+  librarySearch: "",
+  librarySection: "all",
   unlockDragAll: false,
   drag: null,
 };
@@ -705,18 +710,103 @@ function renderTapesPane() {
 
 // ── Tab 4: Official Badges (Show/Hide & Customise any official slot!) ────────
 
+function getActivityPickerEntries() {
+  const entries = ui.badgeLibrary.filter((e) => e.category === "activity" || e.category === "staged");
+  const sectionMatches = entries.filter((e) => e.section === state.section);
+  const stagedMatches = entries.filter((e) => e.section === "shared");
+  const otherMatches = entries.filter((e) => e.section !== state.section && e.section !== "shared");
+  return { sectionMatches, stagedMatches, otherMatches };
+}
+
+function renderOfficialVariantPicker(badge) {
+  const rawOptions = OFFICIAL_VARIANT_OPTIONS[badge.id];
+  if (!rawOptions || !rawOptions.length) return "";
+  const sectionSpecific = rawOptions.filter((opt) => Array.isArray(opt.sections) && opt.sections.includes(state.section));
+  const options = sectionSpecific.length ? sectionSpecific : rawOptions;
+
+  return `
+    <div class="ug-field">
+      <label>Official badge variant</label>
+      <div class="ug-variant-grid">
+        ${options
+          .map((opt) => {
+            const active = (badge.artworkPath || "") === opt.path && !badge.imageDataUrl;
+            return `
+              <button type="button" class="ug-variant-chip${active ? " is-active" : ""}" data-ob-variant-id="${escapeHTML(badge.id)}" data-ob-variant-path="${escapeHTML(opt.path)}">
+                ${opt.path ? `<img src="${escapeHTML(opt.path)}" alt="" loading="lazy">` : `<span class="ug-variant-chip__dot" style="background:${escapeHTML(badge.fill)}"></span>`}
+                <span>${escapeHTML(opt.label)}</span>
+              </button>
+            `;
+          })
+          .join("")}
+      </div>
+    </div>
+  `;
+}
+
+function renderActivityClusterSlots(badge) {
+  if (badge.id !== "activity-badges") return "";
+  const count = Math.max(1, Math.min(6, badge.count || 3));
+  const currentItems = Array.isArray(badge.artworkItems) ? badge.artworkItems : [];
+  const { sectionMatches, stagedMatches, otherMatches } = getActivityPickerEntries();
+  if (!ui.badgeLibrary.length) {
+    return `<p class="ug-group__hint">Loading official activity badges…</p>`;
+  }
+
+  const buildOptions = (selectedPath) => {
+    const groups = [
+      { label: `${getSection(state.section).name} Activity Badges`, items: sectionMatches },
+      { label: "Staged Activity Badges", items: stagedMatches },
+      { label: "Other Section Activity Badges", items: otherMatches },
+    ];
+    return groups
+      .filter((g) => g.items.length)
+      .map(
+        (g) => `
+          <optgroup label="${escapeHTML(g.label)}">
+            ${g.items.map((item) => `<option value="${escapeHTML(item.path)}"${item.path === selectedPath ? " selected" : ""}>${escapeHTML(item.label)}</option>`).join("")}
+          </optgroup>
+        `,
+      )
+      .join("");
+  };
+
+  return `
+    <div class="ug-field">
+      <label>Choose badges displayed on sleeve</label>
+      <div class="ug-slot-list">
+        ${Array.from({ length: count }, (_, idx) => {
+          const currentPath = currentItems[idx % Math.max(1, currentItems.length)] || "";
+          return `
+            <div class="ug-slot-row">
+              <span class="ug-slot-num">${idx + 1}</span>
+              ${currentPath ? `<img class="ug-slot-thumb" src="${escapeHTML(currentPath)}" alt="">` : `<span class="ug-slot-thumb ug-slot-thumb--empty"></span>`}
+              <select class="select" data-ob-slot="${idx}" data-ob-id="${escapeHTML(badge.id)}" aria-label="Activity badge slot ${idx + 1}">
+                ${buildOptions(currentPath)}
+              </select>
+            </div>
+          `;
+        }).join("")}
+      </div>
+    </div>
+  `;
+}
+
 function renderOfficialBadgeCard(badge) {
   const expanded = ui.expandedOfficialId === badge.id;
   const isCluster = ["challenge-cluster", "activity-column", "joining-row"].includes(badge.shape);
-  const maxCount = badge.shape === "challenge-cluster" ? 10 : 6;
-  const swatchStyle = badge.imageDataUrl
-    ? `background-image:url('${badge.imageDataUrl}')`
-    : `background:${escapeHTML(badge.fill)};border-color:${escapeHTML(badge.stroke)}`;
+  const maxCount = badge.shape === "challenge-cluster" ? 10 : badge.shape === "joining-row" ? 12 : 6;
+  const ov = state.badgeOverrides[badge.id];
+  const officialThumb = badge.artworkPath || (isCluster ? badge.artworkItems?.[0] : "") || "";
+  const thumbUrl = badge.imageDataUrl || (state.diagramStyle !== "official" ? officialThumb : "");
+  const swatchHtml = thumbUrl
+    ? `<span class="ug-item-card__swatch ug-item-card__swatch--art"><img src="${escapeHTML(thumbUrl)}" alt=""></span>`
+    : `<span class="ug-item-card__swatch" style="background:${escapeHTML(badge.fill)};border-color:${escapeHTML(badge.stroke)}"></span>`;
 
   return `
     <article class="ug-item-card${ui.selectedId === badge.id ? " is-selected" : ""}${!badge.visible ? " is-hidden" : ""}">
       <div class="ug-item-card__head">
-        <span class="ug-item-card__swatch" style="${swatchStyle}"></span>
+        ${swatchHtml}
         <div class="ug-item-card__info">
           <span class="ug-item-card__title">${escapeHTML(badge.label)}</span>
           <span class="ug-item-card__sub">${badge.hasOverride ? "Customised • " : ""}${badge.visible ? "Shown" : "Hidden"}</span>
@@ -738,6 +828,7 @@ function renderOfficialBadgeCard(badge) {
             <label>Sewing / placement note</label>
             <textarea class="textarea" rows="2" data-ob-field="note" data-ob-id="${escapeHTML(badge.id)}">${escapeHTML(badge.note || "")}</textarea>
           </div>
+          ${renderOfficialVariantPicker(badge)}
           ${
             isCluster
               ? `
@@ -748,6 +839,7 @@ function renderOfficialBadgeCard(badge) {
                 <output>${badge.count || 3}</output>
               </div>
             </div>
+            ${renderActivityClusterSlots(badge)}
           `
               : `
             <div class="ug-row">
@@ -769,14 +861,16 @@ function renderOfficialBadgeCard(badge) {
               <input class="input" type="text" maxlength="8" value="${escapeHTML(badge.text || "")}" placeholder="e.g. ESSEX, CND" data-ob-field="text" data-ob-id="${escapeHTML(badge.id)}">
             </div>
             <div class="ug-field">
-              <label>Custom artwork image (replaces icon/text)</label>
+              <label>Badge artwork (official SVG or custom upload)</label>
               <div class="ug-upload-row">
-                ${badge.imageDataUrl ? `<img class="ug-upload-thumb" src="${badge.imageDataUrl}" alt="Uploaded badge preview">` : ""}
+                ${thumbUrl ? `<img class="ug-upload-thumb" src="${escapeHTML(thumbUrl)}" alt="Badge artwork preview">` : ""}
                 <label class="btn btn--ghost btn--small" style="cursor:pointer">
-                  ${icon("camera")} ${badge.imageDataUrl ? "Replace image" : "Upload badge image"}
+                  ${icon("camera")} ${badge.imageDataUrl ? "Replace image" : "Upload custom image"}
                   <input type="file" accept="image/*" hidden data-ob-upload="${escapeHTML(badge.id)}">
                 </label>
-                ${badge.imageDataUrl ? `<button type="button" class="btn btn--ghost btn--small" data-ob-clear-img="${escapeHTML(badge.id)}">Remove</button>` : ""}
+                ${badge.imageDataUrl ? `<button type="button" class="btn btn--ghost btn--small" data-ob-clear-img="${escapeHTML(badge.id)}">Remove upload</button>` : ""}
+                ${!badge.imageDataUrl && badge.artworkPath ? `<button type="button" class="btn btn--ghost btn--small" data-ob-clear-art="${escapeHTML(badge.id)}">Use simple shape</button>` : ""}
+                ${!badge.imageDataUrl && ov && ov.artworkPath === "" ? `<button type="button" class="btn btn--ghost btn--small" data-ob-restore-art="${escapeHTML(badge.id)}">Use official SVG</button>` : ""}
               </div>
             </div>
           `
@@ -893,14 +987,15 @@ function renderBadgesPane() {
 
 function renderCustomBadgeCard(badge) {
   const expanded = ui.expandedCustomId === badge.id;
-  const swatchStyle = badge.imageDataUrl
-    ? `background-image:url('${badge.imageDataUrl}')`
-    : `background:${escapeHTML(badge.fill)};border-color:${escapeHTML(badge.stroke)}`;
+  const thumbUrl = badge.imageDataUrl || badge.artworkPath || "";
+  const swatchHtml = thumbUrl
+    ? `<span class="ug-item-card__swatch ug-item-card__swatch--art"><img src="${escapeHTML(thumbUrl)}" alt=""></span>`
+    : `<span class="ug-item-card__swatch" style="background:${escapeHTML(badge.fill)};border-color:${escapeHTML(badge.stroke)}"></span>`;
 
   return `
     <article class="ug-item-card${ui.selectedId === badge.id ? " is-selected" : ""}${!badge.visible ? " is-hidden" : ""}">
       <div class="ug-item-card__head">
-        <span class="ug-item-card__swatch" style="${swatchStyle}"></span>
+        ${swatchHtml}
         <div class="ug-item-card__info">
           <span class="ug-item-card__title">${escapeHTML(badge.label)}</span>
           <span class="ug-item-card__sub">${escapeHTML(ZONES.find((z) => z.id === badge.zone)?.label || "Custom position")}</span>
@@ -949,14 +1044,15 @@ function renderCustomBadgeCard(badge) {
             <input class="input" type="text" maxlength="8" value="${escapeHTML(badge.text || "")}" placeholder="e.g. 2026, DIST" data-cb-field="text" data-cb-id="${escapeHTML(badge.id)}">
           </div>
           <div class="ug-field">
-            <label>Upload custom badge artwork (PNG / JPG / SVG)</label>
+            <label>Badge artwork (PNG / JPG / SVG or library SVG)</label>
             <div class="ug-upload-row">
-              ${badge.imageDataUrl ? `<img class="ug-upload-thumb" src="${badge.imageDataUrl}" alt="Custom badge preview">` : ""}
+              ${thumbUrl ? `<img class="ug-upload-thumb" src="${escapeHTML(thumbUrl)}" alt="Custom badge preview">` : ""}
               <label class="btn btn--ghost btn--small" style="cursor:pointer">
                 ${icon("camera")} ${badge.imageDataUrl ? "Replace image" : "Upload image"}
                 <input type="file" accept="image/*" hidden data-cb-upload="${escapeHTML(badge.id)}">
               </label>
-              ${badge.imageDataUrl ? `<button type="button" class="btn btn--ghost btn--small" data-cb-clear-img="${escapeHTML(badge.id)}">Remove</button>` : ""}
+              ${badge.imageDataUrl ? `<button type="button" class="btn btn--ghost btn--small" data-cb-clear-img="${escapeHTML(badge.id)}">Remove upload</button>` : ""}
+              ${!badge.imageDataUrl && badge.artworkPath ? `<button type="button" class="btn btn--ghost btn--small" data-cb-clear-art="${escapeHTML(badge.id)}">Use simple shape</button>` : ""}
             </div>
           </div>
           <div class="ug-row ug-row--3">
@@ -1022,6 +1118,49 @@ function renderCustomBadgeCard(badge) {
   `;
 }
 
+const LIBRARY_SECTION_FILTERS = [
+  { id: "all", label: "All" },
+  { id: "squirrels", label: "Squirrels" },
+  { id: "beavers", label: "Beavers" },
+  { id: "cubs", label: "Cubs" },
+  { id: "scouts", label: "Scouts" },
+  { id: "explorers", label: "Explorers" },
+  { id: "shared", label: "Staged & Shared" },
+];
+
+function renderLibraryGridHtml() {
+  if (!ui.badgeLibrary.length) {
+    return `<p class="ug-group__hint">Loading official Scouts badge library…</p>`;
+  }
+  const q = ui.librarySearch.trim().toLowerCase();
+  const filtered = ui.badgeLibrary.filter((entry) => {
+    if (ui.librarySection !== "all" && entry.section !== ui.librarySection) return false;
+    if (!q) return true;
+    return (
+      entry.label.toLowerCase().includes(q) ||
+      entry.section.toLowerCase().includes(q) ||
+      entry.category.toLowerCase().includes(q) ||
+      entry.slug.toLowerCase().includes(q)
+    );
+  });
+
+  if (!filtered.length) {
+    return `<p class="ug-group__hint">No official badges match “${escapeHTML(ui.librarySearch)}”.</p>`;
+  }
+
+  return filtered
+    .map(
+      (entry) => `
+      <button type="button" class="ug-library-tile" data-add-library-badge="${escapeHTML(entry.id)}" title="Add ${escapeHTML(entry.label)} to uniform">
+        <img class="ug-library-tile__img" src="${escapeHTML(entry.path)}" alt="" loading="lazy" decoding="async">
+        <span class="ug-library-tile__label">${escapeHTML(entry.label)}</span>
+        <span class="ug-library-tile__meta">${escapeHTML(entry.section === "shared" ? "shared" : entry.section)}</span>
+      </button>
+    `,
+    )
+    .join("");
+}
+
 function renderCustomPane() {
   els.panes.custom.innerHTML = `
     <div class="ug-group">
@@ -1038,10 +1177,29 @@ function renderCustomPane() {
       </div>
     </div>
 
+    <div class="ug-group">
+      <h3 class="ug-group__title">Official Scouts badge library (${ui.badgeLibrary.length || 260})</h3>
+      <p class="ug-group__hint">Click any official Scouts badge below to drop its exact SVG onto your diagram and drag it into place.</p>
+      <div class="ug-chips ug-library-filters">
+        ${LIBRARY_SECTION_FILTERS.map(
+          (f) => `
+          <button type="button" class="ug-chip${ui.librarySection === f.id ? " is-active" : ""}" data-lib-section="${escapeHTML(f.id)}">${escapeHTML(f.label)}</button>
+        `,
+        ).join("")}
+      </div>
+      <div class="ug-field">
+        <label for="ug-library-search" class="sr-only">Search official badge library</label>
+        <input class="input" id="ug-library-search" type="search" value="${escapeHTML(ui.librarySearch)}" placeholder="Search 260 official badges (e.g. Swimmer, Chief, Sixer, DofE)…">
+      </div>
+      <div class="ug-library-grid" id="custom-library-grid">
+        ${renderLibraryGridHtml()}
+      </div>
+    </div>
+
     ${
       state.customBadges.length
         ? `<div class="ug-card-list">${state.customBadges.map(renderCustomBadgeCard).join("")}</div>`
-        : `<p class="ug-group__hint">No custom badges added yet. Pick a template above to drop one straight onto the uniform.</p>`
+        : `<p class="ug-group__hint">No custom badges added yet. Pick a template or an official badge above to drop one straight onto the uniform.</p>`
     }
   `;
 }
@@ -1123,9 +1281,77 @@ function addCustomBadgeFromTemplate(templateId) {
     textColor: tpl.textColor,
     text: tpl.text,
     icon: tpl.icon,
+    artworkPath: "",
     imageDataUrl: "",
     visible: true,
     calloutSide: tpl.calloutSide,
+  };
+  state.customBadges.push(badge);
+  ui.expandedCustomId = badge.id;
+  ui.selectedId = badge.id;
+  refreshAll();
+  setStatus(`Added “${badge.label}”. Drag it directly on the uniform to fine-tune its spot.`);
+}
+
+function addCustomBadgeFromLibrary(entryId) {
+  const entry = ui.badgeLibrary.find((item) => item.id === entryId);
+  if (!entry) return;
+  const offset = (state.customBadges.length % 5) * 14;
+  const rawW = Number(entry.width) || 24;
+  const rawH = Number(entry.height) || 24;
+  const maxDim = entry.shape === "bar" || entry.shape === "rect" ? 28 : 24;
+  const ratio = maxDim / Math.max(rawW, rawH);
+  const w = Math.max(10, Math.round(rawW * ratio * 10) / 10);
+  const h = Math.max(10, Math.round(rawH * ratio * 10) / 10);
+
+  let zone = "left-sleeve";
+  let baseX = 650;
+  let baseY = 390;
+  let rotation = 12;
+  let calloutSide = "right";
+
+  if (entry.category === "challenge" || entry.slug.startsWith("chief-") || entry.slug === "kings-scout") {
+    zone = "right-chest";
+    baseX = 418;
+    baseY = 395;
+    rotation = 0;
+    calloutSide = "left";
+  } else if (entry.category === "leadership" || entry.slug === "youshape" || entry.slug === "young-leader-scheme") {
+    zone = "right-sleeve";
+    baseX = 304;
+    baseY = 365;
+    rotation = -12;
+    calloutSide = "left";
+  } else if (entry.category === "moving-on" || entry.category === "joining-in" || entry.slug === "world-membership") {
+    zone = "left-chest";
+    baseX = 540;
+    baseY = entry.category === "moving-on" ? 254 : 284;
+    rotation = 0;
+    calloutSide = "right";
+  }
+
+  const secPrefix = entry.section === "shared" ? "Shared" : getSection(entry.section).name;
+  const badge = {
+    id: uid("custom"),
+    label: entry.label,
+    note: `Official ${secPrefix} badge placed as a custom item.`,
+    zone,
+    shape: BADGE_SHAPES.some((s) => s.id === entry.shape) ? entry.shape : "circle",
+    x: clamp(baseX + (baseX < 480 ? -offset * 0.2 : offset * 0.2), 265, 695),
+    y: clamp(baseY + offset, 120, 580),
+    w,
+    h,
+    scale: 1,
+    rotation,
+    fill: "#590fa9",
+    stroke: "#ffffff",
+    textColor: "#ffffff",
+    text: "",
+    icon: "none",
+    artworkPath: entry.path,
+    imageDataUrl: "",
+    visible: true,
+    calloutSide,
   };
   state.customBadges.push(badge);
   ui.expandedCustomId = badge.id;
@@ -1578,6 +1804,37 @@ function bindEvents() {
       return;
     }
 
+    const variantBtn = event.target.closest("[data-ob-variant-id]");
+    if (variantBtn) {
+      const id = variantBtn.dataset.obVariantId;
+      const ov = getOrCreateOfficialOverride(id);
+      ov.artworkPath = variantBtn.dataset.obVariantPath || "";
+      delete ov.imageDataUrl;
+      refreshAll();
+      return;
+    }
+
+    const clearArt = event.target.closest("[data-ob-clear-art]");
+    if (clearArt) {
+      const id = clearArt.dataset.obClearArt;
+      const ov = getOrCreateOfficialOverride(id);
+      ov.artworkPath = "";
+      delete ov.imageDataUrl;
+      refreshAll();
+      return;
+    }
+
+    const restoreArt = event.target.closest("[data-ob-restore-art]");
+    if (restoreArt) {
+      const id = restoreArt.dataset.obRestoreArt;
+      if (state.badgeOverrides[id]) {
+        delete state.badgeOverrides[id].artworkPath;
+        delete state.badgeOverrides[id].artworkItems;
+      }
+      refreshAll();
+      return;
+    }
+
     const resetBtn = event.target.closest("[data-ob-reset]");
     if (resetBtn) {
       delete state.badgeOverrides[resetBtn.dataset.obReset];
@@ -1623,6 +1880,18 @@ function bindEvents() {
       }
       return;
     }
+    if (t.dataset.obSlot !== undefined && t.dataset.obId) {
+      const id = t.dataset.obId;
+      const slotIdx = Number(t.dataset.obSlot);
+      const resolved = layout.officialBadges.find((b) => b.id === id);
+      const nextItems = Array.isArray(resolved?.artworkItems) ? [...resolved.artworkItems] : [];
+      const fallback = nextItems[0] || t.value;
+      while (nextItems.length <= slotIdx) nextItems.push(fallback);
+      nextItems[slotIdx] = t.value;
+      getOrCreateOfficialOverride(id).artworkItems = nextItems;
+      refreshAll();
+      return;
+    }
     if (t.dataset.obField && t.dataset.obId) {
       getOrCreateOfficialOverride(t.dataset.obId)[t.dataset.obField] = t.value;
       refreshDiagramOnly();
@@ -1634,6 +1903,21 @@ function bindEvents() {
     const addBtn = event.target.closest("[data-add-custom-tpl]");
     if (addBtn) {
       addCustomBadgeFromTemplate(addBtn.dataset.addCustomTpl);
+      return;
+    }
+    const libSectionBtn = event.target.closest("[data-lib-section]");
+    if (libSectionBtn) {
+      ui.librarySection = libSectionBtn.dataset.libSection;
+      els.panes.custom.querySelectorAll("[data-lib-section]").forEach((btn) => {
+        btn.classList.toggle("is-active", btn.dataset.libSection === ui.librarySection);
+      });
+      const grid = els.panes.custom.querySelector("#custom-library-grid");
+      if (grid) grid.innerHTML = renderLibraryGridHtml();
+      return;
+    }
+    const addLibBtn = event.target.closest("[data-add-library-badge]");
+    if (addLibBtn) {
+      addCustomBadgeFromLibrary(addLibBtn.dataset.addLibraryBadge);
       return;
     }
     const toggleBtn = event.target.closest("[data-cb-toggle]");
@@ -1674,6 +1958,15 @@ function bindEvents() {
       refreshAll();
       return;
     }
+    const clearArt = event.target.closest("[data-cb-clear-art]");
+    if (clearArt) {
+      const badge = state.customBadges.find((b) => b.id === clearArt.dataset.cbClearArt);
+      if (badge) {
+        badge.artworkPath = "";
+        refreshAll();
+      }
+      return;
+    }
     const clearImg = event.target.closest("[data-cb-clear-img]");
     if (clearImg) {
       const badge = state.customBadges.find((b) => b.id === clearImg.dataset.cbClearImg);
@@ -1686,6 +1979,12 @@ function bindEvents() {
 
   els.panes.custom.addEventListener("input", (event) => {
     const t = event.target;
+    if (t.id === "ug-library-search") {
+      ui.librarySearch = t.value;
+      const grid = els.panes.custom.querySelector("#custom-library-grid");
+      if (grid) grid.innerHTML = renderLibraryGridHtml();
+      return;
+    }
     if (t.dataset.cbField && t.dataset.cbId) {
       const badge = state.customBadges.find((b) => b.id === t.dataset.cbId);
       if (badge) {
@@ -1853,7 +2152,10 @@ function bindEvents() {
     els.moreMenu.open = false;
     setStatus("Rendering high-resolution PNG…");
     try {
-      const assets = await loadUniformPdfAssets().catch(() => null);
+      const [assets, artworkMap] = await Promise.all([
+        loadUniformPdfAssets().catch(() => null),
+        preloadArtworkDataUrls(collectArtworkPaths(layout)),
+      ]);
       const svgH = layout.showBeltBuckles ? CANVAS.height : 690;
       const svg = renderUniformSvg(state, layout, {
         interactive: false,
@@ -1862,6 +2164,7 @@ function bindEvents() {
         idPrefix: "pngug",
         background: "#ffffff",
         embedFontCss: buildEmbeddedFontCss(assets),
+        artworkMap,
       });
       const dataUrl = await svgStringToPngDataUrl(svg, CANVAS.width, svgH, 3);
       triggerDownload(dataUrl, `${slugify(layout.title)}-uniform-guide.png`);
@@ -1871,18 +2174,25 @@ function bindEvents() {
     }
   });
 
-  els.btnSvg.addEventListener("click", () => {
+  els.btnSvg.addEventListener("click", async () => {
     els.moreMenu.open = false;
-    const svg = renderUniformSvg(state, layout, {
-      interactive: false,
-      includeCallouts: state.showCallouts,
-      includeHeader: true,
-      idPrefix: "svgug",
-      background: "#ffffff",
-    });
-    const blob = new Blob([svg], { type: "image/svg+xml;charset=utf-8" });
-    triggerDownload(blob, `${slugify(layout.title)}-uniform-guide.svg`);
-    setStatus("Downloaded scalable SVG vector file.");
+    setStatus("Preparing standalone SVG…");
+    try {
+      const artworkMap = await preloadArtworkDataUrls(collectArtworkPaths(layout));
+      const svg = renderUniformSvg(state, layout, {
+        interactive: false,
+        includeCallouts: state.showCallouts,
+        includeHeader: true,
+        idPrefix: "svgug",
+        artworkMap,
+        background: "#ffffff",
+      });
+      const blob = new Blob([svg], { type: "image/svg+xml;charset=utf-8" });
+      triggerDownload(blob, `${slugify(layout.title)}-uniform-guide.svg`);
+      setStatus("Downloaded scalable SVG vector file.");
+    } catch (err) {
+      setStatus(err.message || "Could not export SVG.", true);
+    }
   });
 
   els.btnExportJson.addEventListener("click", () => {
@@ -1932,9 +2242,24 @@ function bindEvents() {
   });
 }
 
+async function loadBadgeManifest() {
+  try {
+    const response = await fetch("assets/badges/manifest.json");
+    if (!response.ok) return;
+    const data = await response.json();
+    ui.badgeLibrary = Object.values(data.badges || {});
+    if (ui.activeTab === "custom" || (ui.activeTab === "badges" && ui.expandedOfficialId)) {
+      renderActiveTabPane();
+    }
+  } catch {
+    // Non-fatal: diagram defaults still render via uniform-data paths.
+  }
+}
+
 // ── Boot ─────────────────────────────────────────────────────────────────────
 
 initSite();
 setupCanvasInteractions();
 bindEvents();
 refreshAll();
+loadBadgeManifest();

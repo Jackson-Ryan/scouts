@@ -190,6 +190,12 @@ function resolveBadges(state, section, variant, extraSleeveShiftY) {
       textColor: ov.textColor || def.textColor || "#ffffff",
       text: ov.text !== undefined ? String(ov.text) : def.text || "",
       icon: ov.icon !== undefined ? ov.icon : def.icon || "none",
+      artworkPath: ov.artworkPath !== undefined ? String(ov.artworkPath || "") : def.artworkPath || "",
+      artworkItems: Array.isArray(ov.artworkItems)
+        ? ov.artworkItems.map((item) => String(item || ""))
+        : Array.isArray(def.artworkItems)
+          ? [...def.artworkItems]
+          : [],
       imageDataUrl: typeof ov.imageDataUrl === "string" ? ov.imageDataUrl : "",
       count: Number.isFinite(Number(ov.count)) ? Math.max(1, Math.min(12, Number(ov.count))) : def.count,
       calloutSide: ov.calloutSide || def.calloutSide || "auto",
@@ -409,4 +415,20 @@ export function resolveUniformLayout(state) {
       tapes: tapes.length,
     },
   };
+}
+
+/**
+ * Collects every unique local official badge SVG path referenced by visible badges in a resolved layout.
+ */
+export function collectArtworkPaths(layout) {
+  const paths = new Set();
+  for (const badge of layout?.visibleBadges || []) {
+    if (badge.artworkPath) paths.add(badge.artworkPath);
+    if (Array.isArray(badge.artworkItems)) {
+      for (const itemPath of badge.artworkItems) {
+        if (itemPath) paths.add(itemPath);
+      }
+    }
+  }
+  return [...paths];
 }

@@ -568,11 +568,13 @@ function renderNameTapes(layout, idPrefix, selectedId, interactive) {
 /**
  * Renders a single badge (or multi-badge cluster) with optional uploaded image, icon, or short text.
  */
-function renderSingleBadge(badge, state, layout, idPrefix, selectedId, interactive) {
+function renderSingleBadge(badge, state, layout, idPrefix, selectedId, interactive, artworkMap = null) {
   const isSelected = interactive && selectedId === badge.id;
   const style = state.diagramStyle || "colour";
   const scale = badge.scale || 1;
   const rot = badge.rotation || 0;
+  const useOfficialArt = style !== "official";
+  const resolveArtHref = (path) => (path ? artworkMap?.[path] || path : "");
 
   const badgeFill =
     style === "official"
@@ -599,74 +601,121 @@ function renderSingleBadge(badge, state, layout, idPrefix, selectedId, interacti
   if (badge.shape === "challenge-cluster") {
     const count = Math.max(1, Math.min(10, badge.count || 6));
     const r = 10.6;
-    const dx = r * 1.9;
-    const dy = r * 1.66;
-    // Arrange neatly in official honeycomb rows matching Squirrels(4), Beavers(6), Cubs(7), Scouts(9).
+    const dx = 21.2;
+    // Arrange neatly in official honeycomb rows matching Squirrels(4), Beavers(2-1-2-1), Cubs(2-3-2), Scouts(2-3-4).
     const rowsByCount = {
       1: [1],
       2: [2],
       3: [1, 2],
       4: [2, 2],
       5: [2, 3],
-      6: [2, 2, 2],
+      6: [2, 1, 2, 1],
       7: [2, 3, 2],
       8: [2, 3, 3],
       9: [2, 3, 4],
       10: [2, 3, 3, 2],
     };
     const rows = rowsByCount[count] || [2, 3, 2];
-    const totalH = (rows.length - 1) * dy;
+    const rowOffsets = [0];
+    for (let rIdx = 1; rIdx < rows.length; rIdx += 1) {
+      const sameParity = rows[rIdx] % 2 === rows[rIdx - 1] % 2;
+      rowOffsets.push(rowOffsets[rIdx - 1] + (sameParity ? 24.4 : 18.2));
+    }
+    const totalH = rowOffsets[rowOffsets.length - 1];
     const startY = -totalH / 2;
+    const hexW = 20.4;
+    const hexH = 23.5;
+    const artItems = useOfficialArt && Array.isArray(badge.artworkItems) ? badge.artworkItems : [];
     const hexes = [];
+    let artIdx = 0;
     rows.forEach((cols, rowIdx) => {
-      const rowY = startY + rowIdx * dy;
+      const rowY = startY + rowOffsets[rowIdx];
       const startX = -((cols - 1) * dx) / 2;
       for (let c = 0; c < cols; c += 1) {
         const cx = startX + c * dx;
-        hexes.push(`
-          <g transform="translate(${cx.toFixed(1)} ${rowY.toFixed(1)})">
-            <g fill="${esc(badgeFill)}" stroke="${esc(badgeStroke)}" stroke-width="1.35" stroke-linejoin="round">
-              ${badgeShapeElement("hexagon", r * 1.92, r * 2.02)}
+        const artPath = artItems.length ? artItems[artIdx % artItems.length] : "";
+        const href = artPath ? resolveArtHref(artPath) : "";
+        artIdx += 1;
+        if (href) {
+          hexes.push(`
+            <g transform="translate(${cx.toFixed(1)} ${rowY.toFixed(1)})">
+              <image href="${esc(href)}" x="${(-hexW / 2).toFixed(2)}" y="${(-hexH / 2).toFixed(2)}" width="${hexW.toFixed(2)}" height="${hexH.toFixed(2)}" preserveAspectRatio="xMidYMid meet"/>
             </g>
-          </g>
-        `);
+          `);
+        } else {
+          hexes.push(`
+            <g transform="translate(${cx.toFixed(1)} ${rowY.toFixed(1)})">
+              <g fill="${esc(badgeFill)}" stroke="${esc(badgeStroke)}" stroke-width="1.35" stroke-linejoin="round">
+                ${badgeShapeElement("hexagon", r * 1.92, r * 2.02)}
+              </g>
+            </g>
+          `);
+        }
       }
     });
     inner = hexes.join("");
   } else if (badge.shape === "activity-column") {
     const count = Math.max(1, Math.min(6, badge.count || 3));
     const r = 10.8;
+    const artSize = r * 2.15;
     const spacing = 26;
     const startY = -((count - 1) * spacing) / 2;
+    const artItems = useOfficialArt && Array.isArray(badge.artworkItems) ? badge.artworkItems : [];
     const circles = [];
     for (let i = 0; i < count; i += 1) {
       const cy = startY + i * spacing;
-      circles.push(
-        `<circle cx="0" cy="${cy.toFixed(1)}" r="${r}" fill="${esc(badgeFill)}" stroke="${esc(badgeStroke)}" stroke-width="1.4"/>`,
-      );
+      const artPath = artItems.length ? artItems[i % artItems.length] : "";
+      const href = artPath ? resolveArtHref(artPath) : "";
+      if (href) {
+        circles.push(
+          `<image href="${esc(href)}" x="${(-artSize / 2).toFixed(2)}" y="${(cy - artSize / 2).toFixed(2)}" width="${artSize.toFixed(2)}" height="${artSize.toFixed(2)}" preserveAspectRatio="xMidYMid meet"/>`,
+        );
+      } else {
+        circles.push(
+          `<circle cx="0" cy="${cy.toFixed(1)}" r="${r}" fill="${esc(badgeFill)}" stroke="${esc(badgeStroke)}" stroke-width="1.4"/>`,
+        );
+      }
     }
     inner = circles.join("");
   } else if (badge.shape === "joining-row") {
-    const count = Math.max(1, Math.min(6, badge.count || 3));
-    const sz = 13.5;
-    const gap = 3;
-    const totalW = count * sz + (count - 1) * gap;
-    const startX = -totalW / 2 + sz / 2;
+    const count = Math.max(1, Math.min(12, badge.count || 3));
+    const perRow = 6;
+    const numRows = Math.ceil(count / perRow);
+    const sz = count > perRow ? 13.5 : 14.5;
+    const gap = count > perRow ? 2.2 : 2.6;
+    const rowStep = 15.5;
+    const startY = -((numRows - 1) * rowStep) / 2;
+    const artItems = useOfficialArt && Array.isArray(badge.artworkItems) ? badge.artworkItems : [];
     const boxes = [];
     for (let i = 0; i < count; i += 1) {
-      const cx = startX + i * (sz + gap);
-      boxes.push(`
-        <g transform="translate(${cx.toFixed(1)} 0)">
-          <rect x="${(-sz / 2).toFixed(1)}" y="${(-sz / 2).toFixed(1)}" width="${sz}" height="${sz}" rx="2" fill="${esc(badgeFill)}" stroke="${esc(badgeStroke)}" stroke-width="1.3"/>
-          <text x="0" y="3.1" text-anchor="middle" font-family="Nunito Sans, system-ui, sans-serif" font-size="8" font-weight="800" fill="${esc(glyphColor)}">${i + 1}</text>
-        </g>
-      `);
+      const rowIdx = Math.floor(i / perRow);
+      const colIdx = i % perRow;
+      const colsInRow = Math.min(perRow, count - rowIdx * perRow);
+      const totalW = colsInRow * sz + (colsInRow - 1) * gap;
+      const startX = -totalW / 2 + sz / 2;
+      const cx = startX + colIdx * (sz + gap);
+      const cy = startY + rowIdx * rowStep;
+      const artPath = artItems.length ? artItems[i % artItems.length] : "";
+      const href = artPath ? resolveArtHref(artPath) : "";
+      if (href) {
+        boxes.push(
+          `<image href="${esc(href)}" x="${(cx - sz / 2).toFixed(2)}" y="${(cy - sz / 2).toFixed(2)}" width="${sz.toFixed(2)}" height="${sz.toFixed(2)}" preserveAspectRatio="xMidYMid meet"/>`,
+        );
+      } else {
+        boxes.push(`
+          <g transform="translate(${cx.toFixed(1)} ${cy.toFixed(1)})">
+            <rect x="${(-sz / 2).toFixed(1)}" y="${(-sz / 2).toFixed(1)}" width="${sz}" height="${sz}" rx="2" fill="${esc(badgeFill)}" stroke="${esc(badgeStroke)}" stroke-width="1.3"/>
+            <text x="0" y="3.1" text-anchor="middle" font-family="Nunito Sans, system-ui, sans-serif" font-size="8" font-weight="800" fill="${esc(glyphColor)}">${i + 1}</text>
+          </g>
+        `);
+      }
     }
     inner = boxes.join("");
   } else {
     const w = badge.w || 22;
     const h = badge.h || 22;
     const shapeEl = badgeShapeElement(badge.shape, w, h);
+    const officialHref = useOfficialArt && badge.artworkPath ? resolveArtHref(badge.artworkPath) : "";
 
     if (badge.imageDataUrl) {
       const clipId = `${idPrefix}-imgclip-${badge.id.replace(/[^a-z0-9_-]/gi, "")}`;
@@ -676,6 +725,8 @@ function renderSingleBadge(badge, state, layout, idPrefix, selectedId, interacti
         <image href="${esc(badge.imageDataUrl)}" x="${(-w / 2).toFixed(2)}" y="${(-h / 2).toFixed(2)}" width="${w.toFixed(2)}" height="${h.toFixed(2)}" preserveAspectRatio="xMidYMid slice" clip-path="url(#${clipId})"/>
         <g fill="none" stroke="${esc(badgeStroke)}" stroke-width="1.5" stroke-linejoin="round">${shapeEl}</g>
       `;
+    } else if (officialHref) {
+      inner = `<image href="${esc(officialHref)}" x="${(-w / 2).toFixed(2)}" y="${(-h / 2).toFixed(2)}" width="${w.toFixed(2)}" height="${h.toFixed(2)}" preserveAspectRatio="xMidYMid meet"/>`;
     } else {
       let detail = "";
       const customText = String(badge.text || "").trim();
@@ -812,6 +863,7 @@ export function renderUniformSvg(
     selectedId = null,
     idPrefix = "ug",
     embedFontCss = "",
+    artworkMap = null,
     background = "transparent",
   } = {},
 ) {
@@ -822,7 +874,7 @@ export function renderUniformSvg(
   const badgeDefs = [];
   const badgeMarkup = [];
   layout.visibleBadges.forEach((badge) => {
-    const rendered = renderSingleBadge(badge, state, layout, idPrefix, selectedId, interactive);
+    const rendered = renderSingleBadge(badge, state, layout, idPrefix, selectedId, interactive, artworkMap);
     if (rendered.defs) badgeDefs.push(rendered.defs);
     badgeMarkup.push(rendered.markup);
   });

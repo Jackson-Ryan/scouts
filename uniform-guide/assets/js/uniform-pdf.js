@@ -4,7 +4,7 @@
 // with the high-resolution uniform/necker/badge artwork layer (or clean vector fallback in Node).
 
 import { CANVAS, NECKER_PATTERNS, slugify } from "./uniform-data.js";
-import { resolveUniformLayout } from "./uniform-layout.js";
+import { collectArtworkPaths, resolveUniformLayout } from "./uniform-layout.js";
 import { renderUniformSvg } from "./uniform-svg.js";
 
 const A4 = { width: 595.28, height: 841.89 };
@@ -90,6 +90,40 @@ async function svgUrlToPngDataUrl(url, width, height) {
 }
 
 let cachedAssetsPromise = null;
+const artworkDataUrlCache = new Map();
+
+export async function preloadArtworkDataUrls(paths) {
+  const uniquePaths = [...new Set((paths || []).filter(Boolean))];
+  if (!uniquePaths.length) return {};
+
+  const entries = await Promise.all(
+    uniquePaths.map(async (path) => {
+      if (!artworkDataUrlCache.has(path)) {
+        const cleanPath = String(path).replace(/^\/+/, "");
+        const url = new URL(`../../${cleanPath}`, import.meta.url);
+        const promise = fetch(url)
+          .then((response) => {
+            if (!response.ok) throw new Error(`Failed to fetch ${cleanPath}`);
+            return response.arrayBuffer();
+          })
+          .then((buffer) => `data:image/svg+xml;base64,${fontBase64FromArrayBuffer(buffer)}`)
+          .catch(() => {
+            artworkDataUrlCache.delete(path);
+            return null;
+          });
+        artworkDataUrlCache.set(path, promise);
+      }
+      const dataUrl = await artworkDataUrlCache.get(path);
+      return [path, dataUrl];
+    }),
+  );
+
+  const map = {};
+  for (const [path, dataUrl] of entries) {
+    if (dataUrl) map[path] = dataUrl;
+  }
+  return map;
+}
 
 export async function loadUniformPdfAssets() {
   if (!cachedAssetsPromise) {
@@ -441,7 +475,10 @@ export async function downloadUniformPdf(state) {
   const jsPDF = globalThis.jspdf?.jsPDF;
   if (!jsPDF) throw new Error("The PDF library did not load. Try reloading or using Print.");
   const layout = resolveUniformLayout(state);
-  const assets = await loadUniformPdfAssets();
+  const [assets, artworkMap] = await Promise.all([
+    loadUniformPdfAssets(),
+    preloadArtworkDataUrls(collectArtworkPaths(layout)),
+  ]);
   const svgH = layout.showBeltBuckles ? CANVAS.height : 690;
 
   // Render artwork-only SVG (no callouts — jsPDF draws razor-sharp vector callouts directly on top!)
@@ -450,6 +487,7 @@ export async function downloadUniformPdf(state) {
     includeCallouts: false,
     idPrefix: "pdfug",
     embedFontCss: buildEmbeddedFontCss(assets),
+    artworkMap,
   });
   const artworkDataUrl = await svgStringToPngDataUrl(artworkSvg, CANVAS.width, svgH, 3);
 

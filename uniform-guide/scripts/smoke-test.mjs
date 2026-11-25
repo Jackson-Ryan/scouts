@@ -6,16 +6,17 @@
  */
 
 import assert from "node:assert/strict";
-import { readFileSync, writeFileSync, unlinkSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync, unlinkSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
   NECKER_PATTERNS,
+  OFFICIAL_VARIANT_OPTIONS,
   SECTIONS,
   createDefaultState,
   normaliseState,
 } from "../assets/js/uniform-data.js";
-import { resolveUniformLayout } from "../assets/js/uniform-layout.js";
+import { collectArtworkPaths, resolveUniformLayout } from "../assets/js/uniform-layout.js";
 import { renderNeckerPreviewSvg, renderUniformSvg } from "../assets/js/uniform-svg.js";
 import { createUniformPdf, uniformPdfFilename } from "../assets/js/uniform-pdf.js";
 
@@ -59,10 +60,67 @@ for (const section of SECTIONS) {
     const svg = renderUniformSvg(state, layout);
     assert.ok(svg.startsWith("<svg"), "expected valid SVG root");
     assert.ok(svg.includes("1ST BOXFORD"), "expected group name tape text inside SVG");
+    assert.ok(svg.includes("assets/badges/shared/world-membership.svg"), "expected official SVG artwork in colour mode");
+
+    for (const artPath of collectArtworkPaths(layout)) {
+      const diskUrl = new URL(`../${artPath}`, import.meta.url);
+      assert.ok(existsSync(diskUrl), `Missing official badge SVG referenced by ${section.id}/${variant.id}: ${artPath}`);
+    }
+
+    const officialLineState = { ...state, diagramStyle: "official" };
+    const officialSvg = renderUniformSvg(officialLineState, resolveUniformLayout(officialLineState));
+    assert.equal(officialSvg.includes("assets/badges/"), false, "official line-art mode should omit full-colour badge SVGs");
   }
 }
 assert.equal(SECTIONS.length, 7, "expected all 7 UK Scout sections");
 assert.equal(variantCount, 17, "expected all 17 uniform variants (16 official layouts + dedicated Sea Cubs)");
+
+// 1b. Validate manifest.json & all 260 extracted official Scouts badge SVGs on disk.
+const manifest = JSON.parse(readFileSync(new URL("../assets/badges/manifest.json", import.meta.url), "utf8"));
+const manifestEntries = Object.values(manifest.badges || {});
+assert.equal(manifest.count, 260, "expected manifest count to be 260");
+assert.equal(manifestEntries.length, 260, "expected 260 badge entries in manifest.json");
+for (const entry of manifestEntries) {
+  const fileUrl = new URL(`../${entry.path}`, import.meta.url);
+  assert.ok(existsSync(fileUrl), `Missing badge asset on disk: ${entry.path}`);
+  const svgText = readFileSync(fileUrl, "utf8");
+  assert.ok(svgText.includes("<svg"), `Invalid SVG content in ${entry.path}`);
+}
+for (const opts of Object.values(OFFICIAL_VARIANT_OPTIONS)) {
+  for (const opt of opts) {
+    if (opt.path) {
+      assert.ok(existsSync(new URL(`../${opt.path}`, import.meta.url)), `Missing variant asset: ${opt.path}`);
+    }
+  }
+}
+
+// 1c. Verify artworkMap data URI replacement, 12 Joining In awards, and custom artworkPath persistence.
+const dataUriCheckState = normaliseState({
+  ...createDefaultState(),
+  section: "cubs",
+  badgeOverrides: { "joining-in": { count: 12 } },
+  customBadges: [
+    {
+      id: "cb-official",
+      label: "Custom Staged Swimmer",
+      zone: "left-sleeve",
+      shape: "circle",
+      x: 650,
+      y: 420,
+      artworkPath: "assets/badges/shared/staged-swimmer.svg",
+    },
+  ],
+});
+const dataUriCheckLayout = resolveUniformLayout(dataUriCheckState);
+const inlinedSvg = renderUniformSvg(dataUriCheckState, dataUriCheckLayout, {
+  artworkMap: {
+    "assets/badges/shared/world-membership.svg": "data:image/svg+xml;base64,WORLD_TEST",
+    "assets/badges/shared/staged-swimmer.svg": "data:image/svg+xml;base64,SWIM_TEST",
+  },
+});
+assert.ok(inlinedSvg.includes("data:image/svg+xml;base64,WORLD_TEST"), "expected artworkMap substitution for official badge");
+assert.ok(inlinedSvg.includes("data:image/svg+xml;base64,SWIM_TEST"), "expected artworkMap substitution for custom library badge");
+assert.ok(inlinedSvg.includes("assets/badges/shared/joining-in-12.svg"), "expected Joining In Award 12 to render when count=12");
 
 // 2. Verify Nation rules (England, Scotland, Wales, Northern Ireland).
 const englandLayout = resolveUniformLayout(normaliseState({ ...createDefaultState(), nation: "england" }));
