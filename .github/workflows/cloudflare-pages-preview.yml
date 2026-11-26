@@ -1,0 +1,113 @@
+name: Cloudflare Pages Private Previews
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  statuses: write
+  deployments: write
+
+concurrency:
+  group: cloudflare-pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy-preview:
+    name: Deploy private preview
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Stage static site files
+        run: |
+          mkdir -p _site
+          rsync -a \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='node_modules' \
+            --exclude='worker' \
+            --exclude='scripts' \
+            --exclude='*/scripts' \
+            --exclude='package.json' \
+            --exclude='package-lock.json' \
+            --exclude='README.md' \
+            --exclude='.wrangler' \
+            --exclude='_site' \
+            ./ _site/
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Deploy to Cloudflare Pages
+        id: deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          COMMIT_MSG=$(git log -1 --pretty=%s)
+          OUT=$(npx --yes wrangler@4 pages deploy _site \
+            --project-name=scouts-preview \
+            --branch="${GITHUB_REF_NAME}" \
+            --commit-hash="${GITHUB_SHA}" \
+            --commit-message="${COMMIT_MSG}" \
+            --commit-dirty=true 2>&1 | tee /dev/stderr)
+
+          COMMIT_URL=$(printf '%s\n' "$OUT" | grep -Eo 'https://[a-z0-9-]+\.scouts-preview\.pages\.dev' | head -n 1 || true)
+          ALIAS_URL=$(printf '%s\n' "$OUT" | grep -i 'alias' | grep -Eo 'https://[a-z0-9-]+\.scouts-preview\.pages\.dev' | head -n 1 || true)
+
+          if [ "${GITHUB_REF_NAME}" = "main" ]; then
+            BRANCH_URL="https://scouts-preview.pages.dev"
+          elif [ -n "${ALIAS_URL}" ]; then
+            BRANCH_URL="${ALIAS_URL}"
+          else
+            BRANCH_URL="${COMMIT_URL}"
+          fi
+
+          echo "commit_url=${COMMIT_URL}" >> "$GITHUB_OUTPUT"
+          echo "branch_url=${BRANCH_URL}" >> "$GITHUB_OUTPUT"
+
+          {
+            echo "## Cloudflare Pages Private Preview"
+            echo ""
+            echo "Protected by Cloudflare Access (Google sign-in for authorised account only)."
+            echo ""
+            echo "| Target | Link |"
+            echo "| --- | --- |"
+            if [ -n "${BRANCH_URL}" ]; then
+              echo "| **Branch (${GITHUB_REF_NAME})** | ${BRANCH_URL} |"
+              echo "| **Uniform Guide (Branch)** | ${BRANCH_URL}/uniform-guide/ |"
+            fi
+            if [ -n "${COMMIT_URL}" ]; then
+              echo "| **This commit (\`${GITHUB_SHA::7}\`)** | ${COMMIT_URL} |"
+              echo "| **Uniform Guide (Commit)** | ${COMMIT_URL}/uniform-guide/ |"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Publish commit status with preview link
+        if: steps.deploy.outputs.commit_url != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMIT_URL: ${{ steps.deploy.outputs.commit_url }}
+          BRANCH_URL: ${{ steps.deploy.outputs.branch_url }}
+        run: |
+          gh api \
+            --method POST \
+            "repos/${GITHUB_REPOSITORY}/statuses/${GITHUB_SHA}" \
+            -f state="success" \
+            -f context="Cloudflare Pages Preview (Branch)" \
+            -f description="Private branch preview is live" \
+            -f target_url="${BRANCH_URL}"
+
+          gh api \
+            --method POST \
+            "repos/${GITHUB_REPOSITORY}/statuses/${GITHUB_SHA}" \
+            -f state="success" \
+            -f context="Cloudflare Pages Preview (Commit)" \
+            -f description="Private commit snapshot is live" \
+            -f target_url="${COMMIT_URL}"
